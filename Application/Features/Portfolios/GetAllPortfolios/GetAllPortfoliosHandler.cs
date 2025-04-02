@@ -32,6 +32,7 @@ public class GetAllPortfoliosHandler : IRequestHandler<GetAllPortfoliosRequest, 
             return Result.Unauthorized();
         }
 
+
         var portfolios = await _context.Portfolios
             .AsNoTracking()
             .Include(p => p.Investments.Where(i => !i.IsDelete))
@@ -45,7 +46,7 @@ public class GetAllPortfoliosHandler : IRequestHandler<GetAllPortfoliosRequest, 
                 TotalValue = p.TotalValue,
                 ReturnPercentage = p.ReturnPercentage,
                 // Additional properties
-                InvestmentCount = p.Investments.Count,
+                InvestmentCount = p.Investments.Count(i => !i.IsDelete),
                 TotalInvested = p.TotalInvestment,
                 Performance = p.TotalInvestment > 0 ? p.UnrealizedGainLoss / p.TotalInvestment : 0,
                 CreatedOn = p.CreatedOn
