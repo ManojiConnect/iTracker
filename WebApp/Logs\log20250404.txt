@@ -1,0 +1,46 @@
+[00:00:24 INF] Investment creation started <s:WebApp.Pages.Investments.CreateModel>
+[00:00:24 INF] ModelState.IsValid: true <s:WebApp.Pages.Investments.CreateModel>
+[00:00:24 INF] Investment data: {"PortfolioId":6,"Name":"PMS - Abbacus","Symbol":"","CategoryId":1,"TotalInvestment":5000000,"CurrentValue":6000000,"PurchaseDate":"2025-04-04T00:00:00","PurchasePrice":5000000,"Notes":null} <s:WebApp.Pages.Investments.CreateModel>
+[00:00:24 INF] Sending create investment request to mediator <s:WebApp.Pages.Investments.CreateModel>
+[00:00:24 INF] Starting to handle CreateInvestmentRequest for portfolio 6 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[00:00:24 INF] Found portfolio: 6, Manoj's Portfolio <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[00:00:24 INF] Found category: 1, Stocks <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[00:00:24 INF] Created new investment object with Name: PMS - Abbacus, Symbol: PMS---Abbacus, TotalInvestment: 5000000, CurrentValue: 6000000 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[00:00:24 INF] Added investment to context, saving changes... <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[00:00:24 INF] Investment saved with ID: 8 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[00:00:24 INF] Updating portfolio totals... <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[00:00:24 INF] Updated portfolio totals: TotalValue: 6000000, TotalInvestment: 5000000 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[00:00:24 INF] Portfolio totals saved successfully <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[00:00:24 INF] Mediator result: true, No errors <s:WebApp.Pages.Investments.CreateModel>
+[00:00:24 INF] Investment created successfully with ID: 8 <s:WebApp.Pages.Investments.CreateModel>
+[00:00:56 INF] Attempting login for user: test@example.com <s:WebApp.Pages.Auth.LoginModel>
+[00:00:56 INF] Login successful for user: test@example.com <s:WebApp.Pages.Auth.LoginModel>
+[00:00:56 INF] Attempting to redirect to Portfolios/Index <s:WebApp.Pages.Auth.LoginModel>
+[00:01:00 INF] Attempting login for user: test@example.com <s:WebApp.Pages.Auth.LoginModel>
+[00:01:00 INF] Login successful for user: test@example.com <s:WebApp.Pages.Auth.LoginModel>
+[00:01:00 INF] Attempting to redirect to Portfolios/Index <s:WebApp.Pages.Auth.LoginModel>
+[00:01:05 INF] Attempting login for user: admin@example.com <s:WebApp.Pages.Auth.LoginModel>
+[00:01:05 INF] Login successful for user: admin@example.com <s:WebApp.Pages.Auth.LoginModel>
+[00:01:05 INF] Attempting to redirect to Portfolios/Index <s:WebApp.Pages.Auth.LoginModel>
+[00:01:46 INF] Attempting login for user: user@itracker.com <s:WebApp.Pages.Auth.LoginModel>
+[00:01:47 INF] Login successful for user: user@itracker.com <s:WebApp.Pages.Auth.LoginModel>
+[00:01:47 INF] Attempting to redirect to Portfolios/Index <s:WebApp.Pages.Auth.LoginModel>
+[00:02:11 INF] Investment creation started <s:WebApp.Pages.Investments.CreateModel>
+[00:02:11 INF] ModelState.IsValid: true <s:WebApp.Pages.Investments.CreateModel>
+[00:02:11 INF] Investment data: {"PortfolioId":7,"Name":"Test Investment","Symbol":"","CategoryId":2,"TotalInvestment":3000,"CurrentValue":4000,"PurchaseDate":"2025-04-04T00:00:00","PurchasePrice":3000,"Notes":null} <s:WebApp.Pages.Investments.CreateModel>
+[00:02:11 INF] Sending create investment request to mediator <s:WebApp.Pages.Investments.CreateModel>
+[00:02:11 INF] Starting to handle CreateInvestmentRequest for portfolio 7 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[00:02:11 INF] Found portfolio: 7, User's Portfolio <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[00:02:11 INF] Found category: 2, Bonds <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[00:02:11 INF] Created new investment object with Name: Test Investment, Symbol: Test-Investment, TotalInvestment: 3000, CurrentValue: 4000 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[00:02:11 INF] Added investment to context, saving changes... <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[00:02:11 INF] Investment saved with ID: 9 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[00:02:11 INF] Updating portfolio totals... <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[00:02:11 INF] Updated portfolio totals: TotalValue: 4000, TotalInvestment: 3000 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[00:02:11 INF] Portfolio totals saved successfully <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[00:02:11 INF] Mediator result: true, No errors <s:WebApp.Pages.Investments.CreateModel>
+[00:02:11 INF] Investment created successfully with ID: 9 <s:WebApp.Pages.Investments.CreateModel>
+[00:02:17 INF] Attempting login for user: admin@example.com <s:WebApp.Pages.Auth.LoginModel>
+[00:02:17 INF] Login successful for user: admin@example.com <s:WebApp.Pages.Auth.LoginModel>
+[00:02:17 INF] Attempting to redirect to Portfolios/Index <s:WebApp.Pages.Auth.LoginModel>
+[09:47:18 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>

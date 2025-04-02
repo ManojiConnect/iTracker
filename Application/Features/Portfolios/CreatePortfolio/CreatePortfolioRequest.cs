@@ -18,14 +18,32 @@ public record CreatePortfolioRequest : IRequest<Result<int>>
 public class CreatePortfolioHandler : IRequestHandler<CreatePortfolioRequest, Result<int>>
 {
     private readonly IContext _context;
+    private readonly ICurrentUserService _currentUserService;
 
-    public CreatePortfolioHandler(IContext context)
+    public CreatePortfolioHandler(IContext context, ICurrentUserService currentUserService)
     {
         _context = context;
+        _currentUserService = currentUserService;
     }
 
     public async Task<Result<int>> Handle(CreatePortfolioRequest request, CancellationToken cancellationToken)
     {
+        var userId = _currentUserService.Id;
+        
+        if (string.IsNullOrEmpty(userId))
+        {
+            return Result.Unauthorized();
+        }
+        
+        // Check if portfolio with the same name already exists for this user
+        var existingPortfolio = await _context.Portfolios
+            .AnyAsync(p => p.Name == request.Name && p.UserId == userId && !p.IsDelete, cancellationToken);
+            
+        if (existingPortfolio)
+        {
+            return Result.Error("A portfolio with this name already exists");
+        }
+
         var portfolio = new Domain.Entities.Portfolio
         {
             Name = request.Name,
@@ -40,7 +58,8 @@ public class CreatePortfolioHandler : IRequestHandler<CreatePortfolioRequest, Re
             ModifiedBy = 1,
             ModifiedOn = DateTime.UtcNow,
             IsActive = true,
-            IsDelete = false
+            IsDelete = false,
+            UserId = userId // Set the UserId to the current user's ID
         };
 
         _context.Portfolios.Add(portfolio);

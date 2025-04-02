@@ -1,0 +1,41 @@
+@{
+    ViewData["Title"] = "Reset Admin Password";
+    Layout = "_Layout";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Reset Admin Password</h2>
+                </div>
+                <div class="card-body">
+                    @if (ViewBag.Success != null)
+                    {
+                        <div class="alert alert-success">
+                            @ViewBag.Success
+                        </div>
+                        <p>You can now <a href="/Auth/Login">login here</a> with:</p>
+                        <ul>
+                            <li>Email: Admin@itrackerApp.com</li>
+                            <li>Password: Test@123</li>
+                        </ul>
+                    }
+                    
+                    @if (ViewBag.Error != null)
+                    {
+                        <div class="alert alert-danger">
+                            @ViewBag.Error
+                        </div>
+                    }
+                    
+                    <form method="post" asp-action="ResetAdminPassword">
+                        <p>Click the button below to reset the admin password to Test@123</p>
+                        <button type="submit" class="btn btn-primary">Reset Admin Password</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 

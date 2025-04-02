@@ -1,0 +1,55 @@
+@model WebApp.Controllers.UserViewModel
+@{
+    ViewData["Title"] = "Delete User";
+    Layout = "_Layout";
+}
+
+<div class="container-fluid p-4">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="card shadow-sm border-danger">
+                <div class="card-header bg-danger text-white">
+                    <h4 class="mb-0">Confirm Delete</h4>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-warning">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        Are you sure you want to deactivate this user? This action will mark the user as inactive.
+                    </div>
+
+                    <div class="mb-4">
+                        <h5 class="mb-3">User Details</h5>
+                        <div class="row mb-2">
+                            <div class="col-md-4 fw-bold">Name:</div>
+                            <div class="col-md-8">@Model.FirstName @Model.LastName</div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-md-4 fw-bold">Email:</div>
+                            <div class="col-md-8">@Model.Email</div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-md-4 fw-bold">Role:</div>
+                            <div class="col-md-8">
+                                <span class="badge @(Model.Role == "Admin" ? "bg-danger" : "bg-primary")">
+                                    @Model.Role
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form asp-controller="UserManagement" asp-action="Delete" method="post">
+                        <input type="hidden" name="id" value="@Model.Id" />
+                        <div class="d-flex justify-content-between">
+                            <a asp-controller="UserManagement" asp-action="Index" class="btn btn-secondary">
+                                <i class="fas fa-arrow-left me-2"></i> Back to List
+                            </a>
+                            <button type="submit" class="btn btn-danger">
+                                <i class="fas fa-trash me-2"></i> Deactivate User
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 

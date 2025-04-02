@@ -1,0 +1,43 @@
+@page
+@model WebApp.Pages.AdminToolsModel
+@{
+    ViewData["Title"] = "Admin Tools";
+    Layout = "_Layout";
+}
+
+<div class="container mt-5">
+    <h1>Admin Tools</h1>
+    
+    <div class="card mt-4">
+        <div class="card-header">
+            <h5>Reset Admin Password</h5>
+        </div>
+        <div class="card-body">
+            @if (!string.IsNullOrEmpty(Model.SuccessMessage))
+            {
+                <div class="alert alert-success">
+                    @Model.SuccessMessage
+                </div>
+            }
+            
+            @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+            {
+                <div class="alert alert-danger">
+                    @Model.ErrorMessage
+                </div>
+            }
+            
+            <form method="post">
+                <div class="mb-3">
+                    <label for="email" class="form-label">Admin Email</label>
+                    <input type="email" class="form-control" id="email" name="Email" value="Admin@itrackerApp.com" readonly />
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">New Password</label>
+                    <input type="password" class="form-control" id="password" name="Password" value="Test@123" />
+                </div>
+                <button type="submit" class="btn btn-primary">Reset Password</button>
+            </form>
+        </div>
+    </div>
+</div> 

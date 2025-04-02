@@ -15,11 +15,20 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using WebApplication.Configurations;
 using Infrastructure;
+using WebApp.Services;
+using Microsoft.AspNetCore.Mvc.Razor;
 
 var builder = Microsoft.AspNetCore.Builder.WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddControllersWithViews()
+    .AddRazorOptions(options =>
+    {
+        // Add Views as a location for finding Razor views
+        options.ViewLocationFormats.Add("/Views/{1}/{0}" + RazorViewEngine.ViewExtension);
+        options.ViewLocationFormats.Add("/Views/Shared/{0}" + RazorViewEngine.ViewExtension);
+    });
 // Application layer setup
 builder.Services.AddApplication(builder.Configuration);
 
@@ -51,6 +60,9 @@ builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddScoped<UserService>();
 
+// Add database initializer
+builder.Services.AddScoped<DatabaseInitializer>();
+
 builder.Logging.ClearProviders();
 // Add serilog
 if (builder.Environment.EnvironmentName != "Testing")
@@ -78,8 +90,9 @@ using (var scope = app.Services.CreateScope())
         var dbContext = services.GetRequiredService<AppDbContext>();
         await dbContext.Database.MigrateAsync();
 
-        // Seed users will be handled by ModelBuilder in OnModelCreating method of AppDbContext
-        // No need to call it explicitly here
+        // Initialize database with roles and admin user
+        var databaseInitializer = services.GetRequiredService<DatabaseInitializer>();
+        await databaseInitializer.InitializeAsync();
     }
     catch (Exception ex)
     {
@@ -97,12 +110,15 @@ app.UseAuthentication();
 app.UseMiddleware(typeof(AuthorizationHandlerMiddleware));
 app.UseAuthorization();
 
-// Add debug middleware to log route information
-app.Use(async (context, next) => {
-    var logger = app.Services.GetRequiredService<ILogger<Program>>();
-    logger.LogInformation($"Request Path: {context.Request.Path}, Method: {context.Request.Method}");
-    await next.Invoke();
-});
+// Configure conventional routes for MVC controllers
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.MapControllerRoute(
+    name: "userManagement",
+    pattern: "UserManagement/{action=Index}/{id?}",
+    defaults: new { controller = "UserManagement" });
 
 app.MapRazorPages();
 

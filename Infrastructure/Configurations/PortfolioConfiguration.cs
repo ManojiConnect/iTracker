@@ -20,7 +20,10 @@ public class PortfolioConfiguration : IEntityTypeConfiguration<Portfolio>
         builder.Property(p => p.InitialValue)
             .HasPrecision(18, 2);
 
-        builder.HasIndex(p => p.Name)
+        builder.Property(p => p.UserId)
+            .IsRequired();
+
+        builder.HasIndex(p => new { p.Name, p.UserId })
             .IsUnique();
     }
 } 

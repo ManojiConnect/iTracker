@@ -20,21 +20,39 @@ public record UpdatePortfolioRequest : IRequest<Result<int>>
 public class UpdatePortfolioHandler : IRequestHandler<UpdatePortfolioRequest, Result<int>>
 {
     private readonly IContext _context;
+    private readonly ICurrentUserService _currentUserService;
 
-    public UpdatePortfolioHandler(IContext context)
+    public UpdatePortfolioHandler(IContext context, ICurrentUserService currentUserService)
     {
         _context = context;
+        _currentUserService = currentUserService;
     }
 
     public async Task<Result<int>> Handle(UpdatePortfolioRequest request, CancellationToken cancellationToken)
     {
+        var userId = _currentUserService.Id;
+        
+        if (string.IsNullOrEmpty(userId))
+        {
+            return Result.Unauthorized();
+        }
+        
         var portfolio = await _context.Portfolios
             .Include(p => p.Investments.Where(i => !i.IsDelete))
-            .FirstOrDefaultAsync(p => p.Id == request.Id && !p.IsDelete, cancellationToken);
+            .FirstOrDefaultAsync(p => p.Id == request.Id && !p.IsDelete && p.UserId == userId, cancellationToken);
 
         if (portfolio == null)
         {
             return Result.NotFound("Portfolio not found");
+        }
+
+        // Check if another portfolio with this name exists for this user
+        var existingPortfolio = await _context.Portfolios
+            .AnyAsync(p => p.Name == request.Name && p.Id != request.Id && p.UserId == userId && !p.IsDelete, cancellationToken);
+            
+        if (existingPortfolio)
+        {
+            return Result.Error("Another portfolio with this name already exists");
         }
 
         portfolio.Name = request.Name;

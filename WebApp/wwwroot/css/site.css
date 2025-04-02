@@ -174,3 +174,13 @@ label {
 .sidebar__nav-item {
   font-size: 1.1rem;
 }
+
+/* Add section titles in sidebar */
+.sidebar__section-title {
+    padding: 12px 15px 4px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 10px;
+}

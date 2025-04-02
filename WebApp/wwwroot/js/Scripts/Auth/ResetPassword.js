@@ -40,14 +40,6 @@
         if (input.id === "password") {
             if (!value) {
                 error = "Password is required.";
-            } else if (value.length < 10) {
-                error = "Password must be at least 10 characters long.";
-            } else if (!/[A-Z]/.test(value)) {
-                error = "Password must contain at least one uppercase letter.";
-            } else if (!/[a-z]/.test(value)) {
-                error = "Password must contain at least one lowercase letter.";
-            } else if (!/[0-9]/.test(value)) {
-                error = "Password must contain at least one number.";
             }
         } else if (input.id === "confirm-password") {
             if (!value) {

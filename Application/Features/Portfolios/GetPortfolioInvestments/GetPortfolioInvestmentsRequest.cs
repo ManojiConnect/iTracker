@@ -30,16 +30,25 @@ public class InvestmentResponse
 public class GetPortfolioInvestmentsHandler : IRequestHandler<GetPortfolioInvestmentsRequest, Result<List<InvestmentResponse>>>
 {
     private readonly IContext _context;
+    private readonly ICurrentUserService _currentUserService;
 
-    public GetPortfolioInvestmentsHandler(IContext context)
+    public GetPortfolioInvestmentsHandler(IContext context, ICurrentUserService currentUserService)
     {
         _context = context;
+        _currentUserService = currentUserService;
     }
 
     public async Task<Result<List<InvestmentResponse>>> Handle(GetPortfolioInvestmentsRequest request, CancellationToken cancellationToken)
     {
+        var userId = _currentUserService.Id;
+        
+        if (string.IsNullOrEmpty(userId))
+        {
+            return Result.Unauthorized();
+        }
+        
         var portfolio = await _context.Portfolios
-            .FirstOrDefaultAsync(p => p.Id == request.PortfolioId && !p.IsDelete, cancellationToken);
+            .FirstOrDefaultAsync(p => p.Id == request.PortfolioId && !p.IsDelete && p.UserId == userId, cancellationToken);
 
         if (portfolio == null)
         {

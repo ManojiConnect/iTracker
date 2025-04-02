@@ -129,5 +129,57 @@ public class AppDbContext : IdentityDbContext<ApplicationUser>, IContext
                 IsDelete = false
             }
         );
+
+        // Seed test user
+        var testUserId = "9f8e9a5c-1d2e-4b3f-8a7c-6d5e4f3c2b1a";
+        
+        builder.Entity<ApplicationUser>().HasData(new ApplicationUser
+        {
+            Id = testUserId,
+            UserName = "Admin@itrackerApp.com",
+            NormalizedUserName = "ADMIN@ITRACKERAPP.COM",
+            Email = "Admin@itrackerApp.com",
+            NormalizedEmail = "ADMIN@ITRACKERAPP.COM",
+            EmailConfirmed = true,
+            PasswordHash = "AQAAAAIAAYagAAAAEGTPKJTAQNLVgJUJU1Og0Z6qDZQqV2+GJ4dxP/e81kJHW+JgzcnGZRQdDadQNpUFxQ==", // Test@123
+            SecurityStamp = Guid.NewGuid().ToString(),
+            ConcurrencyStamp = Guid.NewGuid().ToString(),
+            PhoneNumber = "1234567890",
+            PhoneNumberConfirmed = true,
+            TwoFactorEnabled = false,
+            LockoutEnabled = false,
+            AccessFailedCount = 0,
+            FirstName = "Admin",
+            LastName = "User",
+            IsActive = true,
+            Language = "en",
+            CreatedBy = "System",
+            CreatedDate = DateTime.UtcNow
+        });
+        
+        // Seed roles
+        builder.Entity<IdentityRole>().HasData(
+            new IdentityRole 
+            { 
+                Id = "2c5e174e-3b0e-446f-86af-483d56fd7210", 
+                Name = "Administrator", 
+                NormalizedName = "ADMINISTRATOR" 
+            },
+            new IdentityRole 
+            { 
+                Id = "e1823908-c7c9-4e53-980e-972fd4799f59", 
+                Name = "User", 
+                NormalizedName = "USER" 
+            }
+        );
+        
+        // Assign the test user to the User role
+        builder.Entity<IdentityUserRole<string>>().HasData(
+            new IdentityUserRole<string> 
+            { 
+                UserId = testUserId, 
+                RoleId = "2c5e174e-3b0e-446f-86af-483d56fd7210" // Assign Admin role
+            }
+        );
     }
 }

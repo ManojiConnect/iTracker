@@ -235,6 +235,17 @@
                     <i class="material-icons">category</i>
                     <span>Categories</span>
                 </a>
+                
+                @if (User.IsInRole("Admin"))
+                {
+                    <div class="sidebar__section-title">
+                        <span>Administration</span>
+                    </div>
+                    <a asp-controller="UserManagement" asp-action="Index" class="sidebar__nav-item text-white d-flex align-items-center" aria-current="page" id="userManagementTab" aria-label="User Management">
+                        <i class="material-icons">people</i>
+                        <span>User Management</span>
+                    </a>
+                }
             </nav>
             
             <div class="mt-auto">

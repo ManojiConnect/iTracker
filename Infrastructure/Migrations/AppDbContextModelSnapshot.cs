@@ -111,6 +111,32 @@ namespace Infrastructure.Migrations
                         .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "9f8e9a5c-1d2e-4b3f-8a7c-6d5e4f3c2b1a",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "b06ad8ae-4d00-4f64-b19e-28801f8525bc",
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2025, 4, 3, 18, 26, 29, 874, DateTimeKind.Utc).AddTicks(8950),
+                            Email = "Admin@itrackerApp.com",
+                            EmailConfirmed = true,
+                            FirstName = "Admin",
+                            IsActive = true,
+                            Language = "en",
+                            LastModifiedBy = "",
+                            LastName = "User",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ADMIN@ITRACKERAPP.COM",
+                            NormalizedUserName = "ADMIN@ITRACKERAPP.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGTPKJTAQNLVgJUJU1Og0Z6qDZQqV2+GJ4dxP/e81kJHW+JgzcnGZRQdDadQNpUFxQ==",
+                            PhoneNumber = "1234567890",
+                            PhoneNumberConfirmed = true,
+                            SecurityStamp = "c4bce9d4-fada-41bb-b6a8-5fd90da48a4e",
+                            TwoFactorEnabled = false,
+                            UserName = "Admin@itrackerApp.com"
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.Investment", b =>
@@ -159,9 +185,6 @@ namespace Infrastructure.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<decimal>("PurchasePrice")
-                        .HasColumnType("TEXT");
-
-                    b.Property<decimal>("Quantity")
                         .HasColumnType("TEXT");
 
                     b.Property<decimal>("ReturnPercentage")
@@ -228,7 +251,7 @@ namespace Infrastructure.Migrations
                         {
                             Id = 1,
                             CreatedBy = 1,
-                            CreatedOn = new DateTime(2025, 4, 2, 16, 7, 13, 830, DateTimeKind.Utc).AddTicks(9880),
+                            CreatedOn = new DateTime(2025, 4, 3, 18, 26, 29, 874, DateTimeKind.Utc).AddTicks(8760),
                             Description = "Equity investments in publicly traded companies",
                             IsActive = true,
                             IsDelete = false,
@@ -238,7 +261,7 @@ namespace Infrastructure.Migrations
                         {
                             Id = 2,
                             CreatedBy = 1,
-                            CreatedOn = new DateTime(2025, 4, 2, 16, 7, 13, 830, DateTimeKind.Utc).AddTicks(9890),
+                            CreatedOn = new DateTime(2025, 4, 3, 18, 26, 29, 874, DateTimeKind.Utc).AddTicks(8760),
                             Description = "Fixed income securities",
                             IsActive = true,
                             IsDelete = false,
@@ -248,7 +271,7 @@ namespace Infrastructure.Migrations
                         {
                             Id = 3,
                             CreatedBy = 1,
-                            CreatedOn = new DateTime(2025, 4, 2, 16, 7, 13, 830, DateTimeKind.Utc).AddTicks(9890),
+                            CreatedOn = new DateTime(2025, 4, 3, 18, 26, 29, 874, DateTimeKind.Utc).AddTicks(8760),
                             Description = "Property and REITs",
                             IsActive = true,
                             IsDelete = false,
@@ -258,7 +281,7 @@ namespace Infrastructure.Migrations
                         {
                             Id = 4,
                             CreatedBy = 1,
-                            CreatedOn = new DateTime(2025, 4, 2, 16, 7, 13, 830, DateTimeKind.Utc).AddTicks(9890),
+                            CreatedOn = new DateTime(2025, 4, 3, 18, 26, 29, 874, DateTimeKind.Utc).AddTicks(8770),
                             Description = "Digital assets and tokens",
                             IsActive = true,
                             IsDelete = false,
@@ -268,7 +291,7 @@ namespace Infrastructure.Migrations
                         {
                             Id = 5,
                             CreatedBy = 1,
-                            CreatedOn = new DateTime(2025, 4, 2, 16, 7, 13, 830, DateTimeKind.Utc).AddTicks(9890),
+                            CreatedOn = new DateTime(2025, 4, 3, 18, 26, 29, 874, DateTimeKind.Utc).AddTicks(8770),
                             Description = "Managed investment pools",
                             IsActive = true,
                             IsDelete = false,
@@ -483,6 +506,10 @@ namespace Infrastructure.Migrations
                     b.Property<decimal>("UnrealizedGainLoss")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.HasKey("Id");
 
                     b.ToTable("Portfolios");
@@ -564,6 +591,20 @@ namespace Infrastructure.Migrations
                         .HasDatabaseName("RoleNameIndex");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "2c5e174e-3b0e-446f-86af-483d56fd7210",
+                            Name = "Administrator",
+                            NormalizedName = "ADMINISTRATOR"
+                        },
+                        new
+                        {
+                            Id = "e1823908-c7c9-4e53-980e-972fd4799f59",
+                            Name = "User",
+                            NormalizedName = "USER"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -647,6 +688,13 @@ namespace Infrastructure.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "9f8e9a5c-1d2e-4b3f-8a7c-6d5e4f3c2b1a",
+                            RoleId = "2c5e174e-3b0e-446f-86af-483d56fd7210"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>

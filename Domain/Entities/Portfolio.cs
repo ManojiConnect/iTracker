@@ -19,6 +19,7 @@ public class Portfolio
     public int? ModifiedBy { get; set; }
     public bool IsActive { get; set; }
     public bool IsDelete { get; set; }
+    public string UserId { get; set; } = string.Empty; // The Identity user ID of the owner
 
     public ICollection<Investment> Investments { get; set; } = new List<Investment>();
 } 
