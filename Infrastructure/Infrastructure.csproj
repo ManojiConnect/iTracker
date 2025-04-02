@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Script\**" />
+    <EmbeddedResource Remove="Script\**" />
+    <None Remove="Script\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Configurations\AspNetUserConfiguration.cs" />
+    <Compile Remove="Configurations\AspNetUserLoginConfiguration.cs" />
+    <Compile Remove="Configurations\AspNetUserRoleConfiguration.cs" />
+    <Compile Remove="Configurations\AspNetUserTokensConfiguration.cs" />
+    <Compile Remove="Context\ApplicationDbContext.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" />
+    <PackageReference Include="NsDepCop" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj" />
+    <ProjectReference Include="..\Application.Common\Application.Common.csproj" />
+    <ProjectReference Include="..\Application.Abstractions\Application.Abstractions.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Remove="D:\Bolier Plate\Razor Page%28CQRS%29\Infrastructure\config.nsdepcop" />
+  </ItemGroup>
+</Project>

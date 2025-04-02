@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>11</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Features\Schedules\**" />
+    <Compile Remove="Features\Schools\**" />
+    <EmbeddedResource Remove="Features\Schedules\**" />
+    <EmbeddedResource Remove="Features\Schools\**" />
+    <None Remove="Features\Schedules\**" />
+    <None Remove="Features\Schools\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Ardalis.Result" />
+    <PackageReference Include="Ardalis.Result.FluentValidation" />
+    <PackageReference Include="Azure.Storage.Blobs" />
+    <PackageReference Include="Azure.Storage.Queues" />
+    <PackageReference Include="BCrypt.Net-Next" />
+    <PackageReference Include="CsvHelper" />
+    <PackageReference Include="FluentValidation" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" />
+    <PackageReference Include="Flurl" />
+    <PackageReference Include="Mapster" />
+    <PackageReference Include="Mapster.EFCore" />
+    <PackageReference Include="MediatR" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" />
+    <PackageReference Include="Newtonsoft.Json" />
+    <PackageReference Include="NsDepCop">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="SendGrid" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" />
+  </ItemGroup> 
+
+  <ItemGroup>
+    <None Remove="Features\Lookups\" />
+    <None Remove="Features\Reports\" />
+  </ItemGroup> 
+
+  <ItemGroup>
+    <ProjectReference Include="..\Application.Common\Application.Common.csproj" />
+    <ProjectReference Include="..\Domain\Domain.csproj" />
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+    <ProjectReference Include="..\Application.Abstractions\Application.Abstractions.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Remove="D:\Bolier Plate\Razor Page%28CQRS%29\Application\config.nsdepcop" />
+  </ItemGroup>
+</Project>

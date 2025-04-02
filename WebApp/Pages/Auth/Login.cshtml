@@ -1,0 +1,35 @@
+﻿@page
+@model WebApp.Pages.Auth.LoginModel
+@{
+    ViewData["Title"] = "Login";
+    ViewData["Heading"] = "Login";
+}
+
+<div class="login-form">
+    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+    {
+        <div class="alert alert-danger">@Model.ErrorMessage</div>
+    }
+    <form method="post" class="d-flex flex-column gap-16" style="width: 100%;">
+        <div class="form-group w-100 mb-4">
+            <label asp-for="Email" class="form-label fw-semibold mb-2">Email</label>
+            <input asp-for="Email" class="form-control w-100" placeholder="Enter your email" style="height: 52px;" />
+            <span asp-validation-for="Email" class="text-danger mt-2 d-block" style="font-size: 1rem;"></span>
+        </div>
+        <div class="form-group w-100 mb-4">
+            <label asp-for="Password" class="form-label fw-semibold mb-2">Password</label>
+            <input asp-for="Password" type="password" class="form-control w-100" placeholder="Enter your password" style="height: 52px;" />
+            <span asp-validation-for="Password" class="text-danger mt-2 d-block" style="font-size: 1rem;"></span>
+        </div>
+        <div class="form-group w-100 mb-4">
+            <div class="form-check">
+                <input asp-for="RememberMe" class="form-check-input" style="width: 22px; height: 22px;" />
+                <label asp-for="RememberMe" class="form-check-label ms-2" style="position: relative; top: 2px;">Remember me</label>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary w-100 py-3 fw-semibold" style="height: 56px;">Login</button>
+    </form>
+    <div class="mt-4 text-center">
+        <a asp-page="ForgotPassword" asp-route-returnUrl="@Url.Page("/Index", new { area = "" })" class="text-primary fw-medium">Forgot your password?</a>
+    </div>
+</div>

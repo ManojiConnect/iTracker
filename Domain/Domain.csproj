@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <LangVersion>11</LangVersion>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Entities\Enums\**" />
+    <EmbeddedResource Remove="Entities\Enums\**" />
+    <None Remove="Entities\Enums\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Entities\AspNetRole.cs" />
+    <Compile Remove="Entities\AspNetRoleClaim.cs" />
+    <Compile Remove="Entities\AspNetUser.cs" />
+    <Compile Remove="Entities\AspNetUserClaim.cs" />
+    <Compile Remove="Entities\AspNetUserLogin.cs" />
+    <Compile Remove="Entities\AspNetUserRole.cs" />
+    <Compile Remove="Entities\AspNetUserToken.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" />
+	  <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
+	  <PackageReference Include="Microsoft.AspNetCore.Identity.UI" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" />
+	  <!--<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" />-->
+	  <PackageReference Include="NsDepCop">
+	    <PrivateAssets>all</PrivateAssets>
+	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Remove="D:\Bolier Plate\Razor Page%28CQRS%29\Domain\config.nsdepcop" />
+  </ItemGroup>
+  
+
+</Project>

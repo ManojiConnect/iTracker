@@ -1,0 +1,49 @@
+@page
+@model WebApp.Pages.Portfolios.CreateModel
+@{
+    ViewData["Title"] = "Create Portfolio";
+}
+
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1>Create New Portfolio</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <form method="post">
+                        <div class="mb-3">
+                            <label asp-for="Portfolio.Name" class="form-label">Portfolio Name</label>
+                            <input asp-for="Portfolio.Name" class="form-control" />
+                            <span asp-validation-for="Portfolio.Name" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Portfolio.Description" class="form-label">Description</label>
+                            <textarea asp-for="Portfolio.Description" class="form-control" rows="3"></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Portfolio.InitialValue" class="form-label">Initial Value</label>
+                            <input asp-for="Portfolio.InitialValue" class="form-control" type="number" step="0.01" />
+                            <span asp-validation-for="Portfolio.InitialValue" class="text-danger"></span>
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <a asp-page="Index" class="btn btn-secondary">Back to List</a>
+                            <button type="submit" class="btn btn-primary">Create Portfolio</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+} 

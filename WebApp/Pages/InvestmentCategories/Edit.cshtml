@@ -1,0 +1,46 @@
+@page
+@model WebApp.Pages.InvestmentCategories.EditModel
+@{
+    ViewData["Title"] = "Edit Investment Category";
+}
+
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1>Edit Investment Category</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <form method="post">
+                        <input type="hidden" asp-for="Category.Id" />
+                        
+                        <div class="form-group">
+                            <label asp-for="Category.Name">Name</label>
+                            <input asp-for="Category.Name" class="form-control" />
+                            <span asp-validation-for="Category.Name" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Category.Description">Description</label>
+                            <textarea asp-for="Category.Description" class="form-control" rows="3"></textarea>
+                            <span asp-validation-for="Category.Description" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                            <a asp-page="Index" class="btn btn-secondary">Back to List</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+} 

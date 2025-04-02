@@ -1,0 +1,124 @@
+@page "{id:int?}"
+@model WebApp.Pages.Investments.EditModel
+@{
+    ViewData["Title"] = "Edit Investment";
+    Layout = "_DesktopLayout";
+}
+
+<div class="container-fluid px-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="page-title">Edit Investment</h1>
+        <a asp-page="./Index" class="btn btn-outline-secondary">
+            <i class="material-icons fs-5 align-middle">arrow_back</i>
+            <span>Back to List</span>
+        </a>
+    </div>
+
+    <div class="row">
+        <div class="col-md-7">
+            <div class="card shadow-sm">
+                <div class="card-header bg-light">
+                    <h5 class="mb-0">Investment Details</h5>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        <input type="hidden" asp-for="Investment.Id" />
+                        <input type="hidden" name="id" value="@Model.CurrentInvestment.Id" />
+                        
+                        <div class="mb-3">
+                            <label asp-for="Investment.Name" class="form-label">Name</label>
+                            <input asp-for="Investment.Name" class="form-control" required />
+                            <span asp-validation-for="Investment.Name" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label asp-for="Investment.CategoryId" class="form-label">Category</label>
+                            <select asp-for="Investment.CategoryId" class="form-select" 
+                                    asp-items="@(ViewData["Categories"] as SelectList)">
+                                <option value="">-- Select Category --</option>
+                            </select>
+                            <span asp-validation-for="Investment.CategoryId" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label asp-for="Investment.TotalInvestment" class="form-label">Initial Investment ($)</label>
+                            <input asp-for="Investment.TotalInvestment" class="form-control" type="number" step="0.01" min="0" required />
+                            <span asp-validation-for="Investment.TotalInvestment" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label asp-for="Investment.CurrentValue" class="form-label">Current Value ($)</label>
+                            <input asp-for="Investment.CurrentValue" class="form-control" type="number" step="0.01" min="0" required />
+                            <span asp-validation-for="Investment.CurrentValue" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label asp-for="Investment.PurchaseDate" class="form-label">Purchase Date</label>
+                            <input asp-for="Investment.PurchaseDate" class="form-control" type="date" required />
+                            <span asp-validation-for="Investment.PurchaseDate" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="d-flex justify-content-end mt-4">
+                            <a asp-page="./Index" class="btn btn-outline-secondary me-2">Cancel</a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="material-icons fs-5 align-middle">save</i>
+                                <span>Save Changes</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="card shadow-sm bg-light-subtle">
+                <div class="card-body">
+                    <h5 class="card-title mb-3">Investment Performance</h5>
+                    <div class="rounded border bg-white p-3 mb-3">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="text-muted">Initial Investment:</span>
+                            <span class="fw-medium">$@Model.CurrentInvestment.TotalInvestment.ToString("N2")</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="text-muted">Current Value:</span>
+                            <span class="fw-medium">$@Model.CurrentInvestment.CurrentValue.ToString("N2")</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="text-muted">Gain/Loss:</span>
+                            @{
+                                var gainLoss = Model.CurrentInvestment.CurrentValue - Model.CurrentInvestment.TotalInvestment;
+                                var gainLossClass = gainLoss >= 0 ? "text-success" : "text-danger";
+                            }
+                            <span class="fw-medium @gainLossClass">
+                                @(gainLoss >= 0 ? "+" : "")$@Math.Abs(gainLoss).ToString("N2")
+                            </span>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <span class="text-muted">Return:</span>
+                            @{
+                                var returnPct = Model.CurrentInvestment.TotalInvestment > 0 
+                                    ? (gainLoss / Model.CurrentInvestment.TotalInvestment) * 100 
+                                    : 0;
+                                var returnClass = returnPct >= 0 ? "text-success" : "text-danger";
+                            }
+                            <span class="fw-medium @returnClass">
+                                @(returnPct >= 0 ? "+" : "")@returnPct.ToString("F2")%
+                            </span>
+                        </div>
+                    </div>
+                    <p class="card-text text-muted">
+                        <i class="material-icons fs-5 align-middle me-1">info</i>
+                        Changes won't affect historical data. Use the History page to record new values over time.
+                    </p>
+                    <a asp-page="./History" asp-route-id="@Model.CurrentInvestment.Id" class="btn btn-outline-primary w-100">
+                        <i class="material-icons fs-5 align-middle">history</i>
+                        <span>View Value History</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+} 

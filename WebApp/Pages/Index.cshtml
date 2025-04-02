@@ -1,0 +1,45 @@
+﻿@page
+@model WebApp.Pages.IndexModel
+@{
+    ViewData["Title"] = "Investment Tracker";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="display-4">Welcome to Investment Tracker</h1>
+            <p class="lead">Track and manage your investments efficiently.</p>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Portfolios</h5>
+                    <p class="card-text">Manage your investment portfolios and track their performance.</p>
+                    <a href="/Portfolios/Index" class="btn btn-primary">View Portfolios</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Investments</h5>
+                    <p class="card-text">Track individual investments and their performance.</p>
+                    <a href="/Investments/Index" class="btn btn-primary">View Investments</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Categories</h5>
+                    <p class="card-text">Organize your investments by categories.</p>
+                    <a href="/InvestmentCategories/Index" class="btn btn-primary">View Categories</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

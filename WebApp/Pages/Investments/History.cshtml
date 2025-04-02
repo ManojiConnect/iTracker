@@ -1,0 +1,263 @@
+@page "{id:int?}"
+@model WebApp.Pages.Investments.HistoryModel
+@{
+    Layout = "_DesktopLayout";
+    ViewData["Title"] = $"{Model.Investment.Name} - History";
+}
+
+<div class="container-fluid px-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="page-title">@Model.Investment.Name Value History</h1>
+        <div>
+            <a asp-page="./Index" class="btn btn-outline-secondary me-2">
+                <i class="material-icons fs-5 align-middle">arrow_back</i>
+                <span>Back to Investments</span>
+            </a>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateValueModal">
+                <i class="material-icons fs-5 align-middle">add_circle</i>
+                <span>Record New Value</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-header bg-light">
+                    <h5 class="mb-0">Investment Details</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <div class="text-muted mb-1">Category</div>
+                        <div class="badge bg-info bg-opacity-10 text-info px-3 py-2 rounded-pill">@Model.Investment.CategoryName</div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="text-muted mb-1">Current Value</div>
+                        <div class="h4 text-primary">$@Model.Investment.CurrentValue.ToString("N2")</div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="text-muted mb-1">Initial Investment</div>
+                        <div class="h5">$@Model.Investment.TotalInvestment.ToString("N2")</div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="text-muted mb-1">Performance</div>
+                        <div class="h5 @(Model.Investment.ReturnPercentage >= 0 ? "text-success" : "text-danger")">
+                            @(Model.Investment.ReturnPercentage >= 0 ? "+" : "")@Model.Investment.ReturnPercentage.ToString("F2")%
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="text-muted mb-1">Purchase Date</div>
+                        <div>@Model.Investment.PurchaseDate.ToString("MMM dd, yyyy")</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card shadow-sm h-100">
+                <div class="card-header bg-light">
+                    <h5 class="mb-0">Value History</h5>
+                </div>
+                <div class="card-body">
+                    <!-- Chart will be rendered here -->
+                    <canvas id="valueHistoryChart" style="width: 100%; height: 300px;"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-header bg-light">
+            <h5 class="mb-0">History Records</h5>
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th class="ps-4">Date</th>
+                            <th>Value</th>
+                            <th>Change</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.InvestmentHistories.Any())
+                        {
+                            @foreach (var record in Model.InvestmentHistories)
+                            {
+                                <tr>
+                                    <td class="ps-4">@record.RecordedDate.ToString("MMM dd, yyyy HH:mm")</td>
+                                    <td class="fw-medium">$@record.Value.ToString("N2")</td>
+                                    <td>
+                                        @{
+                                            var previousIndex = Model.InvestmentHistories.IndexOf(record) + 1;
+                                            var previous = previousIndex < Model.InvestmentHistories.Count ? Model.InvestmentHistories[previousIndex] : null;
+                                            var changePercentage = previous != null && previous.Value != 0 
+                                                ? ((record.Value - previous.Value) / previous.Value) * 100 
+                                                : 0;
+                                            
+                                            var changeClass = changePercentage > 0 
+                                                ? "text-success" 
+                                                : (changePercentage < 0 ? "text-danger" : "");
+                                            
+                                            var changeIcon = changePercentage > 0 
+                                                ? "trending_up" 
+                                                : (changePercentage < 0 ? "trending_down" : "");
+                                        }
+                                        <span class="@changeClass">
+                                            @if (changePercentage != 0)
+                                            {
+                                                <i class="material-icons align-middle">@changeIcon</i>
+                                                <span>@(changePercentage > 0 ? "+" : "")@changePercentage.ToString("F2")%</span>
+                                            }
+                                            else
+                                            {
+                                                <span>-</span>
+                                            }
+                                        </span>
+                                    </td>
+                                    <td>
+                                        @if (string.IsNullOrEmpty(record.Note))
+                                        {
+                                            <span class="text-muted">-</span>
+                                        }
+                                        else
+                                        {
+                                            <span>@record.Note</span>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="4" class="text-center py-4">
+                                    <div class="text-muted">
+                                        <i class="material-icons fs-1 d-block mb-2">history</i>
+                                        <p>No history records found. Record a new value to start tracking.</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for recording a new value -->
+<div class="modal fade" id="updateValueModal" tabindex="-1" aria-labelledby="updateValueModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="post">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="updateValueModalLabel">Record New Value</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" asp-for="UpdateModel.InvestmentId" value="@Model.Investment.Id" />
+                    <input type="hidden" name="id" value="@Model.Investment.Id" />
+                    
+                    <div class="mb-3">
+                        <label asp-for="UpdateModel.NewValue" class="form-label">Current Value ($)</label>
+                        <input type="number" class="form-control" asp-for="UpdateModel.NewValue" step="0.01" required min="0" />
+                        <span asp-validation-for="UpdateModel.NewValue" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label asp-for="UpdateModel.Note" class="form-label">Note (Optional)</label>
+                        <textarea class="form-control" asp-for="UpdateModel.Note" rows="3"></textarea>
+                        <span asp-validation-for="UpdateModel.Note" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <!-- Include Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Prepare data for chart
+            const dates = @Html.Raw(Json.Serialize(Model.InvestmentHistories.Select(h => h.RecordedDate.ToString("MMM dd, yyyy")).ToArray()));
+            const values = @Html.Raw(Json.Serialize(Model.InvestmentHistories.Select(h => h.Value).ToArray()));
+            const purchaseValue = @Model.Investment.TotalInvestment;
+            
+            // Prepare the chart
+            const ctx = document.getElementById('valueHistoryChart').getContext('2d');
+            const chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: dates,
+                    datasets: [
+                        {
+                            label: 'Value',
+                            data: values,
+                            borderColor: '#4285F4',
+                            backgroundColor: 'rgba(66, 133, 244, 0.1)',
+                            borderWidth: 2,
+                            tension: 0.3,
+                            fill: true
+                        },
+                        {
+                            label: 'Purchase Value',
+                            data: Array(dates.length).fill(purchaseValue),
+                            borderColor: '#AAAAAA',
+                            borderWidth: 2,
+                            borderDash: [5, 5],
+                            fill: false,
+                            pointRadius: 0
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.y !== null) {
+                                        label += new Intl.NumberFormat('en-US', { 
+                                            style: 'currency', 
+                                            currency: 'USD' 
+                                        }).format(context.parsed.y);
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + value.toLocaleString();
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+} 

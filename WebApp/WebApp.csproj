@@ -1,0 +1,106 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\fonts\icons\ec-breakfast.svg" />
+    <None Include="wwwroot\fonts\icons\ec-calendar-v1.svg" />
+    <None Include="wwwroot\fonts\icons\ec-calendar.svg" />
+    <None Include="wwwroot\fonts\icons\ec-call.svg" />
+    <None Include="wwwroot\fonts\icons\ec-close.svg" />
+    <None Include="wwwroot\fonts\icons\ec-cup-v1.svg" />
+    <None Include="wwwroot\fonts\icons\ec-cup.svg" />
+    <None Include="wwwroot\fonts\icons\ec-currency.svg" />
+    <None Include="wwwroot\fonts\icons\ec-deleted.svg" />
+    <None Include="wwwroot\fonts\icons\ec-dropdown.svg" />
+    <None Include="wwwroot\fonts\icons\ec-edit.svg" />
+    <None Include="wwwroot\fonts\icons\ec-escalator-test.svg" />
+    <None Include="wwwroot\fonts\icons\ec-exp.svg" />
+    <None Include="wwwroot\fonts\icons\ec-holiday.svg" />
+    <None Include="wwwroot\fonts\icons\ec-key.svg" />
+    <None Include="wwwroot\fonts\icons\ec-left-arrow.svg" />
+    <None Include="wwwroot\fonts\icons\ec-location-dot.svg" />
+    <None Include="wwwroot\fonts\icons\ec-logout.svg" />
+    <None Include="wwwroot\fonts\icons\ec-meal.svg" />
+    <None Include="wwwroot\fonts\icons\ec-order.svg" />
+    <None Include="wwwroot\fonts\icons\ec-payroll.svg" />
+    <None Include="wwwroot\fonts\icons\ec-people.svg" />
+    <None Include="wwwroot\fonts\icons\ec-plus.svg" />
+    <None Include="wwwroot\fonts\icons\ec-right-arrow.svg" />
+    <None Include="wwwroot\fonts\icons\ec-search.svg" />
+    <None Include="wwwroot\fonts\icons\ec-settings.svg" />
+    <None Include="wwwroot\fonts\icons\ec-sickness.svg" />
+    <None Include="wwwroot\fonts\icons\ec-standby.svg" />
+    <None Include="wwwroot\fonts\icons\ec-status-pending.svg" />
+    <None Include="wwwroot\fonts\icons\ec-status-received.svg" />
+    <None Include="wwwroot\fonts\icons\ec-tick.svg" />
+    <None Include="wwwroot\fonts\icons\ec-timeshieet.svg" />
+    <None Include="wwwroot\fonts\icons\ec-travel-car.svg" />
+    <None Include="wwwroot\fonts\icons\ec-unlock.svg" />
+    <None Include="wwwroot\fonts\icons\ec-unpaid.svg" />
+    <None Include="wwwroot\fonts\icons\ec-view.svg" />
+    <None Include="wwwroot\fonts\icons\ec-wa.svg" />
+    <None Include="wwwroot\fonts\icons\es-watch.svg" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Ben.Demystifier" />
+    <PackageReference Include="FastExpressionCompiler" />
+    <PackageReference Include="FluentValidation.AspNetCore" />
+    <PackageReference Include="Mapster" />
+    <PackageReference Include="MediatR" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" />
+    <PackageReference Include="Serilog" />
+    <PackageReference Include="Serilog.Exceptions" />
+    <PackageReference Include="Serilog.Extensions.Hosting" />
+    <PackageReference Include="Serilog.Settings.Configuration" />
+    <PackageReference Include="Serilog.Sinks.Async" />
+    <PackageReference Include="Serilog.Sinks.Console" />
+    <PackageReference Include="Serilog.Sinks.File" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Application\Application.csproj" />
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+    <ProjectReference Include="..\Application.Common\Application.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Logs\" />
+  </ItemGroup>
+
+</Project>

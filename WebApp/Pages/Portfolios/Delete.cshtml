@@ -1,0 +1,43 @@
+@page
+@model WebApp.Pages.Portfolios.DeleteModel
+@{
+    ViewData["Title"] = "Delete Portfolio";
+}
+
+<div class="container">
+    <h2>Delete Portfolio</h2>
+
+    <div class="alert alert-danger">
+        <h4>Are you sure you want to delete this portfolio?</h4>
+        <p>This action cannot be undone. All investments in this portfolio will also be deleted.</p>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">@Model.Portfolio.Name</h5>
+            <p class="card-text">@Model.Portfolio.Description</p>
+            <dl class="row">
+                <dt class="col-sm-3">Initial Value</dt>
+                <dd class="col-sm-9">@Model.Portfolio.InitialValue.ToString("C")</dd>
+
+                <dt class="col-sm-3">Total Investment</dt>
+                <dd class="col-sm-9">@Model.Portfolio.TotalInvestment.ToString("C")</dd>
+
+                <dt class="col-sm-3">Current Value</dt>
+                <dd class="col-sm-9">@Model.Portfolio.TotalValue.ToString("C")</dd>
+
+                <dt class="col-sm-3">Unrealized Gain/Loss</dt>
+                <dd class="col-sm-9">@Model.Portfolio.UnrealizedGainLoss.ToString("C")</dd>
+
+                <dt class="col-sm-3">Return</dt>
+                <dd class="col-sm-9">@Model.Portfolio.ReturnPercentage.ToString("F2")%</dd>
+            </dl>
+        </div>
+    </div>
+
+    <form method="post">
+        <input type="hidden" asp-for="Portfolio.Id" />
+        <button type="submit" class="btn btn-danger">Delete Portfolio</button>
+        <a asp-page="./Details" asp-route-id="@Model.Portfolio.Id" class="btn btn-secondary">Cancel</a>
+    </form>
+</div> 

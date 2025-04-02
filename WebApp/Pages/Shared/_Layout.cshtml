@@ -1,0 +1,12 @@
+@{
+    string layout = Context.Request.Path.Value?.StartsWith("/Auth/") == true ? "_AuthPagesLayout" : "_DesktopLayout";
+}
+@{
+    Layout = layout;
+}
+
+@RenderBody()
+
+@section Scripts {
+    @await RenderSectionAsync("Scripts", required: false)
+} 

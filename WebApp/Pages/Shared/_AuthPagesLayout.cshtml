@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <title>@ViewBag.Title</title>
+    <!-- <link rel="icon" type="image/x-icon" href="../dist/images/favicon.png" /> -->
+    <link type="text/css" href="~/css/styles.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .login {
+            width: 100%;
+            max-width: 520px;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        .frame-30 {
+            background: linear-gradient(135deg, #1a237e 0%, #0d47a1 100%);
+            padding: 2.25rem;
+        }
+        .frame-30 h1 {
+            margin: 0;
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        .frame-29 {
+            padding: 2.5rem;
+            width: 100%;
+            min-width: 300px;
+        }
+        .form-control {
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            padding: 1rem 1.25rem;
+            transition: all 0.3s ease;
+            font-size: 1.5rem;
+            line-height: 1.5;
+            height: auto;
+        }
+        .form-control:focus {
+            border-color: #1a237e;
+            box-shadow: 0 0 0 0.2rem rgba(26, 35, 126, 0.25);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #1a237e 0%, #0d47a1 100%);
+            border: none;
+            border-radius: 8px;
+            padding: 0.875rem 1.5rem;
+            font-weight: 600;
+            font-size: 1.5rem;
+            line-height: 1.5;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(26, 35, 126, 0.3);
+        }
+        .alert {
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+        
+        /* Fix for login form styles */
+        .login-form {
+            width: 100%;
+            padding: 0;
+            max-width: unset;
+        }
+        .gap-16 {
+            gap: 16px;
+        }
+        
+        /* Add this to ensure main container has sufficient width */
+        .mobile-screen {
+            width: 100%;
+            max-width: 520px;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .wrapper {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        
+        /* Fix font sizes */
+        .form-label {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .form-check-label {
+            font-size: 1.5rem;
+        }
+        
+        /* Make all text in the login form more visible */
+        .login-form, .login-form * {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        
+        /* Make forgot password link more visible */
+        .login-form a {
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <main class="mobile-screen center-aligned">
+            <div class="login">
+                <div class="frame-30">
+                    <h1 class="text-center text-white">@ViewData["Heading"]</h1>
+                </div>
+                <div class="frame-29">
+                    @RenderBody()
+                </div>
+            </div>
+        </main>
+        <!-- main -->
+    </div>
+    <!-- wrapper -->
+
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/bootstrap-5.3.3/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/scripts.min.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

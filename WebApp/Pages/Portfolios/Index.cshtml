@@ -1,0 +1,88 @@
+@page
+@model WebApp.Pages.Portfolios.IndexModel
+@{
+    Layout = "_DesktopLayout";
+    ViewData["Title"] = "Portfolios";
+}
+
+<div class="container-fluid px-4">
+    <h1 class="page-title">My Portfolios</h1>
+
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card shadow-sm">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <div>
+                        <h5 class="card-title mb-0">Total Portfolios</h5>
+                        <h2 class="text-primary mb-0">@Model.Portfolios.Count()</h2>
+                    </div>
+                    <a asp-page="Create" class="btn btn-primary d-flex align-items-center">
+                        <i class="material-icons me-2">add</i>
+                        <span>Add New Portfolio</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        @foreach (var portfolio in Model.Portfolios)
+        {
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-header bg-light py-3">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">@portfolio.Name</h5>
+                            <span class="badge bg-primary rounded-pill px-3 py-2">@portfolio.InvestmentCount Investments</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-4">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="text-muted">Total Value:</span>
+                                <span class="fw-bold fs-4">$@portfolio.TotalValue.ToString("N2")</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-muted">Total Invested:</span>
+                                <span class="fw-medium">$@portfolio.TotalInvested.ToString("N2")</span>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="text-muted">Performance:</span>
+                            <span class="fw-bold @(portfolio.Performance >= 0 ? "text-success" : "text-danger")">
+                                @(portfolio.Performance >= 0 ? "+" : "")@portfolio.Performance.ToString("P2")
+                            </span>
+                        </div>
+                        
+                        <div class="progress mb-3" style="height: 10px">
+                            <div class="progress-bar @(portfolio.Performance >= 0 ? "bg-success" : "bg-danger")" 
+                                 role="progressbar" 
+                                 style="width: @(Math.Abs(Math.Min(Math.Max(portfolio.Performance * 100, -100), 100)))%" 
+                                 aria-valuenow="@(Math.Abs(portfolio.Performance * 100))" 
+                                 aria-valuemin="0" 
+                                 aria-valuemax="100">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-top">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="text-muted small">Created: @portfolio.CreatedOn.ToString("MMM dd, yyyy")</div>
+                            <div class="btn-group">
+                                <a asp-page="./Edit" asp-route-id="@portfolio.Id" class="btn btn-sm btn-outline-primary">
+                                    <i class="material-icons fs-5">edit</i>
+                                </a>
+                                <a asp-page="./Details" asp-route-id="@portfolio.Id" class="btn btn-sm btn-outline-info">
+                                    <i class="material-icons fs-5">info</i>
+                                </a>
+                                <a asp-page="./Delete" asp-route-id="@portfolio.Id" class="btn btn-sm btn-outline-danger">
+                                    <i class="material-icons fs-5">delete</i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div> 
