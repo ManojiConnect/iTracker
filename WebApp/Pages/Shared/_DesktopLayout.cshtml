@@ -243,13 +243,17 @@
                     </div>
                     <a asp-controller="UserManagement" asp-action="Index" class="sidebar__nav-item text-white d-flex align-items-center" aria-current="page" id="userManagementTab" aria-label="User Management">
                         <i class="material-icons">people</i>
-                        <span>User Management</span>
+                        <span>Users</span>
+                    </a>
+                    <a asp-page="/AdminTools" class="sidebar__nav-item text-white d-flex align-items-center" aria-current="page" id="adminToolsTab" aria-label="Admin Tools">
+                        <i class="material-icons">settings</i>
+                        <span>Admin Tools</span>
                     </a>
                 }
             </nav>
             
             <div class="mt-auto">
-                <div class="user-profile">
+                <div class="user-profile p-3">
                     @{
                         firstName = HttpContextAccessor.HttpContext.User.Claims
                         .Where(c => c.Type == "FirstName")
@@ -274,23 +278,22 @@
                             initials = $"{firstName[0]}{lastName[0]}";
                         }
                     }
-                    <div class="d-flex flex-column align-items-center">
-                        <div class="user-avatar">
-                            @initials
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div class="d-flex align-items-center">
+                            <div class="user-avatar me-2" style="width: 40px; height: 40px; margin-bottom: 0;">
+                                @initials
+                            </div>
+                            <div class="d-flex flex-column">
+                                <span class="text-white fw-bold">@fullName</span>
+                                <span class="text-white opacity-75 small">@email</span>
+                            </div>
                         </div>
-                        <div class="d-flex flex-column gap-1 text-center">
-                            <span class="text-white fw-bold">@fullName</span>
-                            <span class="text-white opacity-75 small">@email</span>
-                        </div>
+                        <form method="post" asp-page="/Auth/Logout" asp-route-returnUrl="@Url.Page("/Auth/Login")" id="logoutForm" class="m-0">
+                            <button type="submit" class="btn btn-link text-white p-0" title="Logout">
+                                <i class="material-icons">exit_to_app</i>
+                            </button>
+                        </form>
                     </div>
-                </div>
-                <div class="mb-4">
-                    <form method="post" asp-page="/Auth/Logout" asp-route-returnUrl="@Url.Page("/Auth/Login")" id="logoutForm">
-                        <button type="submit" class="logout-button text-white d-flex align-items-center justify-content-center gap-2">
-                            <i class="material-icons">exit_to_app</i>
-                            <span>Logout</span>
-                        </button>
-                    </form>
                 </div>
             </div>
         </div>

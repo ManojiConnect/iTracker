@@ -12,18 +12,27 @@ namespace Application.Features.Portfolios.GetPortfolioById;
 public class GetPortfolioByIdHandler : IRequestHandler<GetPortfolioByIdRequest, Result<PortfolioDto>>
 {
     private readonly IContext _context;
+    private readonly ICurrentUserService _currentUserService;
 
-    public GetPortfolioByIdHandler(IContext context)
+    public GetPortfolioByIdHandler(IContext context, ICurrentUserService currentUserService)
     {
         _context = context;
+        _currentUserService = currentUserService;
     }
 
     public async Task<Result<PortfolioDto>> Handle(GetPortfolioByIdRequest request, CancellationToken cancellationToken)
     {
+        var userId = _currentUserService.Id;
+        
+        if (string.IsNullOrEmpty(userId))
+        {
+            return Result.Unauthorized();
+        }
+        
         var portfolio = await _context.Portfolios
             .Include(p => p.Investments.Where(i => !i.IsDelete))
                 .ThenInclude(i => i.Category)
-            .FirstOrDefaultAsync(p => p.Id == request.Id && !p.IsDelete, cancellationToken);
+            .FirstOrDefaultAsync(p => p.Id == request.Id && !p.IsDelete && p.UserId == userId, cancellationToken);
 
         if (portfolio == null)
         {

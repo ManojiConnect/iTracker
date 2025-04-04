@@ -1,6 +1,5 @@
 using Application.Features.Portfolios.GetPortfolioById;
 using Application.Features.Portfolios.DeletePortfolio;
-using Application.Features.Portfolios.GetPortfolioById;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;

@@ -41,21 +41,21 @@
                             </div>
                             <div class="d-flex flex-column mb-3">
                                 <span class="text-muted fs-6">Purchase Date</span>
-                                <span class="fw-medium">@Model.Investment.PurchaseDate.ToString("MMMM dd, yyyy")</span>
+                                <span class="fw-medium">@Model.FormatDate(Model.Investment.PurchaseDate)</span>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="d-flex flex-column mb-3">
                                 <span class="text-muted fs-6">Current Value</span>
-                                <span class="fw-bold fs-4">$@Model.Investment.CurrentValue.ToString("N2")</span>
+                                <span class="fw-bold fs-4">@Html.Raw(Model.FormatCurrency(Model.Investment.CurrentValue))</span>
                             </div>
                             <div class="d-flex flex-column mb-3">
                                 <span class="text-muted fs-6">Total Investment</span>
-                                <span class="fw-medium">$@Model.Investment.TotalInvestment.ToString("N2")</span>
+                                <span class="fw-medium">@Html.Raw(Model.FormatCurrency(Model.Investment.TotalInvestment))</span>
                             </div>
                             <div class="d-flex flex-column mb-3">
                                 <span class="text-muted fs-6">Purchase Price</span>
-                                <span class="fw-medium">$@Model.Investment.PurchasePrice.ToString("N2")</span>
+                                <span class="fw-medium">@Html.Raw(Model.FormatCurrency(Model.Investment.PurchasePrice))</span>
                             </div>
                         </div>
                     </div>
@@ -64,13 +64,13 @@
                         <div class="d-flex justify-content-between align-items-center mb-2">
                             <span class="text-muted fs-6">Gain/Loss</span>
                             <span class="fw-bold @(Model.Investment.UnrealizedGainLoss >= 0 ? "text-success" : "text-danger") fs-5">
-                                @(Model.Investment.UnrealizedGainLoss >= 0 ? "+" : "")$@Math.Abs(Model.Investment.UnrealizedGainLoss).ToString("N2")
+                                @(Model.Investment.UnrealizedGainLoss >= 0 ? "+" : "")@Html.Raw(Model.FormatCurrency(Math.Abs(Model.Investment.UnrealizedGainLoss)))
                             </span>
                         </div>
                         <div class="d-flex justify-content-between align-items-center mb-2">
                             <span class="text-muted fs-6">Return</span>
                             <span class="fw-bold @(Model.Investment.ReturnPercentage >= 0 ? "text-success" : "text-danger")">
-                                @(Model.Investment.ReturnPercentage >= 0 ? "+" : "")@Model.Investment.ReturnPercentage.ToString("P2")
+                                @(Model.Investment.ReturnPercentage >= 0 ? "+" : "")@Model.FormatNumber(Model.Investment.ReturnPercentage * 100, 2)%
                             </span>
                         </div>
                         
@@ -94,7 +94,7 @@
                     }
                 </div>
                 <div class="card-footer bg-transparent d-flex justify-content-between">
-                    <div class="text-muted small">Created: @Model.Investment.PurchaseDate.ToString("MMM dd, yyyy")</div>
+                    <div class="text-muted small">Created: @Model.FormatDate(Model.Investment.PurchaseDate)</div>
                     <div>
                         <a asp-page="./History" asp-route-id="@Model.Investment.Id" class="btn btn-sm btn-outline-success">
                             <i class="material-icons fs-5 align-middle">trending_up</i>
@@ -117,16 +117,16 @@
                         <div class="d-flex justify-content-between">
                             <div>
                                 <p class="text-muted mb-1 small">Initial</p>
-                                <p class="fw-bold mb-0">$@Model.Investment.TotalInvestment.ToString("N2")</p>
+                                <p class="fw-bold mb-0">@Html.Raw(Model.FormatCurrency(Model.Investment.TotalInvestment))</p>
                             </div>
                             <div>
                                 <p class="text-muted mb-1 small">Current</p>
-                                <p class="fw-bold mb-0">$@Model.Investment.CurrentValue.ToString("N2")</p>
+                                <p class="fw-bold mb-0">@Html.Raw(Model.FormatCurrency(Model.Investment.CurrentValue))</p>
                             </div>
                             <div>
                                 <p class="text-muted mb-1 small">Change</p>
-                                <p class="fw-bold @(Model.Investment.UnrealizedGainLoss >= 0 ? "text-success" : "text-danger") mb-0">
-                                    @(Model.Investment.ReturnPercentage >= 0 ? "+" : "")@Model.Investment.ReturnPercentage.ToString("P2")
+                                <p class="fw-bold @(Model.Investment.ReturnPercentage >= 0 ? "text-success" : "text-danger") mb-0">
+                                    @(Model.Investment.ReturnPercentage >= 0 ? "+" : "")@Model.FormatNumber(Model.Investment.ReturnPercentage * 100, 2)%
                                 </p>
                             </div>
                         </div>

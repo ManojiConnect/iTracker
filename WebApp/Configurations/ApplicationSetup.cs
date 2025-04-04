@@ -1,6 +1,7 @@
 ﻿using Application.Common.Interfaces;
 using Application.Services;
 using Infrastructure.Common;
+using Infrastructure.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,6 +16,7 @@ public static class ApplicationSetup
         // Register services
         services.AddScoped<ICurrentUserService, CurrentUserService>();
         services.AddScoped<ILookupService, LookupService>();
+        services.AddScoped<Application.Abstractions.Interfaces.ISettingsService, SettingsService>();
         services.AddScoped<OtpService>();
         services.AddScoped<IMailService>(sp => 
             new SendGridService(

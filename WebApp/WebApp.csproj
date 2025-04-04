@@ -97,6 +97,7 @@
     <ProjectReference Include="..\Application\Application.csproj" />
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
     <ProjectReference Include="..\Application.Common\Application.Common.csproj" />
+    <ProjectReference Include="..\Application.Abstractions\Application.Abstractions.csproj" />
   </ItemGroup>
 
   <ItemGroup>

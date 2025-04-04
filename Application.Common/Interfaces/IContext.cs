@@ -18,6 +18,7 @@ public interface IContext
     DbSet<User> Users { get; set; }
     DbSet<Lookup> Lookups { get; set; }
     DbSet<LookupType> LookupTypes { get; set; }
+    DbSet<SystemSettings> SystemSettings { get; set; }
 
     Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     Task BeginTransactionAsync(CancellationToken cancellationToken = default);

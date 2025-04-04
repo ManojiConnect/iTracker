@@ -29,6 +29,7 @@ public class AppDbContext : IdentityDbContext<ApplicationUser>, IContext
     public new DbSet<User> Users { get; set; }
     public DbSet<Lookup> Lookups { get; set; }
     public DbSet<LookupType> LookupTypes { get; set; }
+    public DbSet<SystemSettings> SystemSettings { get; set; }
 
     public new async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {

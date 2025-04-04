@@ -54,11 +54,13 @@ builder.Services.AddPersistance(builder.Configuration);
 
 // Middleware
 builder.Services.AddScoped<ExceptionHandlerMiddleware>();
-
+// builder.Services.AddScoped<RequestAuthorizerMiddleware>();
 builder.Services.AddScoped<AuthorizationHandlerMiddleware>();
 builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<WebApp.Services.CurrencyFormatterService>();
+builder.Services.AddScoped<WebApp.Services.IApplicationSettingsService, WebApp.Services.ApplicationSettingsService>();
 
 // Add database initializer
 builder.Services.AddScoped<DatabaseInitializer>();

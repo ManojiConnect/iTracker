@@ -1,68 +1,96 @@
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System;
-using System.Linq;
 using System.Threading.Tasks;
+using WebApp.Models;
+using System.IO;
+using System.Text.Json;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Logging;
+using WebApp.Services;
 
 namespace WebApp.Pages;
 
 public class AdminToolsModel : PageModel
 {
-    private readonly UserManager<IdentityUser> _userManager;
+    private readonly IApplicationSettingsService _settingsService;
+    private readonly ILogger<AdminToolsModel> _logger;
 
     [TempData]
     public string SuccessMessage { get; set; }
 
     [TempData]
     public string ErrorMessage { get; set; }
-
+    
     [BindProperty]
-    public string Email { get; set; } = "Admin@itrackerApp.com";
+    public SystemSettingsViewModel Settings { get; set; } = new SystemSettingsViewModel();
 
-    [BindProperty]
-    public string Password { get; set; } = "Test@123";
-
-    public AdminToolsModel(UserManager<IdentityUser> userManager)
+    public AdminToolsModel(IApplicationSettingsService settingsService, ILogger<AdminToolsModel> logger)
     {
-        _userManager = userManager;
+        _settingsService = settingsService;
+        _logger = logger;
     }
 
-    public void OnGet()
+    public async Task OnGetAsync()
     {
+        try
+        {
+            // Get settings from service
+            Settings = await _settingsService.GetSettingsAsync();
+            _logger.LogInformation("Settings loaded successfully: CurrencySymbol={Symbol}", Settings.CurrencySymbol);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error loading settings");
+            ErrorMessage = $"Error loading settings: {ex.Message}";
+            
+            // Use default values if loading fails
+            Settings = new SystemSettingsViewModel
+            {
+                CurrencySymbol = "$",
+                DecimalSeparator = ".",
+                ThousandsSeparator = ",",
+                DecimalPlaces = 2,
+                DateFormat = "MM/dd/yyyy",
+                FinancialYearStartMonth = 4,
+                DefaultPortfolioView = "list",
+                PerformanceCalculationMethod = "simple",
+                SessionTimeoutMinutes = 30,
+                MinPasswordLength = 8
+            };
+        }
     }
-
+    
     public async Task<IActionResult> OnPostAsync()
     {
         try
         {
-            var user = await _userManager.FindByEmailAsync(Email);
-            
-            if (user == null)
+            if (!ModelState.IsValid)
             {
-                ErrorMessage = $"User with email {Email} not found.";
+                ErrorMessage = "Please correct the errors in the form.";
                 return Page();
             }
-
-            // Generate password reset token
-            var token = await _userManager.GeneratePasswordResetTokenAsync(user);
             
-            // Reset the password
-            var result = await _userManager.ResetPasswordAsync(user, token, Password);
+            _logger.LogInformation("Saving settings: CurrencySymbol={Symbol}", Settings.CurrencySymbol);
             
-            if (result.Succeeded)
+            // Save settings using service
+            var result = await _settingsService.SaveSettingsAsync(Settings);
+            
+            if (result)
             {
-                SuccessMessage = "Password has been reset successfully.";
+                SuccessMessage = "Settings have been saved successfully.";
             }
             else
             {
-                ErrorMessage = "Failed to reset password: " + string.Join(", ", result.Errors.Select(e => e.Description));
+                ErrorMessage = "Failed to save settings.";
             }
-
-            return Page();
+            
+            // Return to the same page to see updated settings
+            return RedirectToPage();
         }
         catch (Exception ex)
         {
+            _logger.LogError(ex, "Error saving settings");
             ErrorMessage = $"An error occurred: {ex.Message}";
             return Page();
         }

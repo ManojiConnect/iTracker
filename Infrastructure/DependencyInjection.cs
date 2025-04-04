@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Infrastructure.Services;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace Infrastructure;
 
@@ -17,6 +19,12 @@ public static class DependencyInjection
         
         // Register IUserManager
         services.AddScoped<IUserManager, ApplicationUserManager>();
+        
+        // Register SettingsService using fully qualified name
+        services.AddScoped<Application.Abstractions.Interfaces.ISettingsService, SettingsService>();
+        
+        // Register memory cache if not already registered
+        services.AddMemoryCache();
 
         return services;
     }
