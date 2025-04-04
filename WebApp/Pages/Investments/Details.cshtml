@@ -1,0 +1,198 @@
+@page
+@model WebApp.Pages.Investments.DetailsModel
+@{
+    Layout = "_DesktopLayout";
+    ViewData["Title"] = "Investment Details";
+}
+
+<div class="container-fluid px-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="page-title">Investment Details</h1>
+        <div>
+            <a asp-page="./Index" class="btn btn-outline-secondary me-2">
+                <i class="material-icons me-1">arrow_back</i>
+                Back to List
+            </a>
+            <a asp-page="./Edit" asp-route-id="@Model.Investment.Id" class="btn btn-primary">
+                <i class="material-icons me-1">edit</i>
+                Edit
+            </a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-light py-3">
+                    <h5 class="mb-0">@Model.Investment.Name</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <div class="d-flex flex-column mb-3">
+                                <span class="text-muted fs-6">Category</span>
+                                <span class="badge bg-info bg-opacity-10 text-info px-3 py-2 rounded-pill" style="width: fit-content;">
+                                    @Model.Investment.CategoryName
+                                </span>
+                            </div>
+                            <div class="d-flex flex-column mb-3">
+                                <span class="text-muted fs-6">Portfolio</span>
+                                <span class="fw-medium">@Model.Investment.PortfolioName</span>
+                            </div>
+                            <div class="d-flex flex-column mb-3">
+                                <span class="text-muted fs-6">Purchase Date</span>
+                                <span class="fw-medium">@Model.Investment.PurchaseDate.ToString("MMMM dd, yyyy")</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex flex-column mb-3">
+                                <span class="text-muted fs-6">Current Value</span>
+                                <span class="fw-bold fs-4">$@Model.Investment.CurrentValue.ToString("N2")</span>
+                            </div>
+                            <div class="d-flex flex-column mb-3">
+                                <span class="text-muted fs-6">Total Investment</span>
+                                <span class="fw-medium">$@Model.Investment.TotalInvestment.ToString("N2")</span>
+                            </div>
+                            <div class="d-flex flex-column mb-3">
+                                <span class="text-muted fs-6">Purchase Price</span>
+                                <span class="fw-medium">$@Model.Investment.PurchasePrice.ToString("N2")</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="text-muted fs-6">Gain/Loss</span>
+                            <span class="fw-bold @(Model.Investment.UnrealizedGainLoss >= 0 ? "text-success" : "text-danger") fs-5">
+                                @(Model.Investment.UnrealizedGainLoss >= 0 ? "+" : "")$@Math.Abs(Model.Investment.UnrealizedGainLoss).ToString("N2")
+                            </span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="text-muted fs-6">Return</span>
+                            <span class="fw-bold @(Model.Investment.ReturnPercentage >= 0 ? "text-success" : "text-danger")">
+                                @(Model.Investment.ReturnPercentage >= 0 ? "+" : "")@Model.Investment.ReturnPercentage.ToString("P2")
+                            </span>
+                        </div>
+                        
+                        <div class="progress mt-3" style="height: 10px">
+                            <div class="progress-bar @(Model.Investment.ReturnPercentage >= 0 ? "bg-success" : "bg-danger")" 
+                                 role="progressbar" 
+                                 style="width: @(Math.Abs(Math.Min(Math.Max(Model.Investment.ReturnPercentage, -1), 1) * 100))%" 
+                                 aria-valuenow="@(Math.Abs(Model.Investment.ReturnPercentage * 100))" 
+                                 aria-valuemin="0" 
+                                 aria-valuemax="100">
+                            </div>
+                        </div>
+                    </div>
+
+                    @if (!string.IsNullOrEmpty(Model.Investment.Notes))
+                    {
+                        <div class="mb-3">
+                            <h6 class="text-muted mb-2">Notes</h6>
+                            <p class="mb-0">@Model.Investment.Notes</p>
+                        </div>
+                    }
+                </div>
+                <div class="card-footer bg-transparent d-flex justify-content-between">
+                    <div class="text-muted small">Created: @Model.Investment.PurchaseDate.ToString("MMM dd, yyyy")</div>
+                    <div>
+                        <a asp-page="./History" asp-route-id="@Model.Investment.Id" class="btn btn-sm btn-outline-success">
+                            <i class="material-icons fs-5 align-middle">trending_up</i>
+                            View History
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-light py-3">
+                    <h5 class="mb-0">Performance Summary</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-4">
+                        <canvas id="performanceChart" width="400" height="300"></canvas>
+                    </div>
+                    <div class="text-center">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <p class="text-muted mb-1 small">Initial</p>
+                                <p class="fw-bold mb-0">$@Model.Investment.TotalInvestment.ToString("N2")</p>
+                            </div>
+                            <div>
+                                <p class="text-muted mb-1 small">Current</p>
+                                <p class="fw-bold mb-0">$@Model.Investment.CurrentValue.ToString("N2")</p>
+                            </div>
+                            <div>
+                                <p class="text-muted mb-1 small">Change</p>
+                                <p class="fw-bold @(Model.Investment.UnrealizedGainLoss >= 0 ? "text-success" : "text-danger") mb-0">
+                                    @(Model.Investment.ReturnPercentage >= 0 ? "+" : "")@Model.Investment.ReturnPercentage.ToString("P2")
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card shadow-sm">
+                <div class="card-header bg-light py-3">
+                    <h5 class="mb-0">Actions</h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-grid gap-2">
+                        <a asp-page="./Edit" asp-route-id="@Model.Investment.Id" class="btn btn-outline-primary">
+                            <i class="material-icons me-1">edit</i>
+                            Edit Investment
+                        </a>
+                        <a asp-page="./History" asp-route-id="@Model.Investment.Id" class="btn btn-outline-success">
+                            <i class="material-icons me-1">trending_up</i>
+                            View History
+                        </a>
+                        <a asp-page="./Delete" asp-route-id="@Model.Investment.Id" class="btn btn-outline-danger">
+                            <i class="material-icons me-1">delete</i>
+                            Delete Investment
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const ctx = document.getElementById('performanceChart').getContext('2d');
+            
+            // For demonstration - we'd normally load historical data here
+            const chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Initial', 'Current'],
+                    datasets: [{
+                        label: 'Investment Value',
+                        data: [@Model.Investment.TotalInvestment, @Model.Investment.CurrentValue],
+                        fill: true,
+                        borderColor: '@(Model.Investment.UnrealizedGainLoss >= 0 ? "#28a745" : "#dc3545")',
+                        backgroundColor: '@(Model.Investment.UnrealizedGainLoss >= 0 ? "rgba(40, 167, 69, 0.1)" : "rgba(220, 53, 69, 0.1)")',
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+} 

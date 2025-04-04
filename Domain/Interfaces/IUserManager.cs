@@ -13,4 +13,5 @@ public interface IUserManager
     Task<bool> ResetPasswordAsync(IApplicationUser user, string token, string newPassword);
     Task<bool> ChangePasswordAsync(IApplicationUser user, string currentPassword, string newPassword);
     Task<bool> CreateAsync(IApplicationUser user, string password);
+    Task<bool> AddToRoleAsync(IApplicationUser user, string role);
 } 

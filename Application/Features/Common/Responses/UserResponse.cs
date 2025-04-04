@@ -1,5 +1,4 @@
-﻿
-namespace Application.Features.Common.Responses;
+﻿namespace Application.Features.Common.Responses;
 public record UserResponse
 {
     public int Id { get; set; }
@@ -12,4 +11,5 @@ public record UserResponse
     public bool? IsActive { get; set; }
     public string? Role { get; set; }
     public int? TransactionId { get; set; }
+    public string? IdentityId { get; set; }
 }

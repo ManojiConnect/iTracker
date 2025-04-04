@@ -1,0 +1,191 @@
+@page
+@model WebApp.Pages.Users.EditModel
+@{
+    Layout = "_DesktopLayout";
+    ViewData["Title"] = "Edit User";
+}
+
+<div class="container-fluid px-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="page-title">Edit User</h1>
+        <a asp-page="./Index" class="btn btn-outline-secondary">
+            <i class="material-icons me-1">arrow_back</i>
+            Back to List
+        </a>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-light py-3">
+                    <h5 class="mb-0">User Information</h5>
+                </div>
+                <div class="card-body">
+                    <form method="post" class="needs-validation" novalidate>
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                        <input type="hidden" asp-for="UserForm.Id" />
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input asp-for="UserForm.FirstName" class="form-control" placeholder="First Name" required />
+                                    <label asp-for="UserForm.FirstName">First Name</label>
+                                    <div class="invalid-feedback">
+                                        Please enter a first name.
+                                    </div>
+                                    <span asp-validation-for="UserForm.FirstName" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input asp-for="UserForm.LastName" class="form-control" placeholder="Last Name" required />
+                                    <label asp-for="UserForm.LastName">Last Name</label>
+                                    <div class="invalid-feedback">
+                                        Please enter a last name.
+                                    </div>
+                                    <span asp-validation-for="UserForm.LastName" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input asp-for="UserForm.Email" type="email" class="form-control" placeholder="Email" required readonly />
+                                    <label asp-for="UserForm.Email">Email</label>
+                                    <span asp-validation-for="UserForm.Email" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input asp-for="UserForm.PhoneNumber" class="form-control" placeholder="Phone Number" />
+                                    <label asp-for="UserForm.PhoneNumber">Phone Number</label>
+                                    <span asp-validation-for="UserForm.PhoneNumber" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <select asp-for="UserForm.Role" class="form-select" required>
+                                        <option value="">Select Role</option>
+                                        <option value="Admin">Administrator</option>
+                                        <option value="Manager">Manager</option>
+                                        <option value="User">Regular User</option>
+                                    </select>
+                                    <label asp-for="UserForm.Role">Role</label>
+                                    <div class="invalid-feedback">
+                                        Please select a role.
+                                    </div>
+                                    <span asp-validation-for="UserForm.Role" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <select asp-for="UserForm.Language" class="form-select">
+                                        <option value="en">English</option>
+                                        <option value="fr">French</option>
+                                        <option value="es">Spanish</option>
+                                    </select>
+                                    <label asp-for="UserForm.Language">Language</label>
+                                    <span asp-validation-for="UserForm.Language" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <div class="form-floating">
+                                <input asp-for="UserForm.ProfileUrl" class="form-control" placeholder="Profile Image URL" />
+                                <label asp-for="UserForm.ProfileUrl">Profile Image URL</label>
+                                <span asp-validation-for="UserForm.ProfileUrl" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-check form-switch mb-3">
+                            <input class="form-check-input" type="checkbox" asp-for="UserForm.IsActive">
+                            <label class="form-check-label" asp-for="UserForm.IsActive">Active</label>
+                        </div>
+
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <a asp-page="./Index" class="btn btn-outline-secondary me-md-2">Cancel</a>
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card shadow-sm">
+                <div class="card-header bg-light py-3">
+                    <h5 class="mb-0">User Details</h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex align-items-center mb-3">
+                        @if (!string.IsNullOrEmpty(Model.UserForm.ProfileUrl))
+                        {
+                            <div class="me-3">
+                                <img src="@Model.UserForm.ProfileUrl" alt="@Model.UserForm.FirstName @Model.UserForm.LastName" class="rounded-circle" width="64" height="64">
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="avatar me-3 bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 64px; height: 64px;">
+                                <span class="fs-4">@(Model.UserForm.FirstName?.Substring(0, 1).ToUpper())@(Model.UserForm.LastName?.Substring(0, 1).ToUpper())</span>
+                            </div>
+                        }
+                        <div>
+                            <h6 class="mb-0">@Model.UserForm.FirstName @Model.UserForm.LastName</h6>
+                            <span class="text-muted small">@Model.UserForm.Email</span>
+                        </div>
+                    </div>
+                    
+                    <hr class="my-3">
+                    
+                    <div class="small text-muted mb-1">Current Role</div>
+                    <div class="mb-3">
+                        <span class="badge bg-info bg-opacity-10 text-info px-3 py-2 rounded-pill">@Model.CurrentRole</span>
+                    </div>
+                    
+                    <div class="small text-muted mb-1">Account Status</div>
+                    <div>
+                        @if (Model.UserForm.IsActive)
+                        {
+                            <span class="badge bg-success bg-opacity-10 text-success px-3 py-2 rounded-pill">Active</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-danger bg-opacity-10 text-danger px-3 py-2 rounded-pill">Inactive</span>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        // Bootstrap validation script
+        (function () {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.querySelectorAll('.needs-validation')
+
+            // Loop over them and prevent submission
+            Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+        })()
+    </script>
+} 

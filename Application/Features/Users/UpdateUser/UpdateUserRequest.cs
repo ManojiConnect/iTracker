@@ -14,4 +14,5 @@ public class UpdateUserRequest : IRequest<Result<bool>>
     public int AddressId { get; set; }
     public string? ProfileUrl { get; set; }
     public bool IsActive { get; set; }
+    public string? IdentityId { get; set; }
 }

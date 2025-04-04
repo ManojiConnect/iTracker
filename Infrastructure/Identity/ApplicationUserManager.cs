@@ -33,6 +33,17 @@ public class ApplicationUserManager : UserManager<ApplicationUser>, IUserManager
         return result.Succeeded;
     }
 
+    public async Task<bool> AddToRoleAsync(IApplicationUser user, string role)
+    {
+        if (user is not ApplicationUser applicationUser)
+        {
+            throw new ArgumentException("User must be of type ApplicationUser", nameof(user));
+        }
+
+        var result = await base.AddToRoleAsync(applicationUser, role);
+        return result.Succeeded;
+    }
+
     public async Task<bool> ResetPasswordAsync(IApplicationUser user, string token, string newPassword)
     {
         if (user is not ApplicationUser applicationUser)
@@ -94,7 +105,7 @@ public class ApplicationUserManager : UserManager<ApplicationUser>, IUserManager
     async Task<IApplicationUser> IUserManager.FindByEmailAsync(string email)
     {
         var user = await FindByEmailAsync(email);
-        return user ?? throw new InvalidOperationException($"User with email '{email}' not found.");
+        return user;
     }
 
     public async Task<string> GeneratePasswordResetTokenAsync(IApplicationUser user)

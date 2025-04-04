@@ -24,6 +24,8 @@ public class InvestmentResponse
     public decimal UnrealizedGainLoss { get; set; }
     public decimal ReturnPercentage { get; set; }
     public DateTime PurchaseDate { get; set; }
+    public decimal PurchasePrice { get; set; }
+    public string? Notes { get; set; }
     public string CategoryName { get; set; } = string.Empty;
     public string PortfolioName { get; set; } = string.Empty;
 }
@@ -58,6 +60,8 @@ public class GetInvestmentByIdHandler : IRequestHandler<GetInvestmentByIdRequest
             UnrealizedGainLoss = investment.UnrealizedGainLoss,
             ReturnPercentage = investment.ReturnPercentage,
             PurchaseDate = investment.PurchaseDate,
+            PurchasePrice = investment.PurchasePrice,
+            Notes = investment.Notes,
             CategoryName = investment.Category.Name,
             PortfolioName = investment.Portfolio.Name
         };
