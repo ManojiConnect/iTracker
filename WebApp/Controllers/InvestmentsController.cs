@@ -1,9 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using WebApp.Services;
-using WebApp.Models;
 using System.Threading.Tasks;
-using System.IO;
-using Microsoft.AspNetCore.Hosting;
 
 namespace WebApp.Controllers;
 

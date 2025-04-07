@@ -15,10 +15,8 @@ using Mapster;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
-using System;
 using Microsoft.Extensions.Configuration;
 using Domain.Entities;
-using System.Linq;
 using Application.Common.Interfaces;
 
 namespace Application.Features.Auth.Authenticate;
