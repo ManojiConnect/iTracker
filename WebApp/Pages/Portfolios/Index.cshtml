@@ -40,18 +40,18 @@
                         <div class="mb-4">
                             <div class="d-flex justify-content-between align-items-center mb-2">
                                 <span class="text-muted">Total Value:</span>
-                                <span class="fw-bold fs-4">$@portfolio.TotalValue.ToString("N2")</span>
+                                <span class="fw-bold fs-4">@Html.Raw(Model.FormatCurrency(portfolio.TotalValue))</span>
                             </div>
                             <div class="d-flex justify-content-between align-items-center">
                                 <span class="text-muted">Total Invested:</span>
-                                <span class="fw-medium">$@portfolio.TotalInvested.ToString("N2")</span>
+                                <span class="fw-medium">@Html.Raw(Model.FormatCurrency(portfolio.TotalInvested))</span>
                             </div>
                         </div>
                         
                         <div class="d-flex justify-content-between align-items-center mb-2">
                             <span class="text-muted">Performance:</span>
                             <span class="fw-bold @(portfolio.Performance >= 0 ? "text-success" : "text-danger")">
-                                @(portfolio.Performance >= 0 ? "+" : "")@portfolio.Performance.ToString("P2")
+                                @(portfolio.Performance >= 0 ? "+" : "")@Model.FormatNumber(portfolio.Performance * 100, 2)%
                             </span>
                         </div>
                         

@@ -78,6 +78,9 @@ public class AdminToolsModel : PageModel
             
             if (result)
             {
+                // Force refresh of settings in memory
+                Settings = await _settingsService.GetSettingsAsync();
+                _logger.LogInformation("Settings saved and refreshed: {Symbol}", Settings.CurrencySymbol);
                 SuccessMessage = "Settings have been saved successfully.";
             }
             else

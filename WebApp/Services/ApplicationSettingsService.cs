@@ -41,12 +41,6 @@ public class ApplicationSettingsService : IApplicationSettingsService
     
     public async Task<SystemSettingsViewModel> GetSettingsAsync()
     {
-        // Try to get from cache first
-        if (_cache.TryGetValue(SettingsCacheKey, out SystemSettingsViewModel cachedSettings))
-        {
-            return cachedSettings;
-        }
-        
         try
         {
             // Try to load settings from the JSON file
@@ -63,13 +57,15 @@ public class ApplicationSettingsService : IApplicationSettingsService
                 
                 if (settings != null)
                 {
-                    // Cache the settings for 5 minutes
-                    _cache.Set(SettingsCacheKey, settings, TimeSpan.FromMinutes(5));
+                    // Cache the settings for a short period
+                    _cache.Set(SettingsCacheKey, settings, TimeSpan.FromMinutes(1));
+                    _logger.LogInformation("Settings loaded from file: CurrencySymbol={Symbol}", settings.CurrencySymbol);
                     return settings;
                 }
             }
             
             // Return default settings if file doesn't exist or deserialization failed
+            _logger.LogWarning("Settings file not found or invalid, using default settings");
             return GetDefaultSettings();
         }
         catch (Exception ex)
@@ -99,8 +95,13 @@ public class ApplicationSettingsService : IApplicationSettingsService
             string json = JsonSerializer.Serialize(settings, options);
             await File.WriteAllTextAsync(_settingsFilePath, json);
             
-            // Update the cache
+            // First remove the existing cache entry to avoid stale data
+            _cache.Remove(SettingsCacheKey);
+            
+            // Then update the cache with the new settings
             _cache.Set(SettingsCacheKey, settings, TimeSpan.FromMinutes(5));
+            
+            _logger.LogInformation("Settings saved and cache updated: CurrencySymbol={Symbol}", settings.CurrencySymbol);
             
             return true;
         }
@@ -113,7 +114,9 @@ public class ApplicationSettingsService : IApplicationSettingsService
     
     public string FormatCurrency(decimal amount)
     {
+        // Always get fresh settings to ensure we have the latest
         var settings = GetSettingsAsync().GetAwaiter().GetResult();
+        _logger.LogDebug("Formatting currency with symbol: {Symbol}", settings.CurrencySymbol);
         
         string formattedNumber = FormatNumber(amount, settings.DecimalPlaces);
         return $"{settings.CurrencySymbol}{formattedNumber}";
@@ -121,6 +124,7 @@ public class ApplicationSettingsService : IApplicationSettingsService
     
     public string FormatNumber(decimal number, int? decimalPlaces = null)
     {
+        // Always get fresh settings to ensure we have the latest
         var settings = GetSettingsAsync().GetAwaiter().GetResult();
         
         // Use the specified decimal places or the default from settings

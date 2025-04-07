@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApp.Services;
+using WebApp.Models;
 
 namespace WebApp.Pages.Portfolios;
 
@@ -19,18 +21,24 @@ public class CategoryDistributionItem
 public class DetailsModel : PageModel
 {
     private readonly IMediator _mediator;
+    private readonly IApplicationSettingsService _settingsService;
 
     public PortfolioDto Portfolio { get; set; } = null!;
     public IEnumerable<InvestmentResponse> Investments { get; set; } = new List<InvestmentResponse>();
     public List<CategoryDistributionItem> CategoryDistribution { get; set; } = new();
+    public SystemSettingsViewModel Settings { get; set; }
 
-    public DetailsModel(IMediator mediator)
+    public DetailsModel(IMediator mediator, IApplicationSettingsService settingsService)
     {
         _mediator = mediator;
+        _settingsService = settingsService;
     }
 
     public async Task<IActionResult> OnGetAsync(int id)
     {
+        // Load settings
+        Settings = await _settingsService.GetSettingsAsync();
+        
         var portfolioResult = await _mediator.Send(new GetPortfolioByIdRequest { Id = id });
         
         if (!portfolioResult.IsSuccess)
@@ -64,5 +72,15 @@ public class DetailsModel : PageModel
         }
 
         return Page();
+    }
+    
+    public string FormatCurrency(decimal amount)
+    {
+        return _settingsService.FormatCurrency(amount);
+    }
+    
+    public string FormatNumber(decimal number, int? decimalPlaces = null)
+    {
+        return _settingsService.FormatNumber(number, decimalPlaces);
     }
 } 

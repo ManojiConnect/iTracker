@@ -37,26 +37,26 @@
                     <div class="list-group list-group-flush">
                         <div class="list-group-item d-flex justify-content-between align-items-center px-0">
                             <span>Initial Value</span>
-                            <span class="fw-medium">@Model.Portfolio.InitialValue.ToString("C")</span>
+                            <span class="fw-medium">@Html.Raw(Model.FormatCurrency(Model.Portfolio.InitialValue))</span>
                         </div>
                         <div class="list-group-item d-flex justify-content-between align-items-center px-0">
                             <span>Total Value</span>
-                            <span class="fw-bold fs-4 text-primary">@Model.Portfolio.TotalValue.ToString("C")</span>
+                            <span class="fw-bold fs-4 text-primary">@Html.Raw(Model.FormatCurrency(Model.Portfolio.TotalValue))</span>
                         </div>
                         <div class="list-group-item d-flex justify-content-between align-items-center px-0">
                             <span>Total Investment</span>
-                            <span class="fw-medium">@Model.Portfolio.TotalInvestment.ToString("C")</span>
+                            <span class="fw-medium">@Html.Raw(Model.FormatCurrency(Model.Portfolio.TotalInvestment))</span>
                         </div>
                         <div class="list-group-item d-flex justify-content-between align-items-center px-0">
                             <span>Unrealized Gain/Loss</span>
                             <span class="fw-medium @(Model.Portfolio.UnrealizedGainLoss >= 0 ? "text-success" : "text-danger")">
-                                @Model.Portfolio.UnrealizedGainLoss.ToString("C")
+                                @Html.Raw(Model.FormatCurrency(Model.Portfolio.UnrealizedGainLoss))
                             </span>
                         </div>
                         <div class="list-group-item d-flex justify-content-between align-items-center px-0">
                             <span>Return</span>
                             <span class="fw-medium @(Model.Portfolio.ReturnPercentage >= 0 ? "text-success" : "text-danger")">
-                                @(Model.Portfolio.ReturnPercentage >= 0 ? "+" : "")@Model.Portfolio.ReturnPercentage.ToString("F2")%
+                                @(Model.Portfolio.ReturnPercentage >= 0 ? "+" : "")@Model.FormatNumber(Model.Portfolio.ReturnPercentage * 100, 2)%
                             </span>
                         </div>
                     </div>
@@ -127,13 +127,13 @@
                                     <td class="d-none d-md-table-cell">
                                         <span class="badge bg-info bg-opacity-10 text-info px-3 py-2 rounded-pill">@investment.CategoryName</span>
                                     </td>
-                                    <td class="d-none d-sm-table-cell fw-medium">@investment.TotalInvestment.ToString("C")</td>
-                                    <td class="fw-medium">@investment.CurrentValue.ToString("C")</td>
+                                    <td class="d-none d-sm-table-cell fw-medium">@Html.Raw(Model.FormatCurrency(investment.TotalInvestment))</td>
+                                    <td class="fw-medium">@Html.Raw(Model.FormatCurrency(investment.CurrentValue))</td>
                                     <td class="d-none d-md-table-cell @(investment.UnrealizedGainLoss >= 0 ? "text-success" : "text-danger")">
-                                        @(investment.UnrealizedGainLoss >= 0 ? "+" : "")@investment.UnrealizedGainLoss.ToString("C")
+                                        @(investment.UnrealizedGainLoss >= 0 ? "+" : "")@Html.Raw(Model.FormatCurrency(investment.UnrealizedGainLoss))
                                     </td>
                                     <td class="d-none d-lg-table-cell @(investment.ReturnPercentage >= 0 ? "text-success" : "text-danger")">
-                                        @(investment.ReturnPercentage >= 0 ? "+" : "")@investment.ReturnPercentage.ToString("F2")%
+                                        @(investment.ReturnPercentage >= 0 ? "+" : "")@Model.FormatNumber(investment.ReturnPercentage * 100, 2)%
                                     </td>
                                     <td class="text-end pe-4">
                                         <div class="btn-group">
@@ -208,7 +208,7 @@
                                         const value = context.parsed || 0;
                                         const total = context.dataset.data.reduce((a, b) => a + b, 0);
                                         const percentage = Math.round((value / total) * 100);
-                                        return `${label}: $${value.toLocaleString()} (${percentage}%)`;
+                                        return `${label}: @Model.Settings.CurrencySymbol${value.toLocaleString()} (${percentage}%)`;
                                     }
                                 }
                             }

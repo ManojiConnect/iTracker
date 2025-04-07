@@ -39,11 +39,13 @@ public class IndexModel : PageModel
     
     public string FormatCurrency(decimal amount)
     {
+        // Always get fresh settings to ensure we have the latest currency symbol
         return _settingsService.FormatCurrency(amount);
     }
     
     public string FormatNumber(decimal number, int? decimalPlaces = null)
     {
+        // Always get fresh settings
         return _settingsService.FormatNumber(number, decimalPlaces);
     }
 } 
