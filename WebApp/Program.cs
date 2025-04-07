@@ -50,7 +50,7 @@ builder.Services.AddMediatRSetup();
 builder.Services.AddInfrastructure(builder.Configuration);
 
 // Persistence - use the WebApp persistence setup
-builder.Services.AddPersistance(builder.Configuration);
+builder.Services.AddPersistence(builder.Configuration, builder.Environment);
 
 // Middleware
 builder.Services.AddScoped<ExceptionHandlerMiddleware>();
@@ -86,20 +86,30 @@ if (!app.Environment.IsDevelopment())
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
+    var logger = services.GetRequiredService<ILogger<Program>>();
+
     try
     {
-        // Apply migrations for the single context
+        // Get the DbContext
         var dbContext = services.GetRequiredService<AppDbContext>();
+
+        // Ensure database is created
+        logger.LogInformation("Ensuring database is created...");
+        await dbContext.Database.EnsureCreatedAsync();
+
+        // Apply pending migrations
+        logger.LogInformation("Applying migrations...");
         await dbContext.Database.MigrateAsync();
+        logger.LogInformation("Database migrations completed.");
 
         // Initialize database with roles and admin user
         var databaseInitializer = services.GetRequiredService<DatabaseInitializer>();
         await databaseInitializer.InitializeAsync();
+        logger.LogInformation("Database initialization completed.");
     }
     catch (Exception ex)
     {
-        var logger = services.GetRequiredService<ILogger<Program>>();
-        logger.LogError(ex, "An error occurred while migrating or seeding the database.");
+        logger.LogError(ex, "An error occurred while setting up the databases.");
         throw;
     }
 }

@@ -4,14 +4,15 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
 using System.Linq;
+using Domain.Entities;
 
 namespace WebApp.Controllers;
 
 public class ResetPasswordController : Controller
 {
-    private readonly UserManager<IdentityUser> _userManager;
+    private readonly UserManager<ApplicationUser> _userManager;
 
-    public ResetPasswordController(UserManager<IdentityUser> userManager)
+    public ResetPasswordController(UserManager<ApplicationUser> userManager)
     {
         _userManager = userManager;
     }

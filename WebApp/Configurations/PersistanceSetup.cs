@@ -3,18 +3,40 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Application.Common.Interfaces;
+using Microsoft.AspNetCore.Hosting;
 
 namespace WebApp.Configurations;
 
 public static class PersistanceSetup
 {
-    public static IServiceCollection AddPersistance(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddPersistence(this IServiceCollection services, IConfiguration configuration, IWebHostEnvironment environment)
     {
-        var connectionString = configuration.GetConnectionString("DefaultConnection");
-
-        services.AddDbContext<AppDbContext>(options =>
+        // Configure the DbContext
+        services.AddDbContext<AppDbContext>((serviceProvider, options) =>
         {
-            options.UseSqlite(connectionString);
+            // Always use SQL Server in production
+            if (environment.IsDevelopment() && !environment.IsProduction())
+            {
+                options.UseSqlite(
+                    "Data Source=app.db",
+                    x =>
+                    {
+                        x.MigrationsHistoryTable("__EFMigrationsHistory");
+                        x.MigrationsAssembly("WebApp");
+                        x.CommandTimeout(60);
+                    });
+            }
+            else
+            {
+                options.UseSqlServer(
+                    configuration.GetConnectionString("DefaultConnection"),
+                    x =>
+                    {
+                        x.MigrationsHistoryTable("__EFMigrationsHistory");
+                        x.MigrationsAssembly("WebApp");
+                        x.CommandTimeout(60);
+                    });
+            }
         });
 
         services.AddScoped<IContext>(provider => provider.GetRequiredService<AppDbContext>());

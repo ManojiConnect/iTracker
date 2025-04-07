@@ -31,7 +31,7 @@ public static class AuthSetup
             options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
             options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
         })
-        .AddCookie(options =>
+        .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
         {
             options.Cookie.Name = "AuthCookie";
             options.Cookie.HttpOnly = true;

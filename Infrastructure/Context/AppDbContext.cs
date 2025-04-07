@@ -76,16 +76,174 @@ public class AppDbContext : IdentityDbContext<ApplicationUser>, IContext
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
-        
+
+        // Configure decimal precision and scale
+        builder.Entity<Investment>(entity =>
+        {
+            entity.Property(e => e.CurrentValue).HasColumnType("decimal(18,2)");
+            entity.Property(e => e.PurchasePrice).HasColumnType("decimal(18,2)");
+            entity.Property(e => e.ReturnPercentage).HasColumnType("decimal(5,2)");
+            entity.Property(e => e.TotalInvestment).HasColumnType("decimal(18,2)");
+            entity.Property(e => e.UnrealizedGainLoss).HasColumnType("decimal(18,2)");
+            entity.Property(e => e.PurchaseDate).HasColumnType("datetime2");
+            entity.Property(e => e.CreatedOn).HasColumnType("datetime2");
+            entity.Property(e => e.ModifiedOn).HasColumnType("datetime2");
+        });
+
+        builder.Entity<InvestmentHistory>(entity =>
+        {
+            entity.Property(e => e.Value).HasColumnType("decimal(18,2)");
+            entity.Property(e => e.RecordedDate).HasColumnType("datetime2");
+        });
+
+        builder.Entity<InvestmentTransaction>(entity =>
+        {
+            entity.Property(e => e.Amount).HasColumnType("decimal(18,2)");
+            entity.Property(e => e.PricePerUnit).HasColumnType("decimal(18,2)");
+            entity.Property(e => e.Units).HasColumnType("decimal(18,4)");
+            entity.Property(e => e.TransactionDate).HasColumnType("datetime2");
+            entity.Property(e => e.CreatedOn).HasColumnType("datetime2");
+            entity.Property(e => e.ModifiedOn).HasColumnType("datetime2");
+        });
+
+        builder.Entity<Portfolio>(entity =>
+        {
+            entity.Property(e => e.InitialValue).HasColumnType("decimal(18,2)");
+            entity.Property(e => e.ReturnPercentage).HasColumnType("decimal(5,2)");
+            entity.Property(e => e.TotalInvestment).HasColumnType("decimal(18,2)");
+            entity.Property(e => e.TotalValue).HasColumnType("decimal(18,2)");
+            entity.Property(e => e.UnrealizedGainLoss).HasColumnType("decimal(18,2)");
+            entity.Property(e => e.CreatedOn).HasColumnType("datetime2");
+            entity.Property(e => e.ModifiedOn).HasColumnType("datetime2");
+        });
+
+        // Configure Identity columns to use provider-agnostic types
+        builder.Entity<ApplicationUser>(entity =>
+        {
+            entity.Property(e => e.Id).HasColumnType("varchar(450)");
+            entity.Property(e => e.UserName).HasColumnType("varchar(256)");
+            entity.Property(e => e.NormalizedUserName).HasColumnType("varchar(256)");
+            entity.Property(e => e.Email).HasColumnType("varchar(256)");
+            entity.Property(e => e.NormalizedEmail).HasColumnType("varchar(256)");
+            entity.Property(e => e.FirstName).HasColumnType("varchar(100)");
+            entity.Property(e => e.LastName).HasColumnType("varchar(100)");
+            entity.Property(e => e.CreatedBy).HasColumnType("varchar(450)");
+            entity.Property(e => e.LastModifiedBy).HasColumnType("varchar(450)");
+            entity.Property(e => e.Language).HasColumnType("varchar(10)");
+            entity.Property(e => e.ProfileUrl).HasColumnType("varchar(1000)");
+            entity.Property(e => e.PasswordHash).HasColumnType("varchar(1000)");
+            entity.Property(e => e.SecurityStamp).HasColumnType("varchar(1000)");
+            entity.Property(e => e.ConcurrencyStamp).HasColumnType("varchar(1000)");
+            entity.Property(e => e.PhoneNumber).HasColumnType("varchar(20)");
+            entity.Property(e => e.CreatedDate).HasColumnType("datetime2");
+            entity.Property(e => e.LastModifiedDate).HasColumnType("datetime2");
+        });
+
+        builder.Entity<IdentityRole>(entity =>
+        {
+            entity.Property(e => e.Id).HasColumnType("varchar(450)");
+            entity.Property(e => e.Name).HasColumnType("varchar(256)");
+            entity.Property(e => e.NormalizedName).HasColumnType("varchar(256)");
+            entity.Property(e => e.ConcurrencyStamp).HasColumnType("varchar(1000)");
+        });
+
+        builder.Entity<IdentityUserRole<string>>(entity =>
+        {
+            entity.Property(e => e.UserId).HasColumnType("varchar(450)");
+            entity.Property(e => e.RoleId).HasColumnType("varchar(450)");
+        });
+
+        builder.Entity<IdentityUserClaim<string>>(entity =>
+        {
+            entity.Property(e => e.UserId).HasColumnType("varchar(450)");
+            entity.Property(e => e.ClaimType).HasColumnType("varchar(1000)");
+            entity.Property(e => e.ClaimValue).HasColumnType("varchar(1000)");
+        });
+
+        builder.Entity<IdentityUserLogin<string>>(entity =>
+        {
+            entity.Property(e => e.LoginProvider).HasColumnType("varchar(450)");
+            entity.Property(e => e.ProviderKey).HasColumnType("varchar(450)");
+            entity.Property(e => e.ProviderDisplayName).HasColumnType("varchar(1000)");
+            entity.Property(e => e.UserId).HasColumnType("varchar(450)");
+        });
+
+        builder.Entity<IdentityUserToken<string>>(entity =>
+        {
+            entity.Property(e => e.UserId).HasColumnType("varchar(450)");
+            entity.Property(e => e.LoginProvider).HasColumnType("varchar(450)");
+            entity.Property(e => e.Name).HasColumnType("varchar(450)");
+            entity.Property(e => e.Value).HasColumnType("varchar(2000)");
+        });
+
+        builder.Entity<IdentityRoleClaim<string>>(entity =>
+        {
+            entity.Property(e => e.RoleId).HasColumnType("varchar(450)");
+            entity.Property(e => e.ClaimType).HasColumnType("varchar(1000)");
+            entity.Property(e => e.ClaimValue).HasColumnType("varchar(1000)");
+        });
+
+        // Configure other entities
+        builder.Entity<InvestmentCategory>(entity =>
+        {
+            entity.Property(e => e.Name).HasColumnType("varchar(100)");
+            entity.Property(e => e.Description).HasColumnType("varchar(500)");
+            entity.Property(e => e.CreatedOn).HasColumnType("datetime2");
+            entity.Property(e => e.ModifiedOn).HasColumnType("datetime2");
+        });
+
+        builder.Entity<LookupType>(entity =>
+        {
+            entity.Property(e => e.Name).HasColumnType("varchar(100)");
+            entity.Property(e => e.Description).HasColumnType("varchar(500)");
+            entity.Property(e => e.CreatedOn).HasColumnType("datetime2");
+            entity.Property(e => e.ModifiedOn).HasColumnType("datetime2");
+        });
+
+        builder.Entity<Portfolio>(entity =>
+        {
+            entity.Property(e => e.Name).HasColumnType("varchar(100)");
+            entity.Property(e => e.Description).HasColumnType("varchar(500)");
+            entity.Property(e => e.UserId).HasColumnType("varchar(450)");
+            entity.Property(e => e.CreatedOn).HasColumnType("datetime2");
+            entity.Property(e => e.ModifiedOn).HasColumnType("datetime2");
+        });
+
+        builder.Entity<SystemSettings>(entity =>
+        {
+            entity.Property(e => e.CurrencySymbol).HasColumnType("varchar(10)");
+            entity.Property(e => e.DecimalSeparator).HasColumnType("varchar(1)");
+            entity.Property(e => e.ThousandsSeparator).HasColumnType("varchar(1)");
+            entity.Property(e => e.DateFormat).HasColumnType("varchar(20)");
+            entity.Property(e => e.SettingKey).HasColumnType("varchar(100)");
+            entity.Property(e => e.SettingValue).HasColumnType("varchar(1000)");
+            entity.Property(e => e.PerformanceCalculationMethod).HasColumnType("varchar(50)");
+            entity.Property(e => e.CreatedOn).HasColumnType("datetime2");
+            entity.Property(e => e.ModifiedOn).HasColumnType("datetime2");
+        });
+
+        // Configure table names for Identity tables
+        builder.Entity<ApplicationUser>().ToTable("AspNetUsers");
+        builder.Entity<IdentityRole>().ToTable("AspNetRoles");
+        builder.Entity<IdentityUserRole<string>>().ToTable("AspNetUserRoles");
+        builder.Entity<IdentityUserClaim<string>>().ToTable("AspNetUserClaims");
+        builder.Entity<IdentityUserLogin<string>>().ToTable("AspNetUserLogins");
+        builder.Entity<IdentityUserToken<string>>().ToTable("AspNetUserTokens");
+        builder.Entity<IdentityRoleClaim<string>>().ToTable("AspNetRoleClaims");
+
         // Seed investment categories
-        builder.Entity<InvestmentCategory>().HasData(
+        var now = DateTime.UtcNow;
+
+        // Configure seed data for InvestmentCategory
+        var investmentCategories = new[]
+        {
             new InvestmentCategory 
             { 
                 Id = 1, 
                 Name = "Stocks", 
                 Description = "Equity investments in publicly traded companies",
                 CreatedBy = 1,
-                CreatedOn = DateTime.UtcNow,
+                CreatedOn = now,
                 IsActive = true,
                 IsDelete = false
             },
@@ -93,94 +251,56 @@ public class AppDbContext : IdentityDbContext<ApplicationUser>, IContext
             { 
                 Id = 2, 
                 Name = "Bonds", 
-                Description = "Fixed income securities",
+                Description = "Fixed-income securities",
                 CreatedBy = 1,
-                CreatedOn = DateTime.UtcNow,
+                CreatedOn = now,
                 IsActive = true,
                 IsDelete = false
             },
             new InvestmentCategory 
             { 
                 Id = 3, 
-                Name = "Real Estate", 
-                Description = "Property and REITs",
-                CreatedBy = 1,
-                CreatedOn = DateTime.UtcNow,
-                IsActive = true,
-                IsDelete = false
-            },
-            new InvestmentCategory 
-            { 
-                Id = 4, 
-                Name = "Cryptocurrency", 
-                Description = "Digital assets and tokens",
-                CreatedBy = 1,
-                CreatedOn = DateTime.UtcNow,
-                IsActive = true,
-                IsDelete = false
-            },
-            new InvestmentCategory 
-            { 
-                Id = 5, 
                 Name = "Mutual Funds", 
-                Description = "Managed investment pools",
+                Description = "Pooled investment vehicles",
                 CreatedBy = 1,
-                CreatedOn = DateTime.UtcNow,
+                CreatedOn = now,
                 IsActive = true,
                 IsDelete = false
             }
-        );
+        };
 
-        // Seed test user
-        var testUserId = "9f8e9a5c-1d2e-4b3f-8a7c-6d5e4f3c2b1a";
-        
-        builder.Entity<ApplicationUser>().HasData(new ApplicationUser
+        // Configure seed data for ApplicationUser
+        var adminUser = new ApplicationUser
         {
-            Id = testUserId,
-            UserName = "Admin@itrackerApp.com",
-            NormalizedUserName = "ADMIN@ITRACKERAPP.COM",
-            Email = "Admin@itrackerApp.com",
-            NormalizedEmail = "ADMIN@ITRACKERAPP.COM",
+            Id = "1",
+            UserName = "admin@itracker.com",
+            NormalizedUserName = "ADMIN@ITRACKER.COM",
+            Email = "admin@itracker.com",
+            NormalizedEmail = "ADMIN@ITRACKER.COM",
             EmailConfirmed = true,
-            PasswordHash = "AQAAAAIAAYagAAAAEGTPKJTAQNLVgJUJU1Og0Z6qDZQqV2+GJ4dxP/e81kJHW+JgzcnGZRQdDadQNpUFxQ==", // Test@123
-            SecurityStamp = Guid.NewGuid().ToString(),
-            ConcurrencyStamp = Guid.NewGuid().ToString(),
-            PhoneNumber = "1234567890",
-            PhoneNumberConfirmed = true,
-            TwoFactorEnabled = false,
-            LockoutEnabled = false,
-            AccessFailedCount = 0,
             FirstName = "Admin",
             LastName = "User",
+            CreatedDate = now,
+            LastModifiedDate = now,
             IsActive = true,
-            Language = "en",
             CreatedBy = "System",
-            CreatedDate = DateTime.UtcNow
-        });
-        
-        // Seed roles
-        builder.Entity<IdentityRole>().HasData(
-            new IdentityRole 
-            { 
-                Id = "2c5e174e-3b0e-446f-86af-483d56fd7210", 
-                Name = "Administrator", 
-                NormalizedName = "ADMINISTRATOR" 
-            },
-            new IdentityRole 
-            { 
-                Id = "e1823908-c7c9-4e53-980e-972fd4799f59", 
-                Name = "User", 
-                NormalizedName = "USER" 
-            }
-        );
-        
-        // Assign the test user to the User role
-        builder.Entity<IdentityUserRole<string>>().HasData(
-            new IdentityUserRole<string> 
-            { 
-                UserId = testUserId, 
-                RoleId = "2c5e174e-3b0e-446f-86af-483d56fd7210" // Assign Admin role
-            }
-        );
+            Language = "en",
+            PhoneNumberConfirmed = false,
+            TwoFactorEnabled = false,
+            LockoutEnabled = true,
+            AccessFailedCount = 0
+        };
+
+        // Configure seed data for IdentityRole
+        var roles = new[]
+        {
+            new IdentityRole { Id = "1", Name = "Admin", NormalizedName = "ADMIN" },
+            new IdentityRole { Id = "2", Name = "User", NormalizedName = "USER" }
+        };
+
+        // Apply seed data
+        builder.Entity<InvestmentCategory>().HasData(investmentCategories);
+        builder.Entity<ApplicationUser>().HasData(adminUser);
+        builder.Entity<IdentityRole>().HasData(roles);
     }
 }

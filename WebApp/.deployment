@@ -1,0 +1,2 @@
+[config]
+command = dotnet publish WebApp.csproj -c Release -o ./publish 

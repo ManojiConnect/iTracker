@@ -26,6 +26,9 @@ public static class DependencyInjection
         // Register memory cache if not already registered
         services.AddMemoryCache();
 
+        // Register DatabaseInitializer
+        services.AddScoped<DatabaseInitializer>();
+
         return services;
     }
 } 
