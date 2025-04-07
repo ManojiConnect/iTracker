@@ -49,13 +49,19 @@ public class UpdateInvestmentHandler : IRequestHandler<UpdateInvestmentRequest, 
         investment.ModifiedBy = 1;
         investment.ModifiedOn = DateTime.UtcNow;
 
+        // Calculate individual investment's gain/loss and return
+        investment.UnrealizedGainLoss = investment.CurrentValue - investment.TotalInvestment;
+        investment.ReturnPercentage = investment.TotalInvestment > 0 
+            ? (investment.UnrealizedGainLoss / investment.TotalInvestment)
+            : 0;
+
         // Update portfolio totals
         var portfolio = investment.Portfolio;
         portfolio.TotalValue = portfolio.Investments.Where(i => !i.IsDelete).Sum(i => i.CurrentValue);
         portfolio.TotalInvestment = portfolio.Investments.Where(i => !i.IsDelete).Sum(i => i.TotalInvestment);
         portfolio.UnrealizedGainLoss = portfolio.TotalValue - portfolio.TotalInvestment;
         portfolio.ReturnPercentage = portfolio.TotalInvestment > 0 
-            ? (portfolio.UnrealizedGainLoss / portfolio.TotalInvestment) * 100 
+            ? (portfolio.UnrealizedGainLoss / portfolio.TotalInvestment)
             : 0;
 
         await _context.SaveChangesAsync(cancellationToken);

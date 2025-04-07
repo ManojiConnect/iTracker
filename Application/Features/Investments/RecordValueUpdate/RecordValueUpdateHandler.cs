@@ -46,7 +46,7 @@ public class RecordValueUpdateHandler : IRequestHandler<RecordValueUpdateRequest
         // Recalculate gains and performance
         investment.UnrealizedGainLoss = investment.CurrentValue - investment.TotalInvestment;
         investment.ReturnPercentage = investment.TotalInvestment > 0 
-            ? (investment.UnrealizedGainLoss / investment.TotalInvestment) * 100 
+            ? (investment.UnrealizedGainLoss / investment.TotalInvestment)
             : 0;
 
         // Update the portfolio totals
@@ -55,7 +55,7 @@ public class RecordValueUpdateHandler : IRequestHandler<RecordValueUpdateRequest
             investment.Portfolio.TotalValue = investment.Portfolio.TotalValue - oldValue + request.NewValue;
             investment.Portfolio.UnrealizedGainLoss = investment.Portfolio.TotalValue - investment.Portfolio.TotalInvestment;
             investment.Portfolio.ReturnPercentage = investment.Portfolio.TotalInvestment > 0
-                ? (investment.Portfolio.UnrealizedGainLoss / investment.Portfolio.TotalInvestment) * 100
+                ? (investment.Portfolio.UnrealizedGainLoss / investment.Portfolio.TotalInvestment)
                 : 0;
         }
 

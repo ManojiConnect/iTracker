@@ -58,7 +58,7 @@
                         <div class="progress mb-3" style="height: 10px">
                             <div class="progress-bar @(portfolio.Performance >= 0 ? "bg-success" : "bg-danger")" 
                                  role="progressbar" 
-                                 style="width: @(Math.Abs(Math.Min(Math.Max(portfolio.Performance * 100, -100), 100)))%" 
+                                 style="width: @(Math.Abs(Math.Min(Math.Max(portfolio.Performance, -1), 1) * 100))%" 
                                  aria-valuenow="@(Math.Abs(portfolio.Performance * 100))" 
                                  aria-valuemin="0" 
                                  aria-valuemax="100">

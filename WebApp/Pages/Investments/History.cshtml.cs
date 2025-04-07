@@ -8,12 +8,14 @@ using Application.Features.Investments.RecordValueUpdate;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using WebApp.Services;
 
 namespace WebApp.Pages.Investments;
 
 public class HistoryModel : PageModel
 {
     private readonly IMediator _mediator;
+    private readonly IApplicationSettingsService _settingsService;
 
     public InvestmentResponse Investment { get; set; } = null!;
     public List<InvestmentHistoryDto> InvestmentHistories { get; set; } = new();
@@ -24,9 +26,15 @@ public class HistoryModel : PageModel
     [BindProperty]
     public RecordValueUpdateRequest UpdateModel { get; set; } = new();
 
-    public HistoryModel(IMediator mediator)
+    public HistoryModel(IMediator mediator, IApplicationSettingsService settingsService)
     {
         _mediator = mediator;
+        _settingsService = settingsService;
+    }
+
+    public string FormatNumber(decimal number, int? decimalPlaces = null)
+    {
+        return _settingsService.FormatNumber(number, decimalPlaces);
     }
 
     public async Task<IActionResult> OnGetAsync(int? id, int? month, int? year)

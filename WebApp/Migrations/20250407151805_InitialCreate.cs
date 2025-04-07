@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace WebApp.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialSetup : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -36,7 +36,7 @@ namespace WebApp.Migrations
                     Email = table.Column<string>(type: "varchar(256)", maxLength: 256, nullable: true),
                     FirstName = table.Column<string>(type: "varchar(100)", nullable: false),
                     LastName = table.Column<string>(type: "varchar(100)", nullable: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CreatedBy = table.Column<string>(type: "varchar(450)", nullable: false),
@@ -45,16 +45,16 @@ namespace WebApp.Migrations
                     ProfileUrl = table.Column<string>(type: "varchar(1000)", nullable: true),
                     NormalizedUserName = table.Column<string>(type: "varchar(256)", maxLength: 256, nullable: true),
                     NormalizedEmail = table.Column<string>(type: "varchar(256)", maxLength: 256, nullable: true),
-                    EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
+                    EmailConfirmed = table.Column<bool>(type: "INTEGER", nullable: false),
                     PasswordHash = table.Column<string>(type: "varchar(1000)", nullable: true),
                     SecurityStamp = table.Column<string>(type: "varchar(1000)", nullable: true),
                     ConcurrencyStamp = table.Column<string>(type: "varchar(1000)", nullable: true),
                     PhoneNumber = table.Column<string>(type: "varchar(20)", nullable: true),
-                    PhoneNumberConfirmed = table.Column<bool>(type: "bit", nullable: false),
-                    TwoFactorEnabled = table.Column<bool>(type: "bit", nullable: false),
-                    LockoutEnd = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
-                    LockoutEnabled = table.Column<bool>(type: "bit", nullable: false),
-                    AccessFailedCount = table.Column<int>(type: "int", nullable: false)
+                    PhoneNumberConfirmed = table.Column<bool>(type: "INTEGER", nullable: false),
+                    TwoFactorEnabled = table.Column<bool>(type: "INTEGER", nullable: false),
+                    LockoutEnd = table.Column<DateTimeOffset>(type: "TEXT", nullable: true),
+                    LockoutEnabled = table.Column<bool>(type: "INTEGER", nullable: false),
+                    AccessFailedCount = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -65,16 +65,16 @@ namespace WebApp.Migrations
                 name: "InvestmentCategories",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(type: "varchar(100)", nullable: false),
                     Description = table.Column<string>(type: "varchar(500)", nullable: true),
-                    CreatedBy = table.Column<int>(type: "int", nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "datetime2(0)", precision: 0, nullable: false),
-                    ModifiedBy = table.Column<int>(type: "int", nullable: true),
-                    ModifiedOn = table.Column<DateTime>(type: "datetime2(0)", precision: 0, nullable: true),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
-                    IsDelete = table.Column<bool>(type: "bit", nullable: false)
+                    CreatedBy = table.Column<int>(type: "INTEGER", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", precision: 0, nullable: false),
+                    ModifiedBy = table.Column<int>(type: "INTEGER", nullable: true),
+                    ModifiedOn = table.Column<DateTime>(type: "datetime2", precision: 0, nullable: true),
+                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false),
+                    IsDelete = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -85,16 +85,16 @@ namespace WebApp.Migrations
                 name: "LookupTypes",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(type: "varchar(100)", nullable: false),
                     Description = table.Column<string>(type: "varchar(500)", nullable: true),
-                    CreatedBy = table.Column<int>(type: "int", nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "datetime2(0)", precision: 0, nullable: false),
-                    ModifiedBy = table.Column<int>(type: "int", nullable: true),
-                    ModifiedOn = table.Column<DateTime>(type: "datetime2(0)", precision: 0, nullable: true),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
-                    IsDelete = table.Column<bool>(type: "bit", nullable: false)
+                    CreatedBy = table.Column<int>(type: "INTEGER", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", precision: 0, nullable: false),
+                    ModifiedBy = table.Column<int>(type: "INTEGER", nullable: true),
+                    ModifiedOn = table.Column<DateTime>(type: "datetime2", precision: 0, nullable: true),
+                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false),
+                    IsDelete = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -105,8 +105,8 @@ namespace WebApp.Migrations
                 name: "Portfolios",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(type: "varchar(100)", nullable: false),
                     Description = table.Column<string>(type: "varchar(500)", nullable: false),
                     InitialValue = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
@@ -115,11 +115,11 @@ namespace WebApp.Migrations
                     UnrealizedGainLoss = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     ReturnPercentage = table.Column<decimal>(type: "decimal(5,2)", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreatedBy = table.Column<int>(type: "int", nullable: false),
+                    CreatedBy = table.Column<int>(type: "INTEGER", nullable: false),
                     ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    ModifiedBy = table.Column<int>(type: "int", nullable: true),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
-                    IsDelete = table.Column<bool>(type: "bit", nullable: false),
+                    ModifiedBy = table.Column<int>(type: "INTEGER", nullable: true),
+                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false),
+                    IsDelete = table.Column<bool>(type: "INTEGER", nullable: false),
                     UserId = table.Column<string>(type: "varchar(450)", nullable: false)
                 },
                 constraints: table =>
@@ -131,26 +131,26 @@ namespace WebApp.Migrations
                 name: "SystemSettings",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     CurrencySymbol = table.Column<string>(type: "varchar(10)", nullable: false),
                     DecimalSeparator = table.Column<string>(type: "varchar(1)", nullable: false),
                     ThousandsSeparator = table.Column<string>(type: "varchar(1)", nullable: false),
-                    DecimalPlaces = table.Column<int>(type: "int", nullable: false),
+                    DecimalPlaces = table.Column<int>(type: "INTEGER", nullable: false),
                     DateFormat = table.Column<string>(type: "varchar(20)", nullable: false),
-                    FinancialYearStartMonth = table.Column<int>(type: "int", nullable: false),
-                    DefaultPortfolioView = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FinancialYearStartMonth = table.Column<int>(type: "INTEGER", nullable: false),
+                    DefaultPortfolioView = table.Column<string>(type: "TEXT", nullable: false),
                     PerformanceCalculationMethod = table.Column<string>(type: "varchar(50)", nullable: false),
-                    SessionTimeoutMinutes = table.Column<int>(type: "int", nullable: false),
-                    MinPasswordLength = table.Column<int>(type: "int", nullable: false),
+                    SessionTimeoutMinutes = table.Column<int>(type: "INTEGER", nullable: false),
+                    MinPasswordLength = table.Column<int>(type: "INTEGER", nullable: false),
                     SettingKey = table.Column<string>(type: "varchar(100)", nullable: false),
                     SettingValue = table.Column<string>(type: "varchar(1000)", nullable: false),
-                    CreatedBy = table.Column<int>(type: "int", nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "datetime2(0)", precision: 0, nullable: false),
-                    ModifiedBy = table.Column<int>(type: "int", nullable: true),
-                    ModifiedOn = table.Column<DateTime>(type: "datetime2(0)", precision: 0, nullable: true),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
-                    IsDelete = table.Column<bool>(type: "bit", nullable: false)
+                    CreatedBy = table.Column<int>(type: "INTEGER", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", precision: 0, nullable: false),
+                    ModifiedBy = table.Column<int>(type: "INTEGER", nullable: true),
+                    ModifiedOn = table.Column<DateTime>(type: "datetime2", precision: 0, nullable: true),
+                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false),
+                    IsDelete = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -161,21 +161,21 @@ namespace WebApp.Migrations
                 name: "Users",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ProfileUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Language = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedBy = table.Column<int>(type: "int", nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "datetime2(0)", precision: 0, nullable: false),
-                    ModifiedBy = table.Column<int>(type: "int", nullable: true),
-                    ModifiedOn = table.Column<DateTime>(type: "datetime2(0)", precision: 0, nullable: true),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
-                    IsDelete = table.Column<bool>(type: "bit", nullable: false)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    UserId = table.Column<string>(type: "TEXT", nullable: true),
+                    FirstName = table.Column<string>(type: "TEXT", nullable: true),
+                    LastName = table.Column<string>(type: "TEXT", nullable: true),
+                    ProfileUrl = table.Column<string>(type: "TEXT", nullable: true),
+                    Email = table.Column<string>(type: "TEXT", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "TEXT", nullable: true),
+                    Language = table.Column<string>(type: "TEXT", nullable: true),
+                    CreatedBy = table.Column<int>(type: "INTEGER", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "TEXT", precision: 0, nullable: false),
+                    ModifiedBy = table.Column<int>(type: "INTEGER", nullable: true),
+                    ModifiedOn = table.Column<DateTime>(type: "TEXT", precision: 0, nullable: true),
+                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false),
+                    IsDelete = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -186,8 +186,8 @@ namespace WebApp.Migrations
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     RoleId = table.Column<string>(type: "varchar(450)", nullable: false),
                     ClaimType = table.Column<string>(type: "varchar(1000)", nullable: true),
                     ClaimValue = table.Column<string>(type: "varchar(1000)", nullable: true)
@@ -207,8 +207,8 @@ namespace WebApp.Migrations
                 name: "AspNetUserClaims",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     UserId = table.Column<string>(type: "varchar(450)", nullable: false),
                     ClaimType = table.Column<string>(type: "varchar(1000)", nullable: true),
                     ClaimValue = table.Column<string>(type: "varchar(1000)", nullable: true)
@@ -292,17 +292,17 @@ namespace WebApp.Migrations
                 name: "Lookups",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    TypeId = table.Column<int>(type: "int", nullable: false),
-                    CreatedBy = table.Column<int>(type: "int", nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "datetime2(0)", precision: 0, nullable: false),
-                    ModifiedBy = table.Column<int>(type: "int", nullable: true),
-                    ModifiedOn = table.Column<DateTime>(type: "datetime2(0)", precision: 0, nullable: true),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
-                    IsDelete = table.Column<bool>(type: "bit", nullable: false)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", nullable: true),
+                    TypeId = table.Column<int>(type: "INTEGER", nullable: false),
+                    CreatedBy = table.Column<int>(type: "INTEGER", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "TEXT", precision: 0, nullable: false),
+                    ModifiedBy = table.Column<int>(type: "INTEGER", nullable: true),
+                    ModifiedOn = table.Column<DateTime>(type: "TEXT", precision: 0, nullable: true),
+                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false),
+                    IsDelete = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -319,25 +319,25 @@ namespace WebApp.Migrations
                 name: "Investments",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Symbol = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PortfolioId = table.Column<int>(type: "int", nullable: false),
-                    CategoryId = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    Symbol = table.Column<string>(type: "TEXT", nullable: false),
+                    PortfolioId = table.Column<int>(type: "INTEGER", nullable: false),
+                    CategoryId = table.Column<int>(type: "INTEGER", nullable: false),
                     TotalInvestment = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     CurrentValue = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     UnrealizedGainLoss = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     ReturnPercentage = table.Column<decimal>(type: "decimal(5,2)", nullable: false),
                     PurchaseDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     PurchasePrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Notes = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedBy = table.Column<int>(type: "int", nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "datetime2(0)", precision: 0, nullable: false),
-                    ModifiedBy = table.Column<int>(type: "int", nullable: true),
-                    ModifiedOn = table.Column<DateTime>(type: "datetime2(0)", precision: 0, nullable: true),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
-                    IsDelete = table.Column<bool>(type: "bit", nullable: false)
+                    Notes = table.Column<string>(type: "TEXT", nullable: true),
+                    CreatedBy = table.Column<int>(type: "INTEGER", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", precision: 0, nullable: false),
+                    ModifiedBy = table.Column<int>(type: "INTEGER", nullable: true),
+                    ModifiedOn = table.Column<DateTime>(type: "datetime2", precision: 0, nullable: true),
+                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false),
+                    IsDelete = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -360,12 +360,12 @@ namespace WebApp.Migrations
                 name: "InvestmentHistories",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    InvestmentId = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    InvestmentId = table.Column<int>(type: "INTEGER", nullable: false),
                     Value = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     RecordedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Note = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Note = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -382,21 +382,21 @@ namespace WebApp.Migrations
                 name: "InvestmentTransactions",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    InvestmentId = table.Column<int>(type: "int", nullable: false),
-                    Type = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    InvestmentId = table.Column<int>(type: "INTEGER", nullable: false),
+                    Type = table.Column<int>(type: "INTEGER", nullable: false),
                     Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Units = table.Column<decimal>(type: "decimal(18,4)", nullable: false),
                     PricePerUnit = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     TransactionDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Notes = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedBy = table.Column<int>(type: "int", nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "datetime2(0)", precision: 0, nullable: false),
-                    ModifiedBy = table.Column<int>(type: "int", nullable: true),
-                    ModifiedOn = table.Column<DateTime>(type: "datetime2(0)", precision: 0, nullable: true),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
-                    IsDelete = table.Column<bool>(type: "bit", nullable: false)
+                    Notes = table.Column<string>(type: "TEXT", nullable: true),
+                    CreatedBy = table.Column<int>(type: "INTEGER", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", precision: 0, nullable: false),
+                    ModifiedBy = table.Column<int>(type: "INTEGER", nullable: true),
+                    ModifiedOn = table.Column<DateTime>(type: "datetime2", precision: 0, nullable: true),
+                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false),
+                    IsDelete = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -414,31 +414,24 @@ namespace WebApp.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "2c5e174e-3b0e-446f-86af-483d56fd7210", "bba5dc73-678e-42b5-a82b-f6b62107c412", "Administrator", "ADMINISTRATOR" },
-                    { "e1823908-c7c9-4e53-980e-972fd4799f59", "22bfb7a4-77c2-4aa0-b469-1dc64f766e62", "User", "USER" }
+                    { "1", null, "Admin", "ADMIN" },
+                    { "2", null, "User", "USER" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "CreatedBy", "CreatedDate", "Email", "EmailConfirmed", "FirstName", "IsActive", "Language", "LastModifiedBy", "LastModifiedDate", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "ProfileUrl", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "9f8e9a5c-1d2e-4b3f-8a7c-6d5e4f3c2b1a", 0, "5236e55c-10e9-43ac-b972-52a99abe2d38", "System", new DateTime(2024, 4, 7, 12, 0, 0, 0, DateTimeKind.Utc), "Admin@itrackerApp.com", true, "Admin", true, "en", "", null, "User", true, null, "ADMIN@ITRACKERAPP.COM", "ADMIN@ITRACKERAPP.COM", "AQAAAAIAAYagAAAAEGTPKJTAQNLVgJUJU1Og0Z6qDZQqV2+GJ4dxP/e81kJHW+JgzcnGZRQdDadQNpUFxQ==", null, false, null, "352da584-688f-44c3-aa1c-dea77c6cb05c", false, "Admin@itrackerApp.com" });
+                values: new object[] { "1", 0, "3d3da8ec-8498-4c29-82a1-07be5f2dbf4d", "System", new DateTime(2025, 4, 7, 15, 18, 5, 90, DateTimeKind.Utc).AddTicks(2670), "admin@itracker.com", true, "Admin", true, "en", "", new DateTime(2025, 4, 7, 15, 18, 5, 90, DateTimeKind.Utc).AddTicks(2670), "User", true, null, "ADMIN@ITRACKER.COM", "ADMIN@ITRACKER.COM", null, null, false, null, "4024d517-ec10-468d-9682-db0de5819a0b", false, "admin@itracker.com" });
 
             migrationBuilder.InsertData(
                 table: "InvestmentCategories",
                 columns: new[] { "Id", "CreatedBy", "CreatedOn", "Description", "IsActive", "IsDelete", "ModifiedBy", "ModifiedOn", "Name" },
                 values: new object[,]
                 {
-                    { 1, 1, new DateTime(2024, 4, 7, 12, 0, 0, 0, DateTimeKind.Utc), "Equity investments in publicly traded companies", true, false, null, null, "Stocks" },
-                    { 2, 1, new DateTime(2024, 4, 7, 12, 0, 0, 0, DateTimeKind.Utc), "Fixed income securities", true, false, null, null, "Bonds" },
-                    { 3, 1, new DateTime(2024, 4, 7, 12, 0, 0, 0, DateTimeKind.Utc), "Property and REITs", true, false, null, null, "Real Estate" },
-                    { 4, 1, new DateTime(2024, 4, 7, 12, 0, 0, 0, DateTimeKind.Utc), "Digital assets and tokens", true, false, null, null, "Cryptocurrency" },
-                    { 5, 1, new DateTime(2024, 4, 7, 12, 0, 0, 0, DateTimeKind.Utc), "Managed investment pools", true, false, null, null, "Mutual Funds" }
+                    { 1, 1, new DateTime(2025, 4, 7, 15, 18, 5, 90, DateTimeKind.Utc).AddTicks(2670), "Equity investments in publicly traded companies", true, false, null, null, "Stocks" },
+                    { 2, 1, new DateTime(2025, 4, 7, 15, 18, 5, 90, DateTimeKind.Utc).AddTicks(2670), "Fixed-income securities", true, false, null, null, "Bonds" },
+                    { 3, 1, new DateTime(2025, 4, 7, 15, 18, 5, 90, DateTimeKind.Utc).AddTicks(2670), "Pooled investment vehicles", true, false, null, null, "Mutual Funds" }
                 });
-
-            migrationBuilder.InsertData(
-                table: "AspNetUserRoles",
-                columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "2c5e174e-3b0e-446f-86af-483d56fd7210", "9f8e9a5c-1d2e-4b3f-8a7c-6d5e4f3c2b1a" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -449,8 +442,7 @@ namespace WebApp.Migrations
                 name: "RoleNameIndex",
                 table: "AspNetRoles",
                 column: "NormalizedName",
-                unique: true,
-                filter: "[NormalizedName] IS NOT NULL");
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserClaims_UserId",
@@ -476,8 +468,7 @@ namespace WebApp.Migrations
                 name: "UserNameIndex",
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
-                unique: true,
-                filter: "[NormalizedUserName] IS NOT NULL");
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_InvestmentHistories_InvestmentId",

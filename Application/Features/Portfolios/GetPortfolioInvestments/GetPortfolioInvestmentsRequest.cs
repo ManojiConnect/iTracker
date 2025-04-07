@@ -64,8 +64,8 @@ public class GetPortfolioInvestmentsHandler : IRequestHandler<GetPortfolioInvest
                 Name = i.Name,
                 TotalInvestment = i.TotalInvestment,
                 CurrentValue = i.CurrentValue,
-                UnrealizedGainLoss = i.UnrealizedGainLoss,
-                ReturnPercentage = i.ReturnPercentage,
+                UnrealizedGainLoss = i.CurrentValue - i.TotalInvestment,
+                ReturnPercentage = i.TotalInvestment > 0 ? (i.CurrentValue - i.TotalInvestment) / i.TotalInvestment : 0,
                 PurchaseDate = i.PurchaseDate,
                 CategoryName = i.Category.Name
             })

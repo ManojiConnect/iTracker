@@ -66,7 +66,7 @@ public class UpdatePortfolioHandler : IRequestHandler<UpdatePortfolioRequest, Re
         portfolio.TotalInvestment = portfolio.Investments.Sum(i => i.TotalInvestment);
         portfolio.UnrealizedGainLoss = portfolio.TotalValue - portfolio.TotalInvestment;
         portfolio.ReturnPercentage = portfolio.TotalInvestment > 0 
-            ? (portfolio.UnrealizedGainLoss / portfolio.TotalInvestment) * 100 
+            ? (portfolio.UnrealizedGainLoss / portfolio.TotalInvestment)
             : 0;
 
         await _context.SaveChangesAsync(cancellationToken);

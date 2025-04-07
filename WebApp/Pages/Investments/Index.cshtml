@@ -135,7 +135,7 @@
                                     <div class="d-flex justify-content-between align-items-center">
                                         <span class="text-muted">Return</span>
                                         <span class="badge @(item.ReturnPercentage >= 0 ? "bg-success" : "bg-danger") px-2 py-1">
-                                            @(item.ReturnPercentage >= 0 ? "+" : "")@Model.FormatNumber(item.ReturnPercentage * 100, 2)%
+                                            @(item.ReturnPercentage >= 0 ? "+" : "")@Model.FormatNumber(item.ReturnPercentage, 2)%
                                         </span>
                                     </div>
                                 </div>

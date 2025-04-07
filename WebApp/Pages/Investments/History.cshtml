@@ -42,7 +42,12 @@
                     <div class="mb-3">
                         <div class="text-muted mb-1">Performance</div>
                         <div class="h5 @(Model.Investment.ReturnPercentage >= 0 ? "text-success" : "text-danger")">
-                            @(Model.Investment.ReturnPercentage >= 0 ? "+" : "")@Model.Investment.ReturnPercentage.ToString("F2")%
+                            @{
+                                var performancePercentage = Model.Investment.TotalInvestment > 0 
+                                    ? (Model.Investment.CurrentValue - Model.Investment.TotalInvestment) / Model.Investment.TotalInvestment * 100 
+                                    : 0;
+                            }
+                            @(performancePercentage >= 0 ? "+" : "")@Model.FormatNumber(performancePercentage, 2)%
                         </div>
                     </div>
                     <div class="mb-3">

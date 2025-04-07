@@ -45,7 +45,7 @@
                         <dt class="col-sm-4">Return</dt>
                         <dd class="col-sm-8">
                             <span class="@(Model.Investment.ReturnPercentage >= 0 ? "text-success" : "text-danger")">
-                                @(Model.Investment.ReturnPercentage >= 0 ? "+" : "")@Model.Investment.ReturnPercentage.ToString("F2")%
+                                @(Model.Investment.ReturnPercentage >= 0 ? "+" : "")@Model.Investment.ReturnPercentage.ToString("P2")
                             </span>
                         </dd>
                         
