@@ -69,9 +69,18 @@
                                         <a asp-controller="UserManagement" asp-action="Edit" asp-route-id="@user.Id" class="btn btn-sm btn-outline-primary">
                                             <i class="fas fa-edit"></i> Edit
                                         </a>
-                                        <a asp-controller="UserManagement" asp-action="Delete" asp-route-id="@user.Id" class="btn btn-sm btn-outline-danger">
-                                            <i class="fas fa-trash"></i> Delete
-                                        </a>
+                                        @if (user.IsActive)
+                                        {
+                                            <a asp-controller="UserManagement" asp-action="Delete" asp-route-id="@user.Id" class="btn btn-sm btn-outline-danger">
+                                                <i class="fas fa-user-slash"></i> Deactivate
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <a asp-controller="UserManagement" asp-action="Activate" asp-route-id="@user.Id" class="btn btn-sm btn-outline-success">
+                                                <i class="fas fa-user-check"></i> Activate
+                                            </a>
+                                        }
                                     </div>
                                 </td>
                             </tr>

@@ -291,15 +291,63 @@ public class UserManagementController : Controller
             user.IsActive = false;
             await _userManager.UpdateAsync(user);
 
-            // Or, uncomment to actually delete:
-            // var result = await _userManager.DeleteAsync(user);
-            // if (!result.Succeeded)
-            // {
-            //     TempData["ErrorMessage"] = "Failed to delete user. " + string.Join(", ", result.Errors.Select(e => e.Description));
-            //     return RedirectToAction(nameof(Index));
-            // }
-
             TempData["SuccessMessage"] = "User deactivated successfully!";
+            return RedirectToAction(nameof(Index));
+        }
+        catch (Exception ex)
+        {
+            TempData["ErrorMessage"] = $"An error occurred: {ex.Message}";
+            return RedirectToAction(nameof(Index));
+        }
+    }
+
+    // GET: /UserManagement/Activate/5
+    [HttpGet]
+    [Route("Activate/{id}")]
+    public async Task<IActionResult> Activate(string id)
+    {
+        if (string.IsNullOrEmpty(id))
+        {
+            return NotFound();
+        }
+
+        var user = await _userManager.FindByIdAsync(id);
+        if (user == null)
+        {
+            return NotFound();
+        }
+
+        var roles = await _userManager.GetRolesAsync(user);
+        var userViewModel = new UserViewModel
+        {
+            Id = user.Id,
+            Email = user.Email,
+            FirstName = user.FirstName,
+            LastName = user.LastName,
+            Role = roles.FirstOrDefault() ?? "No Role"
+        };
+
+        return View(userViewModel);
+    }
+
+    // POST: /UserManagement/Activate/5
+    [HttpPost]
+    [Route("Activate/{id}")]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> ActivateConfirmed(string id)
+    {
+        var user = await _userManager.FindByIdAsync(id);
+        if (user == null)
+        {
+            return NotFound();
+        }
+
+        try
+        {
+            user.IsActive = true;
+            await _userManager.UpdateAsync(user);
+
+            TempData["SuccessMessage"] = "User activated successfully!";
             return RedirectToAction(nameof(Index));
         }
         catch (Exception ex)
