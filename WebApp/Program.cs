@@ -97,10 +97,10 @@ using (var scope = app.Services.CreateScope())
         logger.LogInformation("Ensuring database is created...");
         await dbContext.Database.EnsureCreatedAsync();
 
-        // Apply pending migrations
-        logger.LogInformation("Applying migrations...");
-        await dbContext.Database.MigrateAsync();
-        logger.LogInformation("Database migrations completed.");
+        // Commenting out migrations to prevent automatic migration during deployment
+        // logger.LogInformation("Applying migrations...");
+        // await dbContext.Database.MigrateAsync();
+        // logger.LogInformation("Database migrations completed.");
 
         // Initialize database with roles and admin user
         var databaseInitializer = services.GetRequiredService<DatabaseInitializer>();
