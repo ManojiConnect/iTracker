@@ -9,7 +9,7 @@ LOCATION="eastus"
 az webapp config connection-string set \
   --resource-group $RESOURCE_GROUP \
   --name $APP_SERVICE_NAME \
-  --settings DefaultConnection="Server=tcp:itracker.database.windows.net,1433;Initial Catalog=iTracker;Persist Security Info=False;User ID=iTrackerDBAdmin;Password=iTracker@2025;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" \
+  --settings DefaultConnection="Server=tcp:itrackersql.database.windows.net,1433;Initial Catalog=iTrackerSQLServer;Persist Security Info=False;User ID=iTrackerDBAdmin;Password=iTracker@2025;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" \
   --connection-string-type SQLAzure
 
 # Create deployment package
