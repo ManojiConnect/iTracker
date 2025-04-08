@@ -33,10 +33,11 @@
             z-index: 100;
             left: 0;
             top: 0;
-            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
         }
         .sidebar__logo {
-            padding: 1.5rem;
+            padding: 1rem;
             text-align: center;
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
@@ -47,16 +48,18 @@
             font-weight: 600;
         }
         .sidebar__nav {
-            padding: 1.5rem 1rem;
+            padding: 1rem 0.75rem;
+            flex: 1;
+            overflow-y: auto;
         }
         .sidebar__nav-item {
             transition: all 0.3s ease;
             border-radius: 10px;
-            margin: 0.5rem 0;
-            padding: 0.8rem 1.2rem !important;
+            margin: 0.25rem 0;
+            padding: 0.6rem 1rem !important;
             display: flex;
             align-items: center;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 500;
         }
         .sidebar__nav-item i {
@@ -71,6 +74,14 @@
             background-color: rgba(255,255,255,0.2);
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
+        .sidebar__section-title {
+            padding: 0.5rem 1rem 0.25rem;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 0.5rem;
+        }
         .main-content {
             margin-left: 280px;
             background-color: #f8f9fa;
@@ -81,8 +92,8 @@
         .user-profile {
             background: rgba(255,255,255,0.1);
             border-radius: 12px;
-            padding: 1.5rem;
-            margin: 1rem;
+            padding: 1rem;
+            margin: 0.5rem;
             transition: all 0.3s ease;
         }
         .user-profile:hover {
@@ -246,9 +257,9 @@
                         <span>Users</span>
                     </a>
             
-                    <a asp-page="/AdminTools" class="sidebar__nav-item text-white d-flex align-items-center" aria-current="page" id="adminToolsTab" aria-label="Admin Tools">
+                    <a asp-page="/AdminTools" class="sidebar__nav-item text-white d-flex align-items-center" aria-current="page" id="adminToolsTab" aria-label="Settings">
                         <i class="material-icons">settings</i>
-                        <span>Admin Tools</span>
+                        <span>Settings</span>
                     </a>
                 }
             </nav>

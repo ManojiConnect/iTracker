@@ -1,17 +1,15 @@
 @page
 @model WebApp.Pages.AdminToolsModel
 @{
-    ViewData["Title"] = "Admin Tools";
+    ViewData["Title"] = "Settings";
     Layout = "_Layout";
 }
 
-<div class="container mt-5">
-    <h1>Admin Tools</h1>
+<div class="container-fluid px-4">
+    <h1 class="page-title">Settings</h1>
     
     <div class="card">
-        <div class="card-header">
-            <h5>System Settings</h5>
-        </div>
+    
         <div class="card-body">
             @if (!string.IsNullOrEmpty(Model.SuccessMessage))
             {
