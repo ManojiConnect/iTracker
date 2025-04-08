@@ -7,19 +7,19 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Transactions;
 using MediatR;
-using Infrastructure.Common;
-using Application.Common.Interfaces;
+using Application.Abstractions.Data;
 using Microsoft.EntityFrameworkCore;
-using Infrastructure.Identity;
 using Application.Features.Users.CreateUser;
 using Domain.Interfaces;
+using Application.Abstractions.Services;
+using Infrastructure.Identity;
 
 namespace Application.Services;
 public class UserService
 {
     private readonly IContext _context;
     private readonly IMediator _mediator;
-    private readonly UserManager<ApplicationUser> _userManager;
+    private readonly UserManager<Infrastructure.Identity.ApplicationUser> _userManager;
     private readonly IConfiguration _configuration;
     private readonly IMailService _mailService;
     private readonly ICurrentUserService _currentUserService;
@@ -28,7 +28,7 @@ public class UserService
     public UserService(
         IContext context, 
         IMediator mediator, 
-        UserManager<ApplicationUser> userManager, 
+        UserManager<Infrastructure.Identity.ApplicationUser> userManager, 
         IConfiguration configuration, 
         IMailService mailService,
         ICurrentUserService currentUserService,
@@ -68,7 +68,7 @@ public class UserService
             return Result.Error("User with provided email id already exists.");
         }
 
-        var identityUser = new ApplicationUser
+        var identityUser = new Infrastructure.Identity.ApplicationUser
         {
             UserName = email,
             Email = email,
@@ -105,7 +105,11 @@ public class UserService
 
         if (sendMail)
         {
-            // TODO: Implement email sending logic
+            // Send welcome email
+            var subject = "Welcome to iTracker";
+            var plainTextContent = $"Welcome {firstName}! Your account has been created successfully.";
+            var htmlContent = $"<h1>Welcome {firstName}!</h1><p>Your account has been created successfully.</p>";
+            await _mailService.SendEmailAsync(email, subject, plainTextContent, htmlContent);
         }
 
         return Result.Success(user);

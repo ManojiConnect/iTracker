@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Application.Common.Interfaces;
+using Application.Abstractions.Data;
 using Microsoft.AspNetCore.Hosting;
 
 namespace WebApp.Configurations;
@@ -39,7 +39,7 @@ public static class PersistanceSetup
             }
         });
 
-        services.AddScoped<IContext>(provider => provider.GetRequiredService<AppDbContext>());
+        services.AddScoped<IContext, AppDbContext>();
 
         return services;
     }

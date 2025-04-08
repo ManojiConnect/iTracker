@@ -33,7 +33,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj" />
-    <ProjectReference Include="..\Application.Common\Application.Common.csproj" />
     <ProjectReference Include="..\Application.Abstractions\Application.Abstractions.csproj" />
   </ItemGroup>
 

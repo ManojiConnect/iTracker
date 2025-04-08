@@ -7,18 +7,17 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Infrastructure.Identity;
-using Domain.Entities;
 
 namespace WebApp.Pages.Auth;
 
 public class ResetAdminPasswordModel : PageModel
 {
-    private readonly UserManager<ApplicationUser> _userManager;
+    private readonly UserManager<Infrastructure.Identity.ApplicationUser> _userManager;
     private readonly IConfiguration _configuration;
     private readonly ILogger<ResetAdminPasswordModel> _logger;
 
     public ResetAdminPasswordModel(
-        UserManager<ApplicationUser> userManager,
+        UserManager<Infrastructure.Identity.ApplicationUser> userManager,
         IConfiguration configuration,
         ILogger<ResetAdminPasswordModel> logger)
     {

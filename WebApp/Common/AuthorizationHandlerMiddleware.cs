@@ -1,24 +1,22 @@
-﻿using Application.Common.Interfaces;
-using Infrastructure.Context;
+﻿using Application.Abstractions.Data;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
-using Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity;
-using Domain.Entities;
+using Infrastructure.Identity;
 
 namespace WebApp.Common;
 
 public class AuthorizationHandlerMiddleware : IMiddleware
 {
     private readonly IContext _context;
-    private readonly UserManager<ApplicationUser> _userManager;
+    private readonly UserManager<Infrastructure.Identity.ApplicationUser> _userManager;
 
     public AuthorizationHandlerMiddleware(
         IContext context,
-        UserManager<ApplicationUser> userManager)
+        UserManager<Infrastructure.Identity.ApplicationUser> userManager)
     {
         _context = context;
         _userManager = userManager;

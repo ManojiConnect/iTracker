@@ -5,9 +5,10 @@ using MediatR;
 using Microsoft.AspNetCore.Identity;
 using System.Threading;
 using System.Threading.Tasks;
-using Application.Common.Interfaces;
+using Application.Abstractions.Services;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using ApplicationUser = Infrastructure.Identity.ApplicationUser;
 
 namespace Application.Features.Auth.ChangePassword;
 public class ChangePasswordHandler : IRequestHandler<ChangePasswordRequest, Result<bool>>

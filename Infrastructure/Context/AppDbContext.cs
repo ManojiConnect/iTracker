@@ -7,8 +7,8 @@ using System.Data;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
-using Application.Common.Interfaces;
-using Infrastructure.Identity;
+using Application.Abstractions.Data;
+using ApplicationUser = Infrastructure.Identity.ApplicationUser;
 
 namespace Infrastructure.Context;
 

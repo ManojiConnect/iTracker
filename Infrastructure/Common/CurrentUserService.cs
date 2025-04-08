@@ -1,10 +1,10 @@
-﻿using Application.Common.Interfaces;
+﻿using Application.Abstractions.Services;
 using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
 
 namespace Infrastructure.Common;
 
-public class CurrentUserService : Application.Common.Interfaces.ICurrentUserService
+public class CurrentUserService : ICurrentUserService
 {
     private readonly IHttpContextAccessor? _httpContextAccessor;
 
@@ -22,9 +22,9 @@ public class CurrentUserService : Application.Common.Interfaces.ICurrentUserServ
     }
 
     public string? Id => _httpContextAccessor?.HttpContext?.User?.FindFirstValue(ClaimTypes.NameIdentifier);
-    public string UserId { get; set; } = string.Empty;
-    public string Email { get; set; } = string.Empty;
-    public string Role { get; set; } = string.Empty;
-    public string FirstName { get; set; } = string.Empty;
-    public string LastName { get; set; } = string.Empty;
+    public string? UserId { get; private set; }
+    public string? Email { get; private set; }
+    public string? Role { get; private set; }
+    public string? FirstName { get; private set; }
+    public string? LastName { get; private set; }
 }

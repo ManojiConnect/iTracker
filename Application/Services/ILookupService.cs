@@ -1,10 +1,10 @@
 ﻿using Ardalis.Result;
-using Infrastructure.Context;
+using Application.Abstractions.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Domain.Entities;
-using Application.Common.Interfaces;
+using Application.Abstractions.Services;
 using System.Threading;
 
 namespace Application.Services;

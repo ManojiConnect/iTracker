@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
+using Infrastructure.Identity;
 
 namespace WebApp.Services;
 
@@ -27,7 +28,7 @@ public class DatabaseInitializer
             await using var scope = _serviceProvider.CreateAsyncScope();
             
             var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-            var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+            var userManager = scope.ServiceProvider.GetRequiredService<UserManager<Infrastructure.Identity.ApplicationUser>>();
             
             await CreateRolesAsync(roleManager);
             await CreateAdminUserAsync(userManager);
@@ -56,14 +57,14 @@ public class DatabaseInitializer
         }
     }
 
-    private async Task CreateAdminUserAsync(UserManager<ApplicationUser> userManager)
+    private async Task CreateAdminUserAsync(UserManager<Infrastructure.Identity.ApplicationUser> userManager)
     {
         var adminEmail = "Admin@itrackerApp.com";
         var adminUser = await userManager.FindByEmailAsync(adminEmail);
 
         if (adminUser == null)
         {
-            adminUser = new ApplicationUser
+            adminUser = new Infrastructure.Identity.ApplicationUser
             {
                 UserName = adminEmail,
                 Email = adminEmail,

@@ -5,7 +5,7 @@ using Domain.Entities.Common;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 
-namespace Application.Common.Interfaces;
+namespace Application.Abstractions.Data;
 
 public interface IContext
 {

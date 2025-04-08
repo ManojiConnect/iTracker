@@ -1,20 +1,18 @@
 using Application.Features.Auth.ResetPassword;
-using Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Newtonsoft.Json.Linq;
-using Flurl.Util;
+using Infrastructure.Identity;
 
 namespace WebApp.Pages.Auth;
 
 public class ResetPasswordModel : PageModel
 {
     private readonly IMediator _mediator;
-    private readonly UserManager<IdentityUser> _userManager;
+    private readonly UserManager<Infrastructure.Identity.ApplicationUser> _userManager;
 
     [BindProperty]
     public ResetPasswordRequest ResetPasswordRequest { get; set; } = new();
@@ -22,7 +20,7 @@ public class ResetPasswordModel : PageModel
     public string Email { get; set; }
     [BindProperty(SupportsGet = true)]
     public string Token { get; set; }
-    public ResetPasswordModel(IMediator mediator, UserManager<IdentityUser> userManager)
+    public ResetPasswordModel(IMediator mediator, UserManager<Infrastructure.Identity.ApplicationUser> userManager)
     {
         _mediator = mediator;
         _userManager = userManager;
@@ -34,39 +32,28 @@ public class ResetPasswordModel : PageModel
         var user = await _userManager.FindByEmailAsync(Email);
         var isTokenValid = await _userManager.VerifyUserTokenAsync(user,
             _userManager.Options.Tokens.PasswordResetTokenProvider,
-            UserManager<IdentityUser>.ResetPasswordTokenPurpose, Token);
+            UserManager<Infrastructure.Identity.ApplicationUser>.ResetPasswordTokenPurpose, Token);
         if (!isTokenValid)
         {
             return RedirectToPage("/Common/DisplayMessage", new { message = "The password reset link has expired." });
         }
         return Page();
-
     }
 
     public async Task<IActionResult> OnPostAsync()
     {
-        ResetPasswordRequest = new ResetPasswordRequest
+        if (!ModelState.IsValid)
         {
-            Email = Email,
-            Token = Token,
-            ConfirmPassword = ResetPasswordRequest.ConfirmPassword,
-            NewPassword = ResetPasswordRequest.NewPassword
-        };
-        var result = await _mediator.Send(ResetPasswordRequest);
+            return Page();
+        }
 
+        var result = await _mediator.Send(ResetPasswordRequest);
         if (result.IsSuccess)
         {
-            return RedirectToPage("/Common/DisplayMessage", new { message = "Your password has been reset successfully" });
+            return RedirectToPage("/Auth/Login", new { message = "Your password has been reset successfully. Please login with your new password." });
         }
-        foreach (var error in result.ValidationErrors)
-        {
-            // Get the property name from the Identifier
-            string propertyName = error.Identifier ?? string.Empty;
 
-                // Add the error for the specific property
-               ModelState.AddModelError($"ResetPasswordRequest.{propertyName}", error.ErrorMessage);
-            
-        }
+        ModelState.AddModelError(string.Empty, result.Errors.FirstOrDefault() ?? "Failed to reset password. Please try again.");
         return Page();
     }
 }

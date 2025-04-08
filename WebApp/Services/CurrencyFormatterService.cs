@@ -1,7 +1,7 @@
 using System;
 using System.Globalization;
 using System.Threading.Tasks;
-using Application.Abstractions.Interfaces;
+using Application.Abstractions.Services;
 using Domain.Entities;
 
 namespace WebApp.Services;

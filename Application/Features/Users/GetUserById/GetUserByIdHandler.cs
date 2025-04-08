@@ -1,9 +1,7 @@
 ﻿using Ardalis.Result;
 using Application.Features.Common.Responses;
-using Application.Common.Interfaces;
+using Application.Abstractions.Data;
 using Domain.Entities;
-using Infrastructure.Context;
-using Infrastructure.Identity;
 using Mapster;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
@@ -13,17 +11,18 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using System;
+using Infrastructure.Identity;
 
 namespace Application.Features.Users.GetUserById;
 public class GetUserByIdHandler : IRequestHandler<GetUserByIdRequest, Result<UserResponse>>
 {
     private readonly IContext _context;
-    private readonly UserManager<ApplicationUser> _userManager;
+    private readonly UserManager<Infrastructure.Identity.ApplicationUser> _userManager;
     private readonly ILogger<GetUserByIdHandler> _logger;
 
     public GetUserByIdHandler(
         IContext context, 
-        UserManager<ApplicationUser> userManager,
+        UserManager<Infrastructure.Identity.ApplicationUser> userManager,
         ILogger<GetUserByIdHandler> logger)
     {
         _context = context;

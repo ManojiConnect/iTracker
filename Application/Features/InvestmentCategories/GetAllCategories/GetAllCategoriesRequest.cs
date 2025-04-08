@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Application.Common.Interfaces;
+using Application.Abstractions.Data;
 using Ardalis.Result;
 using MediatR;
 using Microsoft.EntityFrameworkCore;

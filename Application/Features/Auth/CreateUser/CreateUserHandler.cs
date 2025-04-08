@@ -1,5 +1,6 @@
 using Domain.Interfaces;
 using MediatR;
+using Infrastructure.Identity;
 
 namespace Application.Features.Auth.CreateUser;
 
@@ -20,7 +21,7 @@ public class CreateUserHandler : IRequestHandler<CreateUserCommand, bool>
             throw new InvalidOperationException($"User with email '{request.Email}' already exists.");
         }
 
-        var newUser = new Domain.Entities.ApplicationUser
+        var newUser = new Infrastructure.Identity.ApplicationUser
         {
             UserName = request.Email,
             Email = request.Email,

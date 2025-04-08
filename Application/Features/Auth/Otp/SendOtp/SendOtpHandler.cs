@@ -1,63 +1,52 @@
 ﻿using Ardalis.Result;
-using Application.Services;
-using Infrastructure.Context;
+using Application.Abstractions.Data;
+using Domain.Entities;
 using MediatR;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using System.Threading;
 using System.Threading.Tasks;
-using Application.Common.Interfaces;
-using Domain.Entities;
+using Microsoft.Extensions.Logging;
+using System;
+using Application.Services;
+using Infrastructure.Identity;
 
 namespace Application.Features.Auth.Otp.SendOtp;
 public class SendOtpHandler : IRequestHandler<SendOtpRequest, Result<bool>>
 {
-    private readonly IMailService _mailService;
-    private readonly OtpService _otpService;
     private readonly IContext _context;
-    private readonly IConfiguration _configuration;
+    private readonly UserManager<Infrastructure.Identity.ApplicationUser> _userManager;
+    private readonly OtpService _otpService;
+    private readonly ILogger<SendOtpHandler> _logger;
 
-    public SendOtpHandler(IMailService mailService, OtpService otpService, IContext context, IConfiguration configuration)
+    public SendOtpHandler(
+        IContext context, 
+        UserManager<Infrastructure.Identity.ApplicationUser> userManager,
+        OtpService otpService,
+        ILogger<SendOtpHandler> logger)
     {
-        _mailService = mailService;
-        _otpService = otpService;
         _context = context;
-        _configuration = configuration;
+        _userManager = userManager;
+        _otpService = otpService;
+        _logger = logger;
     }
 
     public async Task<Result<bool>> Handle(SendOtpRequest request, CancellationToken cancellationToken)
     {
-        var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == request.Email && u.IsActive == true, cancellationToken);
-        if (user is null)
+        //get the identity user 
+        var user = await _userManager.FindByEmailAsync(request.Email);
+        if (user == null)
         {
-            return Result.NotFound();
+            return Result.Error("User not found");
         }
 
-        var otp = _otpService.SetOtp(user.Email!);
-
-        //var fromEmail = "saurabh.talele@etevatech.com";
-        //var toEmail = request.Email;
-        var subject = "Otp";
-        //var plainTextContent = otp;
-        //var htmlContent = $"<h2>{otp}</h2>";
-
-        var emailData = new
+        //generate and send otp
+        var otp = _otpService.SetOtp(request.Email);
+        if (string.IsNullOrEmpty(otp))
         {
-            Otp = otp,
-            user.FirstName,
-            user.LastName,
-        };
-        var templateId = _configuration.GetSection($"SendGridSettings:OtpTemplateId:{user.Language ?? "EN"}").Value!;
-        if (templateId == null)
-            templateId = _configuration.GetSection($"SendGridSettings:OtpTemplateId:EN").Value!;
-
-        var isEmailSent = await _mailService.SendEmailWithTemplateAsync(request.Email, templateId, emailData);
-        //var isEmailSent = await _mailService.SendEmailAsync(fromEmail, toEmail, subject, plainTextContent, htmlContent);
-        if (isEmailSent)
-        {
-            return true;
+            return Result.Error("Failed to generate OTP");
         }
 
-        return false;
+        return Result.Success(true);
     }
 }

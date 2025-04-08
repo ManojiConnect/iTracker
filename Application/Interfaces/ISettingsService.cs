@@ -1,7 +1,7 @@
 using Domain.Entities;
 using System.Threading.Tasks;
 
-namespace Application.Abstractions.Interfaces;
+namespace Application.Interfaces;
 
 public interface ISettingsService
 {

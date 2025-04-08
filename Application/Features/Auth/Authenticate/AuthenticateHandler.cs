@@ -2,8 +2,7 @@
 using Application.Features.Common.Responses;
 using Application.Services;
 using Ardalis.Result;
-using Infrastructure.Context;
-using Infrastructure.Identity;
+using Application.Abstractions.Data;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
@@ -18,27 +17,36 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Domain.Entities;
 using Application.Common.Interfaces;
+using Application.Abstractions.Services;
+using Microsoft.Extensions.Logging;
+using Infrastructure.Identity;
 
 namespace Application.Features.Auth.Authenticate;
 
 public class AuthenticateHandler : IRequestHandler<AuthenticateRequest, Result<AuthenticateResponse>>
 {
+    private readonly ILogger<AuthenticateHandler> _logger;
+    private readonly IConfiguration _configuration;
+    private readonly UserManager<Infrastructure.Identity.ApplicationUser> _userManager;
+    private readonly SignInManager<Infrastructure.Identity.ApplicationUser> _signInManager;
     private readonly IContext _context;
-    private readonly UserManager<ApplicationUser> _userManager;
-    private readonly SignInManager<ApplicationUser> _signInManager;
     private readonly IHttpContextAccessor _httpContextAccessor;
     private readonly IMediator _mediator;
 
     public AuthenticateHandler(
+        ILogger<AuthenticateHandler> logger,
+        IConfiguration configuration,
+        UserManager<Infrastructure.Identity.ApplicationUser> userManager,
+        SignInManager<Infrastructure.Identity.ApplicationUser> signInManager,
         IContext context,
-        UserManager<ApplicationUser> userManager,
-        SignInManager<ApplicationUser> signInManager,
         IHttpContextAccessor httpContextAccessor,
         IMediator mediator)
     {
-        _context = context;
+        _logger = logger;
+        _configuration = configuration;
         _userManager = userManager;
         _signInManager = signInManager;
+        _context = context;
         _httpContextAccessor = httpContextAccessor;
         _mediator = mediator;
     }

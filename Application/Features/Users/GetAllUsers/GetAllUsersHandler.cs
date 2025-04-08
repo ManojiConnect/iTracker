@@ -1,6 +1,6 @@
 ﻿using Ardalis.Result;
 using Application.Features.Common.Responses;
-using Application.Common.Interfaces;
+using Application.Abstractions.Data;
 using Domain.Entities;
 using Infrastructure.Context;
 using Infrastructure.Identity;
@@ -14,6 +14,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System;
 using Microsoft.Extensions.Logging;
+using ApplicationUser = Infrastructure.Identity.ApplicationUser;
 
 namespace Application.Features.Users.GetAllUsers;
 public class GetAllUsersHandler : IRequestHandler<GetAllUsersRequest, Result<PaginatedList<UserResponse>>>

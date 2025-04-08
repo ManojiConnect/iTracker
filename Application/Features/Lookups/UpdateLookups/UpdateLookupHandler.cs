@@ -1,5 +1,5 @@
 ﻿using Ardalis.Result;
-using Infrastructure.Context;
+using Application.Abstractions.Data;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using Microsoft.EntityFrameworkCore;
-using Application.Common.Interfaces;
 using Domain.Entities;
 
 namespace Application.Features.Lookups.UpdateLookups;

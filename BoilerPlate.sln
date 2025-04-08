@@ -1,5 +1,4 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33712.159
 MinimumVisualStudioVersion = 10.0.40219.1
@@ -10,6 +9,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{FCAB51BB-78C8-4D00-9F1E-26B9E80ABFE4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApp", "WebApp\WebApp.csproj", "{7E4ECA2D-D509-4204-8CED-AE4B06549F84}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Abstractions", "Application.Abstractions\Application.Abstractions.csproj", "{8E4ECA2D-D509-4204-8CED-AE4B06549F85}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +34,10 @@ Global
 		{7E4ECA2D-D509-4204-8CED-AE4B06549F84}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E4ECA2D-D509-4204-8CED-AE4B06549F84}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E4ECA2D-D509-4204-8CED-AE4B06549F84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E4ECA2D-D509-4204-8CED-AE4B06549F85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E4ECA2D-D509-4204-8CED-AE4B06549F85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E4ECA2D-D509-4204-8CED-AE4B06549F85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E4ECA2D-D509-4204-8CED-AE4B06549F85}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

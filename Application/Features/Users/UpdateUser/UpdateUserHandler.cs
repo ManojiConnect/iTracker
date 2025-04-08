@@ -1,41 +1,42 @@
 ﻿using Ardalis.Result;
 using Infrastructure.Common;
-using Infrastructure.Context;
+using Application.Abstractions.Data;
 using Mapster;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System.Threading;
 using System.Threading.Tasks;
-using Application.Common.Interfaces;
-using Domain.Entities;
-using Infrastructure.Identity;
+using Application.Abstractions.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Linq;
+using Application.Common.Interfaces;
+using Infrastructure.Identity;
+using Domain.Entities;
 
 namespace Application.Features.Users.UpdateUser;
 public class UpdateUserHandler : IRequestHandler<UpdateUserRequest, Result<bool>>
 {
     private readonly IContext _context;
-    private readonly ICurrentUserService _currentUserService;
-    private readonly IConfiguration _configuration;
-    private readonly UserManager<ApplicationUser> _userManager;
     private readonly ILogger<UpdateUserHandler> _logger;
+    private readonly IConfiguration _configuration;
+    private readonly UserManager<Infrastructure.Identity.ApplicationUser> _userManager;
+    private readonly Application.Abstractions.Services.ICurrentUserService _currentUserService;
 
     public UpdateUserHandler(
-        IContext context, 
-        ICurrentUserService currentUserService, 
+        IContext context,
+        ILogger<UpdateUserHandler> logger,
         IConfiguration configuration,
-        UserManager<ApplicationUser> userManager,
-        ILogger<UpdateUserHandler> logger)
+        UserManager<Infrastructure.Identity.ApplicationUser> userManager,
+        Application.Abstractions.Services.ICurrentUserService currentUserService)
     {
         _context = context;
-        _currentUserService = currentUserService;
+        _logger = logger;
         _configuration = configuration;
         _userManager = userManager;
-        _logger = logger;
+        _currentUserService = currentUserService;
     }
 
     public async Task<Result<bool>> Handle(UpdateUserRequest request, CancellationToken cancellationToken)

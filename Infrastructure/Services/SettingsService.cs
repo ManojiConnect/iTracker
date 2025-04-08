@@ -1,14 +1,14 @@
 using System;
 using System.Threading.Tasks;
-using Application.Abstractions.Interfaces;
-using Application.Common.Interfaces;
+using Application.Abstractions.Data;
+using Application.Abstractions.Services;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
 
 namespace Infrastructure.Services;
 
-public class SettingsService : Application.Abstractions.Interfaces.ISettingsService
+public class SettingsService : ISettingsService
 {
     private readonly IContext _context;
     private readonly IMemoryCache _cache;

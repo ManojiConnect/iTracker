@@ -1,39 +1,42 @@
 ﻿using Ardalis.Result;
-using Application.Services;
+using Application.Abstractions.Data;
+using Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
-using Infrastructure.Context;
-using Infrastructure.Identity;
-using Microsoft.EntityFrameworkCore;
-using System.Security.Claims;
+using Microsoft.Extensions.Logging;
 using Application.Common.Interfaces;
-using Domain.Entities;
+using Infrastructure.Identity;
+using Application.Abstractions.Services;
 namespace Application.Features.Auth.ForgotPassword;
 public class ForgotPasswordHandler : IRequestHandler<ForgotPasswordRequest, Result<bool>>
 {
     private readonly IContext _context;
-    private readonly UserManager<ApplicationUser> _userManager;
+    private readonly UserManager<Infrastructure.Identity.ApplicationUser> _userManager;
     private readonly IMailService _mailService;
     private readonly IConfiguration _configuration;
     private readonly IMediator _mediator;
+    private readonly ILogger<ForgotPasswordHandler> _logger;
 
     public ForgotPasswordHandler(
         IContext context,
-        UserManager<ApplicationUser> userManager,
+        UserManager<Infrastructure.Identity.ApplicationUser> userManager,
         IMailService mailService,
         IConfiguration configuration,
-        IMediator mediator)
+        IMediator mediator,
+        ILogger<ForgotPasswordHandler> logger)
     {
         _context = context;
         _userManager = userManager;
         _mailService = mailService;
         _configuration = configuration;
         _mediator = mediator;
+        _logger = logger;
     }
 
     public async Task<Result<bool>> Handle(ForgotPasswordRequest request, CancellationToken cancellationToken)

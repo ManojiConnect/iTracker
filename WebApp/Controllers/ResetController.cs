@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using Domain.Entities;
+using Infrastructure.Identity;
 
 namespace WebApp.Controllers;
 
@@ -10,11 +10,11 @@ namespace WebApp.Controllers;
 [Route("api/[controller]")]
 public class ResetController : ControllerBase
 {
-    private readonly UserManager<ApplicationUser> _userManager;
+    private readonly UserManager<Infrastructure.Identity.ApplicationUser> _userManager;
     private readonly RoleManager<IdentityRole> _roleManager;
 
     public ResetController(
-        UserManager<ApplicationUser> userManager,
+        UserManager<Infrastructure.Identity.ApplicationUser> userManager,
         RoleManager<IdentityRole> roleManager)
     {
         _userManager = userManager;
@@ -66,58 +66,45 @@ public class ResetController : ControllerBase
         {
             var adminEmail = "Admin@itrackerApp.com";
             var adminPassword = "Test@123";
+            var adminRole = "Admin";
 
-            // Ensure Admin role exists
-            if (!await _roleManager.RoleExistsAsync("Admin"))
+            // Check if admin role exists
+            if (!await _roleManager.RoleExistsAsync(adminRole))
             {
-                await _roleManager.CreateAsync(new IdentityRole("Admin"));
+                await _roleManager.CreateAsync(new IdentityRole(adminRole));
             }
 
-            var user = await _userManager.FindByEmailAsync(adminEmail);
-            
-            if (user == null)
+            // Check if admin user exists
+            var adminUser = await _userManager.FindByEmailAsync(adminEmail);
+            if (adminUser == null)
             {
-                // Create new admin user
-                user = new ApplicationUser
+                // Create admin user
+                adminUser = new Infrastructure.Identity.ApplicationUser
                 {
                     UserName = adminEmail,
                     Email = adminEmail,
                     EmailConfirmed = true,
-                    FirstName = "System",
-                    LastName = "Admin",
-                    IsActive = true,
-                    CreatedDate = DateTime.UtcNow,
-                    CreatedBy = "System"
+                    FirstName = "Admin",
+                    LastName = "User",
+                    CreatedBy = "System",
+                    CreatedDate = DateTime.UtcNow
                 };
 
-                var createResult = await _userManager.CreateAsync(user, adminPassword);
-                if (!createResult.Succeeded)
+                var result = await _userManager.CreateAsync(adminUser, adminPassword);
+                if (!result.Succeeded)
                 {
-                    return BadRequest($"Failed to create admin user: {string.Join(", ", createResult.Errors)}");
+                    return BadRequest($"Failed to create admin user: {string.Join(", ", result.Errors)}");
                 }
-            }
-            else
-            {
-                // Reset password for existing user
-                var token = await _userManager.GeneratePasswordResetTokenAsync(user);
-                var resetResult = await _userManager.ResetPasswordAsync(user, token, adminPassword);
-                if (!resetResult.Succeeded)
+
+                // Add admin role
+                result = await _userManager.AddToRoleAsync(adminUser, adminRole);
+                if (!result.Succeeded)
                 {
-                    return BadRequest($"Failed to reset password: {string.Join(", ", resetResult.Errors)}");
+                    return BadRequest($"Failed to add admin role: {string.Join(", ", result.Errors)}");
                 }
             }
 
-            // Ensure user is in Admin role
-            if (!await _userManager.IsInRoleAsync(user, "Admin"))
-            {
-                var addToRoleResult = await _userManager.AddToRoleAsync(user, "Admin");
-                if (!addToRoleResult.Succeeded)
-                {
-                    return BadRequest($"Failed to add user to Admin role: {string.Join(", ", addToRoleResult.Errors)}");
-                }
-            }
-
-            return Ok($"Admin user ensured with email {adminEmail} and password {adminPassword}");
+            return Ok("Admin user and role have been ensured.");
         }
         catch (Exception ex)
         {

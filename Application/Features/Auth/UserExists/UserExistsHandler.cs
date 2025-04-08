@@ -1,10 +1,9 @@
 ﻿using Ardalis.Result;
-using Infrastructure.Context;
+using Application.Abstractions.Data;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System.Threading;
 using System.Threading.Tasks;
-using Application.Common.Interfaces;
 using Domain.Entities;
 
 namespace Application.Features.Auth.UserExists;

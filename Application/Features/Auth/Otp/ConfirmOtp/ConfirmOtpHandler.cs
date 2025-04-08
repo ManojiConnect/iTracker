@@ -1,54 +1,53 @@
 ﻿using Ardalis.Result;
-using Application.Services;
-using Infrastructure.Context;
-using Infrastructure.Identity;
+using Application.Abstractions.Data;
+using Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
-using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 using System.Threading;
 using System.Threading.Tasks;
-using Application.Common.Interfaces;
-using Domain.Entities;
+using Microsoft.Extensions.Logging;
+using System;
+using Application.Services;
+using Infrastructure.Identity;
 
 namespace Application.Features.Auth.Otp.ConfirmOtp;
 public class ConfirmOtpHandler : IRequestHandler<ConfirmOtpRequest, Result<string>>
 {
     private readonly OtpService _otpService;
     private readonly IContext _context;
-    private readonly UserManager<ApplicationUser> _userManager;
+    private readonly UserManager<Infrastructure.Identity.ApplicationUser> _userManager;
+    private readonly ILogger<ConfirmOtpHandler> _logger;
 
-    public ConfirmOtpHandler(OtpService otpService, IContext context, UserManager<ApplicationUser> userManager)
+    public ConfirmOtpHandler(
+        OtpService otpService,
+        IContext context, 
+        UserManager<Infrastructure.Identity.ApplicationUser> userManager,
+        ILogger<ConfirmOtpHandler> logger)
     {
         _otpService = otpService;
         _context = context;
         _userManager = userManager;
+        _logger = logger;
     }
 
     public async Task<Result<string>> Handle(ConfirmOtpRequest request, CancellationToken cancellationToken)
     {
         //get the identity user 
         var user = await _userManager.FindByEmailAsync(request.Email);
-        if (user is null)
+        if (user == null)
         {
-            return Result.NotFound();
+            return Result.Error("User not found");
         }
 
-        //Confirm the OTP sent by user
-        var validateOtp = _otpService.ValidateOtp(request.Email, request.Otp);
-        if (!validateOtp)
+        //verify the otp
+        var isValid = _otpService.ValidateOtp(request.Email, request.Otp);
+        if (!isValid)
         {
-            return Result.Invalid(new List<ValidationError>
-            {
-                new ValidationError
-                {
-                    Identifier = $"{nameof(request.Otp)}|{nameof(request.Email)}",
-                    ErrorMessage = "Otp is incorrect"
-                }
-            });
+            return Result.Error("Invalid OTP");
         }
 
         //return the token
         return await _userManager.GeneratePasswordResetTokenAsync(user);
-
     }
 }

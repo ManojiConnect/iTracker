@@ -43,7 +43,7 @@ public class CreateModel : PageModel
         {
             _logger.LogInformation("Creating new user: {Email}", UserForm.Email);
 
-            var command = new CreateUserCommand
+            var request = new CreateUserRequest
             {
                 FirstName = UserForm.FirstName!,
                 LastName = UserForm.LastName!,
@@ -52,12 +52,13 @@ public class CreateModel : PageModel
                 PhoneNumber = UserForm.PhoneNumber,
                 Role = UserForm.Role!,
                 Language = UserForm.Language,
-                ProfileUrl = UserForm.ProfileUrl
+                ProfileUrl = UserForm.ProfileUrl,
+                IsActive = UserForm.IsActive
             };
 
-            var success = await _mediator.Send(command);
+            var result = await _mediator.Send(request);
 
-            if (success)
+            if (result.IsSuccess)
             {
                 _logger.LogInformation("User created successfully: {Email}", UserForm.Email);
                 TempData["SuccessMessage"] = $"User {UserForm.FirstName} {UserForm.LastName} was created successfully.";
@@ -66,7 +67,7 @@ public class CreateModel : PageModel
             else
             {
                 _logger.LogWarning("Failed to create user: {Email}", UserForm.Email);
-                ModelState.AddModelError(string.Empty, "Failed to create user. Please try again.");
+                ModelState.AddModelError(string.Empty, result.Errors.FirstOrDefault() ?? "Failed to create user. Please try again.");
                 return Page();
             }
         }
@@ -80,45 +81,47 @@ public class CreateModel : PageModel
 
     public class UserFormModel
     {
-        [Required(ErrorMessage = "First name is required")]
+        [Required]
         [Display(Name = "First Name")]
+        [StringLength(50)]
         public string? FirstName { get; set; }
 
-        [Required(ErrorMessage = "Last name is required")]
+        [Required]
         [Display(Name = "Last Name")]
+        [StringLength(50)]
         public string? LastName { get; set; }
 
-        [Required(ErrorMessage = "Email is required")]
-        [EmailAddress(ErrorMessage = "Invalid email address")]
+        [Required]
+        [EmailAddress]
         [Display(Name = "Email")]
         public string? Email { get; set; }
 
-        [Display(Name = "Phone Number")]
-        public string? PhoneNumber { get; set; }
-
-        [Required(ErrorMessage = "Password is required")]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [Required]
+        [StringLength(100, MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string? Password { get; set; }
 
-        [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
+        [Required]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [DataType(DataType.Password)]
+        [Display(Name = "Confirm Password")]
         public string? ConfirmPassword { get; set; }
 
-        [Required(ErrorMessage = "Role is required")]
+        [Display(Name = "Phone Number")]
+        public string? PhoneNumber { get; set; }
+
+        [Required]
         [Display(Name = "Role")]
         public string? Role { get; set; }
 
         [Display(Name = "Language")]
-        public string? Language { get; set; } = "en";
+        public string? Language { get; set; }
 
-        [Display(Name = "Profile Image URL")]
-        [Url(ErrorMessage = "Please enter a valid URL")]
+        [Display(Name = "Profile URL")]
         public string? ProfileUrl { get; set; }
 
-        [Display(Name = "Active")]
-        public bool IsActive { get; set; } = true;
+        [Display(Name = "Is Active")]
+        public bool IsActive { get; set; }
     }
 } 
