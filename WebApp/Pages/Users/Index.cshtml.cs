@@ -45,11 +45,6 @@ public class IndexModel : PageModel
             {
                 Users = result.Value.Items;
                 _logger.LogInformation("Successfully retrieved {Count} users", Users.Count);
-                
-                // Temporary: Check for specific user
-                var specificEmail = "rahul@iconnectsolutions.com";
-                var hasUser = Users.Any(u => u.Email?.Equals(specificEmail, StringComparison.OrdinalIgnoreCase) == true);
-                _logger.LogInformation("User with email {Email} exists: {Exists}", specificEmail, hasUser);
             }
             else
             {
@@ -63,5 +58,12 @@ public class IndexModel : PageModel
             _logger.LogError(ex, "Error retrieving users");
             return StatusCode(500);
         }
+    }
+
+    public DateTime? GetCreatedDate(int? transactionId)
+    {
+        // TODO: Implement this method to get the CreatedOn date from the User entity
+        // This will require injecting the DbContext or a repository to access the User entity
+        return null;
     }
 } 

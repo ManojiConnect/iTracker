@@ -5,12 +5,12 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
-using Domain.Entities;
+using Infrastructure.Identity;
 
 namespace WebApp.Controllers;
 
 [Authorize(Roles = "Admin")]
-[Route("[controller]")]
+[Route("Users")]
 public class UserManagementController : Controller
 {
     private readonly UserManager<ApplicationUser> _userManager;

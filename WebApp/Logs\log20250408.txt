@@ -253,3 +253,335 @@
 [10:12:44 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
 [10:12:44 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
 [10:12:44 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:15:33 INF] Ensuring database is created... <s:Program>
+[10:15:34 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[10:15:34 INF] Database initialization completed. <s:Program>
+[10:15:34 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[10:15:34 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[10:15:34 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[10:15:34 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[10:15:34 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[10:15:37 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:15:37 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:15:37 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:15:37 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:15:37 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:15:37 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:15:37 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:15:37 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:15:37 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:15:37 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:15:37 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:15:39 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:15:39 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:15:39 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:15:39 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:15:39 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:15:39 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:15:39 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:15:39 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:15:39 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:15:39 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:15:39 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:15:39 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:15:39 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:15:39 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:15:39 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:15:39 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:15:39 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:15:39 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:15:39 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:15:39 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:15:39 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:15:39 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:15:39 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:15:39 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:21:12 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[12:09:53 INF] Ensuring database is created... <s:Program>
+[12:09:53 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[12:09:53 INF] Database initialization completed. <s:Program>
+[12:09:54 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[12:09:54 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[12:09:54 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[12:09:54 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[12:09:54 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[12:10:04 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[12:10:04 INF] Settings loaded successfully: CurrencySymbol=₹ <s:WebApp.Pages.AdminToolsModel>
+[12:10:08 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[12:10:08 INF] Settings loaded successfully: CurrencySymbol=₹ <s:WebApp.Pages.AdminToolsModel>
+[12:11:22 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[12:12:13 INF] Ensuring database is created... <s:Program>
+[12:12:14 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[12:12:14 INF] Database initialization completed. <s:Program>
+[12:12:14 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[12:12:14 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[12:12:14 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[12:12:14 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[12:12:14 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[12:12:17 ERR] An error occurred: Unable to resolve service for type 'Microsoft.AspNetCore.Identity.UserManager`1[Domain.Entities.ApplicationUser]' while attempting to activate 'WebApp.Controllers.UserManagementController'. <s:WebApplication.Common.ExceptionHandlerMiddleware>
+System.InvalidOperationException: Unable to resolve service for type 'Microsoft.AspNetCore.Identity.UserManager`1[Domain.Entities.ApplicationUser]' while attempting to activate 'WebApp.Controllers.UserManagementController'.
+   at void Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at object lambda_method301(Closure, IServiceProvider, object[])
+   at Func<ControllerContext, object> Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.CreateControllerFactory(ControllerActionDescriptor descriptor)+CreateController(ControllerContext controllerContext)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(ref State next, ref Scope scope, ref object state, ref bool isCompleted)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at async Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResourceFilter()+Awaited(?)
+   at void Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(ref State next, ref Scope scope, ref object state, ref bool isCompleted)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+   at async Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeAsync()+Awaited(?) x 2
+   at async Task Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at async Task WebApp.Common.AuthorizationHandlerMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Common/AuthorizationHandlerMiddleware.cs:line 37
+   at async RequestDelegate Microsoft.AspNetCore.Builder.UseMiddlewareExtensions+InterfaceMiddlewareBinder.CreateMiddleware(RequestDelegate next)+(?) => { }
+   at async Task Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at async Task WebApplication.Common.ExceptionHandlerMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Common/ExceptionHandlerMiddleware.cs:line 24
+[12:12:20 ERR] An error occurred: Unable to resolve service for type 'Microsoft.AspNetCore.Identity.UserManager`1[Domain.Entities.ApplicationUser]' while attempting to activate 'WebApp.Controllers.UserManagementController'. <s:WebApplication.Common.ExceptionHandlerMiddleware>
+System.InvalidOperationException: Unable to resolve service for type 'Microsoft.AspNetCore.Identity.UserManager`1[Domain.Entities.ApplicationUser]' while attempting to activate 'WebApp.Controllers.UserManagementController'.
+   at void Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at object lambda_method301(Closure, IServiceProvider, object[])
+   at Func<ControllerContext, object> Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.CreateControllerFactory(ControllerActionDescriptor descriptor)+CreateController(ControllerContext controllerContext)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(ref State next, ref Scope scope, ref object state, ref bool isCompleted)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at async Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResourceFilter()+Awaited(?)
+   at void Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(ref State next, ref Scope scope, ref object state, ref bool isCompleted)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+   at async Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeAsync()+Awaited(?) x 2
+   at async Task Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at async Task WebApp.Common.AuthorizationHandlerMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Common/AuthorizationHandlerMiddleware.cs:line 37
+   at async RequestDelegate Microsoft.AspNetCore.Builder.UseMiddlewareExtensions+InterfaceMiddlewareBinder.CreateMiddleware(RequestDelegate next)+(?) => { }
+   at async Task Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at async Task WebApplication.Common.ExceptionHandlerMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Common/ExceptionHandlerMiddleware.cs:line 24
+[12:12:21 ERR] An error occurred: Unable to resolve service for type 'Microsoft.AspNetCore.Identity.UserManager`1[Domain.Entities.ApplicationUser]' while attempting to activate 'WebApp.Controllers.UserManagementController'. <s:WebApplication.Common.ExceptionHandlerMiddleware>
+System.InvalidOperationException: Unable to resolve service for type 'Microsoft.AspNetCore.Identity.UserManager`1[Domain.Entities.ApplicationUser]' while attempting to activate 'WebApp.Controllers.UserManagementController'.
+   at void Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at object lambda_method301(Closure, IServiceProvider, object[])
+   at Func<ControllerContext, object> Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.CreateControllerFactory(ControllerActionDescriptor descriptor)+CreateController(ControllerContext controllerContext)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(ref State next, ref Scope scope, ref object state, ref bool isCompleted)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at async Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResourceFilter()+Awaited(?)
+   at void Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(ref State next, ref Scope scope, ref object state, ref bool isCompleted)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+   at async Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeAsync()+Awaited(?) x 2
+   at async Task Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at async Task WebApp.Common.AuthorizationHandlerMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Common/AuthorizationHandlerMiddleware.cs:line 37
+   at async RequestDelegate Microsoft.AspNetCore.Builder.UseMiddlewareExtensions+InterfaceMiddlewareBinder.CreateMiddleware(RequestDelegate next)+(?) => { }
+   at async Task Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at async Task WebApplication.Common.ExceptionHandlerMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Common/ExceptionHandlerMiddleware.cs:line 24
+[12:12:22 ERR] An error occurred: Unable to resolve service for type 'Microsoft.AspNetCore.Identity.UserManager`1[Domain.Entities.ApplicationUser]' while attempting to activate 'WebApp.Controllers.UserManagementController'. <s:WebApplication.Common.ExceptionHandlerMiddleware>
+System.InvalidOperationException: Unable to resolve service for type 'Microsoft.AspNetCore.Identity.UserManager`1[Domain.Entities.ApplicationUser]' while attempting to activate 'WebApp.Controllers.UserManagementController'.
+   at void Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at object lambda_method301(Closure, IServiceProvider, object[])
+   at Func<ControllerContext, object> Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.CreateControllerFactory(ControllerActionDescriptor descriptor)+CreateController(ControllerContext controllerContext)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(ref State next, ref Scope scope, ref object state, ref bool isCompleted)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at async Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResourceFilter()+Awaited(?)
+   at void Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(ref State next, ref Scope scope, ref object state, ref bool isCompleted)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+   at async Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeAsync()+Awaited(?) x 2
+   at async Task Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at async Task WebApp.Common.AuthorizationHandlerMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Common/AuthorizationHandlerMiddleware.cs:line 37
+   at async RequestDelegate Microsoft.AspNetCore.Builder.UseMiddlewareExtensions+InterfaceMiddlewareBinder.CreateMiddleware(RequestDelegate next)+(?) => { }
+   at async Task Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at async Task WebApplication.Common.ExceptionHandlerMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Common/ExceptionHandlerMiddleware.cs:line 24
+[12:12:26 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[12:12:26 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[12:12:26 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[12:12:26 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[12:12:26 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[12:12:26 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[12:12:26 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[12:12:26 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[12:12:26 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[12:12:26 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[12:12:26 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[12:12:26 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[12:12:26 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[12:12:26 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[12:12:26 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[12:12:26 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[12:12:26 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[12:12:26 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[12:12:26 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[12:12:26 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[12:12:26 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[12:12:26 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[12:12:28 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[12:12:28 INF] Settings loaded successfully: CurrencySymbol=₹ <s:WebApp.Pages.AdminToolsModel>
+[12:12:29 ERR] An error occurred: Unable to resolve service for type 'Microsoft.AspNetCore.Identity.UserManager`1[Domain.Entities.ApplicationUser]' while attempting to activate 'WebApp.Controllers.UserManagementController'. <s:WebApplication.Common.ExceptionHandlerMiddleware>
+System.InvalidOperationException: Unable to resolve service for type 'Microsoft.AspNetCore.Identity.UserManager`1[Domain.Entities.ApplicationUser]' while attempting to activate 'WebApp.Controllers.UserManagementController'.
+   at void Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at object lambda_method301(Closure, IServiceProvider, object[])
+   at Func<ControllerContext, object> Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.CreateControllerFactory(ControllerActionDescriptor descriptor)+CreateController(ControllerContext controllerContext)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(ref State next, ref Scope scope, ref object state, ref bool isCompleted)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at async Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResourceFilter()+Awaited(?)
+   at void Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(ref State next, ref Scope scope, ref object state, ref bool isCompleted)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+   at async Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeAsync()+Awaited(?) x 2
+   at async Task Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at async Task WebApp.Common.AuthorizationHandlerMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Common/AuthorizationHandlerMiddleware.cs:line 37
+   at async RequestDelegate Microsoft.AspNetCore.Builder.UseMiddlewareExtensions+InterfaceMiddlewareBinder.CreateMiddleware(RequestDelegate next)+(?) => { }
+   at async Task Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at async Task WebApplication.Common.ExceptionHandlerMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Common/ExceptionHandlerMiddleware.cs:line 24
+[12:13:21 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[12:13:50 INF] Ensuring database is created... <s:Program>
+[12:13:50 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[12:13:50 INF] Database initialization completed. <s:Program>
+[12:13:51 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[12:13:51 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[12:13:51 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[12:13:51 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[12:13:51 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[12:13:55 INF] Attempting login for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
+[12:13:55 WRN] Login failed for user Admin@itrackerApp.com: Invalid email or password. <s:WebApp.Pages.Auth.LoginModel>
+[12:13:57 INF] Attempting login for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
+[12:13:57 WRN] Login failed for user Admin@itrackerApp.com: Invalid email or password. <s:WebApp.Pages.Auth.LoginModel>
+[12:14:00 INF] Attempting login for user: admin@example.com <s:WebApp.Pages.Auth.LoginModel>
+[12:14:00 WRN] Login failed for user admin@example.com: Invalid email or password. <s:WebApp.Pages.Auth.LoginModel>
+[12:14:03 INF] Attempting login for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
+[12:14:03 WRN] Login failed for user Admin@itrackerApp.com: Invalid email or password. <s:WebApp.Pages.Auth.LoginModel>
+[12:14:04 INF] Attempting login for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
+[12:14:04 WRN] Login failed for user Admin@itrackerApp.com: Invalid email or password. <s:WebApp.Pages.Auth.LoginModel>
+[12:14:08 INF] Attempting login for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
+[12:14:08 WRN] Login failed for user Admin@itrackerApp.com: Invalid email or password. <s:WebApp.Pages.Auth.LoginModel>
+[12:14:11 INF] Attempting login for user: test@example.com <s:WebApp.Pages.Auth.LoginModel>
+[12:14:11 WRN] Login failed for user test@example.com: Invalid email or password. <s:WebApp.Pages.Auth.LoginModel>
+[12:14:16 INF] Attempting login for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
+[12:14:16 WRN] Login failed for user Admin@itrackerApp.com: Invalid email or password. <s:WebApp.Pages.Auth.LoginModel>
+[12:14:21 INF] Attempting login for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
+[12:14:21 WRN] Login failed for user Admin@itrackerApp.com: Invalid email or password. <s:WebApp.Pages.Auth.LoginModel>
+[12:14:26 INF] Attempting login for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
+[12:14:26 WRN] Login failed for user Admin@itrackerApp.com: Invalid email or password. <s:WebApp.Pages.Auth.LoginModel>
+[12:15:32 INF] Admin password reset successful for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.ResetAdminPasswordModel>
+[12:15:43 INF] Attempting login for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
+[12:15:43 INF] Login successful for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
+[12:15:43 INF] Attempting to redirect to Portfolios/Index <s:WebApp.Pages.Auth.LoginModel>
+[12:15:43 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[12:15:46 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[12:15:47 ERR] An error occurred: Unable to resolve service for type 'Microsoft.AspNetCore.Identity.UserManager`1[Domain.Entities.ApplicationUser]' while attempting to activate 'WebApp.Controllers.UserManagementController'. <s:WebApplication.Common.ExceptionHandlerMiddleware>
+System.InvalidOperationException: Unable to resolve service for type 'Microsoft.AspNetCore.Identity.UserManager`1[Domain.Entities.ApplicationUser]' while attempting to activate 'WebApp.Controllers.UserManagementController'.
+   at void Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at object lambda_method503(Closure, IServiceProvider, object[])
+   at Func<ControllerContext, object> Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.CreateControllerFactory(ControllerActionDescriptor descriptor)+CreateController(ControllerContext controllerContext)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(ref State next, ref Scope scope, ref object state, ref bool isCompleted)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at async Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResourceFilter()+Awaited(?)
+   at void Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(ref State next, ref Scope scope, ref object state, ref bool isCompleted)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+   at async Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeAsync()+Awaited(?) x 2
+   at async Task Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at async Task WebApp.Common.AuthorizationHandlerMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Common/AuthorizationHandlerMiddleware.cs:line 37
+   at async RequestDelegate Microsoft.AspNetCore.Builder.UseMiddlewareExtensions+InterfaceMiddlewareBinder.CreateMiddleware(RequestDelegate next)+(?) => { }
+   at async Task Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at async Task WebApplication.Common.ExceptionHandlerMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Common/ExceptionHandlerMiddleware.cs:line 24
+[12:15:53 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[12:15:53 INF] Settings loaded successfully: CurrencySymbol=₹ <s:WebApp.Pages.AdminToolsModel>
+[12:15:55 ERR] An error occurred: Unable to resolve service for type 'Microsoft.AspNetCore.Identity.UserManager`1[Domain.Entities.ApplicationUser]' while attempting to activate 'WebApp.Controllers.UserManagementController'. <s:WebApplication.Common.ExceptionHandlerMiddleware>
+System.InvalidOperationException: Unable to resolve service for type 'Microsoft.AspNetCore.Identity.UserManager`1[Domain.Entities.ApplicationUser]' while attempting to activate 'WebApp.Controllers.UserManagementController'.
+   at void Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at object lambda_method503(Closure, IServiceProvider, object[])
+   at Func<ControllerContext, object> Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.CreateControllerFactory(ControllerActionDescriptor descriptor)+CreateController(ControllerContext controllerContext)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(ref State next, ref Scope scope, ref object state, ref bool isCompleted)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at async Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResourceFilter()+Awaited(?)
+   at void Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(ref State next, ref Scope scope, ref object state, ref bool isCompleted)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+   at async Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeAsync()+Awaited(?) x 2
+   at async Task Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at async Task WebApp.Common.AuthorizationHandlerMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Common/AuthorizationHandlerMiddleware.cs:line 37
+   at async RequestDelegate Microsoft.AspNetCore.Builder.UseMiddlewareExtensions+InterfaceMiddlewareBinder.CreateMiddleware(RequestDelegate next)+(?) => { }
+   at async Task Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at async Task WebApplication.Common.ExceptionHandlerMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Common/ExceptionHandlerMiddleware.cs:line 24
+[12:15:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[12:15:59 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[12:16:02 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[12:16:02 INF] Settings loaded successfully: CurrencySymbol=₹ <s:WebApp.Pages.AdminToolsModel>
+[12:16:14 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[12:20:12 INF] Ensuring database is created... <s:Program>
+[12:20:12 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[12:20:12 INF] Database initialization completed. <s:Program>
+[12:20:12 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[12:20:12 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[12:20:12 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[12:20:12 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[12:20:12 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[12:20:17 ERR] An error occurred: Unable to resolve service for type 'Microsoft.AspNetCore.Identity.UserManager`1[Domain.Entities.ApplicationUser]' while attempting to activate 'WebApp.Controllers.UserManagementController'. <s:WebApplication.Common.ExceptionHandlerMiddleware>
+System.InvalidOperationException: Unable to resolve service for type 'Microsoft.AspNetCore.Identity.UserManager`1[Domain.Entities.ApplicationUser]' while attempting to activate 'WebApp.Controllers.UserManagementController'.
+   at void Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at object lambda_method301(Closure, IServiceProvider, object[])
+   at Func<ControllerContext, object> Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.CreateControllerFactory(ControllerActionDescriptor descriptor)+CreateController(ControllerContext controllerContext)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(ref State next, ref Scope scope, ref object state, ref bool isCompleted)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at async Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResourceFilter()+Awaited(?)
+   at void Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(ref State next, ref Scope scope, ref object state, ref bool isCompleted)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+   at async Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeAsync()+Awaited(?) x 2
+   at async Task Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at async Task WebApp.Common.AuthorizationHandlerMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Common/AuthorizationHandlerMiddleware.cs:line 37
+   at async RequestDelegate Microsoft.AspNetCore.Builder.UseMiddlewareExtensions+InterfaceMiddlewareBinder.CreateMiddleware(RequestDelegate next)+(?) => { }
+   at async Task Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at async Task WebApplication.Common.ExceptionHandlerMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Common/ExceptionHandlerMiddleware.cs:line 24
+[12:20:20 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[12:20:20 INF] Settings loaded successfully: CurrencySymbol=₹ <s:WebApp.Pages.AdminToolsModel>
+[12:20:22 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[12:20:23 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[12:20:25 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[12:20:26 ERR] An error occurred: Unable to resolve service for type 'Microsoft.AspNetCore.Identity.UserManager`1[Domain.Entities.ApplicationUser]' while attempting to activate 'WebApp.Controllers.UserManagementController'. <s:WebApplication.Common.ExceptionHandlerMiddleware>
+System.InvalidOperationException: Unable to resolve service for type 'Microsoft.AspNetCore.Identity.UserManager`1[Domain.Entities.ApplicationUser]' while attempting to activate 'WebApp.Controllers.UserManagementController'.
+   at void Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at object lambda_method301(Closure, IServiceProvider, object[])
+   at Func<ControllerContext, object> Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.CreateControllerFactory(ControllerActionDescriptor descriptor)+CreateController(ControllerContext controllerContext)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(ref State next, ref Scope scope, ref object state, ref bool isCompleted)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at async Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResourceFilter()+Awaited(?)
+   at void Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(ref State next, ref Scope scope, ref object state, ref bool isCompleted)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+   at async Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeAsync()+Awaited(?) x 2
+   at async Task Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at async Task WebApp.Common.AuthorizationHandlerMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Common/AuthorizationHandlerMiddleware.cs:line 37
+   at async RequestDelegate Microsoft.AspNetCore.Builder.UseMiddlewareExtensions+InterfaceMiddlewareBinder.CreateMiddleware(RequestDelegate next)+(?) => { }
+   at async Task Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at async Task WebApplication.Common.ExceptionHandlerMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Common/ExceptionHandlerMiddleware.cs:line 24
+[12:20:31 INF] Attempting login for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
+[12:20:31 WRN] Login failed for user Admin@itrackerApp.com: Invalid email or password. <s:WebApp.Pages.Auth.LoginModel>
+[12:20:39 INF] Attempting login for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
+[12:20:39 INF] Login successful for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
+[12:20:39 INF] Attempting to redirect to Portfolios/Index <s:WebApp.Pages.Auth.LoginModel>
+[12:20:39 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[12:20:44 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[12:20:44 INF] Settings loaded successfully: CurrencySymbol=₹ <s:WebApp.Pages.AdminToolsModel>
+[12:20:44 ERR] An error occurred: Unable to resolve service for type 'Microsoft.AspNetCore.Identity.UserManager`1[Domain.Entities.ApplicationUser]' while attempting to activate 'WebApp.Controllers.UserManagementController'. <s:WebApplication.Common.ExceptionHandlerMiddleware>
+System.InvalidOperationException: Unable to resolve service for type 'Microsoft.AspNetCore.Identity.UserManager`1[Domain.Entities.ApplicationUser]' while attempting to activate 'WebApp.Controllers.UserManagementController'.
+   at void Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at object lambda_method301(Closure, IServiceProvider, object[])
+   at Func<ControllerContext, object> Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.CreateControllerFactory(ControllerActionDescriptor descriptor)+CreateController(ControllerContext controllerContext)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(ref State next, ref Scope scope, ref object state, ref bool isCompleted)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at async Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResourceFilter()+Awaited(?)
+   at void Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(ref State next, ref Scope scope, ref object state, ref bool isCompleted)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+   at async Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeAsync()+Awaited(?) x 2
+   at async Task Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at async Task WebApp.Common.AuthorizationHandlerMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Common/AuthorizationHandlerMiddleware.cs:line 37
+   at async RequestDelegate Microsoft.AspNetCore.Builder.UseMiddlewareExtensions+InterfaceMiddlewareBinder.CreateMiddleware(RequestDelegate next)+(?) => { }
+   at async Task Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at async Task WebApplication.Common.ExceptionHandlerMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Common/ExceptionHandlerMiddleware.cs:line 24
+[12:21:14 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[12:22:21 INF] Ensuring database is created... <s:Program>
+[12:22:22 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[12:22:22 INF] Database initialization completed. <s:Program>
+[12:22:22 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[12:22:22 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[12:22:22 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[12:22:22 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[12:22:22 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[12:22:37 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>

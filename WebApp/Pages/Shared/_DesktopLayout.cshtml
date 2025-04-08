@@ -241,10 +241,11 @@
                     <div class="sidebar__section-title">
                         <span>Administration</span>
                     </div>
-                    <a asp-controller="UserManagement" asp-action="Index" class="sidebar__nav-item text-white d-flex align-items-center" aria-current="page" id="userManagementTab" aria-label="User Management">
+                    <a asp-page="/Users/Index" class="sidebar__nav-item text-white d-flex align-items-center" aria-current="page" id="usersTab" aria-label="Users">
                         <i class="material-icons">people</i>
                         <span>Users</span>
                     </a>
+            
                     <a asp-page="/AdminTools" class="sidebar__nav-item text-white d-flex align-items-center" aria-current="page" id="adminToolsTab" aria-label="Admin Tools">
                         <i class="material-icons">settings</i>
                         <span>Admin Tools</span>

@@ -127,11 +127,6 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-app.MapControllerRoute(
-    name: "userManagement",
-    pattern: "UserManagement/{action=Index}/{id?}",
-    defaults: new { controller = "UserManagement" });
-
 app.MapRazorPages();
 
 app.Run();
