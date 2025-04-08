@@ -103,13 +103,13 @@
                     <table class="table table-hover align-middle mb-0">
                         <thead class="table-light">
                             <tr>
-                                <th class="ps-4">Name</th>
-                                <th class="d-none d-md-table-cell">Category</th>
-                                <th class="d-none d-sm-table-cell">Investment</th>
-                                <th>Value</th>
-                                <th class="d-none d-md-table-cell">Gain/Loss</th>
-                                <th class="d-none d-lg-table-cell">Return</th>
-                                <th class="text-end pe-4">Actions</th>
+                                <th class="ps-4" style="width: 30%;">Name</th>
+                                <th class="d-none d-md-table-cell" style="width: 15%;">Category</th>
+                                <th class="d-none d-sm-table-cell" style="width: 15%;">Investment</th>
+                                <th style="width: 15%;">Value</th>
+                                <th class="d-none d-md-table-cell" style="width: 15%;">Gain/Loss</th>
+                                <th class="d-none d-lg-table-cell" style="width: 5%;">Return</th>
+                                <th class="text-end pe-4" style="width: 5%;">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -127,13 +127,21 @@
                                     <td class="d-none d-md-table-cell">
                                         <span class="badge bg-info bg-opacity-10 text-info px-3 py-2 rounded-pill">@investment.CategoryName</span>
                                     </td>
-                                    <td class="d-none d-sm-table-cell fw-medium">@Html.Raw(Model.FormatCurrency(investment.TotalInvestment))</td>
-                                    <td class="fw-medium">@Html.Raw(Model.FormatCurrency(investment.CurrentValue))</td>
-                                    <td class="d-none d-md-table-cell @(investment.UnrealizedGainLoss >= 0 ? "text-success" : "text-danger")">
-                                        @(investment.UnrealizedGainLoss >= 0 ? "+" : "")@Html.Raw(Model.FormatCurrency(investment.UnrealizedGainLoss))
+                                    <td class="d-none d-sm-table-cell">
+                                        <span class="fw-medium fs-7">@Html.Raw(Model.FormatCurrency(investment.TotalInvestment))</span>
                                     </td>
-                                    <td class="d-none d-lg-table-cell @(investment.ReturnPercentage >= 0 ? "text-success" : "text-danger")">
-                                        @(investment.ReturnPercentage >= 0 ? "+" : "")@Model.FormatNumber(investment.ReturnPercentage * 100, 2)%
+                                    <td>
+                                        <span class="fw-medium fs-7">@Html.Raw(Model.FormatCurrency(investment.CurrentValue))</span>
+                                    </td>
+                                    <td class="d-none d-md-table-cell">
+                                        <span class="fw-medium fs-7 @(investment.UnrealizedGainLoss >= 0 ? "text-success" : "text-danger")" style="white-space: nowrap;">
+                                            @(investment.UnrealizedGainLoss >= 0 ? "+" : "")@Html.Raw(Model.FormatCurrency(investment.UnrealizedGainLoss))
+                                        </span>
+                                    </td>
+                                    <td class="d-none d-lg-table-cell">
+                                        <span class="fw-medium fs-7 @(investment.ReturnPercentage >= 0 ? "text-success" : "text-danger")" style="white-space: nowrap;">
+                                            @(investment.ReturnPercentage >= 0 ? "+" : "")@Model.FormatNumber(investment.ReturnPercentage * 100, 2)%
+                                        </span>
                                     </td>
                                     <td class="text-end pe-4">
                                         <div class="btn-group">

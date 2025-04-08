@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Set variables
-RESOURCE_GROUP="iTrackerResourceGroup"
-APP_SERVICE_NAME="iTrackerApp"
+RESOURCE_GROUP="iTracker-group"
+APP_SERVICE_NAME="itrackerapp"
 LOCATION="eastus"
 
 # Create deployment package
