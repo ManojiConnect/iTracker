@@ -10,7 +10,7 @@ using Infrastructure.Identity;
 namespace WebApp.Controllers;
 
 [Authorize(Roles = "Admin")]
-[Route("Users")]
+[Route("UserManagement")]
 public class UserManagementController : Controller
 {
     private readonly UserManager<ApplicationUser> _userManager;
