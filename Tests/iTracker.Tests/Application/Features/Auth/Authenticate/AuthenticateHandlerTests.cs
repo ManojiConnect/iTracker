@@ -104,7 +104,7 @@ public class AuthenticateHandlerTests
             RememberMe = true
         };
 
-        var user = new ApplicationUser
+        var user = new Infrastructure.Identity.ApplicationUser
         {
             Id = Guid.NewGuid().ToString(),
             Email = request.Email,

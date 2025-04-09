@@ -16,14 +16,14 @@ public class SettingsService : ISettingsService
 
     public SettingsService(IContext context, IMemoryCache cache)
     {
-        _context = context;
-        _cache = cache;
+        _context = context ?? throw new ArgumentNullException(nameof(context));
+        _cache = cache ?? throw new ArgumentNullException(nameof(cache));
     }
 
     public async Task<SystemSettings> GetAllSettingsAsync()
     {
         // Try to get from cache
-        if (_cache.TryGetValue(SettingsCacheKey, out SystemSettings cachedSettings))
+        if (_cache.TryGetValue(SettingsCacheKey, out SystemSettings? cachedSettings) && cachedSettings != null)
         {
             return cachedSettings;
         }
@@ -58,13 +58,19 @@ public class SettingsService : ISettingsService
 
     public async Task<string> GetSettingAsync(string key)
     {
+        if (string.IsNullOrEmpty(key))
+        {
+            return string.Empty;
+        }
+
         var settings = await GetAllSettingsAsync();
         
         // Use reflection to get property value
         var property = settings.GetType().GetProperty(key);
         if (property != null)
         {
-            return property.GetValue(settings)?.ToString() ?? string.Empty;
+            var value = property.GetValue(settings);
+            return value?.ToString() ?? string.Empty;
         }
         
         // Try to get from key-value settings
@@ -76,6 +82,11 @@ public class SettingsService : ISettingsService
 
     public async Task<bool> UpdateSettingsAsync(SystemSettings updatedSettings)
     {
+        if (updatedSettings == null)
+        {
+            return false;
+        }
+
         try
         {
             var existingSettings = await _context.SystemSettings.FirstOrDefaultAsync();
@@ -114,6 +125,11 @@ public class SettingsService : ISettingsService
 
     public async Task<bool> UpdateSettingAsync(string key, string value)
     {
+        if (string.IsNullOrEmpty(key))
+        {
+            return false;
+        }
+
         try
         {
             var settings = await GetAllSettingsAsync();

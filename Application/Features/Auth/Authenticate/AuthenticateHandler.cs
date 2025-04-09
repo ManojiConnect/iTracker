@@ -23,6 +23,10 @@ using Infrastructure.Identity;
 
 namespace Application.Features.Auth.Authenticate;
 
+/// <summary>
+/// Handles user authentication requests. This handler is responsible for validating user credentials,
+/// managing authentication cookies, and setting up user claims for authorization.
+/// </summary>
 public class AuthenticateHandler : IRequestHandler<AuthenticateRequest, Result<AuthenticateResponse>>
 {
     private readonly ILogger<AuthenticateHandler> _logger;
@@ -33,6 +37,16 @@ public class AuthenticateHandler : IRequestHandler<AuthenticateRequest, Result<A
     private readonly IHttpContextAccessor _httpContextAccessor;
     private readonly IMediator _mediator;
 
+    /// <summary>
+    /// Initializes a new instance of the AuthenticateHandler with required dependencies.
+    /// </summary>
+    /// <param name="logger">Logger for recording authentication events and errors.</param>
+    /// <param name="configuration">Application configuration for authentication settings.</param>
+    /// <param name="userManager">Identity user manager for user operations.</param>
+    /// <param name="signInManager">Identity sign-in manager for authentication operations.</param>
+    /// <param name="context">Database context for data access.</param>
+    /// <param name="httpContextAccessor">Accessor for the current HTTP context.</param>
+    /// <param name="mediator">Mediator for handling additional requests.</param>
     public AuthenticateHandler(
         ILogger<AuthenticateHandler> logger,
         IConfiguration configuration,
@@ -51,25 +65,39 @@ public class AuthenticateHandler : IRequestHandler<AuthenticateRequest, Result<A
         _mediator = mediator;
     }
 
+    /// <summary>
+    /// Handles the authentication request by validating user credentials and setting up authentication.
+    /// </summary>
+    /// <param name="request">The authentication request containing user credentials.</param>
+    /// <param name="cancellationToken">Cancellation token for the operation.</param>
+    /// <returns>
+    /// A Result containing either:
+    /// - Success: AuthenticateResponse with user details if authentication succeeds
+    /// - Error: Error message if authentication fails (invalid credentials, inactive account, etc.)
+    /// </returns>
     public async Task<Result<AuthenticateResponse>> Handle(AuthenticateRequest request, CancellationToken cancellationToken)
     {
+        // Find user by email
         var user = await _userManager.FindByEmailAsync(request.Email);
         if (user == null)
         {
             return Result.Error("Invalid email or password.");
         }
 
+        // Check if user account is active
         if (!user.IsActive)
         {
             return Result.Error("User account is inactive.");
         }
 
+        // Attempt to sign in with provided credentials
         var result = await _signInManager.PasswordSignInAsync(user, request.Password, request.RememberMe, false);
         if (!result.Succeeded)
         {
             return Result.Error("Invalid email or password.");
         }
 
+        // Create claims for the authenticated user
         var claims = new List<Claim>
         {
             new Claim(ClaimTypes.NameIdentifier, user.Id),
@@ -78,9 +106,11 @@ public class AuthenticateHandler : IRequestHandler<AuthenticateRequest, Result<A
             new Claim("LastName", user.LastName)
         };
 
+        // Add user roles to claims
         var roles = await _userManager.GetRolesAsync(user);
         claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
 
+        // Create authentication ticket
         var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
         var authProperties = new AuthenticationProperties
         {
@@ -90,18 +120,20 @@ public class AuthenticateHandler : IRequestHandler<AuthenticateRequest, Result<A
             RedirectUri = "/Portfolios/Index"
         };
 
+        // Sign in the user and create authentication cookie
         await _httpContextAccessor.HttpContext!.SignInAsync(
             CookieAuthenticationDefaults.AuthenticationScheme,
             new ClaimsPrincipal(claimsIdentity),
             authProperties);
 
-        // Verify the cookie was set
+        // Verify the authentication cookie was set
         var cookie = _httpContextAccessor.HttpContext!.Response.Headers["Set-Cookie"];
         if (!cookie.Any(c => c.Contains("AuthCookie")))
         {
             return Result.Error("Authentication cookie was not set");
         }
 
+        // Return successful authentication response
         return Result.Success(new AuthenticateResponse
         {
             Id = user.Id,

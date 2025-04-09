@@ -16,7 +16,7 @@ namespace iTracker.Tests.Application.Features.Users.CreateUser;
 
 public class CreateUserHandlerTests
 {
-    private readonly Mock<UserManager<ApplicationUser>> _userManager;
+    private readonly Mock<UserManager<Infrastructure.Identity.ApplicationUser>> _userManager;
     private readonly Mock<IContext> _context;
     private readonly Mock<ILogger<CreateUserHandler>> _logger;
     private readonly Mock<IConfiguration> _configuration;
@@ -26,15 +26,29 @@ public class CreateUserHandlerTests
 
     public CreateUserHandlerTests()
     {
-        var userStore = new Mock<IUserStore<ApplicationUser>>();
-        _userManager = new Mock<UserManager<ApplicationUser>>(userStore.Object, null, null, null, null, null, null, null, null);
+        var userStore = new Mock<IUserStore<Infrastructure.Identity.ApplicationUser>>();
+        _userManager = new Mock<UserManager<Infrastructure.Identity.ApplicationUser>>(
+            userStore.Object, 
+            null, 
+            null, 
+            null, 
+            null, 
+            null, 
+            null, 
+            null, 
+            null);
         _context = new Mock<IContext>();
         _logger = new Mock<ILogger<CreateUserHandler>>();
         _configuration = new Mock<IConfiguration>();
         _mailService = new Mock<IMailService>();
         
         var roleStore = new Mock<IRoleStore<IdentityRole>>();
-        _roleManager = new Mock<RoleManager<IdentityRole>>(roleStore.Object, null, null, null, null);
+        _roleManager = new Mock<RoleManager<IdentityRole>>(
+            roleStore.Object, 
+            null, 
+            null, 
+            null, 
+            null);
 
         _handler = new CreateUserHandler(
             _context.Object,
@@ -60,7 +74,7 @@ public class CreateUserHandlerTests
             IsActive = true
         };
 
-        var createdUser = new ApplicationUser
+        var createdUser = new Infrastructure.Identity.ApplicationUser
         {
             Id = "testUserId",
             Email = request.Email,
@@ -75,11 +89,11 @@ public class CreateUserHandlerTests
 
         // Setup FindByEmailAsync to return null first (user doesn't exist) and then the created user
         _userManager.SetupSequence(x => x.FindByEmailAsync(request.Email))
-            .ReturnsAsync((ApplicationUser)null)
+            .ReturnsAsync((Infrastructure.Identity.ApplicationUser)null)
             .ReturnsAsync(createdUser);
 
         // Setup CreateAsync to return success
-        _userManager.Setup(x => x.CreateAsync(It.Is<ApplicationUser>(u => 
+        _userManager.Setup(x => x.CreateAsync(It.Is<Infrastructure.Identity.ApplicationUser>(u => 
             u.Email == request.Email &&
             u.FirstName == request.FirstName &&
             u.LastName == request.LastName &&
@@ -88,7 +102,7 @@ public class CreateUserHandlerTests
             .ReturnsAsync(IdentityResult.Success);
 
         // Setup AddToRoleAsync to return success
-        _userManager.Setup(x => x.AddToRoleAsync(It.Is<ApplicationUser>(u => u.Email == request.Email), request.Role!))
+        _userManager.Setup(x => x.AddToRoleAsync(It.Is<Infrastructure.Identity.ApplicationUser>(u => u.Email == request.Email), request.Role!))
             .ReturnsAsync(IdentityResult.Success);
 
         // Act
@@ -98,13 +112,13 @@ public class CreateUserHandlerTests
         Assert.True(result.IsSuccess);
         Assert.True(result.Value);
         _userManager.Verify(x => x.FindByEmailAsync(request.Email), Times.Exactly(2));
-        _userManager.Verify(x => x.CreateAsync(It.Is<ApplicationUser>(u => 
+        _userManager.Verify(x => x.CreateAsync(It.Is<Infrastructure.Identity.ApplicationUser>(u => 
             u.Email == request.Email &&
             u.FirstName == request.FirstName &&
             u.LastName == request.LastName &&
             u.PhoneNumber == request.PhoneNumber), 
             request.Password), Times.Once);
-        _userManager.Verify(x => x.AddToRoleAsync(It.Is<ApplicationUser>(u => u.Email == request.Email), request.Role!), Times.Once);
+        _userManager.Verify(x => x.AddToRoleAsync(It.Is<Infrastructure.Identity.ApplicationUser>(u => u.Email == request.Email), request.Role!), Times.Once);
     }
 
     [Fact]
@@ -121,7 +135,7 @@ public class CreateUserHandlerTests
             Role = "User"
         };
 
-        var existingUser = new ApplicationUser
+        var existingUser = new Infrastructure.Identity.ApplicationUser
         {
             Email = request.Email,
             FirstName = "Existing",
