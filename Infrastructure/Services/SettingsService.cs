@@ -130,31 +130,8 @@ public class SettingsService : ISettingsService
                 return true;
             }
             
-            // Try to update key-value setting
-            var keyValueSetting = await _context.SystemSettings
-                .FirstOrDefaultAsync(s => s.SettingKey == key);
-            
-            if (keyValueSetting == null)
-            {
-                keyValueSetting = new SystemSettings
-                {
-                    SettingKey = key,
-                    SettingValue = value
-                };
-                _context.SystemSettings.Add(keyValueSetting);
-            }
-            else
-            {
-                keyValueSetting.SettingValue = value;
-                _context.SystemSettings.Update(keyValueSetting);
-            }
-            
-            await _context.SaveChangesAsync();
-            
-            // Invalidate cache
-            _cache.Remove(SettingsCacheKey);
-            
-            return true;
+            // If property doesn't exist, return false
+            return false;
         }
         catch (Exception)
         {

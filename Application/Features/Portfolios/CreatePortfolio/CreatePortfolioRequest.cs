@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel.DataAnnotations;
 using System.Threading;
 using System.Threading.Tasks;
 using Application.Abstractions.Data;
@@ -11,8 +12,15 @@ namespace Application.Features.Portfolios.CreatePortfolio;
 
 public record CreatePortfolioRequest : IRequest<Result<int>>
 {
+    [Required(ErrorMessage = "Name is required")]
+    [StringLength(100, ErrorMessage = "Name cannot exceed 100 characters")]
     public required string Name { get; init; }
+    
+    [StringLength(500)]
     public string? Description { get; init; }
+    
+    [Required]
+    [Range(0, double.MaxValue, ErrorMessage = "Initial value must be greater than or equal to 0")]
     public required decimal InitialValue { get; init; }
 }
 
@@ -35,6 +43,18 @@ public class CreatePortfolioHandler : IRequestHandler<CreatePortfolioRequest, Re
         {
             return Result.Unauthorized();
         }
+
+        // Validate required fields
+        if (string.IsNullOrEmpty(request.Name))
+        {
+            return Result.Error("Name is required");
+        }
+
+        // Validate name length
+        if (request.Name.Length > 100)
+        {
+            return Result.Error("Name cannot exceed 100 characters");
+        }
         
         // Check if portfolio with the same name already exists for this user
         var existingPortfolio = await _context.Portfolios
@@ -42,7 +62,7 @@ public class CreatePortfolioHandler : IRequestHandler<CreatePortfolioRequest, Re
             
         if (existingPortfolio)
         {
-            return Result.Error("A portfolio with this name already exists");
+            return Result.Error("Portfolio with this name already exists");
         }
 
         var portfolio = new Domain.Entities.Portfolio
@@ -60,12 +80,18 @@ public class CreatePortfolioHandler : IRequestHandler<CreatePortfolioRequest, Re
             ModifiedOn = DateTime.UtcNow,
             IsActive = true,
             IsDelete = false,
-            UserId = userId // Set the UserId to the current user's ID
+            UserId = userId
         };
 
-        _context.Portfolios.Add(portfolio);
-        await _context.SaveChangesAsync(cancellationToken);
-
-        return Result.Success(portfolio.Id);
+        try
+        {
+            _context.Portfolios.Add(portfolio);
+            await _context.SaveChangesAsync(cancellationToken);
+            return Result.Success(portfolio.Id);
+        }
+        catch (Exception)
+        {
+            return Result.Error("Failed to create portfolio");
+        }
     }
 } 

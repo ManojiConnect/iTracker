@@ -6,6 +6,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
+using Moq.Language.Flow;
 
 namespace iTracker.Tests.Common.Extensions;
 
@@ -21,6 +22,133 @@ public static class MockDbSetExtensions
         mock.As<IAsyncEnumerable<T>>().Setup(m => m.GetAsyncEnumerator(It.IsAny<CancellationToken>()))
             .Returns(new TestAsyncEnumerator<T>(data.GetEnumerator()));
         return mock;
+    }
+
+    public static IReturnsResult<TMock> ReturnsAsync<TMock, TResult>(
+        this ISetup<TMock, Task<TResult>> setup,
+        TResult value) where TMock : class
+    {
+        return setup.Returns(Task.FromResult(value));
+    }
+
+    public static IReturnsResult<TMock> ReturnsAsync<TMock, TResult>(
+        this ISetup<TMock, Task<IEnumerable<TResult>>> setup,
+        IEnumerable<TResult> value) where TMock : class
+    {
+        return setup.Returns(Task.FromResult(value));
+    }
+
+    public static IReturnsResult<TMock> ReturnsAsync<TMock, TResult>(
+        this ISetup<TMock, Task<IList<TResult>>> setup,
+        IList<TResult> value) where TMock : class
+    {
+        return setup.Returns(Task.FromResult(value));
+    }
+
+    public static IReturnsResult<TMock> ReturnsAsync<TMock, TResult>(
+        this ISetup<TMock, Task<List<TResult>>> setup,
+        List<TResult> value) where TMock : class
+    {
+        return setup.Returns(Task.FromResult(value));
+    }
+
+    public static IReturnsResult<TMock> ReturnsAsync<TMock, TResult>(
+        this ISetup<TMock, Task<ICollection<TResult>>> setup,
+        ICollection<TResult> value) where TMock : class
+    {
+        return setup.Returns(Task.FromResult(value));
+    }
+
+    public static IReturnsResult<TMock> ReturnsAsync<TMock, TResult>(
+        this ISetup<TMock, Task<HashSet<TResult>>> setup,
+        HashSet<TResult> value) where TMock : class
+    {
+        return setup.Returns(Task.FromResult(value));
+    }
+
+    public static IReturnsResult<TMock> ReturnsAsync<TMock, TResult>(
+        this ISetup<TMock, Task<Dictionary<string, TResult>>> setup,
+        Dictionary<string, TResult> value) where TMock : class
+    {
+        return setup.Returns(Task.FromResult(value));
+    }
+
+    public static IReturnsResult<TMock> ReturnsAsync<TMock, TResult>(
+        this ISetup<TMock, Task<IDictionary<string, TResult>>> setup,
+        IDictionary<string, TResult> value) where TMock : class
+    {
+        return setup.Returns(Task.FromResult(value));
+    }
+
+    public static IReturnsResult<TMock> ReturnsAsync<TMock, TResult>(
+        this ISetup<TMock, Task<ILookup<string, TResult>>> setup,
+        ILookup<string, TResult> value) where TMock : class
+    {
+        return setup.Returns(Task.FromResult(value));
+    }
+
+    public static IReturnsResult<TMock> ReturnsAsync<TMock, TResult>(
+        this ISetup<TMock, Task<IGrouping<string, TResult>>> setup,
+        IGrouping<string, TResult> value) where TMock : class
+    {
+        return setup.Returns(Task.FromResult(value));
+    }
+
+    public static IReturnsResult<TMock> ReturnsAsync<TMock, TResult>(
+        this ISetup<TMock, Task<IOrderedEnumerable<TResult>>> setup,
+        IOrderedEnumerable<TResult> value) where TMock : class
+    {
+        return setup.Returns(Task.FromResult(value));
+    }
+
+    public static IReturnsResult<TMock> ReturnsAsync<TMock, TResult>(
+        this ISetup<TMock, Task<IOrderedQueryable<TResult>>> setup,
+        IOrderedQueryable<TResult> value) where TMock : class
+    {
+        return setup.Returns(Task.FromResult(value));
+    }
+
+    public static IReturnsResult<TMock> ReturnsAsync<TMock, TResult>(
+        this ISetup<TMock, Task<IQueryable<TResult>>> setup,
+        IQueryable<TResult> value) where TMock : class
+    {
+        return setup.Returns(Task.FromResult(value));
+    }
+
+    public static IReturnsResult<TMock> ReturnsAsync<TMock, TResult>(
+        this ISetup<TMock, Task<TResult[]>> setup,
+        TResult[] value) where TMock : class
+    {
+        return setup.Returns(Task.FromResult(value));
+    }
+
+    public static IReturnsResult<TMock> ReturnsAsync<TMock, TResult>(
+        this ISetup<TMock, Task<TResult>> setup,
+        Func<TResult> valueFactory) where TMock : class
+    {
+        return setup.Returns(Task.FromResult(valueFactory()));
+    }
+
+    public static IReturnsResult<TMock> ReturnsAsync<TMock, TResult>(
+        this ISetup<TMock, Task<TResult>> setup,
+        Func<Task<TResult>> valueFactory) where TMock : class
+    {
+        return setup.Returns(valueFactory());
+    }
+
+    public static IReturnsResult<TMock> ReturnsAsync<TMock, TResult>(
+        this ISetup<TMock, Task<TResult>> setup,
+        Func<CancellationToken, Task<TResult>> valueFactory) where TMock : class
+    {
+        return setup.Returns<CancellationToken>(valueFactory);
+    }
+
+    public static void SetupQueryable<T>(this Mock<DbSet<T>> mockSet, IQueryable<T> data) where T : class
+    {
+        mockSet.As<IQueryable<T>>().Setup(m => m.Provider).Returns(data.Provider);
+        mockSet.As<IQueryable<T>>().Setup(m => m.Expression).Returns(data.Expression);
+        mockSet.As<IQueryable<T>>().Setup(m => m.ElementType).Returns(data.ElementType);
+        mockSet.As<IQueryable<T>>().Setup(m => m.GetEnumerator()).Returns(data.GetEnumerator());
     }
 }
 

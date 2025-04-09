@@ -56,13 +56,18 @@ public class AuthenticateHandler : IRequestHandler<AuthenticateRequest, Result<A
         var user = await _userManager.FindByEmailAsync(request.Email);
         if (user == null)
         {
-            return Result.Invalid(new[] { new ValidationError("Invalid", "Invalid email or password.") });
+            return Result.Error("Invalid email or password.");
+        }
+
+        if (!user.IsActive)
+        {
+            return Result.Error("User account is inactive.");
         }
 
         var result = await _signInManager.PasswordSignInAsync(user, request.Password, request.RememberMe, false);
         if (!result.Succeeded)
         {
-            return Result.Invalid(new[] { new ValidationError("Invalid", "Invalid email or password.") });
+            return Result.Error("Invalid email or password.");
         }
 
         var claims = new List<Claim>
@@ -94,7 +99,7 @@ public class AuthenticateHandler : IRequestHandler<AuthenticateRequest, Result<A
         var cookie = _httpContextAccessor.HttpContext!.Response.Headers["Set-Cookie"];
         if (!cookie.Any(c => c.Contains("AuthCookie")))
         {
-            throw new InvalidOperationException("Authentication cookie was not set");
+            return Result.Error("Authentication cookie was not set");
         }
 
         return Result.Success(new AuthenticateResponse
