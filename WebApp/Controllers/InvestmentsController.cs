@@ -24,7 +24,6 @@ public class InvestmentsController : Controller
         }
 
         var settings = await _settingsService.GetSettingsAsync();
-        settings.DefaultPortfolioView = viewType;
         
         // Use the service to save the settings
         var success = await _settingsService.SaveSettingsAsync(settings);

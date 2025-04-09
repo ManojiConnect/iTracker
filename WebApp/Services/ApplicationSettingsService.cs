@@ -167,10 +167,8 @@ public class ApplicationSettingsService : IApplicationSettingsService
             DecimalPlaces = 2,
             DateFormat = "MM/dd/yyyy",
             FinancialYearStartMonth = 4,
-            DefaultPortfolioView = "list",
             PerformanceCalculationMethod = "simple",
-            SessionTimeoutMinutes = 30,
-            MinPasswordLength = 8
+            SessionTimeoutMinutes = 30
         };
         
         // Cache the default settings

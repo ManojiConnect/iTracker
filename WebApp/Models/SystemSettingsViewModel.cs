@@ -27,9 +27,6 @@ public class SystemSettingsViewModel
     public int FinancialYearStartMonth { get; set; } = 4;
 
     // Investment Settings
-    [Display(Name = "Default Portfolio View")]
-    public string DefaultPortfolioView { get; set; } = "list";
-    
     [Display(Name = "Performance Calculation Method")]
     public string PerformanceCalculationMethod { get; set; } = "simple";
 
@@ -37,8 +34,8 @@ public class SystemSettingsViewModel
     [Display(Name = "Session Timeout (minutes)")]
     [Range(5, 120, ErrorMessage = "Session timeout must be between 5 and 120 minutes")]
     public int SessionTimeoutMinutes { get; set; } = 30;
-    
-    [Display(Name = "Minimum Password Length")]
-    [Range(6, 20, ErrorMessage = "Minimum password length must be between 6 and 20 characters")]
-    public int MinPasswordLength { get; set; } = 8;
+
+    // View Settings
+    [Display(Name = "Default Portfolio View")]
+    public string DefaultPortfolioView { get; set; } = "list";
 } 

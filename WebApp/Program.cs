@@ -130,3 +130,6 @@ app.MapControllerRoute(
 app.MapRazorPages();
 
 app.Run();
+
+// This needs to be at the end of the file
+public partial class Program { }

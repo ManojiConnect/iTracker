@@ -5,8 +5,7 @@
   "DecimalPlaces": 2,
   "DateFormat": "MM/dd/yyyy",
   "FinancialYearStartMonth": 4,
-  "DefaultPortfolioView": "list",
-  "PerformanceCalculationMethod": "simple",
-  "SessionTimeoutMinutes": 30,
-  "MinPasswordLength": 8
+  "PerformanceCalculationMethod": "annualized",
+  "SessionTimeoutMinutes": 5,
+  "DefaultPortfolioView": "list"
 }

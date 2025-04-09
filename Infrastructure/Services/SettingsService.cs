@@ -42,10 +42,8 @@ public class SettingsService : ISettingsService
                 DecimalPlaces = 2,
                 DateFormat = "MM/dd/yyyy",
                 FinancialYearStartMonth = 4,
-                DefaultPortfolioView = "list",
                 PerformanceCalculationMethod = "simple",
-                SessionTimeoutMinutes = 30,
-                MinPasswordLength = 8
+                SessionTimeoutMinutes = 30
             };
             
             _context.SystemSettings.Add(settings);
@@ -95,10 +93,8 @@ public class SettingsService : ISettingsService
                 existingSettings.DecimalPlaces = updatedSettings.DecimalPlaces;
                 existingSettings.DateFormat = updatedSettings.DateFormat;
                 existingSettings.FinancialYearStartMonth = updatedSettings.FinancialYearStartMonth;
-                existingSettings.DefaultPortfolioView = updatedSettings.DefaultPortfolioView;
                 existingSettings.PerformanceCalculationMethod = updatedSettings.PerformanceCalculationMethod;
                 existingSettings.SessionTimeoutMinutes = updatedSettings.SessionTimeoutMinutes;
-                existingSettings.MinPasswordLength = updatedSettings.MinPasswordLength;
                 
                 _context.SystemSettings.Update(existingSettings);
             }

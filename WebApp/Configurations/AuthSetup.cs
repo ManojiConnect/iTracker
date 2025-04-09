@@ -7,6 +7,9 @@ using Infrastructure.Identity;
 using System.Security.Claims;
 using System.Text;
 using Domain.Entities;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Http;
+using WebApp.Services;
 
 namespace WebApp.Configurations;
 
@@ -31,15 +34,17 @@ public static class AuthSetup
             options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
             options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
         })
-        .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
+        .AddCookie(options =>
         {
             options.Cookie.Name = "AuthCookie";
             options.Cookie.HttpOnly = true;
             options.Cookie.SecurePolicy = CookieSecurePolicy.None;
             options.Cookie.SameSite = SameSiteMode.Lax;
 
-            // Set cookie expiration to 7 days
-            options.ExpireTimeSpan = TimeSpan.FromDays(7);
+            // Get session timeout from settings service
+            var settingsService = services.BuildServiceProvider().GetRequiredService<IApplicationSettingsService>();
+            var settings = settingsService.GetSettingsAsync().GetAwaiter().GetResult();
+            options.ExpireTimeSpan = TimeSpan.FromMinutes(settings.SessionTimeoutMinutes);
 
             options.LoginPath = "/Auth/Login";
             options.LogoutPath = "/Auth/Logout";

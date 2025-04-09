@@ -100,14 +100,6 @@
                         <h6 class="fw-bold border-bottom pb-2 mb-3">Investment Settings</h6>
                         
                         <div class="mb-3">
-                            <label for="defaultView" class="form-label">Default Portfolio View</label>
-                            <select class="form-select" id="defaultView" asp-for="Settings.DefaultPortfolioView">
-                                <option value="list">List View</option>
-                                <option value="grid">Grid View</option>
-                            </select>
-                        </div>
-                        
-                        <div class="mb-3">
                             <label for="performanceCalculation" class="form-label">Performance Calculation</label>
                             <select class="form-select" id="performanceCalculation" asp-for="Settings.PerformanceCalculationMethod">
                                 <option value="simple">Simple Return</option>
@@ -123,11 +115,6 @@
                         <div class="mb-3">
                             <label for="sessionTimeout" class="form-label">Session Timeout (minutes)</label>
                             <input type="number" class="form-control" id="sessionTimeout" asp-for="Settings.SessionTimeoutMinutes" min="5" max="120" />
-                        </div>
-                        
-                        <div class="mb-3">
-                            <label for="minPasswordLength" class="form-label">Minimum Password Length</label>
-                            <input type="number" class="form-control" id="minPasswordLength" asp-for="Settings.MinPasswordLength" min="6" max="20" />
                         </div>
                     </div>
                 </div>

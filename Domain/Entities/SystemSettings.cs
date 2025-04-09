@@ -15,12 +15,10 @@ public class SystemSettings : Entity
     public int FinancialYearStartMonth { get; set; } = 4; // April
 
     // Investment Settings
-    public string DefaultPortfolioView { get; set; } = "list";
     public string PerformanceCalculationMethod { get; set; } = "simple";
 
     // System Settings
     public int SessionTimeoutMinutes { get; set; } = 30;
-    public int MinPasswordLength { get; set; } = 8;
     
     // Additional Settings
     public string SettingKey { get; set; } = string.Empty;

@@ -53,49 +53,51 @@ public class AdminToolsModel : PageModel
                 DecimalPlaces = 2,
                 DateFormat = "MM/dd/yyyy",
                 FinancialYearStartMonth = 4,
-                DefaultPortfolioView = "list",
                 PerformanceCalculationMethod = "simple",
-                SessionTimeoutMinutes = 30,
-                MinPasswordLength = 8
+                SessionTimeoutMinutes = 30
             };
         }
     }
     
     public async Task<IActionResult> OnPostAsync()
     {
+        if (!ModelState.IsValid)
+        {
+            return Page();
+        }
+
         try
         {
-            if (!ModelState.IsValid)
+            // Validate settings
+            if (Settings.DecimalSeparator == Settings.ThousandsSeparator)
             {
-                ErrorMessage = "Please correct the errors in the form.";
+                ModelState.AddModelError(string.Empty, "Decimal separator and thousands separator cannot be the same.");
                 return Page();
             }
-            
+
             _logger.LogInformation("Saving settings: CurrencySymbol={Symbol}", Settings.CurrencySymbol);
             
-            // Save settings using service
-            var result = await _settingsService.SaveSettingsAsync(Settings);
+            // Save settings
+            var success = await _settingsService.SaveSettingsAsync(Settings);
             
-            if (result)
+            if (success)
             {
                 // Force refresh of settings in memory
                 Settings = await _settingsService.GetSettingsAsync();
                 _logger.LogInformation("Settings saved and refreshed: {Symbol}", Settings.CurrencySymbol);
-                SuccessMessage = "Settings have been saved successfully.";
+                SuccessMessage = "Settings updated successfully.";
             }
             else
             {
-                ErrorMessage = "Failed to save settings.";
+                ErrorMessage = "Failed to update settings.";
             }
-            
-            // Return to the same page to see updated settings
-            return RedirectToPage();
         }
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error saving settings");
             ErrorMessage = $"An error occurred: {ex.Message}";
-            return Page();
         }
+
+        return RedirectToPage();
     }
 } 
