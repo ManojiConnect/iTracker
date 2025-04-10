@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 namespace Application.Features.Auth.ForgotPassword;
 public record ForgotPasswordRequest : IRequest<Result<bool>>
 {
-
-    public string Email { get; set; }
-
+    [Required]
+    [EmailAddress]
+    public string Email { get; set; } = string.Empty;
 }

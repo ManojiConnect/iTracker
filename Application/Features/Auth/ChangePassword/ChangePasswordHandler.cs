@@ -32,7 +32,7 @@ public class ChangePasswordHandler : IRequestHandler<ChangePasswordRequest, Resu
         {
             return Result.NotFound();
         }
-        var result = await _userManager.ChangePasswordAsync(user, request.CurrentPasword, request.NewPassword);
+        var result = await _userManager.ChangePasswordAsync(user, request.CurrentPassword, request.NewPassword);
         if (result.Succeeded)
         {
             await _signInManager.SignInAsync(user, true);

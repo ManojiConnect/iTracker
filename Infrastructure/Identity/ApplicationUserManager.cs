@@ -105,7 +105,7 @@ public class ApplicationUserManager : UserManager<ApplicationUser>, IUserManager
     async Task<IApplicationUser> IUserManager.FindByEmailAsync(string email)
     {
         var user = await FindByEmailAsync(email);
-        return user;
+        return user ?? throw new InvalidOperationException($"User with email '{email}' not found.");
     }
 
     public async Task<string> GeneratePasswordResetTokenAsync(IApplicationUser user)

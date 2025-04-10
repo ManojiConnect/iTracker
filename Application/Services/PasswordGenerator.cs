@@ -15,7 +15,7 @@ public static class PasswordGenerator
         string validChars = lowercaseChars + uppercaseChars + digitChars + specialChars;
         char[] charArray = validChars.ToCharArray();
 
-        using (RNGCryptoServiceProvider crypto = new RNGCryptoServiceProvider())
+        using (var crypto = RandomNumberGenerator.Create())
         {
             byte[] data = new byte[length];
             crypto.GetBytes(data);
@@ -31,9 +31,7 @@ public static class PasswordGenerator
                 passwordBuilder.Append(charArray[data[i] % charArray.Length]);
             }
 
-            string password = passwordBuilder.ToString();
-
-            return password;
+            return passwordBuilder.ToString();
         }
     }
 }

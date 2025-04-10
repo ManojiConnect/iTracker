@@ -92,24 +92,37 @@
     <div class="card shadow-sm">
         <div class="card-header bg-light d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center py-3">
             <h5 class="mb-3 mb-md-0">All Investments</h5>
-            <div class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center">
-                <div class="input-group mb-3 mb-sm-0 me-sm-2" style="max-width: 300px;">
+            <div class="d-flex flex-column flex-sm-row gap-3 w-100">
+                <div class="input-group flex-grow-1" style="max-width: 300px;">
                     <span class="input-group-text bg-white border-end-0">
                         <i class="material-icons fs-5">search</i>
                     </span>
                     <input type="text" id="searchInput" class="form-control border-start-0" placeholder="Search investments..." onkeyup="filterItems()">
                 </div>
-                <div class="input-group mb-3 mb-sm-0 me-sm-2" style="max-width: 200px;">
-                    <span class="input-group-text bg-white border-end-0">
-                        <i class="material-icons fs-5">category</i>
-                    </span>
-                    <select id="categoryFilter" class="form-select border-start-0" onchange="filterByCategory()">
-                        <option value="">All Categories</option>
-                        @foreach (var category in Model.Categories)
-                        {
-                            <option value="@category">@category</option>
-                        }
-                    </select>
+                <div class="d-flex gap-2">
+                    <div class="input-group" style="max-width: 200px;">
+                        <span class="input-group-text bg-white border-end-0">
+                            <i class="material-icons fs-5">category</i>
+                        </span>
+                        <select id="categoryFilter" class="form-select border-start-0" onchange="filterByCategory()">
+                            <option value="">All Categories</option>
+                            @foreach (var category in Model.Categories)
+                            {
+                                <option value="@category">@category</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="input-group" style="max-width: 220px;">
+                        <span class="input-group-text bg-white border-end-0">
+                            <i class="material-icons fs-5">view_list</i>
+                        </span>
+                        <select id="pageSize" class="form-select border-start-0" onchange="changePageSize(this.value)">
+                            <option value="10" selected="@(Model.PageSize == 10)">10 per page</option>
+                            <option value="25" selected="@(Model.PageSize == 25)">25 per page</option>
+                            <option value="50" selected="@(Model.PageSize == 50)">50 per page</option>
+                            <option value="100" selected="@(Model.PageSize == 100)">100 per page</option>
+                        </select>
+                    </div>
                 </div>
             </div>
         </div>
@@ -330,6 +343,13 @@
             
             // Reorder rows
             rows.forEach(row => tbody.appendChild(row));
+        }
+        
+        function changePageSize(size) {
+            const urlParams = new URLSearchParams(window.location.search);
+            urlParams.set('pageSize', size);
+            urlParams.set('pageNumber', '1'); // Reset to first page when changing page size
+            window.location.href = window.location.pathname + '?' + urlParams.toString();
         }
     </script>
 }

@@ -40,7 +40,7 @@ public static class StringExtensions
     public static string ToBase64(this string txt) => Convert.ToBase64String(Encoding.UTF8.GetBytes(txt));
     public static string ToBase64(this long num) => Convert.ToBase64String(Encoding.UTF8.GetBytes(num.ToString()));
 
-    public static StringContent ToStringContent<T>(this T obj, Func<T, string> func = null, string mediaType = "application/json")
+    public static StringContent ToStringContent<T>(this T obj, Func<T, string>? func = null, string mediaType = "application/json")
     {
         if (func != null)
         {
@@ -48,7 +48,7 @@ public static class StringExtensions
         }
         else
         {
-            if (obj is string) return new StringContent(obj.ToString(), Encoding.UTF8, mediaType);
+            if (obj is string str) return new StringContent(str, Encoding.UTF8, mediaType);
 
             var json = JsonConvert.SerializeObject(obj);
             return new StringContent(json, Encoding.UTF8, mediaType);
