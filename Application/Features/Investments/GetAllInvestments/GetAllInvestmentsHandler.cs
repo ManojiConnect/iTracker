@@ -7,12 +7,13 @@ using Application.Abstractions.Data;
 using Application.Abstractions.Services;
 using Application.Common.Models;
 using Application.Features.Investments.Common;
+using Application.Features.Common.Responses;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Investments.GetAllInvestments;
 
-public class GetAllInvestmentsHandler : IRequestHandler<GetAllInvestmentsRequest, Result<List<InvestmentDto>>>
+public class GetAllInvestmentsHandler : IRequestHandler<GetAllInvestmentsRequest, Result<PaginatedList<InvestmentDto>>>
 {
     private readonly IContext _context;
     private readonly ICurrentUserService _currentUserService;
@@ -23,13 +24,13 @@ public class GetAllInvestmentsHandler : IRequestHandler<GetAllInvestmentsRequest
         _currentUserService = currentUserService;
     }
 
-    public async Task<Result<List<InvestmentDto>>> Handle(GetAllInvestmentsRequest request, CancellationToken cancellationToken)
+    public async Task<Result<PaginatedList<InvestmentDto>>> Handle(GetAllInvestmentsRequest request, CancellationToken cancellationToken)
     {
         var userId = _currentUserService.Id;
         
         if (string.IsNullOrEmpty(userId))
         {
-            return Result<List<InvestmentDto>>.Failure("Unauthorized: User must be logged in");
+            return Result<PaginatedList<InvestmentDto>>.Failure("Unauthorized: User must be logged in");
         }
         
         // First get all portfolios for the current user
@@ -38,8 +39,8 @@ public class GetAllInvestmentsHandler : IRequestHandler<GetAllInvestmentsRequest
             .Select(p => p.Id)
             .ToListAsync(cancellationToken);
             
-        // Then get investments from those portfolios
-        var investments = await _context.Investments
+        // Then get investments from those portfolios with pagination
+        var query = _context.Investments
             .Include(i => i.Category)
             .Include(i => i.Portfolio)
             .Where(i => !i.IsDelete && userPortfolioIds.Contains(i.PortfolioId))
@@ -59,9 +60,13 @@ public class GetAllInvestmentsHandler : IRequestHandler<GetAllInvestmentsRequest
                 PortfolioName = i.Portfolio.Name,
                 CategoryId = i.CategoryId,
                 CategoryName = i.Category.Name
-            })
-            .ToListAsync(cancellationToken);
+            });
 
-        return Result<List<InvestmentDto>>.Success(investments);
+        var paginatedList = await PaginatedList<InvestmentDto>.CreateAsync(
+            query,
+            request.PageNumber,
+            request.PageSize);
+
+        return Result<PaginatedList<InvestmentDto>>.Success(paginatedList);
     }
 } 

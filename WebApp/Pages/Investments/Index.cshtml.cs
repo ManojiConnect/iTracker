@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Application.Features.Investments.GetAllInvestments;
 using Application.Features.Investments.Common;
+using Application.Features.Common.Responses;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -16,12 +17,11 @@ namespace WebApp.Pages.Investments;
 public class CategorySummary
 {
     public string Name { get; set; } = string.Empty;
+    public string Color { get; set; } = string.Empty;
+    public int InvestmentCount { get; set; }
     public decimal TotalValue { get; set; }
-    public decimal TotalInvestment { get; set; }
     public decimal UnrealizedGainLoss { get; set; }
     public decimal ReturnPercentage { get; set; }
-    public int InvestmentCount { get; set; }
-    public string Color { get; set; } = string.Empty;
 }
 
 public class IndexModel : PageModel
@@ -30,11 +30,17 @@ public class IndexModel : PageModel
     private readonly ILogger<IndexModel> _logger;
     private readonly IApplicationSettingsService _settingsService;
     
-    public IEnumerable<InvestmentDto> Investments { get; set; } = new List<InvestmentDto>();
+    public PaginatedList<InvestmentDto> Investments { get; set; } = null!;
     public List<CategorySummary> CategorySummaries { get; set; } = new();
     public List<string> Categories { get; set; } = new();
     public decimal TotalPortfolioValue { get; set; }
     public SystemSettingsViewModel Settings { get; set; }
+
+    [BindProperty(SupportsGet = true)]
+    public int PageNumber { get; set; } = 1;
+
+    [BindProperty(SupportsGet = true)]
+    public int PageSize { get; set; } = 10;
 
     public IndexModel(
         IMediator mediator,
@@ -53,7 +59,11 @@ public class IndexModel : PageModel
         
         _logger.LogInformation("Fetching all investments");
         
-        var result = await _mediator.Send(new GetAllInvestmentsRequest());
+        var result = await _mediator.Send(new GetAllInvestmentsRequest 
+        { 
+            PageNumber = PageNumber,
+            PageSize = PageSize
+        });
         
         if (!result.IsSuccess)
         {
@@ -69,40 +79,49 @@ public class IndexModel : PageModel
     
     private void CalculateCategorySummaries()
     {
-        var groupedInvestments = Investments
-            .GroupBy(i => i.CategoryName ?? "Uncategorized")
-            .Select(g => new CategorySummary
+        // Group investments by category
+        var categoryGroups = Investments.Items.GroupBy(i => i.CategoryName);
+        
+        // Calculate summaries for each category
+        foreach (var group in categoryGroups)
+        {
+            var summary = new CategorySummary
             {
-                Name = g.Key,
-                TotalValue = g.Sum(i => i.CurrentValue),
-                TotalInvestment = g.Sum(i => i.TotalInvestment),
-                UnrealizedGainLoss = g.Sum(i => i.UnrealizedGainLoss),
-                ReturnPercentage = g.Sum(i => i.TotalInvestment) > 0 
-                    ? (g.Sum(i => i.UnrealizedGainLoss) / g.Sum(i => i.TotalInvestment)) * 100 
-                    : 0,
-                InvestmentCount = g.Count(),
-                Color = GetCategoryColor(g.Key)
-            })
-            .OrderByDescending(c => c.TotalValue)
-            .ToList();
-
-        CategorySummaries = groupedInvestments;
-        Categories = groupedInvestments.Select(c => c.Name).ToList();
-        TotalPortfolioValue = groupedInvestments.Sum(c => c.TotalValue);
+                Name = group.Key,
+                Color = GetCategoryColor(group.Key),
+                InvestmentCount = group.Count(),
+                TotalValue = group.Sum(i => i.CurrentValue),
+                UnrealizedGainLoss = group.Sum(i => i.UnrealizedGainLoss),
+                ReturnPercentage = group.Sum(i => i.TotalInvestment) > 0
+                    ? (group.Sum(i => i.UnrealizedGainLoss) / group.Sum(i => i.TotalInvestment)) * 100
+                    : 0
+            };
+            
+            CategorySummaries.Add(summary);
+        }
+        
+        // Sort categories by total value
+        CategorySummaries = CategorySummaries.OrderByDescending(c => c.TotalValue).ToList();
+        
+        // Get unique category names for filter dropdown
+        Categories = CategorySummaries.Select(c => c.Name).ToList();
+        
+        // Calculate total portfolio value
+        TotalPortfolioValue = CategorySummaries.Sum(c => c.TotalValue);
     }
     
-    private string GetCategoryColor(string category)
+    private string GetCategoryColor(string categoryName)
     {
-        return category.ToLower() switch
+        // Define colors for different categories
+        return categoryName.ToLower() switch
         {
-            "stock" => "#4CAF50",
-            "real estate" => "#2196F3",
-            "crypto" => "#FF9800",
-            "bond" => "#9C27B0",
-            "mutual fund" => "#E91E63",
-            "etf" => "#00BCD4",
-            "other" => "#607D8B",
-            _ => "#9E9E9E"
+            "stocks" => "#4CAF50",
+            "bonds" => "#2196F3",
+            "real estate" => "#FF9800",
+            "cryptocurrency" => "#9C27B0",
+            "commodities" => "#F44336",
+            "cash" => "#607D8B",
+            _ => "#757575"
         };
     }
     

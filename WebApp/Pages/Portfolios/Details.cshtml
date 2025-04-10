@@ -56,7 +56,7 @@
                         <div class="list-group-item d-flex justify-content-between align-items-center px-0">
                             <span>Return</span>
                             <span class="fw-medium @(Model.Portfolio.ReturnPercentage >= 0 ? "text-success" : "text-danger")">
-                                @(Model.Portfolio.ReturnPercentage >= 0 ? "+" : "")@Model.FormatNumber(Model.Portfolio.ReturnPercentage * 100, 2)%
+                                @(Model.Portfolio.ReturnPercentage >= 0 ? "+" : "")@Model.FormatNumber(Model.Portfolio.ReturnPercentage, 2)%
                             </span>
                         </div>
                     </div>
@@ -322,6 +322,14 @@
                 // Category distribution pie chart
                 const categoryLabels = @Html.Raw(Json.Serialize(Model.CategoryDistribution.Select(c => c.Name)));
                 const categoryValues = @Html.Raw(Json.Serialize(Model.CategoryDistribution.Select(c => c.Value)));
+                
+                // Debug logging
+                console.log('Category Distribution Data:', {
+                    labels: categoryLabels,
+                    values: categoryValues,
+                    total: categoryValues.reduce((a, b) => a + b, 0)
+                });
+                
                 const categoryColors = [
                     '#4285F4', '#EA4335', '#FBBC05', '#34A853', '#8E24AA', 
                     '#0097A7', '#FF9800', '#795548', '#607D8B', '#3F51B5'

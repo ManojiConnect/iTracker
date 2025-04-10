@@ -49,12 +49,12 @@ public class GetAllPortfoliosHandler : IRequestHandler<GetAllPortfoliosRequest, 
             Description = p.Description,
             TotalValue = p.Investments.Sum(i => i.CurrentValue),
             ReturnPercentage = p.Investments.Sum(i => i.TotalInvestment) > 0 
-                ? (p.Investments.Sum(i => i.CurrentValue - i.TotalInvestment) / p.Investments.Sum(i => i.TotalInvestment))
+                ? (p.Investments.Sum(i => i.CurrentValue - i.TotalInvestment) / p.Investments.Sum(i => i.TotalInvestment)) * 100
                 : 0,
             InvestmentCount = p.Investments.Count,
             TotalInvested = p.Investments.Sum(i => i.TotalInvestment),
             Performance = p.Investments.Sum(i => i.TotalInvestment) > 0 
-                ? (p.Investments.Sum(i => i.CurrentValue - i.TotalInvestment) / p.Investments.Sum(i => i.TotalInvestment))
+                ? (p.Investments.Sum(i => i.CurrentValue - i.TotalInvestment) / p.Investments.Sum(i => i.TotalInvestment)) * 100
                 : 0,
             CreatedOn = p.CreatedOn
         }).ToList();

@@ -55,7 +55,7 @@
                         <div class="d-flex justify-content-between align-items-center mb-2">
                             <span class="text-muted">Performance:</span>
                             <span class="fw-bold @(portfolio.Performance >= 0 ? "text-success" : "text-danger")">
-                                @(portfolio.Performance >= 0 ? "+" : "")@Model.FormatNumber(portfolio.Performance * 100, 2)%
+                                @(portfolio.Performance >= 0 ? "+" : "")@Model.FormatNumber(portfolio.Performance, 2)%
                             </span>
                         </div>
                         

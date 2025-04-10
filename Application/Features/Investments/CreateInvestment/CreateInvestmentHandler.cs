@@ -78,7 +78,7 @@ public class CreateInvestmentHandler : IRequestHandler<CreateInvestmentRequest, 
             // Calculate individual investment's gain/loss and return
             investment.UnrealizedGainLoss = investment.CurrentValue - investment.TotalInvestment;
             investment.ReturnPercentage = investment.TotalInvestment > 0 
-                ? (investment.UnrealizedGainLoss / investment.TotalInvestment)
+                ? (investment.UnrealizedGainLoss / investment.TotalInvestment) * 100
                 : 0;
 
             _logger.LogInformation("Created new investment object with Name: {Name}, Symbol: {Symbol}, TotalInvestment: {TotalInvestment}, CurrentValue: {CurrentValue}",
@@ -98,7 +98,7 @@ public class CreateInvestmentHandler : IRequestHandler<CreateInvestmentRequest, 
             portfolio.TotalInvestment = portfolio.Investments.Where(i => !i.IsDelete).Sum(i => i.TotalInvestment);
             portfolio.UnrealizedGainLoss = portfolio.TotalValue - portfolio.TotalInvestment;
             portfolio.ReturnPercentage = portfolio.TotalInvestment > 0 
-                ? (portfolio.UnrealizedGainLoss / portfolio.TotalInvestment)
+                ? (portfolio.UnrealizedGainLoss / portfolio.TotalInvestment) * 100
                 : 0;
 
             _logger.LogInformation("Updated portfolio totals: TotalValue: {TotalValue}, TotalInvestment: {TotalInvestment}",

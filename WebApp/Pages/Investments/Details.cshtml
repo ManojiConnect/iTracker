@@ -70,15 +70,15 @@
                         <div class="d-flex justify-content-between align-items-center mb-2">
                             <span class="text-muted fs-6">Return</span>
                             <span class="fw-bold fs-7 @(Model.Investment.ReturnPercentage >= 0 ? "text-success" : "text-danger")">
-                                @(Model.Investment.ReturnPercentage >= 0 ? "+" : "")@Model.FormatNumber(Model.Investment.ReturnPercentage * 100, 2)%
+                                @(Model.Investment.ReturnPercentage >= 0 ? "+" : "")@Model.FormatNumber(Model.Investment.ReturnPercentage, 2)%
                             </span>
                         </div>
                         
                         <div class="progress mt-3" style="height: 10px">
                             <div class="progress-bar @(Model.Investment.ReturnPercentage >= 0 ? "bg-success" : "bg-danger")" 
                                  role="progressbar" 
-                                 style="width: @(Math.Abs(Math.Min(Math.Max(Model.Investment.ReturnPercentage, -1), 1) * 100))%" 
-                                 aria-valuenow="@(Math.Abs(Model.Investment.ReturnPercentage * 100))" 
+                                 style="width: @(Math.Abs(Math.Min(Math.Max(Model.Investment.ReturnPercentage, -1), 1)))%" 
+                                 aria-valuenow="@(Math.Abs(Model.Investment.ReturnPercentage))" 
                                  aria-valuemin="0" 
                                  aria-valuemax="100">
                             </div>
@@ -126,7 +126,7 @@
                             <div>
                                 <p class="text-muted mb-1 small">Change</p>
                                 <p class="fw-bold @(Model.Investment.ReturnPercentage >= 0 ? "text-success" : "text-danger") mb-0">
-                                    @(Model.Investment.ReturnPercentage >= 0 ? "+" : "")@Model.FormatNumber(Model.Investment.ReturnPercentage * 100, 2)%
+                                    @(Model.Investment.ReturnPercentage >= 0 ? "+" : "")@Model.FormatNumber(Model.Investment.ReturnPercentage, 2)%
                                 </p>
                             </div>
                         </div>

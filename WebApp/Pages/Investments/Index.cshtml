@@ -14,7 +14,7 @@
                 <div class="card-body d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center">
                     <div class="mb-3 mb-sm-0">
                         <h5 class="card-title mb-0">Total Investments</h5>
-                        <h2 class="text-primary mb-0">@Model.Investments.Count()</h2>
+                        <h2 class="text-primary mb-0">@Model.Investments.TotalCount</h2>
                     </div>
                     <div>
                         <div class="btn-group">
@@ -73,7 +73,7 @@
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <span class="text-muted small">Return</span>
                                                     <span class="badge @(category.ReturnPercentage >= 0 ? "bg-success" : "bg-danger") px-2 py-1">
-                                                        @(category.ReturnPercentage >= 0 ? "+" : "")@Model.FormatNumber(category.ReturnPercentage * 100, 2)%
+                                                        @(category.ReturnPercentage >= 0 ? "+" : "")@Model.FormatNumber(category.ReturnPercentage, 2)%
                                                     </span>
                                                 </div>
                                             </div>
@@ -152,7 +152,7 @@
                         </tr>
                     </thead>
                     <tbody id="tableBody" data-sort-order="asc">
-                        @foreach (var item in Model.Investments)
+                        @foreach (var item in Model.Investments.Items)
                         {
                             <tr class="investment-item" data-category="@item.CategoryName">
                                 <td>
@@ -199,6 +199,31 @@
                 </table>
             </div>
         </div>
+        @if (Model.Investments.TotalPages > 1)
+        {
+            <div class="card-footer">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center mb-0">
+                        <li class="page-item @(!Model.Investments.HasPreviousPage ? "disabled" : "")">
+                            <a class="page-link" asp-page="./Index" asp-route-pageNumber="@(Model.Investments.PageNumber - 1)" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        @for (int i = 1; i <= Model.Investments.TotalPages; i++)
+                        {
+                            <li class="page-item @(i == Model.Investments.PageNumber ? "active" : "")">
+                                <a class="page-link" asp-page="./Index" asp-route-pageNumber="@i">@i</a>
+                            </li>
+                        }
+                        <li class="page-item @(!Model.Investments.HasNextPage ? "disabled" : "")">
+                            <a class="page-link" asp-page="./Index" asp-route-pageNumber="@(Model.Investments.PageNumber + 1)" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        }
     </div>
 </div>
 
@@ -249,112 +274,62 @@
         });
         
         function filterItems() {
-            const searchValue = document.getElementById('searchInput').value.toUpperCase();
-            const filter = searchValue;
+            const searchText = document.getElementById('searchInput').value.toLowerCase();
+            const categoryFilter = document.getElementById('categoryFilter').value;
+            const rows = document.querySelectorAll('.investment-item');
             
-            const items = document.getElementsByClassName('investment-item');
-            
-            for (let i = 0; i < items.length; i++) {
-                const nameElement = items[i].querySelector('.investment-name');
-                const categoryElement = items[i].querySelector('.investment-category');
-                const portfolioElement = items[i].querySelector('.investment-portfolio');
+            rows.forEach(row => {
+                const name = row.querySelector('.investment-name').textContent.toLowerCase();
+                const category = row.getAttribute('data-category');
+                const matchesSearch = name.includes(searchText);
+                const matchesCategory = !categoryFilter || category === categoryFilter;
                 
-                if (nameElement || categoryElement) {
-                    const nameText = nameElement ? nameElement.textContent || nameElement.innerText : '';
-                    const categoryText = categoryElement ? categoryElement.textContent || categoryElement.innerText : '';
-                    const portfolioText = portfolioElement ? portfolioElement.textContent || portfolioElement.innerText : '';
-                    
-                    if (nameText.toUpperCase().indexOf(filter) > -1 || 
-                        categoryText.toUpperCase().indexOf(filter) > -1 ||
-                        portfolioText.toUpperCase().indexOf(filter) > -1) {
-                        items[i].style.display = "";
-                    } else {
-                        items[i].style.display = "none";
-                    }
-                }
-            }
+                row.style.display = matchesSearch && matchesCategory ? '' : 'none';
+            });
         }
         
         function filterByCategory() {
-            const categoryFilter = document.getElementById('categoryFilter');
-            const selectedCategory = categoryFilter.value;
-            
-            const items = document.getElementsByClassName('investment-item');
-            
-            for (let i = 0; i < items.length; i++) {
-                const category = items[i].getAttribute('data-category');
-                
-                if (!selectedCategory || category === selectedCategory) {
-                    items[i].style.display = "";
-                } else {
-                    items[i].style.display = "none";
-                }
-            }
+            filterItems();
         }
-
-        // Simple sorting function
-        let currentSortColumn = -1;
-        let currentSortDirection = 'asc';
-
+        
         function sortTableByColumn(columnIndex) {
-            // Get the table body
-            const tbody = document.querySelector('.table tbody');
-            if (!tbody) return;
-            
-            // Get all rows
+            const tbody = document.getElementById('tableBody');
             const rows = Array.from(tbody.querySelectorAll('tr'));
-            if (rows.length === 0) return;
+            const currentOrder = tbody.getAttribute('data-sort-order');
+            const newOrder = currentOrder === 'asc' ? 'desc' : 'asc';
+            
+            // Update sort order attribute
+            tbody.setAttribute('data-sort-order', newOrder);
             
             // Update sort icons
             const sortIcons = document.querySelectorAll('.sort-icon');
             sortIcons.forEach(icon => {
-                icon.textContent = ''; // Clear all icons
-                icon.style.fontSize = '0.75rem'; // Make icons even smaller
+                icon.textContent = '';
             });
             
-            // Determine sort direction
-            if (currentSortColumn === columnIndex) {
-                currentSortDirection = currentSortDirection === 'asc' ? 'desc' : 'asc';
-            } else {
-                currentSortColumn = columnIndex;
-                currentSortDirection = 'asc';
-            }
+            const currentIcon = document.querySelector(`.sort-icon[data-column="${columnIndex}"]`);
+            currentIcon.textContent = newOrder === 'asc' ? 'arrow_upward' : 'arrow_downward';
             
-            // Update the sort icon for the current column
-            if (sortIcons[columnIndex]) {
-                sortIcons[columnIndex].textContent = currentSortDirection === 'asc' ? 'arrow_upward' : 'arrow_downward';
-            }
-            
-            // Sort the rows
+            // Sort rows
             rows.sort((a, b) => {
-                const aCell = a.cells[columnIndex];
-                const bCell = b.cells[columnIndex];
+                let aValue = a.children[columnIndex].textContent.trim();
+                let bValue = b.children[columnIndex].textContent.trim();
                 
-                if (!aCell || !bCell) return 0;
-                
-                let aValue = aCell.textContent.trim();
-                let bValue = bCell.textContent.trim();
-                
-                // Handle numeric values (for Value and Gain/Loss columns)
-                if (columnIndex === 3 || columnIndex === 4) {
-                    // Extract numeric value from the text (remove currency symbol and commas)
+                // Handle numeric values
+                if (columnIndex === 3 || columnIndex === 4) { // Value and Gain/Loss columns
                     aValue = parseFloat(aValue.replace(/[^0-9.-]+/g, '')) || 0;
                     bValue = parseFloat(bValue.replace(/[^0-9.-]+/g, '')) || 0;
                 }
                 
-                if (currentSortDirection === 'asc') {
+                if (newOrder === 'asc') {
                     return aValue > bValue ? 1 : -1;
                 } else {
                     return aValue < bValue ? 1 : -1;
                 }
             });
             
-            // Clear and re-populate the tbody
-            while (tbody.firstChild) {
-                tbody.removeChild(tbody.firstChild);
-            }
-            
+            // Reorder rows
             rows.forEach(row => tbody.appendChild(row));
         }
     </script>
-} 
+}

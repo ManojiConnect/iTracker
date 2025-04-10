@@ -65,7 +65,7 @@ public class RecordValueUpdateHandlerTests : TestBase
 
         // Assert
         Assert.True(result.IsSuccess);
-        Assert.Equal(0.2m, investment.ReturnPercentage); // (1200 - 1000) / 1000 = 0.2
+        Assert.Equal(20m, investment.ReturnPercentage); // (1200 - 1000) / 1000 * 100 = 20
     }
 
     [Fact]
@@ -101,8 +101,8 @@ public class RecordValueUpdateHandlerTests : TestBase
 
         // Assert
         Assert.True(result.IsSuccess);
-        // For 2 years: (1 + 0.2)^(1/2) - 1 ≈ 0.0954
-        Assert.Equal(0.0954m, Math.Round(investment.ReturnPercentage, 4));
+        // For 2 years: (1 + 0.2)^(1/2) - 1 ≈ 9.54
+        Assert.Equal(9.54m, Math.Round(investment.ReturnPercentage, 2));
     }
 
     [Fact]
@@ -170,6 +170,6 @@ public class RecordValueUpdateHandlerTests : TestBase
 
         // Assert
         Assert.True(result.IsSuccess);
-        Assert.Equal(0.2m, investment.ReturnPercentage); // Should use simple calculation for < 1 year
+        Assert.Equal(20m, investment.ReturnPercentage); // Should use simple calculation for < 1 year
     }
 } 

@@ -56,7 +56,7 @@ public class DeleteInvestmentHandler : IRequestHandler<DeleteInvestmentRequest, 
                 
             portfolio.UnrealizedGainLoss = portfolio.TotalValue - portfolio.TotalInvestment;
             portfolio.ReturnPercentage = portfolio.TotalInvestment > 0 
-                ? (portfolio.UnrealizedGainLoss / portfolio.TotalInvestment)
+                ? (portfolio.UnrealizedGainLoss / portfolio.TotalInvestment) * 100
                 : 0;
             
             portfolio.ModifiedBy = 1;

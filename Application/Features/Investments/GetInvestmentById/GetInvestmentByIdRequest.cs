@@ -36,6 +36,11 @@ public class GetInvestmentByIdHandler : IRequestHandler<GetInvestmentByIdRequest
             return Result.NotFound();
         }
 
+        // Recalculate return percentage
+        var returnPercentage = investment.TotalInvestment > 0 
+            ? (investment.UnrealizedGainLoss / investment.TotalInvestment) * 100 
+            : 0;
+
         var response = new InvestmentDto
         {
             Id = investment.Id,
@@ -44,7 +49,7 @@ public class GetInvestmentByIdHandler : IRequestHandler<GetInvestmentByIdRequest
             TotalInvestment = investment.TotalInvestment,
             CurrentValue = investment.CurrentValue,
             UnrealizedGainLoss = investment.UnrealizedGainLoss,
-            ReturnPercentage = investment.ReturnPercentage,
+            ReturnPercentage = returnPercentage,
             PurchaseDate = investment.PurchaseDate,
             PurchasePrice = investment.PurchasePrice,
             Notes = investment.Notes,

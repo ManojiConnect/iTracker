@@ -96,12 +96,12 @@
                             <span class="text-muted">Return:</span>
                             @{
                                 var returnPct = Model.CurrentInvestment.TotalInvestment > 0 
-                                    ? (gainLoss / Model.CurrentInvestment.TotalInvestment) * 100 
+                                    ? (gainLoss / Model.CurrentInvestment.TotalInvestment) 
                                     : 0;
                                 var returnClass = returnPct >= 0 ? "text-success" : "text-danger";
                             }
                             <span class="fw-medium @returnClass">
-                                @(returnPct >= 0 ? "+" : "")@returnPct.ToString("F2")%
+                                @(returnPct >= 0 ? "+" : "")@returnPct.ToString("P2")
                             </span>
                         </div>
                     </div>

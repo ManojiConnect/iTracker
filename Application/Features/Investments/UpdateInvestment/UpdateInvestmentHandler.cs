@@ -52,7 +52,7 @@ public class UpdateInvestmentHandler : IRequestHandler<UpdateInvestmentRequest, 
         // Calculate individual investment's gain/loss and return
         investment.UnrealizedGainLoss = investment.CurrentValue - investment.TotalInvestment;
         investment.ReturnPercentage = investment.TotalInvestment > 0 
-            ? (investment.UnrealizedGainLoss / investment.TotalInvestment)
+            ? (investment.UnrealizedGainLoss / investment.TotalInvestment) * 100
             : 0;
 
         // Update portfolio totals
@@ -61,7 +61,7 @@ public class UpdateInvestmentHandler : IRequestHandler<UpdateInvestmentRequest, 
         portfolio.TotalInvestment = portfolio.Investments.Where(i => !i.IsDelete).Sum(i => i.TotalInvestment);
         portfolio.UnrealizedGainLoss = portfolio.TotalValue - portfolio.TotalInvestment;
         portfolio.ReturnPercentage = portfolio.TotalInvestment > 0 
-            ? (portfolio.UnrealizedGainLoss / portfolio.TotalInvestment)
+            ? (portfolio.UnrealizedGainLoss / portfolio.TotalInvestment) * 100
             : 0;
 
         await _context.SaveChangesAsync(cancellationToken);

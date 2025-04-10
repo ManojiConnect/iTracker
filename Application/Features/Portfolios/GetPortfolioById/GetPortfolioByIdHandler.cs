@@ -40,16 +40,24 @@ public class GetPortfolioByIdHandler : IRequestHandler<GetPortfolioByIdRequest, 
             return Result.NotFound("Portfolio not found");
         }
 
+        // Recalculate totals based on investments
+        var totalValue = portfolio.Investments.Sum(i => i.CurrentValue);
+        var totalInvestment = portfolio.Investments.Sum(i => i.TotalInvestment);
+        var unrealizedGainLoss = totalValue - totalInvestment;
+        var returnPercentage = totalInvestment > 0 
+            ? (unrealizedGainLoss / totalInvestment) * 100
+            : 0;
+
         return Result.Success(new PortfolioDto
         {
             Id = portfolio.Id,
             Name = portfolio.Name,
             Description = portfolio.Description,
             InitialValue = portfolio.InitialValue,
-            TotalValue = portfolio.TotalValue,
-            TotalInvestment = portfolio.TotalInvestment,
-            UnrealizedGainLoss = portfolio.UnrealizedGainLoss,
-            ReturnPercentage = portfolio.ReturnPercentage,
+            TotalValue = totalValue,
+            TotalInvestment = totalInvestment,
+            UnrealizedGainLoss = unrealizedGainLoss,
+            ReturnPercentage = returnPercentage,
             CreatedOn = portfolio.CreatedOn,
             CreatedBy = portfolio.CreatedBy,
             ModifiedOn = portfolio.ModifiedOn,
