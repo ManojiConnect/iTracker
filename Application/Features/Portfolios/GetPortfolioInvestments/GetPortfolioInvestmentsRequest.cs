@@ -5,30 +5,19 @@ using System.Threading;
 using System.Threading.Tasks;
 using Application.Abstractions.Data;
 using Application.Abstractions.Services;
+using Application.Features.Investments.Common;
 using Ardalis.Result;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Portfolios.GetPortfolioInvestments;
 
-public record GetPortfolioInvestmentsRequest : IRequest<Result<List<InvestmentResponse>>>
+public record GetPortfolioInvestmentsRequest : IRequest<Result<List<InvestmentDto>>>
 {
     public required int PortfolioId { get; init; }
 }
 
-public class InvestmentResponse
-{
-    public int Id { get; set; }
-    public string Name { get; set; } = string.Empty;
-    public decimal TotalInvestment { get; set; }
-    public decimal CurrentValue { get; set; }
-    public decimal UnrealizedGainLoss { get; set; }
-    public decimal ReturnPercentage { get; set; }
-    public DateTime PurchaseDate { get; set; }
-    public string CategoryName { get; set; } = string.Empty;
-}
-
-public class GetPortfolioInvestmentsHandler : IRequestHandler<GetPortfolioInvestmentsRequest, Result<List<InvestmentResponse>>>
+public class GetPortfolioInvestmentsHandler : IRequestHandler<GetPortfolioInvestmentsRequest, Result<List<InvestmentDto>>>
 {
     private readonly IContext _context;
     private readonly ICurrentUserService _currentUserService;
@@ -39,7 +28,7 @@ public class GetPortfolioInvestmentsHandler : IRequestHandler<GetPortfolioInvest
         _currentUserService = currentUserService;
     }
 
-    public async Task<Result<List<InvestmentResponse>>> Handle(GetPortfolioInvestmentsRequest request, CancellationToken cancellationToken)
+    public async Task<Result<List<InvestmentDto>>> Handle(GetPortfolioInvestmentsRequest request, CancellationToken cancellationToken)
     {
         var userId = _currentUserService.Id;
         
@@ -58,16 +47,23 @@ public class GetPortfolioInvestmentsHandler : IRequestHandler<GetPortfolioInvest
 
         var investments = await _context.Investments
             .Include(i => i.Category)
+            .Include(i => i.Portfolio)
             .Where(i => i.PortfolioId == request.PortfolioId && !i.IsDelete)
-            .Select(i => new InvestmentResponse
+            .Select(i => new InvestmentDto
             {
                 Id = i.Id,
                 Name = i.Name,
+                Symbol = i.Symbol,
                 TotalInvestment = i.TotalInvestment,
                 CurrentValue = i.CurrentValue,
-                UnrealizedGainLoss = i.CurrentValue - i.TotalInvestment,
-                ReturnPercentage = i.TotalInvestment > 0 ? (i.CurrentValue - i.TotalInvestment) / i.TotalInvestment : 0,
+                UnrealizedGainLoss = i.UnrealizedGainLoss,
+                ReturnPercentage = i.ReturnPercentage,
                 PurchaseDate = i.PurchaseDate,
+                PurchasePrice = i.PurchasePrice,
+                Notes = i.Notes,
+                PortfolioId = i.PortfolioId,
+                PortfolioName = i.Portfolio.Name,
+                CategoryId = i.CategoryId,
                 CategoryName = i.Category.Name
             })
             .ToListAsync(cancellationToken);

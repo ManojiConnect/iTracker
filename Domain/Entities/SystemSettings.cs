@@ -17,8 +17,12 @@ public class SystemSettings : Entity
     // Investment Settings
     public string PerformanceCalculationMethod { get; set; } = "simple";
 
+    // View Settings
+    public string DefaultPortfolioView { get; set; } = "list";
+
     // System Settings
     public int SessionTimeoutMinutes { get; set; } = 30;
+    public int MinPasswordLength { get; set; } = 8;
     
     // Additional Settings
     public string SettingKey { get; set; } = string.Empty;

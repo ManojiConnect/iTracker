@@ -72,7 +72,7 @@
                 <div class="card-body">
                     @if (Model.CategoryDistribution.Any())
                     {
-                        <div style="position: relative; height: 280px;">
+                        <div style="position: relative; height: 320px;">
                             <canvas id="categoryDistributionChart"></canvas>
                         </div>
                     }
@@ -98,8 +98,8 @@
                     </span>
                     <input type="text" id="searchInput" class="form-control border-start-0" placeholder="Search investments..." onkeyup="filterItems()">
                 </div>
-                <a asp-page="/Investments/Create" asp-route-portfolioId="@Model.Portfolio.Id" class="btn btn-primary d-flex align-items-center">
-                    <i class="material-icons me-2">add</i>
+                <a asp-page="/Investments/Create" asp-route-portfolioId="@Model.Portfolio.Id" class="btn btn-primary btn-sm d-flex align-items-center" style="white-space: nowrap;">
+                    <i class="material-icons me-1">add</i>
                     <span>Add Investment</span>
                 </a>
             </div>
@@ -197,8 +197,13 @@
 @section Scripts {
     <!-- Include Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Include Chart.js DataLabels plugin -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
     
     <script>
+        // Register the DataLabels plugin
+        Chart.register(ChartDataLabels);
+        
         // Simple sorting functionality
         document.addEventListener('DOMContentLoaded', function() {
             // Add click handlers to sortable columns
@@ -321,6 +326,8 @@
                     '#4285F4', '#EA4335', '#FBBC05', '#34A853', '#8E24AA', 
                     '#0097A7', '#FF9800', '#795548', '#607D8B', '#3F51B5'
                 ];
+                // Decode HTML entities in the currency symbol
+                const currencySymbol = decodeHTMLEntities('@Model.Settings.CurrencySymbol');
 
                 const pieCtx = document.getElementById('categoryDistributionChart').getContext('2d');
                 new Chart(pieCtx, {
@@ -330,7 +337,8 @@
                         datasets: [{
                             data: categoryValues,
                             backgroundColor: categoryColors.slice(0, categoryLabels.length),
-                            borderWidth: 1
+                            borderWidth: 1,
+                            borderColor: '#ffffff'
                         }]
                     },
                     options: {
@@ -339,6 +347,12 @@
                         plugins: {
                             legend: {
                                 position: window.innerWidth < 768 ? 'bottom' : 'right',
+                                labels: {
+                                    padding: 15,
+                                    font: {
+                                        size: 12
+                                    }
+                                }
                             },
                             tooltip: {
                                 callbacks: {
@@ -347,12 +361,30 @@
                                         const value = context.parsed || 0;
                                         const total = context.dataset.data.reduce((a, b) => a + b, 0);
                                         const percentage = Math.round((value / total) * 100);
-                                        return `${label}: @Model.Settings.CurrencySymbol${value.toLocaleString()} (${percentage}%)`;
+                                        return `${label}: ${currencySymbol}${value.toLocaleString()} (${percentage}%)`;
                                     }
                                 }
+                            },
+                            datalabels: {
+                                color: '#fff',
+                                font: {
+                                    weight: 'bold',
+                                    size: 11
+                                },
+                                formatter: function(value, context) {
+                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                    const percentage = Math.round((value / total) * 100);
+                                    return `${percentage}%\n${currencySymbol}${value.toLocaleString()}`;
+                                },
+                                align: 'center',
+                                anchor: 'center',
+                                offset: 0,
+                                rotation: 0,
+                                textAlign: 'center',
+                                textBaseline: 'middle'
                             }
                         },
-                        cutout: '70%'
+                        cutout: '65%'
                     }
                 });
                 
@@ -362,6 +394,13 @@
                     chart.update();
                 });
             });
+            
+            // Helper function to decode HTML entities
+            function decodeHTMLEntities(text) {
+                const textarea = document.createElement('textarea');
+                textarea.innerHTML = text;
+                return textarea.value;
+            }
         </script>
     }
 } 

@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using Application.Features.Investments.GetInvestmentById;
+using Application.Features.Investments.Common;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -16,7 +17,7 @@ public class DetailsModel : PageModel
     private readonly ILogger<DetailsModel> _logger;
     private readonly IApplicationSettingsService _settingsService;
 
-    public InvestmentResponse Investment { get; set; } = default!;
+    public InvestmentDto Investment { get; set; } = default!;
     public SystemSettingsViewModel Settings { get; set; }
 
     public DetailsModel(

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Application.Abstractions.Data;
 using Application.Abstractions.Services;
 using Application.Common.Models;
+using Application.Features.Investments.Common;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -46,15 +47,18 @@ public class GetAllInvestmentsHandler : IRequestHandler<GetAllInvestmentsRequest
             {
                 Id = i.Id,
                 Name = i.Name,
+                Symbol = i.Symbol,
                 TotalInvestment = i.TotalInvestment,
                 CurrentValue = i.CurrentValue,
                 UnrealizedGainLoss = i.UnrealizedGainLoss,
                 ReturnPercentage = i.ReturnPercentage,
                 PurchaseDate = i.PurchaseDate,
-                CategoryName = i.Category.Name,
+                PurchasePrice = i.PurchasePrice,
+                Notes = i.Notes,
+                PortfolioId = i.PortfolioId,
                 PortfolioName = i.Portfolio.Name,
-                Category = i.Category,
-                Portfolio = i.Portfolio
+                CategoryId = i.CategoryId,
+                CategoryName = i.Category.Name
             })
             .ToListAsync(cancellationToken);
 

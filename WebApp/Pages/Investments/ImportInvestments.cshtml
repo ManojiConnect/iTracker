@@ -1,0 +1,157 @@
+@page
+@model WebApp.Pages.Investments.ImportInvestmentsModel
+@{
+    Layout = "_DesktopLayout";
+    ViewData["Title"] = "Import Investments";
+}
+
+<div class="container-fluid px-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="page-title">Import Investments</h1>
+        <a asp-page="./Index" class="btn btn-outline-secondary btn-sm">
+            <i class="material-icons me-1">arrow_back</i>
+            <span>Back to Investments</span>
+        </a>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-lg-8">
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-light">
+                    <h5 class="mb-0">Upload CSV File</h5>
+                </div>
+                <div class="card-body">
+                    @if (!ModelState.IsValid)
+                    {
+                        <div class="alert alert-danger">
+                            <div asp-validation-summary="All" class="text-danger"></div>
+                        </div>
+                    }
+                    <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+                        <div class="mb-3">
+                            <label for="portfolioId" class="form-label">Select Portfolio</label>
+                            <select id="portfolioId" name="PortfolioId" class="form-select" required>
+                                <option value="">-- Select Portfolio --</option>
+                                @foreach (var portfolio in Model.Portfolios)
+                                {
+                                    <option value="@portfolio.Id">@portfolio.Name</option>
+                                }
+                            </select>
+                            <div class="invalid-feedback">Please select a portfolio.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="file" class="form-label">CSV File</label>
+                            <input type="file" class="form-control" id="file" name="File" accept=".csv" required>
+                            <div class="invalid-feedback">Please select a CSV file.</div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="hasHeader" name="HasHeader" checked>
+                                <label class="form-check-label" for="hasHeader">
+                                    First row contains headers
+                                </label>
+                            </div>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="material-icons me-1">upload_file</i>
+                                Import Investments
+                            </button>
+                            <a href="/downloads/investment-import-template.csv" class="btn btn-outline-primary" download>
+                                <i class="material-icons me-1">download</i>
+                                Download Template
+                            </a>
+                            <a asp-page="./Index" class="btn btn-outline-secondary">
+                                <i class="material-icons me-1">arrow_back</i>
+                                Back to List
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            @if (Model.ImportResults != null && Model.ImportResults.Any())
+            {
+                <div class="card shadow-sm">
+                    <div class="card-header bg-light">
+                        <h5 class="mb-0">Import Results</h5>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle mb-0">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th class="ps-3">Row</th>
+                                        <th>Name</th>
+                                        <th>Status</th>
+                                        <th>Message</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var result in Model.ImportResults)
+                                    {
+                                        <tr>
+                                            <td class="ps-3">@result.RowNumber</td>
+                                            <td>@result.Name</td>
+                                            <td>
+                                                @if (result.Success)
+                                                {
+                                                    <span class="badge bg-success">Success</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="badge bg-danger">Error</span>
+                                                }
+                                            </td>
+                                            <td>@result.Message</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="col-12 col-lg-4">
+            <div class="card shadow-sm">
+                <div class="card-header bg-light">
+                    <h5 class="mb-0">CSV Format</h5>
+                </div>
+                <div class="card-body">
+                    <p>The CSV file should contain the following columns:</p>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><strong>Name</strong> - Investment name (required)</li>
+                        <li class="mb-2"><strong>Category</strong> - Category name (required)</li>
+                        <li class="mb-2"><strong>TotalInvestment</strong> - Total amount invested (required)</li>
+                        <li class="mb-2"><strong>CurrentValue</strong> - Current market value (required)</li>
+                        <li class="mb-2"><strong>PurchaseDate</strong> - Date of purchase (required, format: dd/MM/yyyy)</li>
+                    </ul>
+                    <div class="alert alert-info">
+                        <i class="material-icons fs-5 me-2">info</i>
+                        <span>Download the template file for the correct format.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Form validation
+        (function () {
+            'use strict'
+            var forms = document.querySelectorAll('.needs-validation')
+            Array.prototype.slice.call(forms).forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        })()
+    </script>
+} 

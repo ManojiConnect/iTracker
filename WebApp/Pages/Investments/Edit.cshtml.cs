@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Application.Features.InvestmentCategories.GetAllCategories;
 using Application.Features.Investments.GetInvestmentById;
 using Application.Features.Investments.UpdateInvestment;
+using Application.Features.Investments.Common;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -26,7 +27,7 @@ public class EditModel : PageModel
         PurchaseDate = DateTime.Today
     };
 
-    public InvestmentResponse CurrentInvestment { get; set; } = default!;
+    public InvestmentDto CurrentInvestment { get; set; } = default!;
 
     public EditModel(IMediator mediator)
     {

@@ -33,27 +33,32 @@ public class GetAllPortfoliosHandler : IRequestHandler<GetAllPortfoliosRequest, 
             return Result.Unauthorized();
         }
 
-
+        // First get portfolios with their investments
         var portfolios = await _context.Portfolios
             .AsNoTracking()
             .Include(p => p.Investments.Where(i => !i.IsDelete))
-            .Where(p => !p.IsDelete && p.UserId == userId) // Only show portfolios for the current user
+            .Where(p => !p.IsDelete && p.UserId == userId)
             .OrderBy(p => p.Name)
-            .Select(p => new PortfolioDto
-            {
-                Id = p.Id,
-                Name = p.Name,
-                Description = p.Description,
-                TotalValue = p.TotalValue,
-                ReturnPercentage = p.ReturnPercentage,
-                // Additional properties
-                InvestmentCount = p.Investments.Count(i => !i.IsDelete),
-                TotalInvested = p.TotalInvestment,
-                Performance = p.TotalInvestment > 0 ? p.UnrealizedGainLoss / p.TotalInvestment : 0,
-                CreatedOn = p.CreatedOn
-            })
             .ToListAsync(cancellationToken);
 
-        return Result.Success<IEnumerable<PortfolioDto>>(portfolios);
+        // Then calculate the DTOs in memory
+        var portfolioDtos = portfolios.Select(p => new PortfolioDto
+        {
+            Id = p.Id,
+            Name = p.Name,
+            Description = p.Description,
+            TotalValue = p.Investments.Sum(i => i.CurrentValue),
+            ReturnPercentage = p.Investments.Sum(i => i.TotalInvestment) > 0 
+                ? (p.Investments.Sum(i => i.CurrentValue - i.TotalInvestment) / p.Investments.Sum(i => i.TotalInvestment))
+                : 0,
+            InvestmentCount = p.Investments.Count,
+            TotalInvested = p.Investments.Sum(i => i.TotalInvestment),
+            Performance = p.Investments.Sum(i => i.TotalInvestment) > 0 
+                ? (p.Investments.Sum(i => i.CurrentValue - i.TotalInvestment) / p.Investments.Sum(i => i.TotalInvestment))
+                : 0,
+            CreatedOn = p.CreatedOn
+        }).ToList();
+
+        return Result.Success<IEnumerable<PortfolioDto>>(portfolioDtos);
     }
 } 

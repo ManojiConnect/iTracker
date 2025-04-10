@@ -2,7 +2,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Application.Abstractions.Data;
-using Application.Features.Investments.GetAllInvestments;
+using Application.Features.Investments.Common;
 using Ardalis.Result;
 using Domain.Entities;
 using MediatR;
@@ -10,27 +10,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Investments.GetInvestmentById;
 
-public record GetInvestmentByIdRequest : IRequest<Result<InvestmentResponse>>
+public record GetInvestmentByIdRequest : IRequest<Result<InvestmentDto>>
 {
     public required int Id { get; init; }
 }
 
-public class InvestmentResponse
-{
-    public int Id { get; set; }
-    public string Name { get; set; } = string.Empty;
-    public decimal TotalInvestment { get; set; }
-    public decimal CurrentValue { get; set; }
-    public decimal UnrealizedGainLoss { get; set; }
-    public decimal ReturnPercentage { get; set; }
-    public DateTime PurchaseDate { get; set; }
-    public decimal PurchasePrice { get; set; }
-    public string? Notes { get; set; }
-    public string CategoryName { get; set; } = string.Empty;
-    public string PortfolioName { get; set; } = string.Empty;
-}
-
-public class GetInvestmentByIdHandler : IRequestHandler<GetInvestmentByIdRequest, Result<InvestmentResponse>>
+public class GetInvestmentByIdHandler : IRequestHandler<GetInvestmentByIdRequest, Result<InvestmentDto>>
 {
     private readonly IContext _context;
 
@@ -39,7 +24,7 @@ public class GetInvestmentByIdHandler : IRequestHandler<GetInvestmentByIdRequest
         _context = context;
     }
 
-    public async Task<Result<InvestmentResponse>> Handle(GetInvestmentByIdRequest request, CancellationToken cancellationToken)
+    public async Task<Result<InvestmentDto>> Handle(GetInvestmentByIdRequest request, CancellationToken cancellationToken)
     {
         var investment = await _context.Investments
             .Include(i => i.Category)
@@ -51,10 +36,11 @@ public class GetInvestmentByIdHandler : IRequestHandler<GetInvestmentByIdRequest
             return Result.NotFound();
         }
 
-        var response = new InvestmentResponse
+        var response = new InvestmentDto
         {
             Id = investment.Id,
             Name = investment.Name,
+            Symbol = investment.Symbol,
             TotalInvestment = investment.TotalInvestment,
             CurrentValue = investment.CurrentValue,
             UnrealizedGainLoss = investment.UnrealizedGainLoss,
@@ -62,29 +48,12 @@ public class GetInvestmentByIdHandler : IRequestHandler<GetInvestmentByIdRequest
             PurchaseDate = investment.PurchaseDate,
             PurchasePrice = investment.PurchasePrice,
             Notes = investment.Notes,
-            CategoryName = investment.Category.Name,
-            PortfolioName = investment.Portfolio.Name
+            PortfolioId = investment.PortfolioId,
+            PortfolioName = investment.Portfolio.Name,
+            CategoryId = investment.CategoryId,
+            CategoryName = investment.Category.Name
         };
 
         return Result.Success(response);
     }
-}
-
-// The local InvestmentDto class to avoid conflicts
-public class InvestmentDto
-{
-    public int Id { get; set; }
-    public string Name { get; set; } = string.Empty;
-    public string Symbol { get; set; } = string.Empty;
-    public decimal TotalInvestment { get; set; }
-    public decimal CurrentValue { get; set; }
-    public decimal UnrealizedGainLoss { get; set; }
-    public decimal ReturnPercentage { get; set; }
-    public DateTime PurchaseDate { get; set; }
-    public string CategoryName { get; set; } = string.Empty;
-    public string PortfolioName { get; set; } = string.Empty;
-    
-    // Navigation properties for views
-    public InvestmentCategory? Category { get; set; }
-    public Portfolio? Portfolio { get; set; }
 } 

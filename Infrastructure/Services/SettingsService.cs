@@ -43,7 +43,9 @@ public class SettingsService : ISettingsService
                 DateFormat = "MM/dd/yyyy",
                 FinancialYearStartMonth = 4,
                 PerformanceCalculationMethod = "simple",
-                SessionTimeoutMinutes = 30
+                SessionTimeoutMinutes = 30,
+                DefaultPortfolioView = "list",
+                MinPasswordLength = 8
             };
             
             _context.SystemSettings.Add(settings);
@@ -106,6 +108,8 @@ public class SettingsService : ISettingsService
                 existingSettings.FinancialYearStartMonth = updatedSettings.FinancialYearStartMonth;
                 existingSettings.PerformanceCalculationMethod = updatedSettings.PerformanceCalculationMethod;
                 existingSettings.SessionTimeoutMinutes = updatedSettings.SessionTimeoutMinutes;
+                existingSettings.DefaultPortfolioView = updatedSettings.DefaultPortfolioView;
+                existingSettings.MinPasswordLength = updatedSettings.MinPasswordLength;
                 
                 _context.SystemSettings.Update(existingSettings);
             }

@@ -1,32 +1,49 @@
-using Application.Features.Investments.DeleteInvestment;
+using System;
+using System.Threading.Tasks;
 using Application.Features.Investments.GetInvestmentById;
+using Application.Features.Investments.DeleteInvestment;
+using Application.Features.Investments.Common;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Logging;
+using WebApp.Services;
+using WebApp.Models;
+using System.Linq;
 
 namespace WebApp.Pages.Investments;
 
 public class DeleteModel : PageModel
 {
     private readonly IMediator _mediator;
+    private readonly ILogger<DeleteModel> _logger;
+    private readonly IApplicationSettingsService _settingsService;
 
-    public InvestmentResponse Investment { get; set; } = null!;
+    public InvestmentDto Investment { get; set; } = null!;
+    public SystemSettingsViewModel Settings { get; set; }
 
-    public DeleteModel(IMediator mediator)
+    public DeleteModel(
+        IMediator mediator,
+        ILogger<DeleteModel> logger,
+        IApplicationSettingsService settingsService)
     {
         _mediator = mediator;
+        _logger = logger;
+        _settingsService = settingsService;
     }
 
-    public async Task<IActionResult> OnGetAsync(int? id)
+    public async Task<IActionResult> OnGetAsync(int id)
     {
-        if (!id.HasValue)
-        {
-            return NotFound();
-        }
-
-        var result = await _mediator.Send(new GetInvestmentByIdRequest { Id = id.Value });
+        // Load settings
+        Settings = await _settingsService.GetSettingsAsync();
+        
+        _logger.LogInformation("Fetching investment details for deletion, ID: {Id}", id);
+        
+        var result = await _mediator.Send(new GetInvestmentByIdRequest { Id = id });
+        
         if (!result.IsSuccess)
         {
+            _logger.LogWarning("Investment with ID {Id} not found", id);
             return NotFound();
         }
 
@@ -34,32 +51,29 @@ public class DeleteModel : PageModel
         return Page();
     }
 
-    public async Task<IActionResult> OnPostAsync(int? id)
+    public async Task<IActionResult> OnPostAsync(int id)
     {
-        if (!id.HasValue)
+        _logger.LogInformation("Deleting investment with ID: {Id}", id);
+        
+        var result = await _mediator.Send(new DeleteInvestmentRequest { Id = id });
+        
+        if (!result.IsSuccess)
         {
+            _logger.LogWarning("Failed to delete investment with ID {Id}", id);
             return NotFound();
         }
 
-        var result = await _mediator.Send(new DeleteInvestmentRequest { Id = id.Value });
-        if (!result.IsSuccess)
-        {
-            foreach (var error in result.Errors)
-            {
-                ModelState.AddModelError(string.Empty, error);
-            }
-            
-            // Reload investment data for the view
-            var investmentResult = await _mediator.Send(new GetInvestmentByIdRequest { Id = id.Value });
-            if (investmentResult.IsSuccess)
-            {
-                Investment = investmentResult.Value;
-            }
-            
-            return Page();
-        }
-
-        // Redirect to the investments index page
+        _logger.LogInformation("Successfully deleted investment with ID: {Id}", id);
         return RedirectToPage("./Index");
+    }
+    
+    public string FormatCurrency(decimal amount)
+    {
+        return _settingsService.FormatCurrency(amount);
+    }
+    
+    public string FormatNumber(decimal number, int? decimalPlaces = null)
+    {
+        return _settingsService.FormatNumber(number, decimalPlaces);
     }
 } 

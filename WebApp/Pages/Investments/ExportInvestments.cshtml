@@ -1,0 +1,86 @@
+@page
+@model WebApp.Pages.Investments.ExportInvestmentsModel
+@{
+    Layout = "_DesktopLayout";
+    ViewData["Title"] = "Export Investments";
+}
+
+<div class="container-fluid px-4">
+    <h1 class="page-title">Export Investments</h1>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    @if (!ModelState.IsValid)
+                    {
+                        <div class="alert alert-danger">
+                            <div asp-validation-summary="All" class="text-danger"></div>
+                        </div>
+                    }
+                    <form method="post" class="needs-validation" novalidate>
+                        <div class="mb-4">
+                            <label asp-for="PortfolioId" class="form-label">Select Portfolio</label>
+                            <select asp-for="PortfolioId" class="form-select" required>
+                                <option value="">Choose a portfolio...</option>
+                                @foreach (var portfolio in Model.Portfolios)
+                                {
+                                    <option value="@portfolio.Id">@portfolio.Name</option>
+                                }
+                            </select>
+                            <div class="invalid-feedback">Please select a portfolio.</div>
+                        </div>
+
+                        <div class="mb-4">
+                            <div class="form-check">
+                                <input asp-for="IncludeHeaders" class="form-check-input" type="checkbox" id="includeHeaders">
+                                <label class="form-check-label" for="includeHeaders">
+                                    Include Headers
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <div class="form-check">
+                                <input asp-for="IncludeNotes" class="form-check-input" type="checkbox" id="includeNotes">
+                                <label class="form-check-label" for="includeNotes">
+                                    Include Notes
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="material-icons me-1">download</i>
+                                Export Investments
+                            </button>
+                            <a asp-page="./Index" class="btn btn-outline-secondary">
+                                <i class="material-icons me-1">arrow_back</i>
+                                Back to List
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Form validation
+        (function () {
+            'use strict'
+            var forms = document.querySelectorAll('.needs-validation')
+            Array.prototype.slice.call(forms).forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        })()
+    </script>
+} 

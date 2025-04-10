@@ -1,5 +1,6 @@
 using Application.Features.Portfolios.GetPortfolioById;
 using Application.Features.Portfolios.GetPortfolioInvestments;
+using Application.Features.Investments.Common;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -24,7 +25,7 @@ public class DetailsModel : PageModel
     private readonly IApplicationSettingsService _settingsService;
 
     public PortfolioDto Portfolio { get; set; } = null!;
-    public IEnumerable<InvestmentResponse> Investments { get; set; } = new List<InvestmentResponse>();
+    public IEnumerable<InvestmentDto> Investments { get; set; } = new List<InvestmentDto>();
     public List<CategoryDistributionItem> CategoryDistribution { get; set; } = new();
     public SystemSettingsViewModel Settings { get; set; }
 
