@@ -28,6 +28,16 @@ public class DetailsModel : PageModel
     public IEnumerable<InvestmentDto> Investments { get; set; } = new List<InvestmentDto>();
     public List<CategoryDistributionItem> CategoryDistribution { get; set; } = new();
     public SystemSettingsViewModel Settings { get; set; }
+    public int PageSize { get; set; } = 10;
+
+    [BindProperty(SupportsGet = true)]
+    public int PageNumber { get; set; } = 1;
+
+    // Pagination properties
+    public int TotalPages { get; set; }
+    public int StartItem { get; set; }
+    public int EndItem { get; set; }
+    public int TotalItems { get; set; }
 
     public DetailsModel(IMediator mediator, IApplicationSettingsService settingsService)
     {
@@ -70,6 +80,12 @@ public class DetailsModel : PageModel
                     .OrderByDescending(i => i.Value)
                     .ToList();
             }
+
+            // Set pagination properties
+            TotalItems = Investments.Count();
+            TotalPages = (int)Math.Ceiling(TotalItems / (double)PageSize);
+            StartItem = ((PageNumber - 1) * PageSize) + 1;
+            EndItem = Math.Min(StartItem + PageSize - 1, TotalItems);
         }
 
         return Page();

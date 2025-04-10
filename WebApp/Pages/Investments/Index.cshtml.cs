@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Application.Features.Investments.GetAllInvestments;
 using Application.Features.Investments.Common;
 using Application.Features.Common.Responses;
+using Application.Features.Portfolios.GetAllPortfolios;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -33,6 +34,7 @@ public class IndexModel : PageModel
     public PaginatedList<InvestmentDto> Investments { get; set; } = null!;
     public List<CategorySummary> CategorySummaries { get; set; } = new();
     public List<string> Categories { get; set; } = new();
+    public List<PortfolioDto> Portfolios { get; set; } = new();
     public decimal TotalPortfolioValue { get; set; }
     public SystemSettingsViewModel Settings { get; set; }
 
@@ -73,6 +75,13 @@ public class IndexModel : PageModel
 
         Investments = result.Value;
         CalculateCategorySummaries();
+        
+        // Load portfolios for the filter dropdown
+        var portfoliosResult = await _mediator.Send(new GetAllPortfoliosRequest());
+        if (portfoliosResult.IsSuccess)
+        {
+            Portfolios = portfoliosResult.Value.ToList();
+        }
         
         return Page();
     }

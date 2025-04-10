@@ -6,16 +6,16 @@
 }
 
 <div class="container-fluid px-4">
-    <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-4">
-        <h1 class="page-title mb-3 mb-md-0">@Model.Portfolio.Name</h1>
-        <div>
-            <a asp-page="./Index" class="btn btn-outline-secondary me-2">
-                <i class="material-icons fs-5 align-middle">arrow_back</i>
-                <span class="d-none d-sm-inline">Back to Portfolios</span>
-            </a>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="page-title">@Model.Portfolio.Name</h1>
+        <div class="btn-group">
             <a asp-page="./Edit" asp-route-id="@Model.Portfolio.Id" class="btn btn-primary">
-                <i class="material-icons fs-5 align-middle">edit</i>
-                <span class="d-none d-sm-inline">Edit Portfolio</span>
+                <i class="material-icons me-1">edit</i>
+                <span>Edit Portfolio</span>
+            </a>
+            <a asp-page="./Delete" asp-route-id="@Model.Portfolio.Id" class="btn btn-outline-danger">
+                <i class="material-icons me-1">delete</i>
+                <span>Delete Portfolio</span>
             </a>
         </div>
     </div>
@@ -88,327 +88,48 @@
         </div>
     </div>
 
-    <div class="card shadow-sm">
-        <div class="card-header bg-light d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center py-3">
-            <h5 class="mb-3 mb-md-0">Investments</h5>
-            <div class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center">
-                <div class="input-group mb-3 mb-sm-0 me-sm-2" style="max-width: 300px;">
-                    <span class="input-group-text bg-white border-end-0">
-                        <i class="material-icons fs-5">search</i>
-                    </span>
-                    <input type="text" id="searchInput" class="form-control border-start-0" placeholder="Search investments..." onkeyup="filterItems()">
-                </div>
-                <a asp-page="/Investments/Create" asp-route-portfolioId="@Model.Portfolio.Id" class="btn btn-primary btn-sm d-flex align-items-center" style="white-space: nowrap;">
-                    <i class="material-icons me-1">add</i>
-                    <span>Add Investment</span>
-                </a>
-            </div>
-        </div>
-        <div class="card-body p-0">
-            @if (Model.Investments.Any())
-            {
-                <div class="table-responsive">
-                    <table class="table table-hover align-middle mb-0">
-                        <thead class="table-light">
-                            <tr>
-                                <th class="ps-3" style="width: 30%; cursor: pointer;">
-                                    <div class="d-flex align-items-center">
-                                        <span>Name</span>
-                                        <i class="material-icons fs-6 sort-icon ms-1" data-column="0"></i>
-                                    </div>
-                                </th>
-                                <th class="d-none d-md-table-cell" style="width: 15%; cursor: pointer;">
-                                    <div class="d-flex align-items-center">
-                                        <span>Category</span>
-                                        <i class="material-icons fs-6 sort-icon ms-1" data-column="1"></i>
-                                    </div>
-                                </th>
-                                <th class="d-none d-sm-table-cell" style="width: 15%; cursor: pointer;">
-                                    <div class="d-flex align-items-center">
-                                        <span>Value</span>
-                                        <i class="material-icons fs-6 sort-icon ms-1" data-column="2"></i>
-                                    </div>
-                                </th>
-                                <th class="d-none d-lg-table-cell" style="width: 15%; cursor: pointer;">
-                                    <div class="d-flex align-items-center">
-                                        <span>Gain/Loss</span>
-                                        <i class="material-icons fs-6 sort-icon ms-1" data-column="3"></i>
-                                    </div>
-                                </th>
-                                <th style="width: 10%;" class="text-end pe-3">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var investment in Model.Investments)
-                            {
-                                <tr>
-                                    <td>
-                                        <div class="d-flex flex-column">
-                                            <span class="fw-medium">@investment.Name</span>
-                                            <div class="d-md-none mt-1">
-                                                <span class="badge bg-info bg-opacity-10 text-info px-2 py-1 rounded-pill">@investment.CategoryName</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="d-none d-md-table-cell">
-                                        <span class="badge bg-info bg-opacity-10 text-info px-3 py-2 rounded-pill">@investment.CategoryName</span>
-                                    </td>
-                                    <td class="d-none d-sm-table-cell">
-                                        <span class="fw-medium fs-7">@Html.Raw(Model.FormatCurrency(investment.CurrentValue))</span>
-                                    </td>
-                                    <td class="d-none d-lg-table-cell">
-                                        <span class="fw-medium fs-7 @(investment.UnrealizedGainLoss >= 0 ? "text-success" : "text-danger")" style="white-space: nowrap;">
-                                            @(investment.UnrealizedGainLoss >= 0 ? "+" : "")@Html.Raw(Model.FormatCurrency(investment.UnrealizedGainLoss))
-                                        </span>
-                                    </td>
-                                    <td class="text-end pe-3">
-                                        <div class="btn-group">
-                                            <a asp-page="/Investments/Edit" asp-route-id="@investment.Id" class="btn btn-sm btn-outline-primary">
-                                                <i class="material-icons fs-5">edit</i>
-                                            </a>
-                                            <a asp-page="/Investments/Details" asp-route-id="@investment.Id" class="btn btn-sm btn-outline-primary">
-                                                <i class="material-icons fs-5">info</i>
-                                            </a>
-                                            <a asp-page="/Investments/History" asp-route-id="@investment.Id" class="btn btn-sm btn-outline-success">
-                                                <i class="material-icons fs-5">trending_up</i>
-                                            </a>
-                                            <a asp-page="/Investments/Delete" asp-route-id="@investment.Id" class="btn btn-sm btn-outline-danger">
-                                                <i class="material-icons fs-5">delete</i>
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-                </div>
-            }
-            else
-            {
-                <div class="text-center text-muted py-5">
-                    <i class="material-icons fs-1">account_balance</i>
-                    <p>No investments found in this portfolio</p>
-                </div>
-            }
-        </div>
-    </div>
+    @{
+        ViewBag.Portfolios = new List<Application.Features.Portfolios.GetAllPortfolios.PortfolioDto> { new() { Id = Model.Portfolio.Id, Name = Model.Portfolio.Name } };
+        ViewBag.FormatCurrency = new Func<decimal, string>(Model.FormatCurrency);
+        ViewBag.PageSize = Model.PageSize;
+        ViewBag.TotalPages = Model.TotalPages;
+        ViewBag.CurrentPage = Model.PageNumber;
+        ViewBag.StartItem = Model.StartItem;
+        ViewBag.EndItem = Model.EndItem;
+        ViewBag.TotalItems = Model.TotalItems;
+    }
+    <partial name="_InvestmentsList" model="Model.Investments" />
 </div>
 
 @section Scripts {
-    <!-- Include Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- Include Chart.js DataLabels plugin -->
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
-    
     <script>
-        // Register the DataLabels plugin
-        Chart.register(ChartDataLabels);
-        
-        // Simple sorting functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            // Add click handlers to sortable columns
-            const sortableHeaders = document.querySelectorAll('th[style*="cursor: pointer"]');
-            sortableHeaders.forEach(header => {
-                // Add click event listener
-                header.addEventListener('click', function() {
-                    const columnIndex = parseInt(this.querySelector('.sort-icon').getAttribute('data-column'));
-                    sortTableByColumn(columnIndex);
-                });
-            });
-            
-            // Initialize sort icons to show no sort direction initially
-            const sortIcons = document.querySelectorAll('.sort-icon');
-            sortIcons.forEach(icon => {
-                icon.textContent = ''; // Empty initially
-                icon.style.fontSize = '0.75rem'; // Make icons even smaller
-            });
-        });
-
-        // Search functionality
-        function filterItems() {
-            const input = document.getElementById('searchInput');
-            if (!input) return;
-            
-            const filter = input.value.toLowerCase();
-            const rows = document.querySelectorAll('.table tbody tr');
-            
-            rows.forEach(row => {
-                const nameCell = row.querySelector('td:first-child');
-                const categoryCell = row.querySelector('td:nth-child(2)');
-                
-                if (nameCell && categoryCell) {
-                    const name = nameCell.textContent || nameCell.innerText;
-                    const category = categoryCell.textContent || categoryCell.innerText;
-                    
-                    if (name.toLowerCase().indexOf(filter) > -1 || category.toLowerCase().indexOf(filter) > -1) {
-                        row.style.display = '';
-                    } else {
-                        row.style.display = 'none';
+        @if (Model.CategoryDistribution.Any())
+        {
+            <text>
+            const ctx = document.getElementById('categoryDistributionChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: [@Html.Raw(string.Join(",", Model.CategoryDistribution.Select(c => $"'{c.Name}'")))],
+                    datasets: [{
+                        data: [@string.Join(",", Model.CategoryDistribution.Select(c => c.Value))],
+                        backgroundColor: [
+                            '#4CAF50', '#2196F3', '#FF9800', '#9C27B0', '#F44336', '#607D8B', '#757575'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right'
+                        }
                     }
                 }
             });
-        }
-
-        // Simple sorting function
-        let currentSortColumn = -1;
-        let currentSortDirection = 'asc';
-
-        function sortTableByColumn(columnIndex) {
-            // Get the table body
-            const tbody = document.querySelector('.table tbody');
-            if (!tbody) return;
-            
-            // Get all rows
-            const rows = Array.from(tbody.querySelectorAll('tr'));
-            if (rows.length === 0) return;
-            
-            // Update sort icons
-            const sortIcons = document.querySelectorAll('.sort-icon');
-            sortIcons.forEach(icon => {
-                icon.textContent = ''; // Clear all icons
-                icon.style.fontSize = '0.75rem'; // Make icons even smaller
-            });
-            
-            // Determine sort direction
-            if (currentSortColumn === columnIndex) {
-                currentSortDirection = currentSortDirection === 'asc' ? 'desc' : 'asc';
-            } else {
-                currentSortColumn = columnIndex;
-                currentSortDirection = 'asc';
-            }
-            
-            // Update the sort icon for the current column
-            if (sortIcons[columnIndex]) {
-                sortIcons[columnIndex].textContent = currentSortDirection === 'asc' ? 'arrow_upward' : 'arrow_downward';
-            }
-            
-            // Sort the rows
-            rows.sort((a, b) => {
-                const aCell = a.cells[columnIndex];
-                const bCell = b.cells[columnIndex];
-                
-                if (!aCell || !bCell) return 0;
-                
-                let aValue = aCell.textContent.trim();
-                let bValue = bCell.textContent.trim();
-                
-                // Handle numeric values (for Value and Gain/Loss columns)
-                if (columnIndex === 2 || columnIndex === 3) {
-                    // Extract numeric value from the text (remove currency symbol and commas)
-                    aValue = parseFloat(aValue.replace(/[^0-9.-]+/g, '')) || 0;
-                    bValue = parseFloat(bValue.replace(/[^0-9.-]+/g, '')) || 0;
-                }
-                
-                if (currentSortDirection === 'asc') {
-                    return aValue > bValue ? 1 : -1;
-                } else {
-                    return aValue < bValue ? 1 : -1;
-                }
-            });
-            
-            // Clear and re-populate the tbody
-            while (tbody.firstChild) {
-                tbody.removeChild(tbody.firstChild);
-            }
-            
-            rows.forEach(row => tbody.appendChild(row));
+            </text>
         }
     </script>
-    
-    @if (Model.CategoryDistribution.Any())
-    {
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                // Category distribution pie chart
-                const categoryLabels = @Html.Raw(Json.Serialize(Model.CategoryDistribution.Select(c => c.Name)));
-                const categoryValues = @Html.Raw(Json.Serialize(Model.CategoryDistribution.Select(c => c.Value)));
-                
-                // Debug logging
-                console.log('Category Distribution Data:', {
-                    labels: categoryLabels,
-                    values: categoryValues,
-                    total: categoryValues.reduce((a, b) => a + b, 0)
-                });
-                
-                const categoryColors = [
-                    '#4285F4', '#EA4335', '#FBBC05', '#34A853', '#8E24AA', 
-                    '#0097A7', '#FF9800', '#795548', '#607D8B', '#3F51B5'
-                ];
-                // Decode HTML entities in the currency symbol
-                const currencySymbol = decodeHTMLEntities('@Model.Settings.CurrencySymbol');
-
-                const pieCtx = document.getElementById('categoryDistributionChart').getContext('2d');
-                new Chart(pieCtx, {
-                    type: 'doughnut',
-                    data: {
-                        labels: categoryLabels,
-                        datasets: [{
-                            data: categoryValues,
-                            backgroundColor: categoryColors.slice(0, categoryLabels.length),
-                            borderWidth: 1,
-                            borderColor: '#ffffff'
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: {
-                                position: window.innerWidth < 768 ? 'bottom' : 'right',
-                                labels: {
-                                    padding: 15,
-                                    font: {
-                                        size: 12
-                                    }
-                                }
-                            },
-                            tooltip: {
-                                callbacks: {
-                                    label: function(context) {
-                                        const label = context.label || '';
-                                        const value = context.parsed || 0;
-                                        const total = context.dataset.data.reduce((a, b) => a + b, 0);
-                                        const percentage = Math.round((value / total) * 100);
-                                        return `${label}: ${currencySymbol}${value.toLocaleString()} (${percentage}%)`;
-                                    }
-                                }
-                            },
-                            datalabels: {
-                                color: '#fff',
-                                font: {
-                                    weight: 'bold',
-                                    size: 11
-                                },
-                                formatter: function(value, context) {
-                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
-                                    const percentage = Math.round((value / total) * 100);
-                                    return `${percentage}%\n${currencySymbol}${value.toLocaleString()}`;
-                                },
-                                align: 'center',
-                                anchor: 'center',
-                                offset: 0,
-                                rotation: 0,
-                                textAlign: 'center',
-                                textBaseline: 'middle'
-                            }
-                        },
-                        cutout: '65%'
-                    }
-                });
-                
-                // Adjust legend position on window resize
-                window.addEventListener('resize', function() {
-                    chart.options.plugins.legend.position = window.innerWidth < 768 ? 'bottom' : 'right';
-                    chart.update();
-                });
-            });
-            
-            // Helper function to decode HTML entities
-            function decodeHTMLEntities(text) {
-                const textarea = document.createElement('textarea');
-                textarea.innerHTML = text;
-                return textarea.value;
-            }
-        </script>
-    }
 } 
