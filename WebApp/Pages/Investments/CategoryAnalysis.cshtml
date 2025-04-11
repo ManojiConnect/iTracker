@@ -4,12 +4,28 @@
     ViewData["Title"] = "Category Analysis";
 }
 
+<style>
+    .chart-container {
+        position: relative;
+        height: 300px;
+        max-height: 80vh;
+        margin: 0 auto;
+    }
+    
+    @@media (max-width: 767px) {
+        .chart-container {
+            height: 250px;
+            width: 100%;
+        }
+    }
+</style>
+
 <div class="container-fluid">
     <div class="row mb-3">
-        <div class="col-12 d-flex justify-content-between align-items-center">
+        <div class="col-12 d-flex justify-content-between align-items-center flex-wrap gap-2">
             <h1 class="page-title">Category Analysis</h1>
-            <a href="@(Model.PortfolioId.HasValue ? $"./Index?portfolioId={Model.PortfolioId}" : "./Index")" class="btn btn-outline-secondary">
-                <i class="material-icons small align-middle">arrow_back</i> Back to Investments
+            <a href="@(Model.PortfolioId.HasValue ? $"/Portfolios?portfolioId={Model.PortfolioId}" : "/Portfolios")" class="btn btn-outline-secondary">
+                <i class="material-icons small align-middle">arrow_back</i> Back to Portfolios
             </a>
         </div>
     </div>
@@ -47,7 +63,9 @@
                                         <h5 class="mb-0">Category Allocation</h5>
                                     </div>
                                     <div class="card-body">
-                                        <canvas id="categoryAllocationChart" height="300"></canvas>
+                                        <div class="chart-container">
+                                            <canvas id="categoryAllocationChart"></canvas>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -59,7 +77,9 @@
                                         <h5 class="mb-0">Category Returns</h5>
                                     </div>
                                     <div class="card-body">
-                                        <canvas id="categoryReturnsChart" height="300"></canvas>
+                                        <div class="chart-container">
+                                            <canvas id="categoryReturnsChart"></canvas>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -83,10 +103,10 @@
                                                         <th>Current Value</th>
                                                         <th>P/L</th>
                                                         <th>Return %</th>
-                                                        <th>Count</th>
+                                                        <th class="d-none d-md-table-cell">Count</th>
                                                         @if (Model.IsAllPortfolios)
                                                         {
-                                                            <th>Portfolios</th>
+                                                            <th class="d-none d-md-table-cell">Portfolios</th>
                                                         }
                                                         <th>Actions</th>
                                                     </tr>
@@ -105,15 +125,15 @@
                                                             <td class="@(category.ReturnPercentage >= 0 ? "text-success" : "text-danger")">
                                                                 @category.ReturnPercentage.ToString("F2")%
                                                             </td>
-                                                            <td>@category.InvestmentCount</td>
+                                                            <td class="d-none d-md-table-cell">@category.InvestmentCount</td>
                                                             @if (Model.IsAllPortfolios)
                                                             {
-                                                                <td>@category.PortfolioCount</td>
+                                                                <td class="d-none d-md-table-cell">@category.PortfolioCount</td>
                                                             }
                                                             <td>
-                                                                <a href="./Index?categoryId=@category.CategoryId@(Model.PortfolioId.HasValue ? $"&portfolioId={Model.PortfolioId}" : "")" 
+                                                                <a href="/Portfolios?categoryId=@category.CategoryId@(Model.PortfolioId.HasValue ? $"&portfolioId={Model.PortfolioId}" : "")" 
                                                                    class="btn btn-sm btn-outline-primary">
-                                                                    <i class="fas fa-filter"></i> View Investments
+                                                                    <i class="fas fa-filter"></i> View
                                                                 </a>
                                                             </td>
                                                         </tr>
@@ -135,87 +155,122 @@
 @section Scripts {
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
-    <script>
-        // Only initialize charts if we have data
-        @if (Model.Categories.Any())
-        {
-            <text>
-            document.addEventListener('DOMContentLoaded', function() {
-                // Category labels and colors for both charts
-                const categoryLabels = @Html.Raw(Model.CategoryLabelsJson);
-                const chartColors = @Html.Raw(Model.ChartColorsJson);
-                
-                // Allocation Chart (Donut)
-                const allocationData = @Html.Raw(Model.AllocationDataJson);
-                const ctxAllocation = document.getElementById('categoryAllocationChart').getContext('2d');
-                new Chart(ctxAllocation, {
-                    type: 'doughnut',
-                    data: {
-                        labels: categoryLabels,
-                        datasets: [{
-                            data: allocationData,
-                            backgroundColor: chartColors,
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: {
-                                position: 'right',
-                            },
-                            tooltip: {
-                                callbacks: {
-                                    label: function(context) {
-                                        return context.label + ': ' + context.raw.toFixed(2) + '%';
-                                    }
-                                }
-                            }
-                        }
-                    }
-                });
-                
-                // Returns Chart (Bar)
-                const returnData = @Html.Raw(Model.ReturnDataJson);
-                const ctxReturns = document.getElementById('categoryReturnsChart').getContext('2d');
-                new Chart(ctxReturns, {
-                    type: 'bar',
-                    data: {
-                        labels: categoryLabels,
-                        datasets: [{
-                            label: 'Return %',
-                            data: returnData,
-                            backgroundColor: chartColors,
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                ticks: {
-                                    callback: function(value) {
-                                        return value + '%';
-                                    }
+    @if (Model.Categories.Any())
+    {
+        <script>
+        /* <![CDATA[ */
+        document.addEventListener('DOMContentLoaded', function() {
+            // Category labels and colors for both charts
+            const categoryLabels = @Html.Raw(Model.CategoryLabelsJson);
+            const chartColors = @Html.Raw(Model.ChartColorsJson);
+            
+            // Check screen size for responsive adjustments
+            const isMobile = window.innerWidth < 768;
+            
+            // Allocation Chart (Donut)
+            const allocationData = @Html.Raw(Model.AllocationDataJson);
+            const ctxAllocation = document.getElementById('categoryAllocationChart').getContext('2d');
+            new Chart(ctxAllocation, {
+                type: 'doughnut',
+                data: {
+                    labels: categoryLabels,
+                    datasets: [{
+                        data: allocationData,
+                        backgroundColor: chartColors,
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: isMobile ? 'bottom' : 'right',
+                            labels: {
+                                boxWidth: isMobile ? 12 : 20,
+                                font: {
+                                    size: isMobile ? 10 : 12
                                 }
                             }
                         },
-                        plugins: {
-                            tooltip: {
-                                callbacks: {
-                                    label: function(context) {
-                                        return context.dataset.label + ': ' + context.raw.toFixed(2) + '%';
-                                    }
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.label + ': ' + context.raw.toFixed(2) + '%';
                                 }
                             }
                         }
                     }
-                });
+                }
             });
-            </text>
-        }
-    </script>
+            
+            // Returns Chart (Bar)
+            const returnData = @Html.Raw(Model.ReturnDataJson);
+            const ctxReturns = document.getElementById('categoryReturnsChart').getContext('2d');
+            new Chart(ctxReturns, {
+                type: 'bar',
+                data: {
+                    labels: categoryLabels,
+                    datasets: [{
+                        label: 'Return %',
+                        data: returnData,
+                        backgroundColor: chartColors,
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            ticks: {
+                                font: {
+                                    size: isMobile ? 9 : 12
+                                },
+                                maxRotation: 45,
+                                minRotation: isMobile ? 45 : 0
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return value + '%';
+                                },
+                                font: {
+                                    size: isMobile ? 10 : 12
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            labels: {
+                                font: {
+                                    size: isMobile ? 10 : 12
+                                }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.dataset.label + ': ' + context.raw.toFixed(2) + '%';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // Handle resize events
+            window.addEventListener('resize', function() {
+                const currentIsMobile = window.innerWidth < 768;
+                if (currentIsMobile !== isMobile) {
+                    location.reload(); // Reload to update chart configuration
+                }
+            });
+        });
+        /* ]]> */
+        </script>
+    }
 } 
