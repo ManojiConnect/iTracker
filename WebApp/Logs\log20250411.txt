@@ -12178,3 +12178,775 @@ s.ApplicationSettingsService>
 [15:08:17 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
 [15:08:17 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
 [15:08:17 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:25 INF] Ensuring database is created... <s:Program>
+[15:16:26 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[15:16:26 INF] Database initialization completed. <s:Program>
+[15:16:26 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[15:16:26 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[15:16:26 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[15:16:26 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[15:16:26 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[15:17:05 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+s.ApplicationSettingsService>
+[15:16:28 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:28 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:28 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:28 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:28 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:28 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:28 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:28 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:28 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:28 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:28 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:28 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:28 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:28 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:28 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:28 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:31 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:31 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:31 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:31 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:31 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:31 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:31 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:31 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:31 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:31 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:31 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:31 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:31 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:31 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:31 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:31 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:31 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:31 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:31 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:31 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:31 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:31 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:31 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:31 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:31 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:31 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:31 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:31 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:44 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:44 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:44 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:44 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:44 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:44 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:44 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:44 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:44 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:44 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:44 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:44 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:44 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:44 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:44 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:44 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:44 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:44 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:44 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:44 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:44 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:44 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:44 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:44 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:44 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:44 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:44 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:16:44 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:18:57 INF] Ensuring database is created... <s:Program>
+[15:18:57 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[15:18:57 INF] Database initialization completed. <s:Program>
+[15:18:58 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[15:18:58 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[15:18:58 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[15:18:58 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[15:18:58 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[15:19:49 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+s.ApplicationSettingsService>
+[15:18:59 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:18:59 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:18:59 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:18:59 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:18:59 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:18:59 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:18:59 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:18:59 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:18:59 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:18:59 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:18:59 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:18:59 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:18:59 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:18:59 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:18:59 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:18:59 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:00 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:00 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:00 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:00 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:00 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:00 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:00 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:00 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:00 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:00 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:00 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:00 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:00 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:00 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:00 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:00 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:00 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:00 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:00 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:00 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:00 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:00 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:00 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:00 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:00 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:00 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:00 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:00 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:03 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:03 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:03 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:03 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:03 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:03 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:03 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:03 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:03 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:03 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:03 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:03 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:03 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:03 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:03 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:03 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:03 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:03 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:03 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:03 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:03 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:03 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:03 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:03 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:03 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:03 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:03 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:03 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:06 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:06 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:06 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:06 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:06 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:06 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:06 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:06 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:06 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:06 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:06 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:06 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:06 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:06 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:06 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:06 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:06 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:06 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:06 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:06 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:06 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:06 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:06 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:06 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:08 INF] Getting category performance data for 12 <s:Application.Features.Investments.GetCategoryPerformance.GetCategoryPerformanceHandler>
+[15:19:14 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:14 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:14 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:14 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:14 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:14 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:14 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:14 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:14 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:14 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:14 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:14 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:14 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:14 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:14 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:14 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:14 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:14 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:14 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:14 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:14 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:14 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:14 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:14 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:20 INF] Getting category performance data for 12 <s:Application.Features.Investments.GetCategoryPerformance.GetCategoryPerformanceHandler>
+[15:19:29 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:29 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:29 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:29 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:29 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:29 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:29 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:29 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:29 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:29 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:29 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:29 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:29 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:29 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:29 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:29 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:29 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:29 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:29 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:29 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:29 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:29 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:29 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:29 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:29 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:29 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:29 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:29 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:33 INF] Getting category performance data for All Portfolios <s:Application.Features.Investments.GetCategoryPerformance.GetCategoryPerformanceHandler>
+[15:19:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:19:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:16 INF] Ensuring database is created... <s:Program>
+[15:21:16 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[15:21:16 INF] Database initialization completed. <s:Program>
+[15:21:17 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[15:21:17 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[15:21:17 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[15:21:17 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[15:21:17 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[15:22:28 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+s.ApplicationSettingsService>
+[15:21:19 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:19 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:19 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:19 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:19 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:19 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:19 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:19 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:19 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:19 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:19 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:19 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:19 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:19 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:19 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:19 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:21 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:21 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:21 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:21 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:21 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:21 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:21 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:21 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:21 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:21 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:21 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:21 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:21 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:21 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:21 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:21 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:21 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:21 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:21 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:21 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:21 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:21 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:21 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:21 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:21 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:21 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:21 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:21 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:22 INF] Getting category performance data for All Portfolios <s:Application.Features.Investments.GetCategoryPerformance.GetCategoryPerformanceHandler>
+[15:21:28 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:28 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:28 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:28 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:28 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:28 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:28 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:28 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:28 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:28 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:28 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:28 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:28 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:28 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:28 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:28 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:28 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:28 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:28 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:28 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:28 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:28 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:28 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:28 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:28 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:28 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:28 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:28 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:21:37 INF] Getting category performance data for 11 <s:Application.Features.Investments.GetCategoryPerformance.GetCategoryPerformanceHandler>
+[15:22:54 INF] Ensuring database is created... <s:Program>
+[15:22:55 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[15:22:55 INF] Database initialization completed. <s:Program>
+[15:22:55 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[15:22:55 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[15:22:55 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[15:22:55 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[15:22:55 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[15:23:33 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+s.ApplicationSettingsService>
+[15:22:57 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:22:57 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:22:57 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:22:57 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:22:57 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:22:57 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:22:57 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:22:57 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:22:57 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:22:57 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:22:57 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:22:57 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:22:57 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:22:57 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:22:57 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:22:57 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:22:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:22:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:22:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:22:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:22:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:22:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:22:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:22:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:22:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:22:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:22:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:22:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:22:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:22:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:22:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:22:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:22:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:22:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:22:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:22:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:22:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:22:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:22:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:22:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:22:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:22:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:22:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:22:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:23:00 INF] Getting category performance data for 11 <s:Application.Features.Investments.GetCategoryPerformance.GetCategoryPerformanceHandler>
+[15:23:50 INF] Ensuring database is created... <s:Program>
+[15:23:51 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[15:23:51 INF] Database initialization completed. <s:Program>
+[15:23:51 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[15:23:51 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[15:23:51 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[15:23:51 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[15:23:51 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[15:25:01 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+s.ApplicationSettingsService>
+[15:23:52 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:23:52 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:23:52 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:23:52 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:23:52 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:23:52 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:23:52 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:23:52 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:23:52 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:23:52 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:23:52 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:23:52 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:23:52 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:23:52 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:23:52 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:23:52 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:23:54 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:23:54 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:23:54 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:23:54 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:23:54 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:23:54 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:23:54 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:23:54 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:23:54 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:23:54 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:23:54 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:23:54 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:23:54 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:23:54 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:23:54 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:23:54 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:23:54 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:23:54 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:23:54 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:23:54 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:23:54 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:23:54 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:23:54 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:23:54 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:23:54 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:23:54 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:23:54 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:23:54 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:23:58 INF] Getting category performance data for All Portfolios <s:Application.Features.Investments.GetCategoryPerformance.GetCategoryPerformanceHandler>
+[15:25:29 INF] Ensuring database is created... <s:Program>
+[15:25:30 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[15:25:30 INF] Database initialization completed. <s:Program>
+[15:25:30 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[15:25:30 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[15:25:30 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[15:25:30 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[15:25:30 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[15:27:48 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+s.ApplicationSettingsService>
+[15:25:31 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:31 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:31 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:31 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:31 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:31 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:31 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:31 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:31 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:31 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:31 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:31 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:31 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:31 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:31 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:31 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:32 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:32 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:32 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:32 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:32 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:32 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:32 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:32 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:32 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:32 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:32 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:32 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:32 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:32 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:32 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:32 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:32 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:32 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:32 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:32 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:32 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:32 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:32 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:32 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:32 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:32 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:32 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:32 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:34 INF] Getting category performance data for All Portfolios <s:Application.Features.Investments.GetCategoryPerformance.GetCategoryPerformanceHandler>
+[15:25:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:36 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:38 INF] Getting category performance data for All Portfolios <s:Application.Features.Investments.GetCategoryPerformance.GetCategoryPerformanceHandler>
+[15:25:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:25:40 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:26:39 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:26:39 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:26:39 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:26:39 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:26:39 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:26:39 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:26:39 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:26:39 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:26:39 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:26:39 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:26:39 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:26:39 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:26:39 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:26:39 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:26:39 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:26:39 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:26:43 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:26:43 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:26:43 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:26:43 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:26:43 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:26:43 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:26:43 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:26:43 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:26:43 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:26:43 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:26:43 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:26:43 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:26:43 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:26:43 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:26:43 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:26:43 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:26:43 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:26:43 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:26:43 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:26:43 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:26:43 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:26:43 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:26:43 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:26:43 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:26:43 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:26:43 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:26:43 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:26:43 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:26:45 INF] Getting category performance data for All Portfolios <s:Application.Features.Investments.GetCategoryPerformance.GetCategoryPerformanceHandler>
+[15:28:52 INF] Ensuring database is created... <s:Program>
+[15:28:53 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[15:28:53 INF] Database initialization completed. <s:Program>
+[15:28:53 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[15:28:53 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[15:28:53 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[15:28:53 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[15:28:53 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[15:28:54 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:54 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:54 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:54 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:54 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:54 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:54 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:54 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:54 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:54 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:54 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:54 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:54 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:54 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:54 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:54 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:54 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:56 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:56 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:56 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:56 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:56 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:56 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:56 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:56 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:56 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:56 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:56 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:56 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:56 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:56 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:56 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:56 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:56 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:56 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:56 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:56 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:56 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:56 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:56 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:56 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:56 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:56 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:56 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:56 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:28:58 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:29:00 INF] Getting category performance data for All Portfolios <s:Application.Features.Investments.GetCategoryPerformance.GetCategoryPerformanceHandler>
+[15:29:02 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:29:02 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:29:02 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:29:02 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:29:02 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:29:02 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:29:02 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:29:02 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:29:02 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:29:02 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:29:02 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:29:02 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:29:02 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:29:02 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:29:02 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:29:02 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:29:17 INF] Retrieving all users <s:WebApp.Pages.Users.IndexModel>
+[15:29:17 INF] Fetching all users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[15:29:17 INF] Found 3 identity users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[15:29:17 INF] Successfully retrieved 3 users <s:WebApp.Pages.Users.IndexModel>
+[15:29:41 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:29:41 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:29:41 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:29:41 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:29:41 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:29:41 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:29:41 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:29:41 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:29:41 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:29:41 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:29:41 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:29:41 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:29:41 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:29:41 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:29:41 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:29:41 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[15:29:43 INF] Retrieving all users <s:WebApp.Pages.Users.IndexModel>
+[15:29:43 INF] Fetching all users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[15:29:43 INF] Found 3 identity users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[15:29:43 INF] Successfully retrieved 3 users <s:WebApp.Pages.Users.IndexModel>

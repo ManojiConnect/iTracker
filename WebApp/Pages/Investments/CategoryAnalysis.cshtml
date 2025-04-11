@@ -1,0 +1,221 @@
+@page
+@model WebApp.Pages.Investments.CategoryAnalysisModel
+@{
+    ViewData["Title"] = "Category Analysis";
+}
+
+<div class="container-fluid">
+    <div class="row mb-3">
+        <div class="col-12 d-flex justify-content-between align-items-center">
+            <h1 class="page-title">Category Analysis</h1>
+            <a href="@(Model.PortfolioId.HasValue ? $"./Index?portfolioId={Model.PortfolioId}" : "./Index")" class="btn btn-outline-secondary">
+                <i class="material-icons small align-middle">arrow_back</i> Back to Investments
+            </a>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    @if (Model.IsAllPortfolios)
+                    {
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle me-2"></i> Showing consolidated category performance across all portfolios
+                        </div>
+                    }
+                    else 
+                    {
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle me-2"></i> Showing category performance for <strong>@Model.PortfolioName</strong>
+                        </div>
+                    }
+                    
+                    @if (!Model.Categories.Any())
+                    {
+                        <div class="alert alert-warning">
+                            <i class="fas fa-exclamation-triangle me-2"></i> No investment data available for category analysis
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="row">
+                            <!-- Category Allocation Chart (Donut) -->
+                            <div class="col-lg-6 mb-4">
+                                <div class="card h-100">
+                                    <div class="card-header">
+                                        <h5 class="mb-0">Category Allocation</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <canvas id="categoryAllocationChart" height="300"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Category Return Chart (Bar) -->
+                            <div class="col-lg-6 mb-4">
+                                <div class="card h-100">
+                                    <div class="card-header">
+                                        <h5 class="mb-0">Category Returns</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <canvas id="categoryReturnsChart" height="300"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Category Performance Table -->
+                        <div class="row mt-4">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5 class="mb-0">Category Performance Details</h5>
+                                    </div>
+                                    <div class="card-body p-0">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped table-hover mb-0">
+                                                <thead class="bg-light">
+                                                    <tr>
+                                                        <th>Category</th>
+                                                        <th>Allocation %</th>
+                                                        <th>Total Invested</th>
+                                                        <th>Current Value</th>
+                                                        <th>P/L</th>
+                                                        <th>Return %</th>
+                                                        <th>Count</th>
+                                                        @if (Model.IsAllPortfolios)
+                                                        {
+                                                            <th>Portfolios</th>
+                                                        }
+                                                        <th>Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var category in Model.Categories)
+                                                    {
+                                                        <tr>
+                                                            <td>@category.CategoryName</td>
+                                                            <td>@category.AllocationPercentage.ToString("F2")%</td>
+                                                            <td>@category.TotalInvestment.ToString("C2")</td>
+                                                            <td>@category.CurrentValue.ToString("C2")</td>
+                                                            <td class="@(category.ProfitLoss >= 0 ? "text-success" : "text-danger")">
+                                                                @category.ProfitLoss.ToString("C2")
+                                                            </td>
+                                                            <td class="@(category.ReturnPercentage >= 0 ? "text-success" : "text-danger")">
+                                                                @category.ReturnPercentage.ToString("F2")%
+                                                            </td>
+                                                            <td>@category.InvestmentCount</td>
+                                                            @if (Model.IsAllPortfolios)
+                                                            {
+                                                                <td>@category.PortfolioCount</td>
+                                                            }
+                                                            <td>
+                                                                <a href="./Index?categoryId=@category.CategoryId@(Model.PortfolioId.HasValue ? $"&portfolioId={Model.PortfolioId}" : "")" 
+                                                                   class="btn btn-sm btn-outline-primary">
+                                                                    <i class="fas fa-filter"></i> View Investments
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script>
+        // Only initialize charts if we have data
+        @if (Model.Categories.Any())
+        {
+            <text>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Category labels and colors for both charts
+                const categoryLabels = @Html.Raw(Model.CategoryLabelsJson);
+                const chartColors = @Html.Raw(Model.ChartColorsJson);
+                
+                // Allocation Chart (Donut)
+                const allocationData = @Html.Raw(Model.AllocationDataJson);
+                const ctxAllocation = document.getElementById('categoryAllocationChart').getContext('2d');
+                new Chart(ctxAllocation, {
+                    type: 'doughnut',
+                    data: {
+                        labels: categoryLabels,
+                        datasets: [{
+                            data: allocationData,
+                            backgroundColor: chartColors,
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'right',
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        return context.label + ': ' + context.raw.toFixed(2) + '%';
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+                
+                // Returns Chart (Bar)
+                const returnData = @Html.Raw(Model.ReturnDataJson);
+                const ctxReturns = document.getElementById('categoryReturnsChart').getContext('2d');
+                new Chart(ctxReturns, {
+                    type: 'bar',
+                    data: {
+                        labels: categoryLabels,
+                        datasets: [{
+                            label: 'Return %',
+                            data: returnData,
+                            backgroundColor: chartColors,
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    callback: function(value) {
+                                        return value + '%';
+                                    }
+                                }
+                            }
+                        },
+                        plugins: {
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        return context.dataset.label + ': ' + context.raw.toFixed(2) + '%';
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            });
+            </text>
+        }
+    </script>
+} 
