@@ -35,28 +35,127 @@
         </div>
     </div>
 
+    <!-- Portfolio Selector -->
+    <div class="card shadow-sm mb-4">
+        <div class="card-body">
+            <form id="portfolioForm" method="get" class="row g-3 align-items-center">
+                <div class="col-12 col-md-6">
+                    <div class="d-flex align-items-center">
+                        <label for="portfolioId" class="form-label fw-bold me-3 mb-0 text-nowrap">Select Portfolio:</label>
+                        <select id="portfolioIdSelector" name="portfolioId" class="form-select form-select-lg" onchange="this.form.submit()">
+                            <option value="">All Portfolios</option>
+                            @foreach (var portfolio in Model.Portfolios)
+                            {
+                                <option value="@portfolio.Id" selected="@(Model.PortfolioId == portfolio.Id)">@portfolio.Name</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <input type="hidden" name="pageSize" value="@Model.PageSize">
+            </form>
+        </div>
+    </div>
+
+    @if (Model.SelectedPortfolio != null)
+    {
+        <!-- Portfolio Details Section -->
+        <div class="row mb-4">
+            <div class="col-12 col-lg-6 mb-4 mb-lg-0">
+                <div class="card shadow-sm h-100">
+                    <div class="card-header bg-light">
+                        <h5 class="mb-0">
+                            @if (Model.PortfolioId.HasValue)
+                            {
+                                <span>Portfolio Summary: @Model.SelectedPortfolio.Name</span>
+                            }
+                            else
+                            {
+                                <span>All Portfolios Summary</span>
+                            }
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="list-group list-group-flush">
+                            <div class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                <span>Total Value</span>
+                                <span class="fw-bold fs-4 text-primary">@ApplicationSettings.FormatCurrency(Model.SelectedPortfolio.TotalValue)</span>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                <span>Total Investment</span>
+                                <span class="fw-medium">@ApplicationSettings.FormatCurrency(Model.SelectedPortfolio.TotalInvestment)</span>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                <span>Unrealized Gain/Loss</span>
+                                <span class="fw-medium @(Model.SelectedPortfolio.UnrealizedGainLoss >= 0 ? "text-success" : "text-danger")">
+                                    @ApplicationSettings.FormatCurrency(Model.SelectedPortfolio.UnrealizedGainLoss)
+                                </span>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                <span>Return</span>
+                                <span class="fw-medium @(Model.SelectedPortfolio.ReturnPercentage >= 0 ? "text-success" : "text-danger")">
+                                    @(Model.SelectedPortfolio.ReturnPercentage >= 0 ? "+" : "")@ApplicationSettings.FormatNumber(Model.SelectedPortfolio.ReturnPercentage, 2)%
+                                </span>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                <span>Created On</span>
+                                <span class="fw-medium">@Model.SelectedPortfolio.CreatedOn.ToString("MMM dd, yyyy")</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-6">
+                <div class="card shadow-sm h-100">
+                    <div class="card-header bg-light">
+                        <h5 class="mb-0">
+                            @if (Model.PortfolioId.HasValue)
+                            {
+                                <span>Category Distribution</span>
+                            }
+                            else
+                            {
+                                <span>Category Distribution Across All Portfolios</span>
+                            }
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        @if (Model.CategoryDistribution.Any())
+                        {
+                            <div style="position: relative; height: 320px;">
+                                <canvas id="categoryDistributionChart"></canvas>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="text-center text-muted py-5">
+                                <i class="material-icons fs-1">pie_chart</i>
+                                <p>Add investments to see category distribution</p>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    <!-- Filter Section -->
     <div class="row mb-4">
         <div class="col-12">
             <div class="card shadow-sm">
                 <div class="card-body p-4">
                     <form id="filterForm" method="get" class="row g-3 align-items-end">
-                        <div class="col-12 col-md-3">
-                            <label for="portfolioId" class="form-label">Portfolio</label>
-                            <select id="portfolioId" name="portfolioId" class="form-select" asp-items="Model.PortfolioSelectList">
-                                <option value="">All Portfolios</option>
-                            </select>
-                        </div>
-                        <div class="col-12 col-md-3">
+                        <div class="col-12 col-md-4">
                             <label for="category" class="form-label">Category</label>
                             <select id="category" name="category" class="form-select" asp-items="Model.CategorySelectList">
                                 <option value="">All Categories</option>
                             </select>
                         </div>
-                        <div class="col-12 col-md-3">
+                        <div class="col-12 col-md-4">
                             <label for="searchText" class="form-label">Search</label>
                             <input type="text" id="searchText" name="searchText" class="form-control form-control-equal" value="@Model.SearchText" placeholder="Search investments...">
                         </div>
-                        <div class="col-12 col-md-3 d-flex gap-2">
+                        <div class="col-12 col-md-4 d-flex gap-2">
                             <button type="submit" class="btn btn-primary flex-grow-1 btn-slick">
                                 Apply
                             </button>
@@ -64,6 +163,7 @@
                                 <i class="material-icons">refresh</i>
                             </button>
                         </div>
+                        <input type="hidden" name="portfolioId" value="@Model.PortfolioId">
                         <input type="hidden" name="sortBy" id="sortBy" value="@Model.SortBy">
                         <input type="hidden" name="sortOrder" id="sortOrder" value="@Model.SortOrder">
                         <input type="hidden" name="pageNumber" id="pageNumber" value="@Model.PageNumber">
@@ -74,21 +174,25 @@
         </div>
     </div>
 
+    <!-- Investments Grid -->
     <div class="card shadow-sm mb-3">
         <div class="table-responsive">
-            <table class="table table-hover mb-0 align-middle">
+            <table class="table mb-0 align-middle">
                 <thead>
                     <tr>
-                        <th data-sort-by="portfolio" class="sortable-header @(Model.SortBy == "portfolio" ? "sorted" : "")">
-                            <div class="d-flex align-items-center">
-                                <span>Portfolio</span>
-                                @if (Model.SortBy == "portfolio")
-                                {
-                                    <i class="material-icons ms-1 sort-icon">@(Model.SortOrder == "asc" ? "arrow_upward" : "arrow_downward")</i>
-                                }
-                            </div>
-                        </th>
-                        <th data-sort-by="name" class="sortable-header @(Model.SortBy == "name" ? "sorted" : "")">
+                        @if (!Model.PortfolioId.HasValue)
+                        {
+                            <th width="20%" data-sort-by="portfolio" class="sortable-header @(Model.SortBy == "portfolio" ? "sorted" : "")">
+                                <div class="d-flex align-items-center">
+                                    <span>Portfolio</span>
+                                    @if (Model.SortBy == "portfolio")
+                                    {
+                                        <i class="material-icons ms-1 sort-icon">@(Model.SortOrder == "asc" ? "arrow_upward" : "arrow_downward")</i>
+                                    }
+                                </div>
+                            </th>
+                        }
+                        <th width="@(Model.PortfolioId.HasValue ? "25" : "22")%" data-sort-by="name" class="sortable-header @(Model.SortBy == "name" ? "sorted" : "")">
                             <div class="d-flex align-items-center">
                                 <span>Name</span>
                                 @if (Model.SortBy == "name")
@@ -97,7 +201,7 @@
                                 }
                             </div>
                         </th>
-                        <th data-sort-by="category" class="sortable-header @(Model.SortBy == "category" ? "sorted" : "")">
+                        <th width="15%" data-sort-by="category" class="sortable-header @(Model.SortBy == "category" ? "sorted" : "")">
                             <div class="d-flex align-items-center">
                                 <span>Category</span>
                                 @if (Model.SortBy == "category")
@@ -106,7 +210,7 @@
                                 }
                             </div>
                         </th>
-                        <th data-sort-by="initialinvestment" class="text-end sortable-header @(Model.SortBy == "initialinvestment" ? "sorted" : "")">
+                        <th width="15%" data-sort-by="initialinvestment" class="text-end sortable-header @(Model.SortBy == "initialinvestment" ? "sorted" : "")">
                             <div class="d-flex align-items-center justify-content-end">
                                 <span>Investment</span>
                                 @if (Model.SortBy == "initialinvestment")
@@ -115,16 +219,16 @@
                                 }
                             </div>
                         </th>
-                        <th data-sort-by="currentvalue" class="text-end sortable-header @(Model.SortBy == "currentvalue" ? "sorted" : "")">
+                        <th width="15%" data-sort-by="currentvalue" class="text-end sortable-header @(Model.SortBy == "currentvalue" ? "sorted" : "")">
                             <div class="d-flex align-items-center justify-content-end">
-                                <span>Current Value</span>
+                                <span class="nowrap">Current Value</span>
                                 @if (Model.SortBy == "currentvalue")
                                 {
                                     <i class="material-icons ms-1 sort-icon">@(Model.SortOrder == "asc" ? "arrow_upward" : "arrow_downward")</i>
                                 }
                             </div>
                         </th>
-                        <th data-sort-by="return" class="text-end sortable-header @(Model.SortBy == "return" ? "sorted" : "")">
+                        <th width="10%" data-sort-by="return" class="text-end sortable-header @(Model.SortBy == "return" ? "sorted" : "")">
                             <div class="d-flex align-items-center justify-content-end">
                                 <span>Return</span>
                                 @if (Model.SortBy == "return")
@@ -133,7 +237,7 @@
                                 }
                             </div>
                         </th>
-                        <th class="text-end">Actions</th>
+                        <th width="15%" class="text-end">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -142,15 +246,12 @@
                         foreach (var investment in Model.Investments.Items)
                         {
                             <tr>
-                                <td>@investment.PortfolioName</td>
+                                @if (!Model.PortfolioId.HasValue)
+                                {
+                                    <td>@investment.PortfolioName</td>
+                                }
                                 <td>
-                                    <div>
-                                        <div class="fw-medium">@investment.Name</div>
-                                        @if (!string.IsNullOrEmpty(investment.Symbol))
-                                        {
-                                            <small class="text-muted">@investment.Symbol</small>
-                                        }
-                                    </div>
+                                    <span class="fw-medium">@investment.Name</span>
                                 </td>
                                 <td>@investment.CategoryName</td>
                                 <td class="text-end">@ApplicationSettings.FormatCurrency(investment.TotalInvestment)</td>
@@ -179,7 +280,7 @@
                     else
                     {
                         <tr>
-                            <td colspan="7" class="text-center py-5">
+                            <td colspan="@(Model.PortfolioId.HasValue ? 6 : 7)" class="text-center py-5">
                                 <i class="material-icons" style="font-size: 48px; opacity: 0.5;">search_off</i>
                                 <p class="mt-2 text-muted">No investments found matching your criteria.</p>
                                 <a href="?resetFilters=true" class="btn btn-outline-primary mt-2">
@@ -272,7 +373,7 @@
     }
     
     .sortable-header:hover {
-        background-color: rgba(0, 0, 0, 0.05);
+        border-bottom: 2px solid #0d47a1;
     }
     
     .sort-icon {
@@ -314,11 +415,76 @@
         height: calc(2.25rem + 2px);
         padding: 0.375rem 0.75rem;
     }
+    
+    /* Custom row hover effect */
+    table.table tbody tr {
+        transition: all 0.15s ease;
+        cursor: pointer;
+    }
+    
+    table.table tbody tr:hover {
+        background-color: rgba(13, 71, 161, 0.04);
+    }
+    
+    table.table tbody tr:hover td {
+        color: #0d47a1;
+    }
+    
+    .nowrap {
+        white-space: nowrap;
+    }
 </style>
 
 @section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
+        @if (Model.CategoryDistribution.Any())
+        {
+            <text>
+            const ctx = document.getElementById('categoryDistributionChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: [@Html.Raw(string.Join(",", Model.CategoryDistribution.Select(c => $"'{c.Name}'")))],
+                    datasets: [{
+                        data: [@string.Join(",", Model.CategoryDistribution.Select(c => c.Value))],
+                        backgroundColor: [
+                            '#4CAF50', '#2196F3', '#FF9800', '#9C27B0', '#F44336', '#607D8B', '#757575'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right'
+                        }
+                    }
+                }
+            });
+            </text>
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
+            // Make table rows clickable
+            const tableRows = document.querySelectorAll('table.table tbody tr');
+            tableRows.forEach(row => {
+                row.addEventListener('click', function(e) {
+                    // Don't trigger if clicking on buttons/links
+                    if (e.target.tagName === 'BUTTON' || e.target.tagName === 'A' || 
+                        e.target.closest('button') || e.target.closest('a')) {
+                        return;
+                    }
+                    
+                    // Get the history link (first link in the action buttons)
+                    const historyLink = this.querySelector('.btn-group a:first-child');
+                    if (historyLink) {
+                        window.location.href = historyLink.getAttribute('href');
+                    }
+                });
+            });
+            
             // Handle sortable headers
             const sortableHeaders = document.querySelectorAll('.sortable-header');
             sortableHeaders.forEach(header => {
@@ -365,6 +531,14 @@
             if (resetButton) {
                 resetButton.addEventListener('click', function() {
                     window.location.href = '?resetFilters=true';
+                });
+            }
+
+            // Handle portfolio change
+            const portfolioSelector = document.getElementById('portfolioIdSelector');
+            if (portfolioSelector) {
+                portfolioSelector.addEventListener('change', function() {
+                    document.getElementById('portfolioForm').submit();
                 });
             }
         });

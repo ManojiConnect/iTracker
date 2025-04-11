@@ -10,6 +10,9 @@ using Application.Features.Common.Responses;
 using Application.Features.Investments.Common;
 using Application.Features.Investments.GetAllInvestments;
 using Application.Features.Portfolios.GetAllPortfolios;
+using Application.Features.Portfolios.GetPortfolioById;
+using PortfolioListDto = Application.Features.Portfolios.GetAllPortfolios.PortfolioDto;
+using PortfolioDetailDto = Application.Features.Portfolios.GetPortfolioById.PortfolioDto;
 using Microsoft.EntityFrameworkCore;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -28,11 +31,18 @@ public class CategorySummary
     public decimal ReturnPercentage { get; set; }
 }
 
+public class CategoryDistributionItem
+{
+    public string Name { get; set; } = string.Empty;
+    public decimal Value { get; set; }
+    public decimal Percentage { get; set; }
+}
+
 public class InvestmentsListViewModel
 {
     public PaginatedList<InvestmentDto> Investments { get; set; }
     public List<string> Categories { get; set; }
-    public List<PortfolioDto> Portfolios { get; set; }
+    public List<PortfolioListDto> Portfolios { get; set; }
     public int PageSize { get; set; }
     public Func<decimal, string> FormatCurrency { get; set; }
 }
@@ -72,9 +82,11 @@ public class IndexModel : PageModel
     public List<SelectListItem> PortfolioSelectList { get; private set; } = new();
     public List<string> Categories { get; set; } = new();
     public List<CategorySummary> CategorySummaries { get; set; } = new();
-    public List<PortfolioDto> Portfolios { get; set; } = new();
+    public List<PortfolioListDto> Portfolios { get; set; } = new();
     public SystemSettingsViewModel Settings { get; set; } = new();
     public InvestmentsListViewModel ListViewModel { get; set; } = new();
+    public PortfolioDetailDto? SelectedPortfolio { get; set; }
+    public List<CategoryDistributionItem> CategoryDistribution { get; set; } = new();
 
     public IndexModel(
         ILogger<IndexModel> logger,
@@ -149,12 +161,114 @@ public class IndexModel : PageModel
                     Selected = PortfolioId.HasValue && p.Id == PortfolioId.Value
                 })
                 .ToList();
+                
+            Portfolios = portfoliosResult.Value.ToList();
+
+            // Get investments for calculating distributions
+            var allInvestments = allInvestmentsResult.Value.Items.ToList();
+
+            // Load selected portfolio details if a portfolio is selected
+            if (PortfolioId.HasValue)
+            {
+                var portfolioResult = await _mediator.Send(new GetPortfolioByIdRequest { Id = PortfolioId.Value });
+                if (portfolioResult.IsSuccess)
+                {
+                    SelectedPortfolio = new PortfolioDetailDto
+                    {
+                        Id = portfolioResult.Value.Id,
+                        Name = portfolioResult.Value.Name,
+                        Description = portfolioResult.Value.Description,
+                        InitialValue = portfolioResult.Value.InitialValue,
+                        TotalValue = portfolioResult.Value.TotalValue,
+                        TotalInvestment = portfolioResult.Value.TotalInvestment,
+                        UnrealizedGainLoss = portfolioResult.Value.UnrealizedGainLoss,
+                        ReturnPercentage = portfolioResult.Value.ReturnPercentage,
+                        CreatedOn = portfolioResult.Value.CreatedOn,
+                        CreatedBy = portfolioResult.Value.CreatedBy,
+                        ModifiedOn = portfolioResult.Value.ModifiedOn,
+                        ModifiedBy = portfolioResult.Value.ModifiedBy,
+                        IsActive = portfolioResult.Value.IsActive,
+                        IsDelete = portfolioResult.Value.IsDelete
+                    };
+                    
+                    // Get investments for this portfolio
+                    var portfolioInvestments = allInvestments
+                        .Where(i => i.PortfolioId == PortfolioId.Value)
+                        .ToList();
+                        
+                    // Calculate category distribution
+                    if (portfolioInvestments.Any())
+                    {
+                        var totalValue = portfolioInvestments.Sum(i => i.CurrentValue);
+                        
+                        CategoryDistribution = portfolioInvestments
+                            .GroupBy(i => i.CategoryName ?? "Uncategorized")
+                            .Select(g => new CategoryDistributionItem 
+                            {
+                                Name = g.Key,
+                                Value = g.Sum(i => i.CurrentValue),
+                                Percentage = totalValue > 0 ? (g.Sum(i => i.CurrentValue) / totalValue) * 100 : 0
+                            })
+                            .OrderByDescending(i => i.Value)
+                            .ToList();
+                    }
+                }
+            }
+            else
+            {
+                // Create aggregate metrics for all portfolios combined
+                var totalValue = allInvestments.Sum(i => i.CurrentValue);
+                var totalInvestment = allInvestments.Sum(i => i.TotalInvestment);
+                var unrealizedGainLoss = totalValue - totalInvestment;
+                var returnPercentage = totalInvestment > 0 
+                    ? (unrealizedGainLoss / totalInvestment) * 100
+                    : 0;
+                
+                // Create an aggregate portfolio summary
+                SelectedPortfolio = new PortfolioDetailDto
+                {
+                    Id = 0,
+                    Name = "All Portfolios",
+                    Description = "Combined summary of all portfolios",
+                    InitialValue = totalInvestment,
+                    TotalValue = totalValue,
+                    TotalInvestment = totalInvestment,
+                    UnrealizedGainLoss = unrealizedGainLoss,
+                    ReturnPercentage = returnPercentage,
+                    CreatedOn = DateTime.UtcNow,
+                    CreatedBy = 1,
+                    ModifiedOn = DateTime.UtcNow,
+                    ModifiedBy = 1,
+                    IsActive = true,
+                    IsDelete = false
+                };
+                
+                // Create category distribution for all investments
+                if (allInvestments.Any())
+                {
+                    CategoryDistribution = allInvestments
+                        .GroupBy(i => i.CategoryName ?? "Uncategorized")
+                        .Select(g => new CategoryDistributionItem 
+                        {
+                            Name = g.Key,
+                            Value = g.Sum(i => i.CurrentValue),
+                            Percentage = totalValue > 0 ? (g.Sum(i => i.CurrentValue) / totalValue) * 100 : 0
+                        })
+                        .OrderByDescending(i => i.Value)
+                        .ToList();
+                }
+            }
 
             // Fetch paginated and filtered investments
             var request = new GetAllInvestmentsRequest
             {
                 PageNumber = PageNumber,
-                PageSize = PageSize
+                PageSize = PageSize,
+                PortfolioId = PortfolioId,
+                Category = Category,
+                SearchText = SearchText,
+                SortBy = SortBy,
+                SortOrder = SortOrder
             };
 
             var result = await _mediator.Send(request);
@@ -165,95 +279,7 @@ public class IndexModel : PageModel
                 return StatusCode(500, "Failed to fetch investment data");
             }
 
-            // Apply manual filtering since the handler might not support all filters
-            var filteredInvestments = result.Value.Items.AsEnumerable();
-            
-            // Apply portfolio filter if specified
-            if (PortfolioId.HasValue)
-            {
-                filteredInvestments = filteredInvestments.Where(i => i.PortfolioId == PortfolioId.Value);
-            }
-            
-            // Apply search filter if specified
-            if (!string.IsNullOrWhiteSpace(SearchText))
-            {
-                filteredInvestments = filteredInvestments.Where(i =>
-                    i.Name.Contains(SearchText, StringComparison.OrdinalIgnoreCase) ||
-                    i.CategoryName.Contains(SearchText, StringComparison.OrdinalIgnoreCase) ||
-                    i.PortfolioName.Contains(SearchText, StringComparison.OrdinalIgnoreCase));
-            }
-            
-            // Apply category filter if specified
-            if (!string.IsNullOrWhiteSpace(Category))
-            {
-                filteredInvestments = filteredInvestments.Where(i => i.CategoryName == Category);
-            }
-            
-            // Apply sorting
-            filteredInvestments = SortBy.ToLower() switch
-            {
-                "name" => SortOrder == "asc" ? filteredInvestments.OrderBy(i => i.Name) : filteredInvestments.OrderByDescending(i => i.Name),
-                "category" => SortOrder == "asc" ? filteredInvestments.OrderBy(i => i.CategoryName) : filteredInvestments.OrderByDescending(i => i.CategoryName),
-                "portfolio" => SortOrder == "asc" ? filteredInvestments.OrderBy(i => i.PortfolioName) : filteredInvestments.OrderByDescending(i => i.PortfolioName),
-                "initialinvestment" => SortOrder == "asc" ? filteredInvestments.OrderBy(i => i.TotalInvestment) : filteredInvestments.OrderByDescending(i => i.TotalInvestment),
-                "currentvalue" => SortOrder == "asc" ? filteredInvestments.OrderBy(i => i.CurrentValue) : filteredInvestments.OrderByDescending(i => i.CurrentValue),
-                "return" => SortOrder == "asc" ? filteredInvestments.OrderBy(i => i.ReturnPercentage) : filteredInvestments.OrderByDescending(i => i.ReturnPercentage),
-                _ => filteredInvestments.OrderBy(i => i.Name)
-            };
-            
-            // Manually implement pagination
-            var totalCount = filteredInvestments.Count();
-            var pagedItems = filteredInvestments
-                .Skip((PageNumber - 1) * PageSize)
-                .Take(PageSize)
-                .ToList();
-            
-            Investments = new PaginatedList<InvestmentDto>(pagedItems, totalCount, PageNumber, PageSize);
-
-            // Get all investments first to get the complete list of categories
-            var allInvestmentsResultAgain = await _mediator.Send(new GetAllInvestmentsRequest
-            {
-                PageNumber = 1,
-                PageSize = int.MaxValue // Get all investments to build complete category list
-            });
-            
-            if (!allInvestmentsResultAgain.IsSuccess)
-            {
-                return StatusCode(500, "Failed to fetch investments");
-            }
-
-            // Get all categories for the filter dropdown from all investments
-            Categories = allInvestmentsResultAgain.Value.Items
-                .Select(i => i.CategoryName)
-                .Where(c => !string.IsNullOrEmpty(c))
-                .Distinct()
-                .OrderBy(c => c)
-                .ToList();
-
-            // Calculate category summaries
-            CategorySummaries = Investments.Items
-                .GroupBy(i => i.CategoryName)
-                .Select(g => new CategorySummary
-                {
-                    Name = g.Key,
-                    Color = GetCategoryColor(g.Key),
-                    InvestmentCount = g.Count(),
-                    TotalValue = g.Sum(i => i.CurrentValue),
-                    UnrealizedGainLoss = g.Sum(i => i.UnrealizedGainLoss),
-                    ReturnPercentage = g.Sum(i => i.TotalInvestment) > 0
-                        ? (g.Sum(i => i.UnrealizedGainLoss) / g.Sum(i => i.TotalInvestment)) * 100
-                        : 0
-                })
-                .OrderBy(s => s.Name)
-                .ToList();
-
-            // Get all portfolios for the filter dropdown
-            var portfoliosResultAgain = await _mediator.Send(new GetAllPortfoliosRequest());
-            if (!portfoliosResultAgain.IsSuccess)
-            {
-                return StatusCode(500, "Failed to fetch portfolios");
-            }
-            Portfolios = portfoliosResultAgain.Value.ToList();
+            Investments = result.Value;
 
             // Get system settings
             Settings = await _settingsService.GetSettingsAsync();

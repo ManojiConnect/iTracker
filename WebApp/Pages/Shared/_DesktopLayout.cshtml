@@ -23,109 +23,100 @@
             font-family: 'Poppins', sans-serif;
             background-color: #f8f9fa;
         }
-        .sidebar {
-            background: linear-gradient(180deg, #1a237e 0%, #0d47a1 100%);
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-            width: 280px;
-            transition: all 0.3s ease;
-            position: fixed;
-            height: 100vh;
-            z-index: 100;
-            left: 0;
-            top: 0;
-            display: flex;
-            flex-direction: column;
-        }
-        .sidebar__logo {
-            padding: 1rem;
-            text-align: center;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        .sidebar__logo h1 {
+        
+        .top-navbar {
+            background: linear-gradient(90deg, #1a237e 0%, #0d47a1 100%);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 0.75rem 1.5rem;
             color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+        }
+        
+        .navbar-brand {
             font-size: 1.5rem;
-            margin: 0;
             font-weight: 600;
+            color: white;
+            text-decoration: none;
         }
-        .sidebar__nav {
-            padding: 1rem 0.75rem;
-            flex: 1;
-            overflow-y: auto;
+        
+        .navbar-brand:hover {
+            color: rgba(255, 255, 255, 0.9);
         }
-        .sidebar__nav-item {
-            transition: all 0.3s ease;
-            border-radius: 10px;
-            margin: 0.25rem 0;
-            padding: 0.6rem 1rem !important;
-            display: flex;
-            align-items: center;
-            font-size: 1rem;
-            font-weight: 500;
-        }
-        .sidebar__nav-item i {
-            margin-right: 10px;
-            font-size: 1.3rem;
-        }
-        .sidebar__nav-item:hover {
-            background-color: rgba(255,255,255,0.15);
-            transform: translateX(5px);
-        }
-        .sidebar__nav-item.active {
-            background-color: rgba(255,255,255,0.2);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        .sidebar__section-title {
-            padding: 0.5rem 1rem 0.25rem;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: rgba(255, 255, 255, 0.5);
-            margin-top: 0.5rem;
-        }
+        
         .main-content {
-            margin-left: 280px;
             background-color: #f8f9fa;
             min-height: 100vh;
             padding: 2rem 2.5rem;
+            margin-top: 70px; /* Adjust based on navbar height */
             transition: all 0.3s ease;
         }
-        .user-profile {
-            background: rgba(255,255,255,0.1);
-            border-radius: 12px;
-            padding: 1rem;
-            margin: 0.5rem;
+        
+        .nav-link {
+            color: rgba(255, 255, 255, 0.85);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
             transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            font-weight: 500;
         }
-        .user-profile:hover {
-            background: rgba(255,255,255,0.15);
-            transform: translateY(-2px);
+        
+        .nav-link:hover, .nav-link.active {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.1);
         }
+        
+        .nav-link i {
+            margin-right: 6px;
+            font-size: 1.2rem;
+        }
+        
+        .user-dropdown .dropdown-toggle::after {
+            display: none;
+        }
+        
         .user-avatar {
-            width: 60px;
-            height: 60px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             background: rgba(255,255,255,0.2);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 1rem;
-            font-size: 1.8rem;
             color: white;
+            font-weight: 500;
         }
-        .logout-button {
-            background: rgba(255,255,255,0.1);
+        
+        .dropdown-menu {
             border: none;
-            border-radius: 8px;
-            padding: 0.9rem 1.5rem;
-            transition: all 0.3s ease;
-            width: calc(100% - 2rem);
-            margin: 0 1rem;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+            border-radius: 10px;
         }
-        .logout-button:hover {
-            background: rgba(255,255,255,0.2);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        
+        .user-info {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
         }
+        
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
+        }
+        
+        .dropdown-item i {
+            margin-right: 8px;
+            font-size: 1.2rem;
+        }
+        
+        .dropdown-divider {
+            margin: 0.5rem 0;
+        }
+        
         .page-title {
             font-size: 1.8rem;
             font-weight: 600;
@@ -135,57 +126,52 @@
             padding-bottom: 0.5rem;
             display: inline-block;
         }
+        
         /* Card animations */
         .card {
             transition: all 0.3s ease;
         }
+        
         .card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
         
         /* Mobile navbar */
-        .mobile-navbar {
+        .mobile-toggle {
             display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(90deg, #1a237e 0%, #0d47a1 100%);
-            color: white;
-            padding: 1rem;
-            z-index: 99;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        .menu-toggle {
             background: transparent;
             border: none;
             color: white;
-            font-size: 2rem;
+            font-size: 1.5rem;
             cursor: pointer;
-            padding: 0;
-            display: flex;
-            align-items: center;
         }
         
         /* Responsive adjustments */
         @@media (max-width: 991px) {
-            .sidebar {
-                transform: translateX(-100%);
+            .navbar-nav {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: #0d47a1;
+                padding: 1rem;
+                flex-direction: column;
             }
-            .mobile-navbar {
+            
+            .navbar-nav.show {
                 display: flex;
-                justify-content: space-between;
-                align-items: center;
             }
+            
+            .mobile-toggle {
+                display: block;
+            }
+            
             .main-content {
-                margin-left: 0;
                 padding: 1rem 1.5rem;
-                padding-top: 5rem;
             }
-            .sidebar.show {
-                transform: translateX(0);
-            }
+            
             .card:hover {
                 transform: none;
             }
@@ -196,17 +182,48 @@
 
 <body>
     <div class="wrapper">
-        <!-- Mobile Navbar -->
-        <div class="mobile-navbar">
-            <button class="menu-toggle" id="sidebarToggle">
-                <i class="material-icons">menu</i>
-            </button>
+        <!-- Top Navbar -->
+        <nav class="top-navbar d-flex justify-content-between align-items-center">
             <div class="d-flex align-items-center">
-                <span class="fw-bold">Investment Tracker</span>
+                <button class="mobile-toggle me-2" id="navbarToggle">
+                    <i class="material-icons">menu</i>
+                </button>
+                <a href="/" class="navbar-brand">Investment Tracker</a>
             </div>
-            <div>
+            
+            <ul class="navbar-nav d-flex flex-row mb-0 mx-3" id="navbarNav">
+                <li class="nav-item me-2">
+                    <a asp-page="/Portfolios/Index" class="nav-link" id="portfoliosTab">
+                        <i class="material-icons">account_balance_wallet</i>
+                        <span>Portfolios</span>
+                    </a>
+                </li>
+                
+                @if (User.IsInRole("Admin"))
+                {
+                    <li class="nav-item me-2">
+                        <a asp-page="/InvestmentCategories/Index" class="nav-link" id="categoriesTab">
+                            <i class="material-icons">category</i>
+                            <span>Categories</span>
+                        </a>
+                    </li>
+                    <li class="nav-item me-2">
+                        <a asp-page="/Users/Index" class="nav-link" id="usersTab">
+                            <i class="material-icons">people</i>
+                            <span>Users</span>
+                        </a>
+                    </li>
+                    <li class="nav-item me-2">
+                        <a asp-page="/AdminTools" class="nav-link" id="settingsTab">
+                            <i class="material-icons">settings</i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                }
+            </ul>
+            
+            <div class="dropdown user-dropdown">
                 @{
-                    var initials = "";
                     var firstName = HttpContextAccessor.HttpContext.User.Claims
                     .Where(c => c.Type == "FirstName")
                     .Select(c => c.Value)
@@ -216,90 +233,45 @@
                     .Where(c => c.Type == "LastName")
                     .Select(c => c.Value)
                     .FirstOrDefault();
+
+                    var fullName = $"{firstName} {lastName}";
+
+                    var email = HttpContextAccessor.HttpContext.User.Claims
+                    .Where(c => c.Type == "Email")
+                    .Select(c => c.Value)
+                    .FirstOrDefault();
                     
+                    var initials = "";
                     if (!string.IsNullOrEmpty(firstName) && !string.IsNullOrEmpty(lastName))
                     {
                         initials = $"{firstName[0]}{lastName[0]}";
                     }
                 }
-                <div class="user-initials rounded-circle d-flex align-items-center justify-content-center" 
-                     style="width: 40px; height: 40px; background: rgba(255,255,255,0.2);">
-                    @initials
-                </div>
-            </div>
-        </div>
-        
-        <div class="sidebar" id="sidebar">
-            <div class="sidebar__logo">
-                <h1>Investment Tracker</h1>
-            </div>
-            <nav class="sidebar__nav" aria-label="Sidebar Navigation">
-                <a asp-page="/Portfolios/Index" class="sidebar__nav-item text-white d-flex align-items-center" aria-current="page" id="portfoliosTab" aria-label="Portfolios">
-                    <i class="material-icons">account_balance_wallet</i>
-                    <span>Portfolios</span>
-                </a>
-                <a asp-page="/InvestmentCategories/Index" class="sidebar__nav-item text-white d-flex align-items-center" aria-current="page" id="categoriesTab" aria-label="Categories">
-                    <i class="material-icons">category</i>
-                    <span>Categories</span>
-                </a>
-                
-                @if (User.IsInRole("Admin"))
-                {
-                    <div class="sidebar__section-title">
-                        <span>Administration</span>
+                <a href="#" class="dropdown-toggle d-flex align-items-center" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <div class="user-avatar">
+                        @initials
                     </div>
-                    <a asp-controller="UserManagement" asp-action="Index" class="sidebar__nav-item text-white d-flex align-items-center" aria-current="page" id="usersTab" aria-label="Users">
-                        <i class="material-icons">people</i>
-                        <span>Users</span>
-                    </a>
-                }
-            </nav>
-            
-            <div class="mt-auto">
-                <div class="user-profile p-3">
-                    @{
-                        firstName = HttpContextAccessor.HttpContext.User.Claims
-                        .Where(c => c.Type == "FirstName")
-                        .Select(c => c.Value)
-                        .FirstOrDefault();
-
-                        lastName = HttpContextAccessor.HttpContext.User.Claims
-                        .Where(c => c.Type == "LastName")
-                        .Select(c => c.Value)
-                        .FirstOrDefault();
-
-                        var fullName = $"{firstName} {lastName}";
-
-                        var email = HttpContextAccessor.HttpContext.User.Claims
-                        .Where(c => c.Type == "Email")
-                        .Select(c => c.Value)
-                        .FirstOrDefault();
-                        
-                        initials = "";
-                        if (!string.IsNullOrEmpty(firstName) && !string.IsNullOrEmpty(lastName))
-                        {
-                            initials = $"{firstName[0]}{lastName[0]}";
-                        }
-                    }
-                    <div class="d-flex align-items-center justify-content-between">
-                        <div class="d-flex align-items-center">
-                            <div class="user-avatar me-2" style="width: 40px; height: 40px; margin-bottom: 0;">
-                                @initials
-                            </div>
-                            <div class="d-flex flex-column">
-                                <span class="text-white fw-bold">@fullName</span>
-                                <span class="text-white opacity-75 small">@email</span>
-                            </div>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                    <li class="user-info">
+                        <div class="d-flex flex-column">
+                            <span class="fw-bold">@fullName</span>
+                            <small class="text-muted">@email</small>
                         </div>
+                    </li>
+                    <div class="dropdown-divider"></div>
+                    <li>
                         <form method="post" asp-page="/Auth/Logout" asp-route-returnUrl="@Url.Page("/Auth/Login")" id="logoutForm" class="m-0">
-                            <button type="submit" class="btn btn-link text-white p-0" title="Logout">
+                            <button type="submit" class="dropdown-item">
                                 <i class="material-icons">exit_to_app</i>
+                                <span>Logout</span>
                             </button>
                         </form>
-                    </div>
-                </div>
+                    </li>
+                </ul>
             </div>
-        </div>
+        </nav>
+        
         <div class="main-content">
             @RenderBody()
         </div>
@@ -312,31 +284,11 @@
     @await RenderSectionAsync("Scripts", required: false)
 
     <script>
-        function sortTable(columnIndex) {
-            const table = document.getElementById("tableBody");
-            const rows = Array.from(table.rows);
-            const isAscending = table.getAttribute("data-sort-order") === "asc";
-
-            rows.sort((rowA, rowB) => {
-                const cellA = rowA.cells[columnIndex].textContent.trim().toLowerCase();
-                const cellB = rowB.cells[columnIndex].textContent.trim().toLowerCase();
-
-                if (cellA < cellB) return isAscending ? -1 : 1;
-                if (cellA > cellB) return isAscending ? 1 : -1;
-                return 0;
-            });
-
-            // Update table order and append sorted rows
-            table.setAttribute("data-sort-order", isAscending ? "desc" : "asc");
-            table.innerHTML = "";
-            rows.forEach(row => table.appendChild(row));
-        }
-        
         document.addEventListener('DOMContentLoaded', function () {
             // Handle active menu item
             var currentPath = window.location.pathname;
             var pathSegments = currentPath.split('/').filter(segment => segment); // This removes empty segments
-            var navItems = document.querySelectorAll('.sidebar__nav-item');
+            var navItems = document.querySelectorAll('.nav-link');
             navItems.forEach(function (navItem) {
                 var href = navItem.getAttribute('href');
                 var cleanHref = href.split('?')[0].split('/').filter(segment => segment);
@@ -347,32 +299,32 @@
                 }
             });
             
-            // Mobile sidebar toggle
-            const sidebarToggle = document.getElementById('sidebarToggle');
-            const sidebar = document.getElementById('sidebar');
+            // Mobile navbar toggle
+            const navbarToggle = document.getElementById('navbarToggle');
+            const navbarNav = document.getElementById('navbarNav');
             
-            if (sidebarToggle && sidebar) {
-                sidebarToggle.addEventListener('click', function() {
-                    sidebar.classList.toggle('show');
+            if (navbarToggle && navbarNav) {
+                navbarToggle.addEventListener('click', function() {
+                    navbarNav.classList.toggle('show');
                 });
                 
-                // Close sidebar when clicking on a link (mobile)
-                const sidebarLinks = sidebar.querySelectorAll('a');
-                sidebarLinks.forEach(link => {
+                // Close navbar when clicking on a link (mobile)
+                const navLinks = navbarNav.querySelectorAll('a');
+                navLinks.forEach(link => {
                     link.addEventListener('click', function() {
                         if (window.innerWidth < 992) {
-                            sidebar.classList.remove('show');
+                            navbarNav.classList.remove('show');
                         }
                     });
                 });
                 
-                // Close sidebar when clicking outside
+                // Close navbar when clicking outside
                 document.addEventListener('click', function(event) {
                     if (window.innerWidth < 992 && 
-                        !sidebar.contains(event.target) && 
-                        !sidebarToggle.contains(event.target) &&
-                        sidebar.classList.contains('show')) {
-                        sidebar.classList.remove('show');
+                        !navbarNav.contains(event.target) && 
+                        !navbarToggle.contains(event.target) &&
+                        navbarNav.classList.contains('show')) {
+                        navbarNav.classList.remove('show');
                     }
                 });
             }

@@ -10,6 +10,7 @@ using Infrastructure.Context;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Application.Abstractions.Services;
 
 namespace Application.Features.Investments.GetAllInvestments;
 
@@ -17,22 +18,36 @@ public class GetAllInvestmentsHandler : IRequestHandler<GetAllInvestmentsRequest
 {
     private readonly AppDbContext _dbContext;
     private readonly ILogger<GetAllInvestmentsHandler> _logger;
+    private readonly ICurrentUserService _currentUserService;
 
-    public GetAllInvestmentsHandler(AppDbContext dbContext, ILogger<GetAllInvestmentsHandler> logger)
+    public GetAllInvestmentsHandler(
+        AppDbContext dbContext, 
+        ILogger<GetAllInvestmentsHandler> logger,
+        ICurrentUserService currentUserService)
     {
         _dbContext = dbContext;
         _logger = logger;
+        _currentUserService = currentUserService;
     }
 
     public async Task<Result<PaginatedList<InvestmentDto>>> Handle(GetAllInvestmentsRequest request, CancellationToken cancellationToken)
     {
         try
         {
-            // Start with a query that joins all the needed entities
+            // Get the current user ID
+            var userId = _currentUserService.Id;
+            
+            if (string.IsNullOrEmpty(userId))
+            {
+                _logger.LogWarning("Attempt to access investments without valid user ID");
+                return Result<PaginatedList<InvestmentDto>>.Failure("Unauthorized access");
+            }
+
+            // Start with a query that joins all the needed entities and filters by user
             var query = _dbContext.Investments
                 .Include(i => i.Portfolio)
                 .Include(i => i.Category)
-                .Where(i => !i.IsDelete);
+                .Where(i => !i.IsDelete && i.Portfolio.UserId == userId);
 
             // Apply portfolio filter
             if (request.PortfolioId.HasValue)
