@@ -293,6 +293,13 @@ public class IndexModel : PageModel
                 PageSize = PageSize,
                 FormatCurrency = _settingsService.FormatCurrency
             };
+            
+            // Check if this is an AJAX request
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                // For AJAX requests, just return the table and pagination as partial view
+                return Partial("_InvestmentsTable", this);
+            }
 
             return Page();
         }

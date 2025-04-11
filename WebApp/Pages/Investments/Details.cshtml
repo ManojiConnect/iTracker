@@ -184,11 +184,29 @@
                     plugins: {
                         legend: {
                             display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return '@Html.Raw(Model.Settings.CurrencySymbol)' + context.parsed.y.toLocaleString(undefined, {
+                                        minimumFractionDigits: @Model.Settings.DecimalPlaces,
+                                        maximumFractionDigits: @Model.Settings.DecimalPlaces
+                                    });
+                                }
+                            }
                         }
                     },
                     scales: {
                         y: {
-                            beginAtZero: false
+                            beginAtZero: false,
+                            ticks: {
+                                callback: function(value) {
+                                    return '@Html.Raw(Model.Settings.CurrencySymbol)' + value.toLocaleString(undefined, {
+                                        minimumFractionDigits: @Model.Settings.DecimalPlaces,
+                                        maximumFractionDigits: @Model.Settings.DecimalPlaces
+                                    });
+                                }
+                            }
                         }
                     }
                 }

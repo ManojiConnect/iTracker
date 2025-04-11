@@ -33,11 +33,11 @@
                     </div>
                     <div class="mb-3">
                         <div class="text-muted mb-1">Current Value</div>
-                        <div class="h4 text-primary">$@Model.Investment.CurrentValue.ToString("N2")</div>
+                        <div class="h4 text-primary">@Html.Raw(Model.FormatCurrency(Model.Investment.CurrentValue))</div>
                     </div>
                     <div class="mb-3">
                         <div class="text-muted mb-1">Initial Investment</div>
-                        <div class="h5">$@Model.Investment.TotalInvestment.ToString("N2")</div>
+                        <div class="h5">@Html.Raw(Model.FormatCurrency(Model.Investment.TotalInvestment))</div>
                     </div>
                     <div class="mb-3">
                         <div class="text-muted mb-1">Performance</div>
@@ -87,7 +87,7 @@
                             {
                                 <tr>
                                     <td class="ps-4">@record.RecordedDate.ToString("MMM dd, yyyy HH:mm")</td>
-                                    <td class="fw-medium">$@record.Value.ToString("N2")</td>
+                                    <td class="fw-medium">@Html.Raw(Model.FormatCurrency(record.Value))</td>
                                     <td>
                                         @{
                                             var previousIndex = Model.InvestmentHistories.IndexOf(record) + 1;
@@ -161,7 +161,7 @@
                     <input type="hidden" name="id" value="@Model.Investment.Id" />
                     
                     <div class="mb-3">
-                        <label asp-for="UpdateModel.NewValue" class="form-label">Current Value ($)</label>
+                        <label asp-for="UpdateModel.NewValue" class="form-label">Current Value (@Html.Raw(Model.Settings.CurrencySymbol))</label>
                         <input type="number" class="form-control" asp-for="UpdateModel.NewValue" step="0.01" required min="0" />
                         <span asp-validation-for="UpdateModel.NewValue" class="text-danger"></span>
                     </div>
@@ -236,10 +236,10 @@
                                         label += ': ';
                                     }
                                     if (context.parsed.y !== null) {
-                                        label += new Intl.NumberFormat('en-US', { 
-                                            style: 'currency', 
-                                            currency: 'USD' 
-                                        }).format(context.parsed.y);
+                                        label += '@Html.Raw(Model.Settings.CurrencySymbol)' + context.parsed.y.toLocaleString(undefined, {
+                                            minimumFractionDigits: @Model.Settings.DecimalPlaces,
+                                            maximumFractionDigits: @Model.Settings.DecimalPlaces
+                                        });
                                     }
                                     return label;
                                 }
@@ -251,7 +251,10 @@
                             beginAtZero: false,
                             ticks: {
                                 callback: function(value) {
-                                    return '$' + value.toLocaleString();
+                                    return '@Html.Raw(Model.Settings.CurrencySymbol)' + value.toLocaleString(undefined, {
+                                        minimumFractionDigits: @Model.Settings.DecimalPlaces,
+                                        maximumFractionDigits: @Model.Settings.DecimalPlaces
+                                    });
                                 }
                             }
                         }

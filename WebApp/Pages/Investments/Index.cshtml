@@ -176,194 +176,7 @@
 
     <!-- Investments Grid -->
     <div class="card shadow-sm mb-3">
-        <div class="table-responsive">
-            <table class="table mb-0 align-middle">
-                <thead>
-                    <tr>
-                        @if (!Model.PortfolioId.HasValue)
-                        {
-                            <th width="20%" data-sort-by="portfolio" class="sortable-header @(Model.SortBy == "portfolio" ? "sorted" : "")">
-                                <div class="d-flex align-items-center">
-                                    <span>Portfolio</span>
-                                    @if (Model.SortBy == "portfolio")
-                                    {
-                                        <i class="material-icons ms-1 sort-icon">@(Model.SortOrder == "asc" ? "arrow_upward" : "arrow_downward")</i>
-                                    }
-                                </div>
-                            </th>
-                        }
-                        <th width="@(Model.PortfolioId.HasValue ? "25" : "22")%" data-sort-by="name" class="sortable-header @(Model.SortBy == "name" ? "sorted" : "")">
-                            <div class="d-flex align-items-center">
-                                <span>Name</span>
-                                @if (Model.SortBy == "name")
-                                {
-                                    <i class="material-icons ms-1 sort-icon">@(Model.SortOrder == "asc" ? "arrow_upward" : "arrow_downward")</i>
-                                }
-                            </div>
-                        </th>
-                        <th width="15%" data-sort-by="category" class="sortable-header @(Model.SortBy == "category" ? "sorted" : "")">
-                            <div class="d-flex align-items-center">
-                                <span>Category</span>
-                                @if (Model.SortBy == "category")
-                                {
-                                    <i class="material-icons ms-1 sort-icon">@(Model.SortOrder == "asc" ? "arrow_upward" : "arrow_downward")</i>
-                                }
-                            </div>
-                        </th>
-                        <th width="15%" data-sort-by="initialinvestment" class="text-end sortable-header @(Model.SortBy == "initialinvestment" ? "sorted" : "")">
-                            <div class="d-flex align-items-center justify-content-end">
-                                <span>Investment</span>
-                                @if (Model.SortBy == "initialinvestment")
-                                {
-                                    <i class="material-icons ms-1 sort-icon">@(Model.SortOrder == "asc" ? "arrow_upward" : "arrow_downward")</i>
-                                }
-                            </div>
-                        </th>
-                        <th width="15%" data-sort-by="currentvalue" class="text-end sortable-header @(Model.SortBy == "currentvalue" ? "sorted" : "")">
-                            <div class="d-flex align-items-center justify-content-end">
-                                <span class="nowrap">Current Value</span>
-                                @if (Model.SortBy == "currentvalue")
-                                {
-                                    <i class="material-icons ms-1 sort-icon">@(Model.SortOrder == "asc" ? "arrow_upward" : "arrow_downward")</i>
-                                }
-                            </div>
-                        </th>
-                        <th width="10%" data-sort-by="return" class="text-end sortable-header @(Model.SortBy == "return" ? "sorted" : "")">
-                            <div class="d-flex align-items-center justify-content-end">
-                                <span>Return</span>
-                                @if (Model.SortBy == "return")
-                                {
-                                    <i class="material-icons ms-1 sort-icon">@(Model.SortOrder == "asc" ? "arrow_upward" : "arrow_downward")</i>
-                                }
-                            </div>
-                        </th>
-                        <th width="15%" class="text-end">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @if (Model.Investments.Items.Any())
-                    {
-                        foreach (var investment in Model.Investments.Items)
-                        {
-                            <tr>
-                                @if (!Model.PortfolioId.HasValue)
-                                {
-                                    <td>@investment.PortfolioName</td>
-                                }
-                                <td>
-                                    <span class="fw-medium">@investment.Name</span>
-                                </td>
-                                <td>@investment.CategoryName</td>
-                                <td class="text-end">@ApplicationSettings.FormatCurrency(investment.TotalInvestment)</td>
-                                <td class="text-end">@ApplicationSettings.FormatCurrency(investment.CurrentValue)</td>
-                                <td class="text-end">
-                                    <span class="@(investment.ReturnPercentage >= 0 ? "text-success" : "text-danger")">
-                                        @(investment.ReturnPercentage >= 0 ? "+" : "")@investment.ReturnPercentage.ToString("0.00")%
-                                    </span>
-                                </td>
-                                <td class="text-end">
-                                    <div class="btn-group">
-                                        <a asp-page="History" asp-route-id="@investment.Id" class="btn btn-sm btn-outline-info">
-                                            <i class="material-icons">history</i>
-                                        </a>
-                                        <a asp-page="Edit" asp-route-id="@investment.Id" class="btn btn-sm btn-outline-primary">
-                                            <i class="material-icons">edit</i>
-                                        </a>
-                                        <a asp-page="Delete" asp-route-id="@investment.Id" class="btn btn-sm btn-outline-danger">
-                                            <i class="material-icons">delete</i>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                        }
-                    }
-                    else
-                    {
-                        <tr>
-                            <td colspan="@(Model.PortfolioId.HasValue ? 6 : 7)" class="text-center py-5">
-                                <i class="material-icons" style="font-size: 48px; opacity: 0.5;">search_off</i>
-                                <p class="mt-2 text-muted">No investments found matching your criteria.</p>
-                                <a href="?resetFilters=true" class="btn btn-outline-primary mt-2">
-                                    <i class="material-icons me-1">refresh</i>
-                                    <span>Reset Filters</span>
-                                </a>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <!-- Pagination -->
-    <div class="d-flex justify-content-between align-items-center mt-3 mb-4">
-        <div class="d-flex align-items-center">
-            <div class="text-muted me-3">
-                @if (Model.Investments.TotalCount > 0)
-                {
-                    <span>Showing @((Model.Investments.PageNumber - 1) * Model.Investments.PageSize + 1) to @Math.Min(Model.Investments.PageNumber * Model.Investments.PageSize, Model.Investments.TotalCount) of @Model.Investments.TotalCount entries</span>
-                }
-                else
-                {
-                    <span>No entries to show</span>
-                }
-            </div>
-            <div class="d-flex align-items-center">
-                <span class="text-muted me-2">Show</span>
-                <select id="pageSizeSelect" class="form-select form-select-sm" style="width: auto;">
-                    <option value="5" selected="@(Model.PageSize == 5)">5</option>
-                    <option value="10" selected="@(Model.PageSize == 10)">10</option>
-                    <option value="25" selected="@(Model.PageSize == 25)">25</option>
-                    <option value="50" selected="@(Model.PageSize == 50)">50</option>
-                </select>
-                <span class="text-muted ms-2">entries</span>
-            </div>
-        </div>
-        @if (Model.Investments.TotalPages > 1)
-        {
-            <ul class="pagination pagination-sm mb-0">
-                @if (Model.Investments.HasPreviousPage)
-                {
-                    <li class="page-item">
-                        <a class="page-link page-link-nav" href="#" data-page="@(Model.Investments.PageNumber - 1)">
-                            <i class="material-icons">chevron_left</i>
-                        </a>
-                    </li>
-                }
-                else
-                {
-                    <li class="page-item disabled">
-                        <span class="page-link">
-                            <i class="material-icons">chevron_left</i>
-                        </span>
-                    </li>
-                }
-
-                @for (int i = Math.Max(1, Model.Investments.PageNumber - 2); i <= Math.Min(Model.Investments.TotalPages, Model.Investments.PageNumber + 2); i++)
-                {
-                    <li class="page-item @(i == Model.Investments.PageNumber ? "active" : "")">
-                        <a class="page-link page-link-nav" href="#" data-page="@i">@i</a>
-                    </li>
-                }
-
-                @if (Model.Investments.HasNextPage)
-                {
-                    <li class="page-item">
-                        <a class="page-link page-link-nav" href="#" data-page="@(Model.Investments.PageNumber + 1)">
-                            <i class="material-icons">chevron_right</i>
-                        </a>
-                    </li>
-                }
-                else
-                {
-                    <li class="page-item disabled">
-                        <span class="page-link">
-                            <i class="material-icons">chevron_right</i>
-                        </span>
-                    </li>
-                }
-            </ul>
-        }
+        <partial name="_InvestmentsTable" model="Model" />
     </div>
 </div>
 
@@ -433,6 +246,60 @@
     .nowrap {
         white-space: nowrap;
     }
+
+    .loading-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.7);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+    }
+    
+    .loading-spinner {
+        width: 50px;
+        height: 50px;
+        border: 5px solid #f3f3f3;
+        border-top: 5px solid #0d47a1;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+    
+    @@keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+    
+    .table-responsive.loading::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.7);
+        z-index: 1;
+    }
+    
+    .table-responsive.loading::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 50px;
+        height: 50px;
+        margin-top: -25px;
+        margin-left: -25px;
+        border: 5px solid #f3f3f3;
+        border-top: 5px solid #0d47a1;
+        border-radius: 50%;
+        z-index: 2;
+        animation: spin 1s linear infinite;
+    }
 </style>
 
 @section Scripts {
@@ -467,79 +334,161 @@
         }
 
         document.addEventListener('DOMContentLoaded', function() {
-            // Make table rows clickable
-            const tableRows = document.querySelectorAll('table.table tbody tr');
-            tableRows.forEach(row => {
-                row.addEventListener('click', function(e) {
-                    // Don't trigger if clicking on buttons/links
-                    if (e.target.tagName === 'BUTTON' || e.target.tagName === 'A' || 
-                        e.target.closest('button') || e.target.closest('a')) {
-                        return;
-                    }
-                    
-                    // Get the history link (first link in the action buttons)
-                    const historyLink = this.querySelector('.btn-group a:first-child');
-                    if (historyLink) {
-                        window.location.href = historyLink.getAttribute('href');
-                    }
-                });
-            });
-            
-            // Handle sortable headers
-            const sortableHeaders = document.querySelectorAll('.sortable-header');
-            sortableHeaders.forEach(header => {
-                header.addEventListener('click', function() {
-                    const sortBy = this.getAttribute('data-sort-by');
-                    const currentSortBy = document.getElementById('sortBy').value;
-                    const currentSortOrder = document.getElementById('sortOrder').value;
-                    
-                    let newSortOrder = 'asc';
-                    if (sortBy === currentSortBy) {
-                        newSortOrder = currentSortOrder === 'asc' ? 'desc' : 'asc';
-                    }
-                    
-                    document.getElementById('sortBy').value = sortBy;
-                    document.getElementById('sortOrder').value = newSortOrder;
-                    document.getElementById('pageNumber').value = '1'; // Reset to page 1 when sorting
-                    document.getElementById('filterForm').submit();
-                });
-            });
-            
-            // Handle pagination
-            const pageLinks = document.querySelectorAll('.page-link-nav');
-            pageLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
+            // AJAX form handling for filters
+            const filterForm = document.getElementById('filterForm');
+            if (filterForm) {
+                filterForm.addEventListener('submit', function(e) {
                     e.preventDefault();
-                    const page = this.getAttribute('data-page');
-                    document.getElementById('pageNumber').value = page;
-                    document.getElementById('filterForm').submit();
-                });
-            });
-            
-            // Handle page size change
-            const pageSizeSelect = document.getElementById('pageSizeSelect');
-            if (pageSizeSelect) {
-                pageSizeSelect.addEventListener('change', function() {
-                    document.getElementById('pageSize').value = this.value;
-                    document.getElementById('pageNumber').value = '1'; // Reset to page 1 when changing page size
-                    document.getElementById('filterForm').submit();
+                    
+                    // Show loading state
+                    const investmentsTable = document.querySelector('.table-responsive');
+                    if (investmentsTable) {
+                        investmentsTable.classList.add('loading');
+                        investmentsTable.style.opacity = '0.6';
+                        investmentsTable.style.position = 'relative';
+                    }
+                    
+                    // Collect form data
+                    const formData = new FormData(filterForm);
+                    const queryParams = new URLSearchParams(formData).toString();
+                    
+                    // Update URL without reloading page
+                    const newUrl = window.location.pathname + '?' + queryParams;
+                    history.pushState({ path: newUrl }, '', newUrl);
+                    
+                    // Make AJAX request
+                    fetch(newUrl, {
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest'
+                        }
+                    })
+                    .then(response => response.text())
+                    .then(html => {
+                        // Create a temporary element to parse the HTML
+                        const tempDiv = document.createElement('div');
+                        tempDiv.innerHTML = html;
+                        
+                        // Update the table content
+                        const newTable = tempDiv.querySelector('.table-responsive');
+                        if (newTable && investmentsTable) {
+                            investmentsTable.innerHTML = newTable.innerHTML;
+                        }
+                        
+                        // Update the pagination
+                        const currentPagination = document.querySelector('.d-flex.justify-content-between.align-items-center.mt-3.mb-4');
+                        const newPagination = tempDiv.querySelector('.d-flex.justify-content-between.align-items-center.mt-3.mb-4');
+                        if (newPagination && currentPagination) {
+                            currentPagination.innerHTML = newPagination.innerHTML;
+                        }
+                        
+                        // Remove loading state
+                        if (investmentsTable) {
+                            investmentsTable.classList.remove('loading');
+                            investmentsTable.style.opacity = '1';
+                        }
+                        
+                        // Re-initialize event handlers for the new content
+                        initializeEventHandlers();
+                    })
+                    .catch(error => {
+                        console.error('Error fetching filtered data:', error);
+                        // Remove loading state on error
+                        if (investmentsTable) {
+                            investmentsTable.classList.remove('loading');
+                            investmentsTable.style.opacity = '1';
+                        }
+                    });
                 });
             }
             
-            // Handle reset filters
-            const resetButton = document.getElementById('resetFilters');
-            if (resetButton) {
-                resetButton.addEventListener('click', function() {
-                    window.location.href = '?resetFilters=true';
+            // Initialize all event handlers
+            initializeEventHandlers();
+            
+            function initializeEventHandlers() {
+                // Make table rows clickable
+                const tableRows = document.querySelectorAll('table.table tbody tr');
+                tableRows.forEach(row => {
+                    row.addEventListener('click', function(e) {
+                        // Don't trigger if clicking on buttons/links
+                        if (e.target.tagName === 'BUTTON' || e.target.tagName === 'A' || 
+                            e.target.closest('button') || e.target.closest('a')) {
+                            return;
+                        }
+                        
+                        // Get the history link (first link in the action buttons)
+                        const historyLink = this.querySelector('.btn-group a:first-child');
+                        if (historyLink) {
+                            window.location.href = historyLink.getAttribute('href');
+                        }
+                    });
                 });
-            }
+                
+                // Handle sortable headers with AJAX
+                const sortableHeaders = document.querySelectorAll('.sortable-header');
+                sortableHeaders.forEach(header => {
+                    header.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const sortBy = this.getAttribute('data-sort-by');
+                        const currentSortBy = document.getElementById('sortBy').value;
+                        const currentSortOrder = document.getElementById('sortOrder').value;
+                        
+                        let newSortOrder = 'asc';
+                        if (sortBy === currentSortBy) {
+                            newSortOrder = currentSortOrder === 'asc' ? 'desc' : 'asc';
+                        }
+                        
+                        document.getElementById('sortBy').value = sortBy;
+                        document.getElementById('sortOrder').value = newSortOrder;
+                        document.getElementById('pageNumber').value = '1'; // Reset to page 1 when sorting
+                        
+                        // Trigger AJAX form submission
+                        const submitEvent = new Event('submit', { bubbles: true });
+                        filterForm.dispatchEvent(submitEvent);
+                    });
+                });
+                
+                // Handle pagination with AJAX
+                const pageLinks = document.querySelectorAll('.page-link-nav');
+                pageLinks.forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const page = this.getAttribute('data-page');
+                        document.getElementById('pageNumber').value = page;
+                        
+                        // Trigger AJAX form submission
+                        const submitEvent = new Event('submit', { bubbles: true });
+                        filterForm.dispatchEvent(submitEvent);
+                    });
+                });
+                
+                // Handle page size change with AJAX
+                const pageSizeSelect = document.getElementById('pageSizeSelect');
+                if (pageSizeSelect) {
+                    pageSizeSelect.addEventListener('change', function(e) {
+                        document.getElementById('pageSize').value = this.value;
+                        document.getElementById('pageNumber').value = '1'; // Reset to page 1 when changing page size
+                        
+                        // Trigger AJAX form submission
+                        const submitEvent = new Event('submit', { bubbles: true });
+                        filterForm.dispatchEvent(submitEvent);
+                    });
+                }
+                
+                // Handle reset filters
+                const resetButton = document.getElementById('resetFilters');
+                if (resetButton) {
+                    resetButton.addEventListener('click', function() {
+                        window.location.href = '?resetFilters=true';
+                    });
+                }
 
-            // Handle portfolio change
-            const portfolioSelector = document.getElementById('portfolioIdSelector');
-            if (portfolioSelector) {
-                portfolioSelector.addEventListener('change', function() {
-                    document.getElementById('portfolioForm').submit();
-                });
+                // Handle portfolio change
+                const portfolioSelector = document.getElementById('portfolioIdSelector');
+                if (portfolioSelector) {
+                    portfolioSelector.addEventListener('change', function() {
+                        document.getElementById('portfolioForm').submit();
+                    });
+                }
             }
         });
     </script>

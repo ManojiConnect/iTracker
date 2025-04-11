@@ -3,7 +3,7 @@
 @using WebApp.Services
 @inject IApplicationSettingsService ApplicationSettings
 
-@model PaginatedList<InvestmentDto>
+@model WebApp.Pages.Investments.IndexModel
 
 @{
     var formatCurrency = ApplicationSettings.FormatCurrency;
@@ -30,37 +30,87 @@
     }
 }
 
-<div class="card shadow-sm">
-    <div class="table-responsive">
-        <table class="table table-hover align-middle">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Category</th>
-                    <th>Portfolio</th>
-                    <th class="text-end">Total Investment</th>
-                    <th class="text-end">Current Value</th>
-                    <th class="text-end">Return</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody id="tableBody">
-                @foreach (var investment in Model.Items)
+<!-- Investments Grid -->
+<div class="table-responsive">
+    <table class="table mb-0 align-middle">
+        <thead>
+            <tr>
+                @if (!Model.PortfolioId.HasValue)
+                {
+                    <th width="20%" data-sort-by="portfolio" class="sortable-header @(Model.SortBy == "portfolio" ? "sorted" : "")">
+                        <div class="d-flex align-items-center">
+                            <span>Portfolio</span>
+                            @if (Model.SortBy == "portfolio")
+                            {
+                                <i class="material-icons ms-1 sort-icon">@(Model.SortOrder == "asc" ? "arrow_upward" : "arrow_downward")</i>
+                            }
+                        </div>
+                    </th>
+                }
+                <th width="@(Model.PortfolioId.HasValue ? "25" : "22")%" data-sort-by="name" class="sortable-header @(Model.SortBy == "name" ? "sorted" : "")">
+                    <div class="d-flex align-items-center">
+                        <span>Name</span>
+                        @if (Model.SortBy == "name")
+                        {
+                            <i class="material-icons ms-1 sort-icon">@(Model.SortOrder == "asc" ? "arrow_upward" : "arrow_downward")</i>
+                        }
+                    </div>
+                </th>
+                <th width="15%" data-sort-by="category" class="sortable-header @(Model.SortBy == "category" ? "sorted" : "")">
+                    <div class="d-flex align-items-center">
+                        <span>Category</span>
+                        @if (Model.SortBy == "category")
+                        {
+                            <i class="material-icons ms-1 sort-icon">@(Model.SortOrder == "asc" ? "arrow_upward" : "arrow_downward")</i>
+                        }
+                    </div>
+                </th>
+                <th width="15%" data-sort-by="initialinvestment" class="text-end sortable-header @(Model.SortBy == "initialinvestment" ? "sorted" : "")">
+                    <div class="d-flex align-items-center justify-content-end">
+                        <span>Investment</span>
+                        @if (Model.SortBy == "initialinvestment")
+                        {
+                            <i class="material-icons ms-1 sort-icon">@(Model.SortOrder == "asc" ? "arrow_upward" : "arrow_downward")</i>
+                        }
+                    </div>
+                </th>
+                <th width="15%" data-sort-by="currentvalue" class="text-end sortable-header @(Model.SortBy == "currentvalue" ? "sorted" : "")">
+                    <div class="d-flex align-items-center justify-content-end">
+                        <span class="nowrap">Current Value</span>
+                        @if (Model.SortBy == "currentvalue")
+                        {
+                            <i class="material-icons ms-1 sort-icon">@(Model.SortOrder == "asc" ? "arrow_upward" : "arrow_downward")</i>
+                        }
+                    </div>
+                </th>
+                <th width="10%" data-sort-by="return" class="text-end sortable-header @(Model.SortBy == "return" ? "sorted" : "")">
+                    <div class="d-flex align-items-center justify-content-end">
+                        <span>Return</span>
+                        @if (Model.SortBy == "return")
+                        {
+                            <i class="material-icons ms-1 sort-icon">@(Model.SortOrder == "asc" ? "arrow_upward" : "arrow_downward")</i>
+                        }
+                    </div>
+                </th>
+                <th width="15%" class="text-end">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Investments.Items.Any())
+            {
+                foreach (var investment in Model.Investments.Items)
                 {
                     <tr>
+                        @if (!Model.PortfolioId.HasValue)
+                        {
+                            <td>@investment.PortfolioName</td>
+                        }
                         <td>
-                            <div class="d-flex align-items-center">
-                                <i class="material-icons me-2">category</i>
-                                <div>
-                                    <div class="fw-medium">@investment.Name</div>
-                                    <small class="text-muted">@investment.Symbol</small>
-                                </div>
-                            </div>
+                            <span class="fw-medium">@investment.Name</span>
                         </td>
                         <td>@investment.CategoryName</td>
-                        <td>@investment.PortfolioName</td>
-                        <td class="text-end">@formatCurrency(investment.TotalInvestment)</td>
-                        <td class="text-end">@formatCurrency(investment.CurrentValue)</td>
+                        <td class="text-end">@ApplicationSettings.FormatCurrency(investment.TotalInvestment)</td>
+                        <td class="text-end">@ApplicationSettings.FormatCurrency(investment.CurrentValue)</td>
                         <td class="text-end">
                             <span class="@(investment.ReturnPercentage >= 0 ? "text-success" : "text-danger")">
                                 @(investment.ReturnPercentage >= 0 ? "+" : "")@investment.ReturnPercentage.ToString("0.00")%
@@ -68,82 +118,104 @@
                         </td>
                         <td class="text-end">
                             <div class="btn-group">
-                                <a asp-page="./Edit" asp-route-id="@investment.Id" class="btn btn-sm btn-outline-primary">
+                                <a asp-page="History" asp-route-id="@investment.Id" class="btn btn-sm btn-outline-info">
+                                    <i class="material-icons">history</i>
+                                </a>
+                                <a asp-page="Edit" asp-route-id="@investment.Id" class="btn btn-sm btn-outline-primary">
                                     <i class="material-icons">edit</i>
                                 </a>
-                                <button type="button" class="btn btn-sm btn-outline-danger" onclick="deleteInvestment(@investment.Id)">
+                                <a asp-page="Delete" asp-route-id="@investment.Id" class="btn btn-sm btn-outline-danger">
                                     <i class="material-icons">delete</i>
-                                </button>
+                                </a>
                             </div>
                         </td>
                     </tr>
                 }
-            </tbody>
-        </table>
+            }
+            else
+            {
+                <tr>
+                    <td colspan="@(Model.PortfolioId.HasValue ? 6 : 7)" class="text-center py-5">
+                        <i class="material-icons" style="font-size: 48px; opacity: 0.5;">search_off</i>
+                        <p class="mt-2 text-muted">No investments found matching your criteria.</p>
+                        <a href="?resetFilters=true" class="btn btn-outline-primary mt-2">
+                            <i class="material-icons me-1">refresh</i>
+                            <span>Reset Filters</span>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- Pagination -->
+<div class="d-flex justify-content-between align-items-center mt-3 mb-4">
+    <div class="d-flex align-items-center">
+        <div class="text-muted me-3">
+            @if (Model.Investments.TotalCount > 0)
+            {
+                <span>Showing @((Model.Investments.PageNumber - 1) * Model.Investments.PageSize + 1) to @Math.Min(Model.Investments.PageNumber * Model.Investments.PageSize, Model.Investments.TotalCount) of @Model.Investments.TotalCount entries</span>
+            }
+            else
+            {
+                <span>No entries to show</span>
+            }
+        </div>
+        <div class="d-flex align-items-center">
+            <span class="text-muted me-2">Show</span>
+            <select id="pageSizeSelect" class="form-select form-select-sm" style="width: auto;">
+                <option value="5" selected="@(Model.PageSize == 5)">5</option>
+                <option value="10" selected="@(Model.PageSize == 10)">10</option>
+                <option value="25" selected="@(Model.PageSize == 25)">25</option>
+                <option value="50" selected="@(Model.PageSize == 50)">50</option>
+            </select>
+            <span class="text-muted ms-2">entries</span>
+        </div>
     </div>
-    
-    @if (!Model.Items.Any())
+    @if (Model.Investments.TotalPages > 1)
     {
-        <div class="text-center py-5">
-            <i class="material-icons text-muted" style="font-size: 48px;">search_off</i>
-            <p class="text-muted mt-2">No investments found matching your criteria.</p>
-        </div>
-    }
-    
-    @if (Model.TotalPages > 1)
-    {
-        <div class="d-flex justify-content-between align-items-center mt-3">
-            <div class="text-muted">
-                Showing @((Model.PageNumber - 1) * Model.PageSize + 1) to @Math.Min(Model.PageNumber * Model.PageSize, Model.TotalCount) of @Model.TotalCount entries
-            </div>
-            <nav>
-                <ul class="pagination pagination-sm mb-0">
-                    @if (Model.HasPreviousPage)
-                    {
-                        <li class="page-item">
-                            <a class="page-link" href="@BuildUrl(Model.PageNumber - 1)" aria-label="Previous" data-page="@(Model.PageNumber - 1)">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                    }
-                    else
-                    {
-                        <li class="page-item disabled">
-                            <span class="page-link" aria-hidden="true">&laquo;</span>
-                        </li>
-                    }
+        <ul class="pagination pagination-sm mb-0">
+            @if (Model.Investments.HasPreviousPage)
+            {
+                <li class="page-item">
+                    <a class="page-link page-link-nav" href="#" data-page="@(Model.Investments.PageNumber - 1)">
+                        <i class="material-icons">chevron_left</i>
+                    </a>
+                </li>
+            }
+            else
+            {
+                <li class="page-item disabled">
+                    <span class="page-link">
+                        <i class="material-icons">chevron_left</i>
+                    </span>
+                </li>
+            }
 
-                    @for (int i = Math.Max(1, Model.PageNumber - 2); i <= Math.Min(Model.TotalPages, Model.PageNumber + 2); i++)
-                    {
-                        <li class="page-item @(i == Model.PageNumber ? "active" : "")">
-                            <a class="page-link" href="@BuildUrl(i)" data-page="@i">@i</a>
-                        </li>
-                    }
+            @for (int i = Math.Max(1, Model.Investments.PageNumber - 2); i <= Math.Min(Model.Investments.TotalPages, Model.Investments.PageNumber + 2); i++)
+            {
+                <li class="page-item @(i == Model.Investments.PageNumber ? "active" : "")">
+                    <a class="page-link page-link-nav" href="#" data-page="@i">@i</a>
+                </li>
+            }
 
-                    @if (Model.HasNextPage)
-                    {
-                        <li class="page-item">
-                            <a class="page-link" href="@BuildUrl(Model.PageNumber + 1)" aria-label="Next" data-page="@(Model.PageNumber + 1)">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
-                    }
-                    else
-                    {
-                        <li class="page-item disabled">
-                            <span class="page-link" aria-hidden="true">&raquo;</span>
-                        </li>
-                    }
-                </ul>
-            </nav>
-        </div>
-    }
-    else if (Model.TotalCount > 0)
-    {
-        <div class="d-flex justify-content-between align-items-center mt-4">
-            <div class="text-muted">
-                Showing all @Model.TotalCount investments
-            </div>
-        </div>
+            @if (Model.Investments.HasNextPage)
+            {
+                <li class="page-item">
+                    <a class="page-link page-link-nav" href="#" data-page="@(Model.Investments.PageNumber + 1)">
+                        <i class="material-icons">chevron_right</i>
+                    </a>
+                </li>
+            }
+            else
+            {
+                <li class="page-item disabled">
+                    <span class="page-link">
+                        <i class="material-icons">chevron_right</i>
+                    </span>
+                </li>
+            }
+        </ul>
     }
 </div> 

@@ -10,6 +10,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using WebApp.Services;
+using WebApp.Models;
 
 namespace WebApp.Pages.Investments;
 
@@ -23,6 +24,7 @@ public class HistoryModel : PageModel
     public List<Month> Months { get; set; } = new();
     public int CurrentMonth { get; set; }
     public int CurrentYear { get; set; }
+    public SystemSettingsViewModel Settings { get; set; } = new();
 
     [BindProperty]
     public RecordValueUpdateRequest UpdateModel { get; set; } = new();
@@ -33,6 +35,11 @@ public class HistoryModel : PageModel
         _settingsService = settingsService;
     }
 
+    public string FormatCurrency(decimal amount)
+    {
+        return _settingsService.FormatCurrency(amount);
+    }
+
     public string FormatNumber(decimal number, int? decimalPlaces = null)
     {
         return _settingsService.FormatNumber(number, decimalPlaces);
@@ -40,6 +47,9 @@ public class HistoryModel : PageModel
 
     public async Task<IActionResult> OnGetAsync(int? id, int? month, int? year)
     {
+        // Load settings
+        Settings = await _settingsService.GetSettingsAsync();
+        
         if (!id.HasValue)
         {
             return NotFound();
