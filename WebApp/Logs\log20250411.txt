@@ -13429,3 +13429,43 @@ plicationSettingsService>
 [18:06:04 INF] Getting category performance data for 12 <s:Application.Features.Investments.GetCategoryPerformance.GetCategoryPerformanceHandler>
 [18:06:18 INF] Currency formatter initialized for CategoryAnalysis page <s:WebApp.Pages.Investments.CategoryAnalysisModel>
 [18:06:18 INF] Getting category performance data for 12 <s:Application.Features.Investments.GetCategoryPerformance.GetCategoryPerformanceHandler>
+[20:43:11 INF] Ensuring database is created... <s:Program>
+[20:43:12 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[20:43:12 INF] Database initialization completed. <s:Program>
+[20:43:12 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[20:43:12 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[20:43:12 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[20:43:12 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[20:43:12 INF] Application settings initialized. <s:Program>
+[20:43:12 INF] Ensuring database is created... <s:Program>
+[20:43:12 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[20:43:12 INF] Database initialization completed. <s:Program>
+[20:43:12 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[20:43:12 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[20:43:12 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[20:43:12 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[20:43:12 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[20:43:23 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[20:46:09 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+plicationSettingsService>
+[20:47:23 INF] Ensuring database is created... <s:Program>
+[20:47:23 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[20:47:23 INF] Database initialization completed. <s:Program>
+[20:47:23 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[20:47:23 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[20:47:23 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[20:47:23 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[20:47:23 INF] Application settings initialized. <s:Program>
+[20:47:23 INF] Ensuring database is created... <s:Program>
+[20:47:23 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[20:47:23 INF] Database initialization completed. <s:Program>
+[20:47:23 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[20:47:23 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[20:47:23 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[20:47:23 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[20:47:23 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[20:47:25 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[20:49:12 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+plicationSettingsService>
+[20:47:42 INF] Currency formatter initialized for CategoryAnalysis page <s:WebApp.Pages.Investments.CategoryAnalysisModel>
+[20:47:42 INF] Getting category performance data for 11 <s:Application.Features.Investments.GetCategoryPerformance.GetCategoryPerformanceHandler>
