@@ -22,6 +22,7 @@
         body {
             font-family: 'Poppins', sans-serif;
             background-color: #f8f9fa;
+            overflow-x: hidden;
         }
         
         .top-navbar {
@@ -41,6 +42,7 @@
             font-weight: 600;
             color: white;
             text-decoration: none;
+            white-space: nowrap;
         }
         
         .navbar-brand:hover {
@@ -137,7 +139,7 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
         
-        /* Mobile navbar */
+        /* Mobile toggle button */
         .mobile-toggle {
             display: none;
             background: transparent;
@@ -145,23 +147,187 @@
             color: white;
             font-size: 1.5rem;
             cursor: pointer;
+            padding: 0.25rem 0.5rem;
+            margin-right: 0.5rem;
+        }
+        
+        /* Side panel styles */
+        .side-panel {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 280px;
+            height: 100%;
+            background: linear-gradient(135deg, #1a237e 0%, #0d47a1 100%);
+            z-index: 1000;
+            transition: left 0.3s ease;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            overflow-y: auto;
+            padding: 1rem 0;
+        }
+        
+        .side-panel.open {
+            left: 0;
+        }
+        
+        .side-panel-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 1rem;
+        }
+        
+        .side-panel-title {
+            color: white;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 0;
+        }
+        
+        .side-panel-close {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            padding: 0;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background-color 0.2s;
+        }
+        
+        .side-panel-close:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+        
+        .side-panel-nav {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .side-panel-nav .nav-item {
+            margin: 0;
+        }
+        
+        .side-panel-nav .nav-link {
+            padding: 0.875rem 1.5rem;
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+            color: rgba(255,255,255,0.85);
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+        
+        .side-panel-nav .nav-link:hover,
+        .side-panel-nav .nav-link.active {
+            background-color: rgba(255,255,255,0.1);
+            color: white;
+        }
+        
+        .side-panel-nav .nav-link i {
+            margin-right: 12px;
+            font-size: 1.2rem;
+        }
+        
+        .side-panel-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 999;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .side-panel-overlay.show {
+            display: block;
+            opacity: 1;
+        }
+        
+        .user-section {
+            padding: 1rem 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 1rem;
+        }
+        
+        .user-section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .user-section-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 500;
+            margin-right: 12px;
+        }
+        
+        .user-section-info {
+            color: white;
+        }
+        
+        .user-section-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+        
+        .user-section-email {
+            color: rgba(255,255,255,0.75);
+            font-size: 0.8rem;
+            margin: 0;
+        }
+        
+        .user-section-actions {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .user-section-action {
+            display: flex;
+            align-items: center;
+            color: rgba(255,255,255,0.85);
+            padding: 0.75rem 0;
+            font-weight: 500;
+            text-decoration: none;
+            border: none;
+            background: transparent;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+        }
+        
+        .user-section-action:hover {
+            color: white;
+        }
+        
+        .user-section-action i {
+            margin-right: 12px;
+            font-size: 1.2rem;
         }
         
         /* Responsive adjustments */
         @@media (max-width: 991px) {
             .navbar-nav {
                 display: none;
-                position: absolute;
-                top: 70px;
-                left: 0;
-                right: 0;
-                background: #0d47a1;
-                padding: 1rem;
-                flex-direction: column;
-            }
-            
-            .navbar-nav.show {
-                display: flex;
             }
             
             .mobile-toggle {
@@ -170,10 +336,48 @@
             
             .main-content {
                 padding: 1rem 1.5rem;
+                margin-top: 60px;
+            }
+            
+            .page-title {
+                font-size: 1.5rem;
             }
             
             .card:hover {
                 transform: none;
+            }
+            
+            .card {
+                margin-bottom: 1rem;
+            }
+            
+            .dropdown-menu {
+                position: fixed;
+                width: 100%;
+                max-width: 300px;
+                right: 10px;
+            }
+        }
+        
+        @@media (max-width: 767px) {
+            .navbar-brand {
+                font-size: 1.25rem;
+            }
+            
+            .user-avatar {
+                width: 36px;
+                height: 36px;
+            }
+            
+            .container-fluid {
+                padding-left: 0.75rem;
+                padding-right: 0.75rem;
+            }
+            
+            .text-truncate-mobile {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
         }
     </style>
@@ -185,13 +389,13 @@
         <!-- Top Navbar -->
         <nav class="top-navbar d-flex justify-content-between align-items-center">
             <div class="d-flex align-items-center">
-                <button class="mobile-toggle me-2" id="navbarToggle">
+                <button class="mobile-toggle me-2" id="navbarToggle" aria-label="Toggle navigation">
                     <i class="material-icons">menu</i>
                 </button>
                 <a href="/" class="navbar-brand">Investment Tracker</a>
             </div>
             
-            <ul class="navbar-nav d-flex flex-row mb-0 mx-3" id="navbarNav">
+            <ul class="navbar-nav d-none d-lg-flex flex-row mb-0 mx-3">
                 <li class="nav-item me-2">
                     <a asp-page="/Portfolios/Index" class="nav-link" id="portfoliosTab">
                         <i class="material-icons">account_balance_wallet</i>
@@ -222,7 +426,7 @@
                 }
             </ul>
             
-            <div class="dropdown user-dropdown">
+            <div class="dropdown user-dropdown d-none d-lg-block">
                 @{
                     var firstName = HttpContextAccessor.HttpContext.User.Claims
                     .Where(c => c.Type == "FirstName")
@@ -261,7 +465,7 @@
                     </li>
                     <div class="dropdown-divider"></div>
                     <li>
-                        <form method="post" asp-page="/Auth/Logout" asp-route-returnUrl="@Url.Page("/Auth/Login")" id="logoutForm" class="m-0">
+                        <form method="post" asp-page="/Auth/Logout" asp-route-returnUrl="@Url.Page("/Auth/Login")" id="desktopLogoutForm" class="m-0">
                             <button type="submit" class="dropdown-item">
                                 <i class="material-icons">exit_to_app</i>
                                 <span>Logout</span>
@@ -271,6 +475,72 @@
                 </ul>
             </div>
         </nav>
+        
+        <!-- Mobile Side Panel -->
+        <div class="side-panel" id="sidePanel">
+            <div class="side-panel-header">
+                <h5 class="side-panel-title">Investment Tracker</h5>
+                <button class="side-panel-close" id="closeSidePanel">
+                    <i class="material-icons">close</i>
+                </button>
+            </div>
+            
+            <ul class="side-panel-nav">
+                <li class="nav-item">
+                    <a asp-page="/Portfolios/Index" class="nav-link" id="mobilePortfoliosTab">
+                        <i class="material-icons">account_balance_wallet</i>
+                        <span>Portfolios</span>
+                    </a>
+                </li>
+                
+                @if (User.IsInRole("Admin"))
+                {
+                    <li class="nav-item">
+                        <a asp-page="/InvestmentCategories/Index" class="nav-link" id="mobileCategoriesTab">
+                            <i class="material-icons">category</i>
+                            <span>Categories</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-page="/Users/Index" class="nav-link" id="mobileUsersTab">
+                            <i class="material-icons">people</i>
+                            <span>Users</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-page="/AdminTools" class="nav-link" id="mobileSettingsTab">
+                            <i class="material-icons">settings</i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                }
+            </ul>
+            
+            <div class="user-section">
+                <div class="user-section-header">
+                    <div class="user-section-avatar">
+                        @initials
+                    </div>
+                    <div class="user-section-info">
+                        <p class="user-section-name">@fullName</p>
+                        <p class="user-section-email">@email</p>
+                    </div>
+                </div>
+                <ul class="user-section-actions">
+                    <li>
+                        <form method="post" asp-page="/Auth/Logout" asp-route-returnUrl="@Url.Page("/Auth/Login")" id="mobileLogoutForm" class="m-0">
+                            <button type="submit" class="user-section-action">
+                                <i class="material-icons">exit_to_app</i>
+                                <span>Logout</span>
+                            </button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Side Panel Overlay -->
+        <div class="side-panel-overlay" id="sidePanelOverlay"></div>
         
         <div class="main-content">
             @RenderBody()
@@ -288,10 +558,12 @@
             // Handle active menu item
             var currentPath = window.location.pathname;
             var pathSegments = currentPath.split('/').filter(segment => segment); // This removes empty segments
-            var navItems = document.querySelectorAll('.nav-link');
-            navItems.forEach(function (navItem) {
+            
+            // Desktop menu active state
+            var desktopNavItems = document.querySelectorAll('.navbar-nav .nav-link');
+            desktopNavItems.forEach(function (navItem) {
                 var href = navItem.getAttribute('href');
-                var cleanHref = href.split('?')[0].split('/').filter(segment => segment);
+                var cleanHref = href ? href.split('?')[0].split('/').filter(segment => segment) : [];
                 if (pathSegments[0] === cleanHref[0]) {
                     navItem.classList.add('active');
                 } else {
@@ -299,34 +571,71 @@
                 }
             });
             
-            // Mobile navbar toggle
-            const navbarToggle = document.getElementById('navbarToggle');
-            const navbarNav = document.getElementById('navbarNav');
+            // Mobile menu active state
+            var mobileNavItems = document.querySelectorAll('.side-panel-nav .nav-link');
+            mobileNavItems.forEach(function (navItem) {
+                var href = navItem.getAttribute('href');
+                var cleanHref = href ? href.split('?')[0].split('/').filter(segment => segment) : [];
+                if (pathSegments[0] === cleanHref[0]) {
+                    navItem.classList.add('active');
+                } else {
+                    navItem.classList.remove('active');
+                }
+            });
             
-            if (navbarToggle && navbarNav) {
-                navbarToggle.addEventListener('click', function() {
-                    navbarNav.classList.toggle('show');
-                });
-                
-                // Close navbar when clicking on a link (mobile)
-                const navLinks = navbarNav.querySelectorAll('a');
-                navLinks.forEach(link => {
-                    link.addEventListener('click', function() {
-                        if (window.innerWidth < 992) {
-                            navbarNav.classList.remove('show');
-                        }
-                    });
-                });
-                
-                // Close navbar when clicking outside
-                document.addEventListener('click', function(event) {
-                    if (window.innerWidth < 992 && 
-                        !navbarNav.contains(event.target) && 
-                        !navbarToggle.contains(event.target) &&
-                        navbarNav.classList.contains('show')) {
-                        navbarNav.classList.remove('show');
-                    }
-                });
+            // Mobile side panel functionality
+            const navbarToggle = document.getElementById('navbarToggle');
+            const sidePanel = document.getElementById('sidePanel');
+            const closeSidePanel = document.getElementById('closeSidePanel');
+            const sidePanelOverlay = document.getElementById('sidePanelOverlay');
+            
+            function openSidePanel() {
+                sidePanel.classList.add('open');
+                sidePanelOverlay.classList.add('show');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            }
+            
+            function closeSidePanelFunc() {
+                sidePanel.classList.remove('open');
+                sidePanelOverlay.classList.remove('show');
+                document.body.style.overflow = ''; // Restore scrolling
+            }
+            
+            if (navbarToggle) {
+                navbarToggle.addEventListener('click', openSidePanel);
+            }
+            
+            if (closeSidePanel) {
+                closeSidePanel.addEventListener('click', closeSidePanelFunc);
+            }
+            
+            if (sidePanelOverlay) {
+                sidePanelOverlay.addEventListener('click', closeSidePanelFunc);
+            }
+            
+            // Close side panel when clicking on a nav link
+            const sidePanelLinks = document.querySelectorAll('.side-panel-nav .nav-link');
+            sidePanelLinks.forEach(link => {
+                link.addEventListener('click', closeSidePanelFunc);
+            });
+            
+            // Add swipe to close functionality
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            sidePanel.addEventListener('touchstart', e => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+            
+            sidePanel.addEventListener('touchend', e => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, { passive: true });
+            
+            function handleSwipe() {
+                if (touchStartX - touchEndX > 70) { // Swipe left threshold
+                    closeSidePanelFunc();
+                }
             }
         });
     </script>
