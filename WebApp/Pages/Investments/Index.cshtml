@@ -54,14 +54,11 @@
                         </div>
                         <div class="col-12 col-md-3">
                             <label for="searchText" class="form-label">Search</label>
-                            <div class="position-relative">
-                                <i class="material-icons position-absolute ms-2" style="top: 8px; opacity: 0.5;">search</i>
-                                <input type="text" id="searchText" name="searchText" class="form-control ps-5" value="@Model.SearchText" placeholder="Search investments...">
-                            </div>
+                            <input type="text" id="searchText" name="searchText" class="form-control form-control-equal" value="@Model.SearchText" placeholder="Search investments...">
                         </div>
                         <div class="col-12 col-md-3 d-flex gap-2">
                             <button type="submit" class="btn btn-primary flex-grow-1 btn-slick">
-                                Apply Filters
+                                Apply
                             </button>
                             <button type="button" id="resetFilters" class="btn btn-outline-secondary">
                                 <i class="material-icons">refresh</i>
@@ -311,6 +308,11 @@
     .btn-slick:hover {
         transform: translateY(-2px);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+    
+    .form-control-equal {
+        height: calc(2.25rem + 2px);
+        padding: 0.375rem 0.75rem;
     }
 </style>
 
