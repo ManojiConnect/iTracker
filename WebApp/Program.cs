@@ -122,11 +122,7 @@ app.UseAuthentication();
 app.UseMiddleware(typeof(AuthorizationHandlerMiddleware));
 app.UseAuthorization();
 
-// Configure conventional routes for MVC controllers
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
-
+// Configure routes for Razor Pages
 app.MapRazorPages();
 
 app.Run();

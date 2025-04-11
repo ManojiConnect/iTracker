@@ -51,6 +51,8 @@ public class GetAllPortfoliosHandler : IRequestHandler<GetAllPortfoliosRequest, 
             ReturnPercentage = p.Investments.Sum(i => i.TotalInvestment) > 0 
                 ? (p.Investments.Sum(i => i.CurrentValue - i.TotalInvestment) / p.Investments.Sum(i => i.TotalInvestment)) * 100
                 : 0,
+            UnrealizedGainLoss = p.Investments.Sum(i => i.CurrentValue - i.TotalInvestment),
+            ModifiedOn = p.ModifiedOn,
             InvestmentCount = p.Investments.Count,
             TotalInvested = p.Investments.Sum(i => i.TotalInvestment),
             Performance = p.Investments.Sum(i => i.TotalInvestment) > 0 

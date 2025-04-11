@@ -14,6 +14,8 @@ public record PortfolioDto
     public string? Description { get; init; }
     public decimal TotalValue { get; init; }
     public decimal ReturnPercentage { get; init; }
+    public decimal UnrealizedGainLoss { get; init; }
+    public DateTime? ModifiedOn { get; init; }
     
     // Additional properties needed for views
     public int InvestmentCount { get; init; }

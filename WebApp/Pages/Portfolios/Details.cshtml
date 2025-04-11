@@ -90,13 +90,9 @@
 
     @{
         ViewBag.Portfolios = new List<Application.Features.Portfolios.GetAllPortfolios.PortfolioDto> { new() { Id = Model.Portfolio.Id, Name = Model.Portfolio.Name } };
+        ViewBag.Categories = Model.CategoryDistribution.Select(c => new { Id = c.Name, Name = c.Name }).ToList();
         ViewBag.FormatCurrency = new Func<decimal, string>(Model.FormatCurrency);
-        ViewBag.PageSize = Model.PageSize;
-        ViewBag.TotalPages = Model.TotalPages;
-        ViewBag.CurrentPage = Model.PageNumber;
-        ViewBag.StartItem = Model.StartItem;
-        ViewBag.EndItem = Model.EndItem;
-        ViewBag.TotalItems = Model.TotalItems;
+        ViewBag.PageSize = Model.Investments.PageSize;
     }
     <partial name="_InvestmentsList" model="Model.Investments" />
 </div>

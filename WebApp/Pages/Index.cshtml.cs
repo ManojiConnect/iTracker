@@ -15,8 +15,9 @@ public class IndexModel : PageModel
         _logger = logger;
     }
 
-    public void OnGet()
+    public IActionResult OnGet()
     {
+        return RedirectToPage("Portfolios/Index");
     }
 
     public IActionResult OnPost()

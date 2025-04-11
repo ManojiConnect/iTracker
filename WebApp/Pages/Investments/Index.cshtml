@@ -4,204 +4,367 @@
     Layout = "_DesktopLayout";
     ViewData["Title"] = "Investments";
 }
+@inject WebApp.Services.IApplicationSettingsService ApplicationSettings
 
 <div class="container-fluid px-4">
-    <h1 class="page-title">My Investments</h1>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="page-title">Investments</h1>
+        <div class="d-flex gap-2">
+            <a asp-page="Create" class="btn btn-primary d-flex align-items-center">
+                <i class="material-icons me-1" style="font-size: 20px;">add</i>
+                <span>Add Investment</span>
+            </a>
+            <div class="dropdown">
+                <button class="btn btn-outline-primary dropdown-toggle d-flex align-items-center" type="button" id="importExportDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="material-icons me-1" style="font-size: 20px;">import_export</i>
+                    <span>Import/Export</span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="importExportDropdown">
+                    <li>
+                        <a class="dropdown-item" asp-page="ImportInvestments">
+                            <i class="material-icons me-2">upload_file</i> Import
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" asp-page="ExportInvestments">
+                            <i class="material-icons me-2">download</i> Export
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
     <div class="row mb-4">
         <div class="col-12">
             <div class="card shadow-sm">
-                <div class="card-body d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center">
-                    <div class="mb-3 mb-sm-0">
-                        <h5 class="card-title mb-0">Total Investments</h5>
-                        <h2 class="text-primary mb-0">@Model.Investments.TotalCount</h2>
-                    </div>
-                    <div>
-                        <div class="btn-group">
-                            <a asp-page="Create" class="btn btn-primary btn-sm d-flex align-items-center" style="white-space: nowrap;">
-                                <i class="material-icons me-1">add</i>
-                                <span>Add New Investment</span>
-                            </a>
-                            <a asp-page="ImportInvestments" class="btn btn-outline-primary btn-sm d-flex align-items-center">
-                                <i class="material-icons me-1">upload_file</i>
-                                <span>Import</span>
-                            </a>
-                            <a asp-page="ExportInvestments" class="btn btn-outline-primary btn-sm d-flex align-items-center">
-                                <i class="material-icons me-1">download</i>
-                                <span>Export</span>
-                            </a>
+                <div class="card-body p-4">
+                    <form id="filterForm" method="get" class="row g-3 align-items-end">
+                        <div class="col-12 col-md-3">
+                            <label for="portfolioId" class="form-label">Portfolio</label>
+                            <select id="portfolioId" name="portfolioId" class="form-select" asp-items="Model.PortfolioSelectList">
+                                <option value="">All Portfolios</option>
+                            </select>
                         </div>
-                    </div>
+                        <div class="col-12 col-md-3">
+                            <label for="category" class="form-label">Category</label>
+                            <select id="category" name="category" class="form-select" asp-items="Model.CategorySelectList">
+                                <option value="">All Categories</option>
+                            </select>
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <label for="searchText" class="form-label">Search</label>
+                            <div class="position-relative">
+                                <i class="material-icons position-absolute ms-2" style="top: 8px; opacity: 0.5;">search</i>
+                                <input type="text" id="searchText" name="searchText" class="form-control ps-5" value="@Model.SearchText" placeholder="Search investments...">
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-3 d-flex gap-2">
+                            <button type="submit" class="btn btn-primary flex-grow-1 btn-slick">
+                                Apply Filters
+                            </button>
+                            <button type="button" id="resetFilters" class="btn btn-outline-secondary">
+                                <i class="material-icons">refresh</i>
+                            </button>
+                        </div>
+                        <input type="hidden" name="sortBy" id="sortBy" value="@Model.SortBy">
+                        <input type="hidden" name="sortOrder" id="sortOrder" value="@Model.SortOrder">
+                        <input type="hidden" name="pageNumber" id="pageNumber" value="@Model.PageNumber">
+                        <input type="hidden" name="pageSize" id="pageSize" value="@Model.PageSize">
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Category Summaries -->
-    @if (Model.CategorySummaries.Any())
-    {
-        <div class="row mb-4">
-            @foreach (var category in Model.CategorySummaries)
-            {
-                <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-4">
-                    <div class="card shadow-sm h-100">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="rounded-circle p-2 me-3" style="background-color: @category.Color">
-                                    <i class="material-icons text-white">category</i>
-                                </div>
-                                <div>
-                                    <h6 class="mb-0">@category.Name</h6>
-                                    <small class="text-muted">@category.InvestmentCount Investments</small>
-                                </div>
+    <div class="card shadow-sm mb-3">
+        <div class="table-responsive">
+            <table class="table table-hover mb-0 align-middle">
+                <thead>
+                    <tr>
+                        <th data-sort-by="portfolio" class="sortable-header @(Model.SortBy == "portfolio" ? "sorted" : "")">
+                            <div class="d-flex align-items-center">
+                                <span>Portfolio</span>
+                                @if (Model.SortBy == "portfolio")
+                                {
+                                    <i class="material-icons ms-1 sort-icon">@(Model.SortOrder == "asc" ? "arrow_upward" : "arrow_downward")</i>
+                                }
                             </div>
-                            <div class="mb-2">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="text-muted">Value:</span>
-                                    <span class="fw-bold">@Html.Raw(Model.FormatCurrency(category.TotalValue))</span>
-                                </div>
+                        </th>
+                        <th data-sort-by="name" class="sortable-header @(Model.SortBy == "name" ? "sorted" : "")">
+                            <div class="d-flex align-items-center">
+                                <span>Name</span>
+                                @if (Model.SortBy == "name")
+                                {
+                                    <i class="material-icons ms-1 sort-icon">@(Model.SortOrder == "asc" ? "arrow_upward" : "arrow_downward")</i>
+                                }
                             </div>
-                            <div class="mb-2">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="text-muted">Gain/Loss:</span>
-                                    <span class="@(category.UnrealizedGainLoss >= 0 ? "text-success" : "text-danger")">
-                                        @(category.UnrealizedGainLoss >= 0 ? "+" : "")@Html.Raw(Model.FormatCurrency(category.UnrealizedGainLoss))
+                        </th>
+                        <th data-sort-by="category" class="sortable-header @(Model.SortBy == "category" ? "sorted" : "")">
+                            <div class="d-flex align-items-center">
+                                <span>Category</span>
+                                @if (Model.SortBy == "category")
+                                {
+                                    <i class="material-icons ms-1 sort-icon">@(Model.SortOrder == "asc" ? "arrow_upward" : "arrow_downward")</i>
+                                }
+                            </div>
+                        </th>
+                        <th data-sort-by="initialinvestment" class="text-end sortable-header @(Model.SortBy == "initialinvestment" ? "sorted" : "")">
+                            <div class="d-flex align-items-center justify-content-end">
+                                <span>Investment</span>
+                                @if (Model.SortBy == "initialinvestment")
+                                {
+                                    <i class="material-icons ms-1 sort-icon">@(Model.SortOrder == "asc" ? "arrow_upward" : "arrow_downward")</i>
+                                }
+                            </div>
+                        </th>
+                        <th data-sort-by="currentvalue" class="text-end sortable-header @(Model.SortBy == "currentvalue" ? "sorted" : "")">
+                            <div class="d-flex align-items-center justify-content-end">
+                                <span>Current Value</span>
+                                @if (Model.SortBy == "currentvalue")
+                                {
+                                    <i class="material-icons ms-1 sort-icon">@(Model.SortOrder == "asc" ? "arrow_upward" : "arrow_downward")</i>
+                                }
+                            </div>
+                        </th>
+                        <th data-sort-by="return" class="text-end sortable-header @(Model.SortBy == "return" ? "sorted" : "")">
+                            <div class="d-flex align-items-center justify-content-end">
+                                <span>Return</span>
+                                @if (Model.SortBy == "return")
+                                {
+                                    <i class="material-icons ms-1 sort-icon">@(Model.SortOrder == "asc" ? "arrow_upward" : "arrow_downward")</i>
+                                }
+                            </div>
+                        </th>
+                        <th class="text-end">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Investments.Items.Any())
+                    {
+                        foreach (var investment in Model.Investments.Items)
+                        {
+                            <tr>
+                                <td>@investment.PortfolioName</td>
+                                <td>
+                                    <div>
+                                        <div class="fw-medium">@investment.Name</div>
+                                        @if (!string.IsNullOrEmpty(investment.Symbol))
+                                        {
+                                            <small class="text-muted">@investment.Symbol</small>
+                                        }
+                                    </div>
+                                </td>
+                                <td>@investment.CategoryName</td>
+                                <td class="text-end">@ApplicationSettings.FormatCurrency(investment.TotalInvestment)</td>
+                                <td class="text-end">@ApplicationSettings.FormatCurrency(investment.CurrentValue)</td>
+                                <td class="text-end">
+                                    <span class="@(investment.ReturnPercentage >= 0 ? "text-success" : "text-danger")">
+                                        @(investment.ReturnPercentage >= 0 ? "+" : "")@investment.ReturnPercentage.ToString("0.00")%
                                     </span>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="text-muted">Return:</span>
-                                    <span class="@(category.ReturnPercentage >= 0 ? "text-success" : "text-danger")">
-                                        @(category.ReturnPercentage >= 0 ? "+" : "")@Model.FormatNumber(category.ReturnPercentage, 2)%
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            }
+                                </td>
+                                <td class="text-end">
+                                    <div class="btn-group">
+                                        <a asp-page="History" asp-route-id="@investment.Id" class="btn btn-sm btn-outline-info">
+                                            <i class="material-icons">history</i>
+                                        </a>
+                                        <a asp-page="Edit" asp-route-id="@investment.Id" class="btn btn-sm btn-outline-primary">
+                                            <i class="material-icons">edit</i>
+                                        </a>
+                                        <a asp-page="Delete" asp-route-id="@investment.Id" class="btn btn-sm btn-outline-danger">
+                                            <i class="material-icons">delete</i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="7" class="text-center py-5">
+                                <i class="material-icons" style="font-size: 48px; opacity: 0.5;">search_off</i>
+                                <p class="mt-2 text-muted">No investments found matching your criteria.</p>
+                                <a href="?resetFilters=true" class="btn btn-outline-primary mt-2">
+                                    <i class="material-icons me-1">refresh</i>
+                                    <span>Reset Filters</span>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
         </div>
-    }
+    </div>
 
-    @{
-        ViewBag.Portfolios = Model.Portfolios;
-        ViewBag.FormatCurrency = new Func<decimal, string>(Model.FormatCurrency);
-        ViewBag.PageSize = Model.Investments.PageSize;
-    }
-    <partial name="_InvestmentsList" model="Model.Investments.Items" />
+    <!-- Pagination -->
+    <div class="d-flex justify-content-between align-items-center mt-3 mb-4">
+        <div class="d-flex align-items-center">
+            <div class="text-muted me-3">
+                @if (Model.Investments.TotalCount > 0)
+                {
+                    <span>Showing @((Model.Investments.PageNumber - 1) * Model.Investments.PageSize + 1) to @Math.Min(Model.Investments.PageNumber * Model.Investments.PageSize, Model.Investments.TotalCount) of @Model.Investments.TotalCount entries</span>
+                }
+                else
+                {
+                    <span>No entries to show</span>
+                }
+            </div>
+            <div class="d-flex align-items-center">
+                <span class="text-muted me-2">Show</span>
+                <select id="pageSizeSelect" class="form-select form-select-sm" style="width: auto;">
+                    <option value="5" selected="@(Model.PageSize == 5)">5</option>
+                    <option value="10" selected="@(Model.PageSize == 10)">10</option>
+                    <option value="25" selected="@(Model.PageSize == 25)">25</option>
+                    <option value="50" selected="@(Model.PageSize == 50)">50</option>
+                </select>
+                <span class="text-muted ms-2">entries</span>
+            </div>
+        </div>
+        @if (Model.Investments.TotalPages > 1)
+        {
+            <ul class="pagination pagination-sm mb-0">
+                @if (Model.Investments.HasPreviousPage)
+                {
+                    <li class="page-item">
+                        <a class="page-link page-link-nav" href="#" data-page="@(Model.Investments.PageNumber - 1)">
+                            <i class="material-icons">chevron_left</i>
+                        </a>
+                    </li>
+                }
+                else
+                {
+                    <li class="page-item disabled">
+                        <span class="page-link">
+                            <i class="material-icons">chevron_left</i>
+                        </span>
+                    </li>
+                }
+
+                @for (int i = Math.Max(1, Model.Investments.PageNumber - 2); i <= Math.Min(Model.Investments.TotalPages, Model.Investments.PageNumber + 2); i++)
+                {
+                    <li class="page-item @(i == Model.Investments.PageNumber ? "active" : "")">
+                        <a class="page-link page-link-nav" href="#" data-page="@i">@i</a>
+                    </li>
+                }
+
+                @if (Model.Investments.HasNextPage)
+                {
+                    <li class="page-item">
+                        <a class="page-link page-link-nav" href="#" data-page="@(Model.Investments.PageNumber + 1)">
+                            <i class="material-icons">chevron_right</i>
+                        </a>
+                    </li>
+                }
+                else
+                {
+                    <li class="page-item disabled">
+                        <span class="page-link">
+                            <i class="material-icons">chevron_right</i>
+                        </span>
+                    </li>
+                }
+            </ul>
+        }
+    </div>
 </div>
 
+<style>
+    .sortable-header {
+        cursor: pointer;
+    }
+    
+    .sortable-header:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+    
+    .sort-icon {
+        font-size: 18px;
+    }
+    
+    .page-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        padding: 0;
+    }
+    
+    .page-link-nav {
+        cursor: pointer;
+    }
+    
+    .page-link i {
+        font-size: 20px;
+    }
+
+    .btn-slick {
+        transition: all 0.2s ease;
+        border-radius: 6px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-weight: 500;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .btn-slick:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+</style>
+
 @section Scripts {
-    <style>
-        .category-scroll-container {
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: thin;
-            scrollbar-color: rgba(0,0,0,.2) transparent;
-        }
-        
-        .category-scroll-container::-webkit-scrollbar {
-            height: 6px;
-        }
-        
-        .category-scroll-container::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        
-        .category-scroll-container::-webkit-scrollbar-thumb {
-            background-color: rgba(0,0,0,.2);
-            border-radius: 3px;
-        }
-        
-        .category-scroll-container::-webkit-scrollbar-thumb:hover {
-            background-color: rgba(0,0,0,.3);
-        }
-    </style>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Add click handlers to sortable columns
-            const sortableHeaders = document.querySelectorAll('th[style*="cursor: pointer"]');
+            // Handle sortable headers
+            const sortableHeaders = document.querySelectorAll('.sortable-header');
             sortableHeaders.forEach(header => {
-                // Add click event listener
                 header.addEventListener('click', function() {
-                    const columnIndex = parseInt(this.querySelector('.sort-icon').getAttribute('data-column'));
-                    sortTableByColumn(columnIndex);
+                    const sortBy = this.getAttribute('data-sort-by');
+                    const currentSortBy = document.getElementById('sortBy').value;
+                    const currentSortOrder = document.getElementById('sortOrder').value;
+                    
+                    let newSortOrder = 'asc';
+                    if (sortBy === currentSortBy) {
+                        newSortOrder = currentSortOrder === 'asc' ? 'desc' : 'asc';
+                    }
+                    
+                    document.getElementById('sortBy').value = sortBy;
+                    document.getElementById('sortOrder').value = newSortOrder;
+                    document.getElementById('pageNumber').value = '1'; // Reset to page 1 when sorting
+                    document.getElementById('filterForm').submit();
                 });
             });
             
-            // Initialize sort icons to show no sort direction initially
-            const sortIcons = document.querySelectorAll('.sort-icon');
-            sortIcons.forEach(icon => {
-                icon.textContent = ''; // Empty initially
-                icon.style.fontSize = '0.75rem'; // Make icons even smaller
+            // Handle pagination
+            const pageLinks = document.querySelectorAll('.page-link-nav');
+            pageLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const page = this.getAttribute('data-page');
+                    document.getElementById('pageNumber').value = page;
+                    document.getElementById('filterForm').submit();
+                });
             });
+            
+            // Handle page size change
+            const pageSizeSelect = document.getElementById('pageSizeSelect');
+            if (pageSizeSelect) {
+                pageSizeSelect.addEventListener('change', function() {
+                    document.getElementById('pageSize').value = this.value;
+                    document.getElementById('pageNumber').value = '1'; // Reset to page 1 when changing page size
+                    document.getElementById('filterForm').submit();
+                });
+            }
+            
+            // Handle reset filters
+            const resetButton = document.getElementById('resetFilters');
+            if (resetButton) {
+                resetButton.addEventListener('click', function() {
+                    window.location.href = '?resetFilters=true';
+                });
+            }
         });
-        
-        function filterItems() {
-            const searchText = document.getElementById('searchInput').value.toLowerCase();
-            const categoryFilter = document.getElementById('categoryFilter').value;
-            const rows = document.querySelectorAll('.investment-item');
-            
-            rows.forEach(row => {
-                const name = row.querySelector('.investment-name').textContent.toLowerCase();
-                const category = row.getAttribute('data-category');
-                const matchesSearch = name.includes(searchText);
-                const matchesCategory = !categoryFilter || category === categoryFilter;
-                
-                row.style.display = matchesSearch && matchesCategory ? '' : 'none';
-            });
-        }
-        
-        function filterByCategory() {
-            filterItems();
-        }
-        
-        function sortTableByColumn(columnIndex) {
-            const tbody = document.getElementById('tableBody');
-            const rows = Array.from(tbody.querySelectorAll('tr'));
-            const currentOrder = tbody.getAttribute('data-sort-order');
-            const newOrder = currentOrder === 'asc' ? 'desc' : 'asc';
-            
-            // Update sort order attribute
-            tbody.setAttribute('data-sort-order', newOrder);
-            
-            // Update sort icons
-            const sortIcons = document.querySelectorAll('.sort-icon');
-            sortIcons.forEach(icon => {
-                icon.textContent = '';
-            });
-            
-            const currentIcon = document.querySelector(`.sort-icon[data-column="${columnIndex}"]`);
-            currentIcon.textContent = newOrder === 'asc' ? 'arrow_upward' : 'arrow_downward';
-            
-            // Sort rows
-            rows.sort((a, b) => {
-                let aValue = a.children[columnIndex].textContent.trim();
-                let bValue = b.children[columnIndex].textContent.trim();
-                
-                // Handle numeric values
-                if (columnIndex === 3 || columnIndex === 4) { // Value and Gain/Loss columns
-                    aValue = parseFloat(aValue.replace(/[^0-9.-]+/g, '')) || 0;
-                    bValue = parseFloat(bValue.replace(/[^0-9.-]+/g, '')) || 0;
-                }
-                
-                if (newOrder === 'asc') {
-                    return aValue > bValue ? 1 : -1;
-                } else {
-                    return aValue < bValue ? 1 : -1;
-                }
-            });
-            
-            // Reorder rows
-            rows.forEach(row => tbody.appendChild(row));
-        }
-        
-        function changePageSize(size) {
-            const urlParams = new URLSearchParams(window.location.search);
-            urlParams.set('pageSize', size);
-            urlParams.set('pageNumber', '1'); // Reset to first page when changing page size
-            window.location.href = window.location.pathname + '?' + urlParams.toString();
-        }
     </script>
 }

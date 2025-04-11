@@ -1,197 +1,310 @@
 @using Application.Features.Investments.Common
+@using Application.Features.Common.Responses
 @using Application.Features.Portfolios.GetAllPortfolios
-@using WebApp.Models
-@using Microsoft.AspNetCore.Http
-@inject IHttpContextAccessor HttpContextAccessor
-@model IEnumerable<InvestmentDto>
+@using WebApp.Services
+@inject IApplicationSettingsService ApplicationSettings
+
+@model PaginatedList<InvestmentDto>
+
+@{
+    var isAjax = Context.Request.Headers["X-Requested-With"] == "XMLHttpRequest";
+    var pageNumber = Context.Request.Query["pageNumber"].ToString();
+    if (string.IsNullOrEmpty(pageNumber))
+    {
+        pageNumber = "1";
+    }
+
+    var categorySummaries = ViewBag.CategorySummaries as List<WebApp.Pages.Investments.CategorySummary>;
+    var categories = ViewBag.Categories as List<string> ?? new List<string>();
+    var formatCurrency = ViewBag.FormatCurrency as Func<decimal, string> ?? (value => value.ToString("C"));
+    var pageSize = ViewBag.PageSize as int? ?? 10;
+    var selectedCategory = Context.Request.Query["category"].ToString();
+}
+
+@if (!isAjax)
+{
+    <!-- Category Summaries -->
+    @if (categorySummaries?.Any() == true)
+    {
+        <div class="row mb-4">
+            @foreach (var category in categorySummaries)
+            {
+                <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-4">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="rounded-circle p-2 me-3" style="background-color: @category.Color">
+                                    <i class="material-icons text-white">category</i>
+                                </div>
+                                <div>
+                                    <h6 class="mb-0">@category.Name</h6>
+                                    <small class="text-muted">@category.InvestmentCount Investments</small>
+                                </div>
+                            </div>
+                            <div class="mb-2">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="text-muted">Value:</span>
+                                    <span class="fw-bold">@ApplicationSettings.FormatCurrency(category.TotalValue)</span>
+                                </div>
+                            </div>
+                            <div class="mb-2">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="text-muted">Gain/Loss:</span>
+                                    <span class="@(category.UnrealizedGainLoss >= 0 ? "text-success" : "text-danger")">
+                                        @(category.UnrealizedGainLoss >= 0 ? "+" : "")@ApplicationSettings.FormatCurrency(category.UnrealizedGainLoss)
+                                    </span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="text-muted">Return:</span>
+                                    <span class="@(category.ReturnPercentage >= 0 ? "text-success" : "text-danger")">
+                                        @(category.ReturnPercentage >= 0 ? "+" : "")@ApplicationSettings.FormatNumber(category.ReturnPercentage, 2)%
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+}
+
+@if (!isAjax)
+{
+    <div class="card">
+        <div class="card-body">
+            <form id="filterForm" method="get" class="mb-4">
+                <div class="row g-3">
+                    <div class="col-12 col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-text bg-white">
+                                <i class="material-icons">search</i>
+                            </span>
+                            <input type="text" id="searchInput" name="searchTerm" class="form-control" placeholder="Search investments..." value="@Context.Request.Query["searchTerm"]">
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <select id="categoryFilter" name="category" class="form-select">
+                            <option value="">All Categories</option>
+                            @foreach (var category in categories)
+                            {
+                                var isSelected = selectedCategory == category;
+                                <option value="@category" selected="@isSelected">@category</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-12 col-md-2">
+                        <select name="pageSize" class="form-select">
+                            @{
+                                var pageSizes = new[] { 10, 25, 50 };
+                                foreach (var size in pageSizes)
+                                {
+                                    var isSelected = pageSize == size;
+                                    <option value="@size" selected="@isSelected">@size per page</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+                <input type="hidden" name="pageNumber" value="1">
+            </form>
+        </div>
+    </div>
+}
 
 <div class="card">
-    <div class="card-header d-flex justify-content-between align-items-center">
-        <h5 class="mb-0">Investments</h5>
-        <a asp-page="/Investments/Create" class="btn btn-primary btn-sm d-flex align-items-center">
-            <i class="material-icons me-1">add</i>
-            <span>Add Investment</span>
-        </a>
-    </div>
     <div class="card-body">
-        <div class="row mb-3">
-            <div class="col-md-3">
-                <div class="input-group">
-                    <span class="input-group-text py-1"><i class="material-icons">search</i></span>
-                    <input type="text" class="form-control py-1" id="searchInput" placeholder="Search..." onkeyup="filterItems()">
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="input-group">
-                    <span class="input-group-text"><i class="material-icons">account_balance</i></span>
-                    <select class="form-select" id="portfolioFilter" onchange="filterByPortfolio()">
-                        <option value="">All Portfolios</option>
-                        @foreach (var portfolio in ViewBag.Portfolios ?? new List<Application.Features.Portfolios.GetAllPortfolios.PortfolioDto>())
-                        {
-                            <option value="@portfolio.Id">@portfolio.Name</option>
-                        }
-                    </select>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="input-group">
-                    <span class="input-group-text"><i class="material-icons">category</i></span>
-                    <select class="form-select" id="categoryFilter" onchange="filterByCategory()">
-                        <option value="">All Categories</option>
-                        @{
-                            var categories = Model.Select(i => i.CategoryName).Distinct().OrderBy(c => c);
-                            foreach (var category in categories)
-                            {
-                                <option value="@category">@category</option>
-                            }
-                        }
-                    </select>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="input-group">
-                    <span class="input-group-text"><i class="material-icons">format_list_numbered</i></span>
-                    <select class="form-select" id="pageSize" onchange="changePageSize(this.value)">
-                        @{
-                            var pageSizes = new[] { 10, 25, 50, 100 };
-                            foreach (var size in pageSizes)
-                            {
-                                if (ViewBag.PageSize == size)
-                                {
-                                    <option value="@size" selected>@size per page</option>
-                                }
-                                else
-                                {
-                                    <option value="@size">@size per page</option>
-                                }
-                            }
-                        }
-                    </select>
-                </div>
-            </div>
-        </div>
-        <div class="table-responsive">
-            @if (Model.Any())
-            {
-                <table class="table table-hover align-middle mb-0">
-                    <thead class="table-light">
-                        <tr>
-                            <th class="ps-3" style="width: 30%; cursor: pointer;">
-                                <div class="d-flex align-items-center">
-                                    <span>Name</span>
-                                    <i class="material-icons fs-6 sort-icon ms-1" data-column="0"></i>
-                                </div>
-                            </th>
-                            <th class="d-none d-md-table-cell" style="width: 15%; cursor: pointer;">
-                                <div class="d-flex align-items-center">
-                                    <span>Category</span>
-                                    <i class="material-icons fs-6 sort-icon ms-1" data-column="1"></i>
-                                </div>
-                            </th>
-                            <th class="d-none d-sm-table-cell" style="width: 15%; cursor: pointer;">
-                                <div class="d-flex align-items-center">
-                                    <span>Portfolio</span>
-                                    <i class="material-icons fs-6 sort-icon ms-1" data-column="2"></i>
-                                </div>
-                            </th>
-                            <th class="d-none d-lg-table-cell" style="width: 15%; cursor: pointer;">
-                                <div class="d-flex align-items-center">
-                                    <span>Value</span>
-                                    <i class="material-icons fs-6 sort-icon ms-1" data-column="3"></i>
-                                </div>
-                            </th>
-                            <th class="d-none d-xl-table-cell" style="width: 15%; cursor: pointer;">
-                                <div class="d-flex align-items-center">
-                                    <span>Gain/Loss</span>
-                                    <i class="material-icons fs-6 sort-icon ms-1" data-column="4"></i>
-                                </div>
-                            </th>
-                            <th style="width: 10%;" class="text-end pe-3">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var investment in Model)
-                        {
-                            <tr class="investment-item" data-portfolio-id="@investment.PortfolioId" data-category="@investment.CategoryName">
-                                <td>
-                                    <div class="d-flex flex-column">
-                                        <span class="fw-medium investment-name">@investment.Name</span>
-                                        <div class="d-md-none mt-1">
-                                            <span class="badge bg-info bg-opacity-10 text-info px-2 py-1 rounded-pill investment-category">@investment.CategoryName</span>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="d-none d-md-table-cell">
-                                    <span class="badge bg-info bg-opacity-10 text-info px-3 py-2 rounded-pill investment-category">@investment.CategoryName</span>
-                                </td>
-                                <td class="d-none d-sm-table-cell">
-                                    <span class="fw-medium fs-7 investment-portfolio">@investment.PortfolioName</span>
-                                </td>
-                                <td class="d-none d-lg-table-cell">
-                                    <span class="fw-medium fs-7">@Html.Raw(ViewBag.FormatCurrency(investment.CurrentValue))</span>
-                                </td>
-                                <td class="d-none d-xl-table-cell">
-                                    <span class="fw-medium fs-7 @(investment.UnrealizedGainLoss >= 0 ? "text-success" : "text-danger")" style="white-space: nowrap;">
-                                        @(investment.UnrealizedGainLoss >= 0 ? "+" : "")@Html.Raw(ViewBag.FormatCurrency(investment.UnrealizedGainLoss))
-                                    </span>
-                                </td>
-                                <td class="text-end pe-3">
-                                    <div class="btn-group">
-                                        <a asp-page="/Investments/Edit" asp-route-id="@investment.Id" class="btn btn-sm btn-outline-primary">
-                                            <i class="material-icons fs-5">edit</i>
-                                        </a>
-                                        <a asp-page="/Investments/Details" asp-route-id="@investment.Id" class="btn btn-sm btn-outline-primary">
-                                            <i class="material-icons fs-5">info</i>
-                                        </a>
-                                        <a asp-page="/Investments/History" asp-route-id="@investment.Id" class="btn btn-sm btn-outline-success">
-                                            <i class="material-icons fs-5">trending_up</i>
-                                        </a>
-                                        <a asp-page="/Investments/Delete" asp-route-id="@investment.Id" class="btn btn-sm btn-outline-danger">
-                                            <i class="material-icons fs-5">delete</i>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            }
-            else
-            {
-                <div class="text-center text-muted py-5">
-                    <i class="material-icons fs-1">account_balance</i>
-                    <p>No investments found</p>
-                </div>
-            }
-        </div>
-        @if (ViewBag.TotalPages > 1)
+        @if (isAjax)
         {
-            <div class="d-flex justify-content-between align-items-center mt-3">
-                <div class="text-muted">
-                    Showing @ViewBag.StartItem to @ViewBag.EndItem of @ViewBag.TotalItems items
+            <form id="filterForm" method="get" class="mb-4">
+                <div class="row g-3">
+                    <div class="col-12 col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-text bg-white">
+                                <i class="material-icons">search</i>
+                            </span>
+                            <input type="text" id="searchInput" name="searchTerm" class="form-control" placeholder="Search investments..." value="@Context.Request.Query["searchTerm"]">
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <select id="categoryFilter" name="category" class="form-select">
+                            <option value="">All Categories</option>
+                            @foreach (var category in categories)
+                            {
+                                var isSelected = selectedCategory == category;
+                                <option value="@category" selected="@isSelected">@category</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-12 col-md-2">
+                        <select name="pageSize" class="form-select">
+                            @{
+                                var pageSizes = new[] { 10, 25, 50 };
+                                foreach (var size in pageSizes)
+                                {
+                                    var isSelected = pageSize == size;
+                                    <option value="@size" selected="@isSelected">@size per page</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <select id="portfolioFilter" name="portfolioId" class="form-select">
+                            <option value="">All Portfolios</option>
+                            @foreach (var portfolio in ViewBag.Portfolios ?? new List<PortfolioDto>())
+                            {
+                                var isSelected = Context.Request.Query["portfolioId"].ToString() == portfolio.Id.ToString();
+                                <option value="@portfolio.Id" selected="@isSelected">@portfolio.Name</option>
+                            }
+                        </select>
+                    </div>
                 </div>
+                <input type="hidden" name="pageNumber" value="1">
+            </form>
+        }
+
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th style="cursor: pointer;" onclick="sortTableByColumn(0)">
+                            <div class="d-flex align-items-center">
+                                <span>Name</span>
+                                <i class="material-icons sort-icon ms-1" data-column="0"></i>
+                            </div>
+                        </th>
+                        <th style="cursor: pointer;" onclick="sortTableByColumn(1)">
+                            <div class="d-flex align-items-center">
+                                <span>Symbol</span>
+                                <i class="material-icons sort-icon ms-1" data-column="1"></i>
+                            </div>
+                        </th>
+                        <th style="cursor: pointer;" onclick="sortTableByColumn(2)">
+                            <div class="d-flex align-items-center">
+                                <span>Category</span>
+                                <i class="material-icons sort-icon ms-1" data-column="2"></i>
+                            </div>
+                        </th>
+                        <th style="cursor: pointer;" onclick="sortTableByColumn(3)">
+                            <div class="d-flex align-items-center">
+                                <span>Total Investment</span>
+                                <i class="material-icons sort-icon ms-1" data-column="3"></i>
+                            </div>
+                        </th>
+                        <th style="cursor: pointer;" onclick="sortTableByColumn(4)">
+                            <div class="d-flex align-items-center">
+                                <span>Current Value</span>
+                                <i class="material-icons sort-icon ms-1" data-column="4"></i>
+                            </div>
+                        </th>
+                        <th style="cursor: pointer;" onclick="sortTableByColumn(5)">
+                            <div class="d-flex align-items-center">
+                                <span>Gain/Loss</span>
+                                <i class="material-icons sort-icon ms-1" data-column="5"></i>
+                            </div>
+                        </th>
+                        <th style="cursor: pointer;" onclick="sortTableByColumn(6)">
+                            <div class="d-flex align-items-center">
+                                <span>Return</span>
+                                <i class="material-icons sort-icon ms-1" data-column="6"></i>
+                            </div>
+                        </th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody" data-sort-order="asc">
+                    @foreach (var investment in Model.Items)
+                    {
+                        <tr class="investment-item" data-category="@investment.CategoryName" data-portfolio="@investment.PortfolioId">
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <div>
+                                        <div class="fw-bold investment-name">@investment.Name</div>
+                                        <small class="text-muted">@investment.PortfolioName</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>@investment.Symbol</td>
+                            <td>@investment.CategoryName</td>
+                            <td>@formatCurrency(investment.TotalInvestment)</td>
+                            <td>@formatCurrency(investment.CurrentValue)</td>
+                            <td class="@(investment.UnrealizedGainLoss >= 0 ? "text-success" : "text-danger")">
+                                @(investment.UnrealizedGainLoss >= 0 ? "+" : "")@formatCurrency(investment.UnrealizedGainLoss)
+                            </td>
+                            <td class="@(investment.ReturnPercentage >= 0 ? "text-success" : "text-danger")">
+                                @(investment.ReturnPercentage >= 0 ? "+" : "")@investment.ReturnPercentage.ToString("F2")%
+                            </td>
+                            <td>
+                                <div class="btn-group">
+                                    <a asp-page="/Investments/Details" asp-route-id="@investment.Id" class="btn btn-sm btn-outline-primary">
+                                        <i class="material-icons">visibility</i>
+                                    </a>
+                                    <a asp-page="/Investments/Edit" asp-route-id="@investment.Id" class="btn btn-sm btn-outline-secondary">
+                                        <i class="material-icons">edit</i>
+                                    </a>
+                                    <a asp-page="/Investments/History" asp-route-id="@investment.Id" class="btn btn-sm btn-outline-info">
+                                        <i class="material-icons">graph_up</i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        @if (Model.TotalPages > 1)
+        {
+            <div class="d-flex justify-content-between align-items-center mt-4">
+                <div class="d-flex align-items-center">
+                    <label class="me-2">Show:</label>
+                    <select class="form-select form-select-sm" style="width: auto;">
+                        <option value="10" selected="@(pageSize == 10)">10</option>
+                        <option value="25" selected="@(pageSize == 25)">25</option>
+                        <option value="50" selected="@(pageSize == 50)">50</option>
+                        <option value="100" selected="@(pageSize == 100)">100</option>
+                    </select>
+                    <label class="ms-2">entries</label>
+                </div>
+
                 <nav aria-label="Page navigation">
-                    <ul class="pagination mb-0">
-                        @if (ViewBag.CurrentPage > 1)
+                    <ul class="pagination pagination-sm mb-0">
+                        @if (Model.HasPreviousPage)
                         {
                             <li class="page-item">
-                                <a class="page-link" href="@GetPageUrl(ViewBag.CurrentPage - 1)" aria-label="Previous">
-                                    <i class="material-icons">chevron_left</i>
+                                <a class="page-link" href="@GetPageUrl(Model.PageNumber - 1)" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
                                 </a>
                             </li>
                         }
-                        @for (int i = Math.Max(1, ViewBag.CurrentPage - 2); i <= Math.Min(ViewBag.TotalPages, ViewBag.CurrentPage + 2); i++)
+                        else
                         {
-                            <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                            <li class="page-item disabled">
+                                <span class="page-link" aria-hidden="true">&laquo;</span>
+                            </li>
+                        }
+
+                        @for (int i = Math.Max(1, Model.PageNumber - 2); i <= Math.Min(Model.TotalPages, Model.PageNumber + 2); i++)
+                        {
+                            <li class="page-item @(i == Model.PageNumber ? "active" : "")">
                                 <a class="page-link" href="@GetPageUrl(i)">@i</a>
                             </li>
                         }
-                        @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+
+                        @if (Model.HasNextPage)
                         {
                             <li class="page-item">
-                                <a class="page-link" href="@GetPageUrl(ViewBag.CurrentPage + 1)" aria-label="Next">
-                                    <i class="material-icons">chevron_right</i>
+                                <a class="page-link" href="@GetPageUrl(Model.PageNumber + 1)" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
                                 </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="page-item disabled">
+                                <span class="page-link" aria-hidden="true">&raquo;</span>
                             </li>
                         }
                     </ul>
@@ -201,55 +314,33 @@
     </div>
 </div>
 
-@functions {
-    private string GetPageUrl(int page)
-    {
-        var request = HttpContextAccessor.HttpContext.Request;
-        var queryParams = new Dictionary<string, string>();
-        foreach (var key in request.Query.Keys)
-        {
-            if (key != "pageNumber")
-            {
-                queryParams[key] = request.Query[key];
-            }
-        }
-        queryParams["pageNumber"] = page.ToString();
-        
-        var queryString = string.Join("&", queryParams.Select(x => $"{x.Key}={x.Value}"));
-        return $"{request.Path}?{queryString}";
+@if (!isAjax)
+{
+    @section Scripts {
+        <script src="~/js/investments-list.js"></script>
     }
 }
 
-<script>
-    function filterItems() {
-        const searchText = document.getElementById('searchInput').value.toLowerCase();
-        const portfolioId = document.getElementById('portfolioFilter').value;
-        const category = document.getElementById('categoryFilter').value;
-        const rows = document.querySelectorAll('tbody tr');
+@functions {
+    private string GetPageUrl(int pageNumber)
+    {
+        var queryParams = new Dictionary<string, string>();
+        var currentQuery = Context.Request.Query;
 
-        rows.forEach(row => {
-            const name = row.querySelector('.investment-name').textContent.toLowerCase();
-            const rowCategory = row.querySelector('.investment-category').textContent;
-            const portfolio = row.querySelector('.investment-portfolio').textContent;
-            const matchesSearch = name.includes(searchText);
-            const matchesPortfolio = !portfolioId || portfolio === portfolioId;
-            const matchesCategory = !category || rowCategory === category;
-            row.style.display = matchesSearch && matchesPortfolio && matchesCategory ? '' : 'none';
-        });
-    }
+        foreach (var key in currentQuery.Keys)
+        {
+            if (key != "pageNumber")
+            {
+                queryParams[key] = currentQuery[key].ToString();
+            }
+        }
 
-    function filterByPortfolio() {
-        filterItems();
-    }
+        queryParams["pageNumber"] = pageNumber.ToString();
+        
+        // Handle the case when ViewBag.PageSize is null
+        var pageSize = ViewBag.PageSize as int? ?? 10;
+        queryParams["pageSize"] = pageSize.ToString();
 
-    function filterByCategory() {
-        filterItems();
+        return $"?{string.Join("&", queryParams.Select(kvp => $"{kvp.Key}={kvp.Value}"))}";
     }
-
-    function changePageSize(size) {
-        const url = new URL(window.location.href);
-        url.searchParams.set('pageSize', size);
-        url.searchParams.set('pageNumber', '1');
-        window.location.href = url.toString();
-    }
-</script> 
+} 

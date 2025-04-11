@@ -238,10 +238,6 @@
                     <i class="material-icons">account_balance_wallet</i>
                     <span>Portfolios</span>
                 </a>
-                <a asp-page="/Investments/Index" class="sidebar__nav-item text-white d-flex align-items-center" aria-current="page" id="investmentsTab" aria-label="Investments">
-                    <i class="material-icons">trending_up</i>
-                    <span>Investments</span>
-                </a>
                 <a asp-page="/InvestmentCategories/Index" class="sidebar__nav-item text-white d-flex align-items-center" aria-current="page" id="categoriesTab" aria-label="Categories">
                     <i class="material-icons">category</i>
                     <span>Categories</span>
@@ -255,11 +251,6 @@
                     <a asp-controller="UserManagement" asp-action="Index" class="sidebar__nav-item text-white d-flex align-items-center" aria-current="page" id="usersTab" aria-label="Users">
                         <i class="material-icons">people</i>
                         <span>Users</span>
-                    </a>
-            
-                    <a asp-page="/AdminTools" class="sidebar__nav-item text-white d-flex align-items-center" aria-current="page" id="adminToolsTab" aria-label="Settings">
-                        <i class="material-icons">settings</i>
-                        <span>Settings</span>
                     </a>
                 }
             </nav>
@@ -316,8 +307,6 @@
 
     <script src="~/js/jquery.min.js"></script>
     <script src="~/js/bootstrap-5.3.3/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/owlcarousel/owl.carousel.min.js"></script>
-    <script src="~/js/jquerySimpleTimepicker/jquery.simpletimepicker.js"></script>
     <script src="~/js/scripts.min.js"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
