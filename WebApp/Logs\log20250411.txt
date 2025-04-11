@@ -13469,3 +13469,25 @@ plicationSettingsService>
 plicationSettingsService>
 [20:47:42 INF] Currency formatter initialized for CategoryAnalysis page <s:WebApp.Pages.Investments.CategoryAnalysisModel>
 [20:47:42 INF] Getting category performance data for 11 <s:Application.Features.Investments.GetCategoryPerformance.GetCategoryPerformanceHandler>
+[22:05:17 INF] Ensuring database is created... <s:Program>
+[22:05:17 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[22:05:17 INF] Database initialization completed. <s:Program>
+[22:05:17 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[22:05:18 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[22:05:18 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[22:05:18 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[22:05:18 INF] Application settings initialized. <s:Program>
+[22:05:18 INF] Ensuring database is created... <s:Program>
+[22:05:18 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[22:05:18 INF] Database initialization completed. <s:Program>
+[22:05:18 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[22:05:18 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[22:05:18 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[22:05:18 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[22:05:18 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[22:05:20 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[22:05:38 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+plicationSettingsService>
+[22:05:29 INF] Attempting login for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
+[22:05:29 INF] Login successful for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
+[22:05:29 INF] Attempting to redirect to Portfolios/Index <s:WebApp.Pages.Auth.LoginModel>

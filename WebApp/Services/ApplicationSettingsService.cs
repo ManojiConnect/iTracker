@@ -59,8 +59,11 @@ public class ApplicationSettingsService : IApplicationSettingsService
             // Get settings from database first
             var dbSettings = await _dbSettingsService.GetAllSettingsAsync();
             
-            // If the database has the default dollar sign, try to load from file and update DB
-            if (dbSettings.CurrencySymbol == "$" && File.Exists(_settingsFilePath))
+            // Check if db settings has a valid currency symbol
+            bool hasValidCurrencySymbol = !string.IsNullOrEmpty(dbSettings.CurrencySymbol) && dbSettings.CurrencySymbol != "?";
+            
+            // If the database has the default dollar sign or an invalid symbol, try to load from file and update DB
+            if ((dbSettings.CurrencySymbol == "$" || !hasValidCurrencySymbol) && File.Exists(_settingsFilePath))
             {
                 _logger.LogInformation("Database has default settings, syncing from file");
                 
@@ -94,6 +97,13 @@ public class ApplicationSettingsService : IApplicationSettingsService
                         _logger.LogWarning("Failed to update database with file settings");
                     }
                 }
+            }
+            else if (!hasValidCurrencySymbol)
+            {
+                // Set a default currency symbol if one isn't valid
+                _logger.LogInformation("Setting default currency symbol (₹)");
+                dbSettings.CurrencySymbol = "₹";
+                await _dbSettingsService.UpdateSettingsAsync(dbSettings);
             }
             else
             {
@@ -228,11 +238,28 @@ public class ApplicationSettingsService : IApplicationSettingsService
     
     public string FormatCurrency(decimal amount)
     {
-        // Get settings (cached if available)
-        var settings = GetSettingsAsync().GetAwaiter().GetResult();
-        
-        string formattedNumber = FormatNumber(amount, settings.DecimalPlaces);
-        return $"{settings.CurrencySymbol}{formattedNumber}";
+        try
+        {
+            // Get settings (cached if available)
+            var settings = GetSettingsAsync().GetAwaiter().GetResult();
+            
+            // Ensure currency symbol is valid
+            if (string.IsNullOrEmpty(settings.CurrencySymbol) || settings.CurrencySymbol == "?")
+            {
+                _logger.LogWarning("Invalid currency symbol detected, using default ₹");
+                settings.CurrencySymbol = "₹";
+                // Update cache with valid symbol
+                _cache.Set(SettingsCacheKey, settings, TimeSpan.FromMinutes(5));
+            }
+            
+            string formattedNumber = FormatNumber(amount, settings.DecimalPlaces);
+            return $"{settings.CurrencySymbol}{formattedNumber}";
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error formatting currency, using fallback");
+            return $"₹{amount:N2}";
+        }
     }
     
     public string FormatNumber(decimal number, int? decimalPlaces = null)
@@ -272,9 +299,11 @@ public class ApplicationSettingsService : IApplicationSettingsService
     
     private SystemSettingsViewModel GetDefaultSettings()
     {
+        _logger.LogInformation("Creating default application settings with ₹ symbol");
+        
         var defaultSettings = new SystemSettingsViewModel
         {
-            CurrencySymbol = "₹", // Default is now changed to Rupee symbol
+            CurrencySymbol = "₹", // Default currency symbol is Rupee
             DecimalSeparator = ".",
             ThousandsSeparator = ",",
             DecimalPlaces = 2,
