@@ -43,6 +43,21 @@ public class ApplicationSettingsService : IApplicationSettingsService
         
         // Store settings in a JSON file in the App_Data directory
         var appDataDir = Path.Combine(_environment.ContentRootPath, "App_Data");
+        
+        // Ensure App_Data directory exists
+        if (!Directory.Exists(appDataDir))
+        {
+            try
+            {
+                Directory.CreateDirectory(appDataDir);
+                _logger.LogInformation("Created App_Data directory for settings");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Failed to create App_Data directory");
+            }
+        }
+        
         _settingsFilePath = Path.Combine(appDataDir, "settings.json");
     }
     
@@ -56,11 +71,43 @@ public class ApplicationSettingsService : IApplicationSettingsService
         {
             _logger.LogInformation("Initializing application settings");
             
-            // Get settings from database first
+            // Initialize with default settings first (for Azure safety)
+            var defaultSettings = GetDefaultSettings();
+            
+            // Get settings from database
             var dbSettings = await _dbSettingsService.GetAllSettingsAsync();
+            _logger.LogInformation("Database settings loaded with CurrencySymbol: {Symbol}", 
+                dbSettings?.CurrencySymbol ?? "null");
+            
+            // Make sure we have valid settings before proceeding
+            if (dbSettings == null)
+            {
+                _logger.LogWarning("No settings found in database, creating defaults");
+                dbSettings = new SystemSettings
+                {
+                    CurrencySymbol = "₹",
+                    DecimalSeparator = ".",
+                    ThousandsSeparator = ",",
+                    DecimalPlaces = 2,
+                    DateFormat = "dd/MM/yyyy",
+                    FinancialYearStartMonth = 4,
+                    PerformanceCalculationMethod = "simple",
+                    SessionTimeoutMinutes = 30,
+                    DefaultPortfolioView = "list"
+                };
+                
+                await _dbSettingsService.UpdateSettingsAsync(dbSettings);
+                _logger.LogInformation("Created default settings in database");
+                
+                // Clear cache to ensure fresh data
+                _cache.Remove(SettingsCacheKey);
+                return;
+            }
             
             // Check if db settings has a valid currency symbol
-            bool hasValidCurrencySymbol = !string.IsNullOrEmpty(dbSettings.CurrencySymbol) && dbSettings.CurrencySymbol != "?";
+            bool hasValidCurrencySymbol = !string.IsNullOrEmpty(dbSettings.CurrencySymbol) && 
+                                          dbSettings.CurrencySymbol != "?" && 
+                                          dbSettings.CurrencySymbol != "\0";
             
             // If the database has the default dollar sign or an invalid symbol, try to load from file and update DB
             if ((dbSettings.CurrencySymbol == "$" || !hasValidCurrencySymbol) && File.Exists(_settingsFilePath))
@@ -104,6 +151,23 @@ public class ApplicationSettingsService : IApplicationSettingsService
                 _logger.LogInformation("Setting default currency symbol (₹)");
                 dbSettings.CurrencySymbol = "₹";
                 await _dbSettingsService.UpdateSettingsAsync(dbSettings);
+                _logger.LogInformation("Updated database with default currency symbol");
+                
+                // Also save to file for future reference
+                var viewModel = new SystemSettingsViewModel
+                {
+                    CurrencySymbol = "₹",
+                    DecimalSeparator = dbSettings.DecimalSeparator,
+                    ThousandsSeparator = dbSettings.ThousandsSeparator,
+                    DecimalPlaces = dbSettings.DecimalPlaces,
+                    DateFormat = dbSettings.DateFormat,
+                    FinancialYearStartMonth = dbSettings.FinancialYearStartMonth,
+                    PerformanceCalculationMethod = dbSettings.PerformanceCalculationMethod,
+                    SessionTimeoutMinutes = dbSettings.SessionTimeoutMinutes,
+                    DefaultPortfolioView = dbSettings.DefaultPortfolioView
+                };
+                
+                await SaveToFileAsync(viewModel);
             }
             else
             {
@@ -117,6 +181,8 @@ public class ApplicationSettingsService : IApplicationSettingsService
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error initializing application settings");
+            // Ensure default settings are available in cache even in case of error
+            _cache.Set(SettingsCacheKey, GetDefaultSettings(), TimeSpan.FromMinutes(5));
         }
     }
     
@@ -126,13 +192,34 @@ public class ApplicationSettingsService : IApplicationSettingsService
         {
             // First try to get from cache
             if (_cache.TryGetValue(SettingsCacheKey, out SystemSettingsViewModel cachedSettings) && 
-                cachedSettings != null)
+                cachedSettings != null && !string.IsNullOrEmpty(cachedSettings.CurrencySymbol) && 
+                cachedSettings.CurrencySymbol != "?")
             {
                 return cachedSettings;
             }
             
             // Get settings from database (source of truth)
             var dbSettings = await _dbSettingsService.GetAllSettingsAsync();
+            
+            // Double check valid database settings - especially important in Azure
+            if (dbSettings == null || string.IsNullOrEmpty(dbSettings.CurrencySymbol) || 
+                dbSettings.CurrencySymbol == "?" || dbSettings.CurrencySymbol == "\0")
+            {
+                _logger.LogWarning("Invalid database settings detected during GetSettingsAsync");
+                
+                // Try to fix database settings
+                if (dbSettings != null)
+                {
+                    dbSettings.CurrencySymbol = "₹";
+                    await _dbSettingsService.UpdateSettingsAsync(dbSettings);
+                    _logger.LogInformation("Fixed currency symbol in database during GetSettingsAsync");
+                }
+                else
+                {
+                    _logger.LogWarning("Null database settings, returning defaults");
+                    return GetDefaultSettings();
+                }
+            }
             
             // Map domain model to view model
             var viewModel = new SystemSettingsViewModel
@@ -147,6 +234,13 @@ public class ApplicationSettingsService : IApplicationSettingsService
                 SessionTimeoutMinutes = dbSettings.SessionTimeoutMinutes,
                 DefaultPortfolioView = dbSettings.DefaultPortfolioView
             };
+            
+            // Final validation before caching
+            if (string.IsNullOrEmpty(viewModel.CurrencySymbol) || viewModel.CurrencySymbol == "?")
+            {
+                _logger.LogWarning("Invalid view model currency symbol, using default");
+                viewModel.CurrencySymbol = "₹";
+            }
             
             // Cache the settings
             _cache.Set(SettingsCacheKey, viewModel, TimeSpan.FromMinutes(5));
@@ -243,13 +337,42 @@ public class ApplicationSettingsService : IApplicationSettingsService
             // Get settings (cached if available)
             var settings = GetSettingsAsync().GetAwaiter().GetResult();
             
-            // Ensure currency symbol is valid
-            if (string.IsNullOrEmpty(settings.CurrencySymbol) || settings.CurrencySymbol == "?")
+            // Ensure currency symbol is valid - be very explicit about any possible invalid cases
+            if (settings == null || string.IsNullOrEmpty(settings.CurrencySymbol) || 
+                settings.CurrencySymbol == "?" || settings.CurrencySymbol == "\0")
             {
-                _logger.LogWarning("Invalid currency symbol detected, using default ₹");
-                settings.CurrencySymbol = "₹";
-                // Update cache with valid symbol
-                _cache.Set(SettingsCacheKey, settings, TimeSpan.FromMinutes(5));
+                _logger.LogWarning("Invalid currency symbol detected in Azure, using default ₹");
+                // Create safe default settings if necessary
+                if (settings == null)
+                {
+                    settings = GetDefaultSettings();
+                }
+                else 
+                {
+                    settings.CurrencySymbol = "₹";
+                    // Update cache with valid symbol
+                    _cache.Set(SettingsCacheKey, settings, TimeSpan.FromMinutes(5));
+                }
+                
+                // Try to persist this fix to the database asynchronously
+                Task.Run(async () => 
+                {
+                    try 
+                    {
+                        var dbSettings = await _dbSettingsService.GetAllSettingsAsync();
+                        if (string.IsNullOrEmpty(dbSettings.CurrencySymbol) || 
+                            dbSettings.CurrencySymbol == "?" || dbSettings.CurrencySymbol == "$")
+                        {
+                            dbSettings.CurrencySymbol = "₹";
+                            await _dbSettingsService.UpdateSettingsAsync(dbSettings);
+                            _logger.LogInformation("Fixed invalid currency symbol in database");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        _logger.LogError(ex, "Error fixing currency symbol in database");
+                    }
+                });
             }
             
             string formattedNumber = FormatNumber(amount, settings.DecimalPlaces);

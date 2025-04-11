@@ -13491,3 +13491,24 @@ plicationSettingsService>
 [22:05:29 INF] Attempting login for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
 [22:05:29 INF] Login successful for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
 [22:05:29 INF] Attempting to redirect to Portfolios/Index <s:WebApp.Pages.Auth.LoginModel>
+[22:16:37 INF] Ensuring database is created... <s:Program>
+[22:16:37 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[22:16:37 INF] Database initialization completed. <s:Program>
+[22:16:37 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[22:16:37 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[22:16:37 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[22:16:37 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[22:16:37 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[22:16:37 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[22:16:37 INF] Application settings initialized. <s:Program>
+[22:16:37 INF] Ensuring database is created... <s:Program>
+[22:16:37 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[22:16:37 INF] Database initialization completed. <s:Program>
+[22:16:38 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[22:16:38 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[22:16:38 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[22:16:38 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[22:16:38 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[22:16:42 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[22:16:50 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+plicationSettingsService>
