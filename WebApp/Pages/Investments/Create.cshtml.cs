@@ -97,7 +97,7 @@ public class CreateModel : PageModel
             if (result.IsSuccess)
             {
                 _logger.LogInformation("Investment created successfully with ID: {Id}", result.Value);
-                return RedirectToPage("../Portfolios/Details", new { id = Investment.PortfolioId });
+                return RedirectToPage("./Index", new { portfolioId = Investment.PortfolioId });
             }
 
             foreach (var error in result.Errors)
