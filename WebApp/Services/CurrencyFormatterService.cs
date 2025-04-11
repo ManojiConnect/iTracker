@@ -3,18 +3,19 @@ using System.Globalization;
 using System.Threading.Tasks;
 using Application.Abstractions.Services;
 using Domain.Entities;
+using Microsoft.Extensions.Logging;
 
 namespace WebApp.Services;
 
 public class CurrencyFormatterService
 {
     private readonly ISettingsService _settingsService;
-    private SystemSettings _cachedSettings;
-    private DateTime _cacheExpiry = DateTime.MinValue;
+    private readonly ILogger<CurrencyFormatterService> _logger;
 
-    public CurrencyFormatterService(ISettingsService settingsService)
+    public CurrencyFormatterService(ISettingsService settingsService, ILogger<CurrencyFormatterService> logger)
     {
         _settingsService = settingsService;
+        _logger = logger;
     }
 
     public async Task<string> FormatCurrencyAsync(decimal amount)
@@ -28,25 +29,21 @@ public class CurrencyFormatterService
             CurrencyGroupSeparator = settings.ThousandsSeparator,
             CurrencyDecimalDigits = settings.DecimalPlaces
         };
-
+        
         return string.Format(numberFormat, "{0:C}", amount);
     }
-
+    
     public async Task<string> GetCurrencySymbolAsync()
     {
         var settings = await GetSettingsAsync();
+        _logger.LogInformation("Retrieved currency symbol from settings: {Symbol}", settings.CurrencySymbol);
         return settings.CurrencySymbol;
     }
-
+    
     private async Task<SystemSettings> GetSettingsAsync()
     {
-        // Simple caching mechanism to avoid unnecessary database calls
-        if (_cachedSettings == null || DateTime.UtcNow > _cacheExpiry)
-        {
-            _cachedSettings = await _settingsService.GetAllSettingsAsync();
-            _cacheExpiry = DateTime.UtcNow.AddMinutes(5); // Cache for 5 minutes
-        }
-        
-        return _cachedSettings;
+        // Force invalidate cache to always get the most current settings
+        _settingsService.InvalidateCache();
+        return await _settingsService.GetAllSettingsAsync();
     }
 } 

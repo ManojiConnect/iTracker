@@ -5,6 +5,7 @@ using Application.Abstractions.Services;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Logging;
 
 namespace Infrastructure.Services;
 
@@ -12,12 +13,14 @@ public class SettingsService : ISettingsService
 {
     private readonly IContext _context;
     private readonly IMemoryCache _cache;
+    private readonly ILogger<SettingsService> _logger;
     private const string SettingsCacheKey = "SystemSettings";
 
-    public SettingsService(IContext context, IMemoryCache cache)
+    public SettingsService(IContext context, IMemoryCache cache, ILogger<SettingsService> logger)
     {
         _context = context ?? throw new ArgumentNullException(nameof(context));
         _cache = cache ?? throw new ArgumentNullException(nameof(cache));
+        _logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
 
     public async Task<SystemSettings> GetAllSettingsAsync()
@@ -55,6 +58,7 @@ public class SettingsService : ISettingsService
         // Cache the settings
         _cache.Set(SettingsCacheKey, settings, TimeSpan.FromMinutes(30));
         
+        _logger.LogInformation("Retrieved settings with currency symbol: {Symbol}", settings.CurrencySymbol);
         return settings;
     }
 
@@ -117,12 +121,13 @@ public class SettingsService : ISettingsService
             await _context.SaveChangesAsync();
             
             // Invalidate cache
-            _cache.Remove(SettingsCacheKey);
+            InvalidateCache();
             
             return true;
         }
-        catch (Exception)
+        catch (Exception ex)
         {
+            _logger.LogError(ex, "Error updating settings");
             return false;
         }
     }
@@ -153,9 +158,16 @@ public class SettingsService : ISettingsService
             // If property doesn't exist, return false
             return false;
         }
-        catch (Exception)
+        catch (Exception ex)
         {
+            _logger.LogError(ex, "Error updating setting {Key} to {Value}", key, value);
             return false;
         }
+    }
+    
+    public void InvalidateCache()
+    {
+        _cache.Remove(SettingsCacheKey);
+        _logger.LogInformation("Settings cache manually invalidated");
     }
 } 

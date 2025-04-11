@@ -117,13 +117,13 @@
                                                         <tr>
                                                             <td>@category.CategoryName</td>
                                                             <td>@category.AllocationPercentage.ToString("F2")%</td>
-                                                            <td>@category.TotalInvestment.ToString("C2")</td>
-                                                            <td>@category.CurrentValue.ToString("C2")</td>
+                                                            <td>@Model.FormatCurrency(category.TotalInvestment)</td>
+                                                            <td>@Model.FormatCurrency(category.CurrentValue)</td>
                                                             <td class="@(category.ProfitLoss >= 0 ? "text-success" : "text-danger")">
-                                                                @category.ProfitLoss.ToString("C2")
+                                                                @(category.ProfitLoss >= 0 ? "+" : "")@Model.FormatCurrency(Math.Abs(category.ProfitLoss))
                                                             </td>
                                                             <td class="@(category.ReturnPercentage >= 0 ? "text-success" : "text-danger")">
-                                                                @category.ReturnPercentage.ToString("F2")%
+                                                                @($"{(category.ReturnPercentage >= 0 ? "+" : "")}{category.ReturnPercentage:F2}%")
                                                             </td>
                                                             <td class="d-none d-md-table-cell">@category.InvestmentCount</td>
                                                             @if (Model.IsAllPortfolios)
@@ -131,7 +131,7 @@
                                                                 <td class="d-none d-md-table-cell">@category.PortfolioCount</td>
                                                             }
                                                             <td>
-                                                                <a href="/Portfolios?categoryId=@category.CategoryId@(Model.PortfolioId.HasValue ? $"&portfolioId={Model.PortfolioId}" : "")" 
+                                                                <a href="/Investments/Index?Category=@category.CategoryName@(Model.PortfolioId.HasValue ? $"&portfolioId={Model.PortfolioId}" : "")" 
                                                                    class="btn btn-sm btn-outline-primary">
                                                                     <i class="fas fa-filter"></i> View
                                                                 </a>

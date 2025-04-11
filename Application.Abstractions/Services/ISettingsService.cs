@@ -9,4 +9,5 @@ public interface ISettingsService
     Task<string> GetSettingAsync(string key);
     Task<bool> UpdateSettingsAsync(SystemSettings updatedSettings);
     Task<bool> UpdateSettingAsync(string key, string value);
+    void InvalidateCache();
 } 

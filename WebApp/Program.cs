@@ -59,11 +59,24 @@ builder.Services.AddScoped<AuthorizationHandlerMiddleware>();
 builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddScoped<UserService>();
-builder.Services.AddScoped<WebApp.Services.CurrencyFormatterService>();
-builder.Services.AddScoped<WebApp.Services.IApplicationSettingsService, WebApp.Services.ApplicationSettingsService>();
+// Remove duplicate registration
+// builder.Services.AddScoped<WebApp.Services.CurrencyFormatterService>();
+// builder.Services.AddScoped<WebApp.Services.IApplicationSettingsService, WebApp.Services.ApplicationSettingsService>();
 
 // Add database initializer
 builder.Services.AddScoped<DatabaseInitializer>();
+
+// Configure services
+builder.Services.Configure<CookiePolicyOptions>(options =>
+{
+    options.CheckConsentNeeded = context => true;
+    options.MinimumSameSitePolicy = SameSiteMode.None;
+});
+
+// Register settings services with proper lifetimes
+// Change from singleton to scoped to avoid DI issues
+builder.Services.AddScoped<IApplicationSettingsService, ApplicationSettingsService>();
+builder.Services.AddScoped<CurrencyFormatterService>();
 
 builder.Logging.ClearProviders();
 // Add serilog
@@ -73,6 +86,33 @@ if (builder.Environment.EnvironmentName != "Testing")
 }
 
 var app = builder.Build();
+
+// Initialize settings system
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var logger = services.GetRequiredService<ILogger<Program>>();
+    
+    try
+    {
+        logger.LogInformation("Ensuring database is created...");
+        
+        var dbInitializer = services.GetRequiredService<DatabaseInitializer>();
+        await dbInitializer.InitializeAsync();
+        
+        logger.LogInformation("Database initialization completed.");
+        
+        // Initialize settings and ensure DB and file are in sync
+        var settingsService = services.GetRequiredService<IApplicationSettingsService>();
+        await settingsService.InitializeSettingsAsync();
+        
+        logger.LogInformation("Application settings initialized.");
+    }
+    catch (Exception ex)
+    {
+        logger.LogError(ex, "An error occurred during application initialization.");
+    }
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

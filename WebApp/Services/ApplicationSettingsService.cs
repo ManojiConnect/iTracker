@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 using WebApp.Models;
+using Application.Abstractions.Services;
+using Domain.Entities;
 
 namespace WebApp.Services;
 
@@ -16,6 +18,7 @@ public interface IApplicationSettingsService
     string FormatCurrency(decimal amount);
     string FormatNumber(decimal number, int? decimalPlaces = null);
     string FormatDate(DateTime date);
+    Task InitializeSettingsAsync();
 }
 
 public class ApplicationSettingsService : IApplicationSettingsService
@@ -24,58 +27,177 @@ public class ApplicationSettingsService : IApplicationSettingsService
     private readonly IWebHostEnvironment _environment;
     private readonly ILogger<ApplicationSettingsService> _logger;
     private readonly IMemoryCache _cache;
+    private readonly ISettingsService _dbSettingsService;
     private const string SettingsCacheKey = "AppSettings";
     
-    public ApplicationSettingsService(IWebHostEnvironment environment, 
-                                      ILogger<ApplicationSettingsService> logger,
-                                      IMemoryCache cache)
+    public ApplicationSettingsService(
+        IWebHostEnvironment environment,
+        ILogger<ApplicationSettingsService> logger,
+        IMemoryCache cache,
+        ISettingsService dbSettingsService)
     {
         _environment = environment;
         _logger = logger;
         _cache = cache;
+        _dbSettingsService = dbSettingsService;
         
         // Store settings in a JSON file in the App_Data directory
         var appDataDir = Path.Combine(_environment.ContentRootPath, "App_Data");
         _settingsFilePath = Path.Combine(appDataDir, "settings.json");
     }
     
+    /// <summary>
+    /// Initialize settings on application startup. This will load settings from file
+    /// and ensure they are synced to the database, but only if the database has default values.
+    /// </summary>
+    public async Task InitializeSettingsAsync()
+    {
+        try
+        {
+            _logger.LogInformation("Initializing application settings");
+            
+            // Get settings from database first
+            var dbSettings = await _dbSettingsService.GetAllSettingsAsync();
+            
+            // If the database has the default dollar sign, try to load from file and update DB
+            if (dbSettings.CurrencySymbol == "$" && File.Exists(_settingsFilePath))
+            {
+                _logger.LogInformation("Database has default settings, syncing from file");
+                
+                // Load settings from file
+                string json = await File.ReadAllTextAsync(_settingsFilePath);
+                var fileSettings = JsonSerializer.Deserialize<SystemSettingsViewModel>(json, 
+                    new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+                
+                if (fileSettings != null)
+                {
+                    // Map file settings to domain model
+                    dbSettings.CurrencySymbol = fileSettings.CurrencySymbol;
+                    dbSettings.DecimalSeparator = fileSettings.DecimalSeparator;
+                    dbSettings.ThousandsSeparator = fileSettings.ThousandsSeparator;
+                    dbSettings.DecimalPlaces = fileSettings.DecimalPlaces;
+                    dbSettings.DateFormat = fileSettings.DateFormat;
+                    dbSettings.FinancialYearStartMonth = fileSettings.FinancialYearStartMonth;
+                    dbSettings.PerformanceCalculationMethod = fileSettings.PerformanceCalculationMethod;
+                    dbSettings.SessionTimeoutMinutes = fileSettings.SessionTimeoutMinutes;
+                    dbSettings.DefaultPortfolioView = fileSettings.DefaultPortfolioView;
+                    
+                    // Update database with file settings
+                    var success = await _dbSettingsService.UpdateSettingsAsync(dbSettings);
+                    
+                    if (success)
+                    {
+                        _logger.LogInformation("Successfully synchronized settings from file to database");
+                    }
+                    else
+                    {
+                        _logger.LogWarning("Failed to update database with file settings");
+                    }
+                }
+            }
+            else
+            {
+                _logger.LogInformation("Using existing database settings (CurrencySymbol={Symbol})", 
+                    dbSettings.CurrencySymbol);
+            }
+            
+            // Clear any existing cache to ensure we're using the latest settings
+            _cache.Remove(SettingsCacheKey);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error initializing application settings");
+        }
+    }
+    
     public async Task<SystemSettingsViewModel> GetSettingsAsync()
     {
         try
         {
-            // Try to load settings from the JSON file
-            if (File.Exists(_settingsFilePath))
+            // First try to get from cache
+            if (_cache.TryGetValue(SettingsCacheKey, out SystemSettingsViewModel cachedSettings) && 
+                cachedSettings != null)
             {
-                string json = await File.ReadAllTextAsync(_settingsFilePath);
-                
-                var options = new JsonSerializerOptions
-                {
-                    PropertyNameCaseInsensitive = true
-                };
-                
-                var settings = JsonSerializer.Deserialize<SystemSettingsViewModel>(json, options);
-                
-                if (settings != null)
-                {
-                    // Cache the settings for a short period
-                    _cache.Set(SettingsCacheKey, settings, TimeSpan.FromMinutes(1));
-                    _logger.LogInformation("Settings loaded from file: CurrencySymbol={Symbol}", settings.CurrencySymbol);
-                    return settings;
-                }
+                return cachedSettings;
             }
             
-            // Return default settings if file doesn't exist or deserialization failed
-            _logger.LogWarning("Settings file not found or invalid, using default settings");
-            return GetDefaultSettings();
+            // Get settings from database (source of truth)
+            var dbSettings = await _dbSettingsService.GetAllSettingsAsync();
+            
+            // Map domain model to view model
+            var viewModel = new SystemSettingsViewModel
+            {
+                CurrencySymbol = dbSettings.CurrencySymbol,
+                DecimalSeparator = dbSettings.DecimalSeparator,
+                ThousandsSeparator = dbSettings.ThousandsSeparator,
+                DecimalPlaces = dbSettings.DecimalPlaces,
+                DateFormat = dbSettings.DateFormat,
+                FinancialYearStartMonth = dbSettings.FinancialYearStartMonth,
+                PerformanceCalculationMethod = dbSettings.PerformanceCalculationMethod,
+                SessionTimeoutMinutes = dbSettings.SessionTimeoutMinutes,
+                DefaultPortfolioView = dbSettings.DefaultPortfolioView
+            };
+            
+            // Cache the settings
+            _cache.Set(SettingsCacheKey, viewModel, TimeSpan.FromMinutes(5));
+            _logger.LogInformation("Settings loaded from database: CurrencySymbol={Symbol}", viewModel.CurrencySymbol);
+            
+            return viewModel;
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error loading settings from file");
+            _logger.LogError(ex, "Error loading settings from database");
             return GetDefaultSettings();
         }
     }
     
     public async Task<bool> SaveSettingsAsync(SystemSettingsViewModel settings)
+    {
+        try
+        {
+            // Get current database settings to update
+            var dbSettings = await _dbSettingsService.GetAllSettingsAsync();
+            
+            // Map view model to domain model
+            dbSettings.CurrencySymbol = settings.CurrencySymbol;
+            dbSettings.DecimalSeparator = settings.DecimalSeparator;
+            dbSettings.ThousandsSeparator = settings.ThousandsSeparator;
+            dbSettings.DecimalPlaces = settings.DecimalPlaces;
+            dbSettings.DateFormat = settings.DateFormat;
+            dbSettings.FinancialYearStartMonth = settings.FinancialYearStartMonth;
+            dbSettings.PerformanceCalculationMethod = settings.PerformanceCalculationMethod;
+            dbSettings.SessionTimeoutMinutes = settings.SessionTimeoutMinutes;
+            dbSettings.DefaultPortfolioView = settings.DefaultPortfolioView;
+            
+            // Save to database (primary source of truth)
+            var success = await _dbSettingsService.UpdateSettingsAsync(dbSettings);
+            
+            if (success)
+            {
+                // Also save to file as backup
+                await SaveToFileAsync(settings);
+                
+                // Clear cache to ensure fresh data
+                _cache.Remove(SettingsCacheKey);
+                
+                _logger.LogInformation("Settings saved to database and file: CurrencySymbol={Symbol}", 
+                    settings.CurrencySymbol);
+            }
+            else
+            {
+                _logger.LogWarning("Failed to save settings to database");
+            }
+            
+            return success;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error saving settings");
+            return false;
+        }
+    }
+    
+    private async Task<bool> SaveToFileAsync(SystemSettingsViewModel settings)
     {
         try
         {
@@ -95,14 +217,6 @@ public class ApplicationSettingsService : IApplicationSettingsService
             string json = JsonSerializer.Serialize(settings, options);
             await File.WriteAllTextAsync(_settingsFilePath, json);
             
-            // First remove the existing cache entry to avoid stale data
-            _cache.Remove(SettingsCacheKey);
-            
-            // Then update the cache with the new settings
-            _cache.Set(SettingsCacheKey, settings, TimeSpan.FromMinutes(5));
-            
-            _logger.LogInformation("Settings saved and cache updated: CurrencySymbol={Symbol}", settings.CurrencySymbol);
-            
             return true;
         }
         catch (Exception ex)
@@ -114,9 +228,8 @@ public class ApplicationSettingsService : IApplicationSettingsService
     
     public string FormatCurrency(decimal amount)
     {
-        // Always get fresh settings to ensure we have the latest
+        // Get settings (cached if available)
         var settings = GetSettingsAsync().GetAwaiter().GetResult();
-        _logger.LogDebug("Formatting currency with symbol: {Symbol}", settings.CurrencySymbol);
         
         string formattedNumber = FormatNumber(amount, settings.DecimalPlaces);
         return $"{settings.CurrencySymbol}{formattedNumber}";
@@ -124,7 +237,7 @@ public class ApplicationSettingsService : IApplicationSettingsService
     
     public string FormatNumber(decimal number, int? decimalPlaces = null)
     {
-        // Always get fresh settings to ensure we have the latest
+        // Get settings (cached if available)
         var settings = GetSettingsAsync().GetAwaiter().GetResult();
         
         // Use the specified decimal places or the default from settings
@@ -161,14 +274,15 @@ public class ApplicationSettingsService : IApplicationSettingsService
     {
         var defaultSettings = new SystemSettingsViewModel
         {
-            CurrencySymbol = "$",
+            CurrencySymbol = "₹", // Default is now changed to Rupee symbol
             DecimalSeparator = ".",
             ThousandsSeparator = ",",
             DecimalPlaces = 2,
-            DateFormat = "MM/dd/yyyy",
+            DateFormat = "dd/MM/yyyy",
             FinancialYearStartMonth = 4,
             PerformanceCalculationMethod = "simple",
-            SessionTimeoutMinutes = 30
+            SessionTimeoutMinutes = 30,
+            DefaultPortfolioView = "list"
         };
         
         // Cache the default settings

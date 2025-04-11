@@ -13333,3 +13333,99 @@ s.ApplicationSettingsService>
 [17:00:17 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
 [17:00:17 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
 [17:00:17 INF] Settings loaded from file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[17:49:43 INF] Ensuring database is created... <s:Program>
+[17:49:43 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[17:49:43 INF] Database initialization completed. <s:Program>
+[17:49:43 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[17:49:43 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[17:49:43 INF] Retrieved settings with currency symbol: $ <s:Infrastructure.Services.SettingsService>
+[17:49:43 INF] Database has default settings, syncing from file <s:WebApp.Services.ApplicationSettingsService>
+[17:49:44 INF] Settings cache manually invalidated <s:Infrastructure.Services.SettingsService>
+[17:49:44 INF] Successfully synchronized settings from file to database <s:WebApp.Services.ApplicationSettingsService>
+[17:49:44 INF] Application settings initialized. <s:Program>
+[17:49:44 INF] Ensuring database is created... <s:Program>
+[17:49:44 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[17:49:44 INF] Database initialization completed. <s:Program>
+[17:49:44 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[17:49:44 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[17:49:44 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[17:49:44 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[17:49:44 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[17:49:49 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[17:49:49 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[17:49:57 INF] Settings cache manually invalidated <s:Infrastructure.Services.SettingsService>
+[17:49:57 INF] Settings saved to database and file: CurrencySymbol=$ <s:WebApp.Servi[17:49:57 INF] Settings saved and refreshed: $ <s:WebApp.Pages.AdminToolsModel>
+[17:49:57 INF] Settings loaded successfully: CurrencySymbol=$ <s:WebApp.Pages.AdminToolsModel>
+[17:50:10 INF] Getting category performance data for All Portfolios <[17:50:25 INF] Settings cache manually invalidated <s:Infrastructure.Services.SettingsService>
+[17:50:25 INF] Settings saved to database and file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[17:50:25 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[17:50:25 INF] Settings loaded fr[17:50:25 INF] Settings loaded successfully: CurrencySymbol=₹ <s:WebApp.Pages[17:50:52 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+tfolios <s:Application.Features.Investments.GetCategoryPerformance.GetCategoryPerformanceHandler>
+[17:53:13 INF] Ensuring database is created... <s:Program>
+[17:53:13 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[17:53:13 INF] Database initialization completed. <s:Program>
+[17:53:13 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[17:53:13 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[17:53:13 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[17:53:13 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[17:53:13 INF] Application settings initialized. <s:Program>
+[17:53:13 INF] Ensuring database is created... <s:Program>
+[17:53:13 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[17:53:13 INF] Database initialization completed. <s:Program>
+[17:53:13 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[17:53:13 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[17:53:13 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[17:53:13 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[17:53:13 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[17:53:16 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[17:53:24 INF] Settings cache manually invalidated <s:Infrastructure.Services.SettingsService>
+[17:53:24[17:53:24 INF] Retrieved currency symbol from settings: ₹ <s:WebApp.Services.CurrencyFormatte[17:53:39 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+s.CategoryAnalysisModel>
+[17:53:24 INF] Getting category performance data for All Portfolios <s:Application.Features.Investments.GetCategoryPerformance.GetCategoryPerformanceHandler>
+[17:55:52 INF] Ensuring database is created... <s:Program>
+[17:55:53 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[17:55:53 INF] Database initialization completed. <s:Program>
+[17:55:53 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[17:55:53 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[17:55:53 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[17:55:53 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[17:55:53 INF] Application settings initialized. <s:Program>
+[17:55:53 INF] Ensuring database is created... <s:Program>
+[17:55:53 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[17:55:53 INF] Database initialization completed. <s:Program>
+[17:55:53 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[17:55:53 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[17:55:53 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[17:55:53 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[17:55:53 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[17:55:55 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[17:56:37 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+plicationSettingsService>
+[17:56:00 INF] Currency formatter initialized for CategoryAnalysis page <s:WebApp.Pages.Investments.CategoryAnalysisModel>
+[17:56:00 INF] Getting category performance data for All Portfolios <s:Application.Features.Investments.GetCategoryPerformance.GetCategoryPerformanceHandler>
+[17:56:13 INF] Currency formatter initialized for CategoryAnalysis page <s:WebApp.Pages.Investments.CategoryAnalysisModel>
+[17:56:13 INF] Getting category performance data for 11 <s:Application.Features.Investments.GetCategoryPerformance.GetCategoryPerformanceHandler>
+[17:56:29 INF] Currency formatter initialized for CategoryAnalysis page <s:WebApp.Pages.Investments.CategoryAnalysisModel>
+[17:56:29 INF] Getting category performance data for All Portfolios <s:Application.Features.Investments.GetCategoryPerformance.GetCategoryPerformanceHandler>
+[18:03:50 INF] Ensuring database is created... <s:Program>
+[18:03:50 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[18:03:50 INF] Database initialization completed. <s:Program>
+[18:03:50 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[18:03:50 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[18:03:50 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[18:03:50 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[18:03:50 INF] Application settings initialized. <s:Program>
+[18:03:50 INF] Ensuring database is created... <s:Program>
+[18:03:50 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[18:03:50 INF] Database initialization completed. <s:Program>
+[18:03:51 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[18:03:51 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[18:03:51 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[18:03:51 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[18:03:51 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[18:03:54 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+4 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[18:06:04 INF] Currency formatter initialized for CategoryAnalysis page <s:WebApp.Pages.Investments.CategoryAnalysisModel>
+[18:06:04 INF] Getting category performance data for 12 <s:Application.Features.Investments.GetCategoryPerformance.GetCategoryPerformanceHandler>
+[18:06:18 INF] Currency formatter initialized for CategoryAnalysis page <s:WebApp.Pages.Investments.CategoryAnalysisModel>
+[18:06:18 INF] Getting category performance data for 12 <s:Application.Features.Investments.GetCategoryPerformance.GetCategoryPerformanceHandler>
