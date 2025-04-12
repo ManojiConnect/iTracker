@@ -149,3 +149,310 @@ plicationSettingsService>
 [18:38:47 INF] Login successful for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
 [18:38:47 INF] Attempting to redirect to Portfolios/Index <s:WebApp.Pages.Auth.LoginModel>
 [18:56:10 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[18:59:04 INF] Ensuring database is created... <s:Program>
+[18:59:04 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[18:59:04 INF] Database initialization completed. <s:Program>
+[18:59:04 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[18:59:04 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[18:59:04 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[18:59:04 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[18:59:04 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[18:59:04 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[18:59:04 INF] Application settings initialized. <s:Program>
+[18:59:04 INF] Ensuring database is created... <s:Program>
+[18:59:04 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[18:59:04 INF] Database initialization completed. <s:Program>
+[18:59:04 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[18:59:04 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[18:59:04 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[18:59:04 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[18:59:04 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[18:59:18 INF] Attempting login for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
+[18:59:18 INF] Login successful for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
+[18:59:18 INF] Attempting to redirect to Portfolios/Index <s:WebApp.Pages.Auth.LoginModel>
+[18:59:18 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[18:59:21 INF] Settings loaded successfully: CurrencySymbol=₹ <s:WebApp.Pages.AdminToolsModel>
+[18:59:29 INF] Saving settings: CurrencySymbol=₹ <s:WebApp.Pages.AdminToolsModel>
+[18:59:29 INF] Settings cache manually invalidated <s:Infrastructure.Services.SettingsService>
+[18:59:29 INF] Settings saved to database and file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[18:59:29 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[18:59:29 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[18:59:29 INF] Settings saved and refreshed: ₹ <s:WebApp.Pages.AdminToolsModel>
+[18:59:29 INF] Settings loaded successfully: CurrencySymbol=₹ <s:WebApp.Pages.AdminToolsModel>
+[19:12:19 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[20:23:03 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[20:23:13 INF] Ensuring database is created... <s:Program>
+[20:23:14 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[20:23:14 INF] Database initialization completed. <s:Program>
+[20:23:14 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[20:23:14 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[20:23:14 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[20:23:14 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[20:23:14 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[20:23:14 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[20:23:14 INF] Application settings initialized. <s:Program>
+[20:23:14 INF] Ensuring database is created... <s:Program>
+[20:23:14 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[20:23:14 INF] Database initialization completed. <s:Program>
+[20:23:14 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[20:23:14 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[20:23:14 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[20:23:14 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[20:23:14 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[20:23:19 INF] Attempting login for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
+[20:23:19 INF] Login successful for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
+[20:23:19 INF] Attempting to redirect to Portfolios/Index <s:WebApp.Pages.Auth.LoginModel>
+[20:23:19 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[20:23:24 ERR] An error occurred: No page named './Details' matches the supplied values. <s:WebApplication.Common.ExceptionHandlerMiddleware>
+System.InvalidOperationException: No page named './Details' matches the supplied values.
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.RedirectToPageResultExecutor.ExecuteAsync(ActionContext context, RedirectToPageResult result)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext<TFilter, TFilterAsync>(ref State next, ref Scope scope, ref object state, ref bool isCompleted)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResultFilterAsync<TFilter, TFilterAsync>()
+   at void Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext<TFilter, TFilterAsync>(ref State next, ref Scope scope, ref object state, ref bool isCompleted)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+   at async Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResourceFilter()+Awaited(?)
+   at void Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(ref State next, ref Scope scope, ref object state, ref bool isCompleted)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+   at async Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeAsync()+Awaited(?) x 2
+   at async Task Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at async Task WebApp.Common.AuthorizationHandlerMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Common/AuthorizationHandlerMiddleware.cs:line 37
+   at async RequestDelegate Microsoft.AspNetCore.Builder.UseMiddlewareExtensions+InterfaceMiddlewareBinder.CreateMiddleware(RequestDelegate next)+(?) => { }
+   at async Task WebApp.Configurations.CookieAuthenticationSessionTimeoutMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Configurations/AuthSetup.cs:line 160
+   at async RequestDelegate Microsoft.AspNetCore.Builder.UseMiddlewareExtensions+InterfaceMiddlewareBinder.CreateMiddleware(RequestDelegate next)+(?) => { }
+   at async Task Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at async Task WebApplication.Common.ExceptionHandlerMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Common/ExceptionHandlerMiddleware.cs:line 24
+[20:23:31 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[20:26:44 INF] Ensuring database is created... <s:Program>
+[20:26:45 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[20:26:45 INF] Database initialization completed. <s:Program>
+[20:26:45 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[20:26:45 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[20:26:45 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[20:26:45 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[20:26:45 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[20:26:45 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[20:26:45 INF] Application settings initialized. <s:Program>
+[20:26:45 INF] Ensuring database is created... <s:Program>
+[20:26:45 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[20:26:45 INF] Database initialization completed. <s:Program>
+[20:26:45 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[20:26:45 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[20:26:45 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[20:26:45 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[20:26:45 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[20:26:48 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[20:32:24 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[20:33:29 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[20:34:46 INF] Ensuring database is created... <s:Program>
+[20:34:47 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[20:34:47 INF] Database initialization completed. <s:Program>
+[20:34:47 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[20:34:47 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[20:34:47 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[20:34:47 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[20:34:47 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[20:34:47 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[20:34:47 INF] Application settings initialized. <s:Program>
+[20:34:47 INF] Ensuring database is created... <s:Program>
+[20:34:47 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[20:34:47 INF] Database initialization completed. <s:Program>
+[20:34:47 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[20:34:47 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[20:34:47 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[20:34:47 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[20:34:47 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[20:34:49 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[20:35:14 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[20:37:28 INF] Ensuring database is created... <s:Program>
+[20:37:29 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[20:37:29 INF] Database initialization completed. <s:Program>
+[20:37:29 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[20:37:29 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[20:37:29 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[20:37:29 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[20:37:29 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[20:37:29 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[20:37:29 INF] Application settings initialized. <s:Program>
+[20:37:29 INF] Ensuring database is created... <s:Program>
+[20:37:29 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[20:37:29 INF] Database initialization completed. <s:Program>
+[20:37:29 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[20:37:29 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[20:37:29 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[20:37:29 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[20:37:29 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[20:37:30 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[20:37:54 WRN] Attempt to access investments without valid user ID <s:Application.Features.Investments.GetAllInvestments.GetAllInvestmentsHandler>
+[20:37:54 ERR] Failed to fetch all investments for filter data <s:WebApp.Pages.Investments.IndexModel>
+[20:37:56 WRN] Attempt to access investments without valid user ID <s:Application.Features.Investments.GetAllInvestments.GetAllInvestmentsHandler>
+[20:37:56 ERR] Failed to fetch all investments for filter data <s:WebApp.Pages.Investments.IndexModel>
+[20:38:03 INF] Attempting login for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
+[20:38:03 INF] Login successful for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
+[20:38:03 INF] Attempting to redirect to Portfolios/Index <s:WebApp.Pages.Auth.LoginModel>
+[20:38:15 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[20:40:40 INF] Ensuring database is created... <s:Program>
+[20:40:40 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[20:40:40 INF] Database initialization completed. <s:Program>
+[20:40:40 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[20:40:40 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[20:40:40 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[20:40:41 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[20:40:41 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[20:40:41 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[20:40:41 INF] Application settings initialized. <s:Program>
+[20:40:41 INF] Ensuring database is created... <s:Program>
+[20:40:41 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[20:40:41 INF] Database initialization completed. <s:Program>
+[20:40:41 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[20:40:41 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[20:40:41 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[20:40:41 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[20:40:41 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[20:40:42 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[20:43:24 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[22:29:37 INF] Ensuring database is created... <s:Program>
+[22:29:37 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[22:29:37 INF] Database initialization completed. <s:Program>
+[22:29:37 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[22:29:37 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[22:29:37 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[22:29:37 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[22:29:37 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[22:29:37 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[22:29:37 INF] Application settings initialized. <s:Program>
+[22:29:37 INF] Ensuring database is created... <s:Program>
+[22:29:37 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[22:29:37 INF] Database initialization completed. <s:Program>
+[22:29:37 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[22:29:37 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[22:29:37 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[22:29:37 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[22:29:37 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[22:29:41 INF] Attempting login for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
+[22:29:41 INF] Login successful for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
+[22:29:41 INF] Attempting to redirect to Portfolios/Index <s:WebApp.Pages.Auth.LoginModel>
+[22:29:41 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[22:29:54 ERR] An error occurred: No page named './Details' matches the supplied values. <s:WebApplication.Common.ExceptionHandlerMiddleware>
+System.InvalidOperationException: No page named './Details' matches the supplied values.
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.RedirectToPageResultExecutor.ExecuteAsync(ActionContext context, RedirectToPageResult result)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext<TFilter, TFilterAsync>(ref State next, ref Scope scope, ref object state, ref bool isCompleted)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResultFilterAsync<TFilter, TFilterAsync>()
+   at void Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext<TFilter, TFilterAsync>(ref State next, ref Scope scope, ref object state, ref bool isCompleted)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+   at async Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResourceFilter()+Awaited(?)
+   at void Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(ref State next, ref Scope scope, ref object state, ref bool isCompleted)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+   at async Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeAsync()+Awaited(?) x 2
+   at async Task Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at async Task WebApp.Common.AuthorizationHandlerMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Common/AuthorizationHandlerMiddleware.cs:line 37
+   at async RequestDelegate Microsoft.AspNetCore.Builder.UseMiddlewareExtensions+InterfaceMiddlewareBinder.CreateMiddleware(RequestDelegate next)+(?) => { }
+   at async Task WebApp.Configurations.CookieAuthenticationSessionTimeoutMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Configurations/AuthSetup.cs:line 160
+   at async RequestDelegate Microsoft.AspNetCore.Builder.UseMiddlewareExtensions+InterfaceMiddlewareBinder.CreateMiddleware(RequestDelegate next)+(?) => { }
+   at async Task Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at async Task WebApplication.Common.ExceptionHandlerMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Common/ExceptionHandlerMiddleware.cs:line 24
+[22:30:43 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[22:32:08 INF] Ensuring database is created... <s:Program>
+[22:32:09 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[22:32:09 INF] Database initialization completed. <s:Program>
+[22:32:09 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[22:32:09 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[22:32:09 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[22:32:09 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[22:32:09 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[22:32:09 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[22:32:09 INF] Application settings initialized. <s:Program>
+[22:32:09 INF] Ensuring database is created... <s:Program>
+[22:32:09 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[22:32:09 INF] Database initialization completed. <s:Program>
+[22:32:09 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[22:32:09 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[22:32:09 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[22:32:09 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[22:32:09 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[22:32:11 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[22:32:40 INF] Settings loaded successfully: CurrencySymbol=₹ <s:WebApp.Pages.AdminToolsModel>
+[22:32:45 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[22:35:32 INF] Ensuring database is created... <s:Program>
+[22:35:33 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[22:35:33 INF] Database initialization completed. <s:Program>
+[22:35:33 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[22:35:33 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[22:35:33 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[22:35:33 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[22:35:33 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[22:35:33 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[22:35:33 INF] Application settings initialized. <s:Program>
+[22:35:33 INF] Ensuring database is created... <s:Program>
+[22:35:33 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[22:35:33 INF] Database initialization completed. <s:Program>
+[22:35:33 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[22:35:33 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[22:35:33 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[22:35:33 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[22:35:33 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[22:35:35 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[22:36:03 INF] Investment creation started <s:WebApp.Pages.Investments.CreateModel>
+[22:36:03 INF] ModelState.IsValid: true <s:WebApp.Pages.Investments.CreateModel>
+[22:36:03 INF] Investment data: {"PortfolioId":12,"Name":"Test Invest","Symbol":"","CategoryId":5,"TotalInvestment":5000,"CurrentValue":5500,"PurchaseDate":"2025-04-12T00:00:00","PurchasePrice":5000,"Notes":null} <s:WebApp.Pages.Investments.CreateModel>
+[22:36:03 INF] Sending create investment request to mediator <s:WebApp.Pages.Investments.CreateModel>
+[22:36:03 INF] Starting to handle CreateInvestmentRequest for portfolio 12 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[22:36:03 INF] Found portfolio: 12, Portfolio 2 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[22:36:03 INF] Found category: 5, Test <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[22:36:03 INF] Created new investment object with Name: Test Invest, Symbol: Test-Invest, TotalInvestment: 5000, CurrentValue: 5500 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[22:36:03 INF] Added investment to context, saving changes... <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[22:36:03 INF] Investment saved with ID: 72 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[22:36:03 INF] Updating portfolio totals... <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[22:36:03 INF] Updated portfolio totals: TotalValue: 69500, TotalInvestment: 63000 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[22:36:03 INF] Portfolio totals saved successfully <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[22:36:03 INF] Mediator result: true, No errors <s:WebApp.Pages.Investments.CreateModel>
+[22:36:03 INF] Investment created successfully with ID: 72 <s:WebApp.Pages.Investments.CreateModel>
+[22:36:18 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[22:38:36 INF] Ensuring database is created... <s:Program>
+[22:38:37 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[22:38:37 INF] Database initialization completed. <s:Program>
+[22:38:37 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[22:38:37 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[22:38:37 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[22:38:37 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[22:38:37 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[22:38:37 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[22:38:37 INF] Application settings initialized. <s:Program>
+[22:38:37 INF] Ensuring database is created... <s:Program>
+[22:38:37 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[22:38:37 INF] Database initialization completed. <s:Program>
+[22:38:37 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[22:38:37 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[22:38:37 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[22:38:37 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[22:38:37 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[22:38:39 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[22:39:08 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[22:40:35 INF] Ensuring database is created... <s:Program>
+[22:40:35 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[22:40:35 INF] Database initialization completed. <s:Program>
+[22:40:35 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[22:40:35 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[22:40:35 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[22:40:35 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[22:40:35 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[22:40:35 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[22:40:35 INF] Application settings initialized. <s:Program>
+[22:40:35 INF] Ensuring database is created... <s:Program>
+[22:40:35 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[22:40:35 INF] Database initialization completed. <s:Program>
+[22:40:35 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[22:40:35 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[22:40:35 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[22:40:35 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[22:40:35 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[22:42:01 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[22:42:23 INF] Fetching investment details for deletion, ID: 72 <s:WebApp.Pages.Investments.DeleteModel>
+[22:42:25 INF] Deleting investment with ID: 72 <s:WebApp.Pages.Investments.DeleteModel>
+[22:42:25 INF] Successfully deleted investment with ID: 72 <s:WebApp.Pages.Investments.DeleteModel>
+[22:42:45 INF] Currency formatter initialized for CategoryAnalysis page <s:WebApp.Pages.Investments.CategoryAnalysisModel>
+[22:42:45 INF] Getting category performance data for All Portfolios <s:Application.Features.Investments.GetCategoryPerformance.GetCategoryPerformanceHandler>
+[22:43:00 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>

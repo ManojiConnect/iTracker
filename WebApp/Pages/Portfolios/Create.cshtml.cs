@@ -38,7 +38,7 @@ public class CreateModel : PageModel
         
         if (result.IsSuccess)
         {
-            return RedirectToPage("./Details", new { id = result.Value });
+            return RedirectToPage("./Index");
         }
 
         foreach (var error in result.Errors)

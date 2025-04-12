@@ -33,6 +33,7 @@ public class GetCategoryPerformanceHandler : IRequestHandler<GetCategoryPerforma
             var query = _dbContext.Investments
                 .Include(i => i.Category)
                 .Include(i => i.Portfolio)
+                .Where(i => i.Category == null || i.Category.IsDelete == false)
                 .AsQueryable();
 
             if (!request.IncludeAllPortfolios)

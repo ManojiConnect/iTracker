@@ -33,6 +33,9 @@ public class DeleteModel : PageModel
 
     public async Task<IActionResult> OnPostAsync()
     {
+        // Clear existing model state to prevent unnecessary validation errors
+        ModelState.Clear();
+        
         var result = await _mediator.Send(new DeleteCategoryRequest { Id = Category.Id });
         
         if (result.IsSuccess)
@@ -40,9 +43,17 @@ public class DeleteModel : PageModel
             return RedirectToPage("./Index");
         }
 
+        // Get the category details again to ensure we display correct info
+        var categoryResult = await _mediator.Send(new GetCategoryByIdRequest { Id = Category.Id });
+        if (categoryResult.IsSuccess)
+        {
+            Category = categoryResult.Value;
+        }
+
+        // Add only the actual error message about investments
         foreach (var error in result.Errors)
         {
-            ModelState.AddModelError(string.Empty, error);
+            ModelState.AddModelError("DeleteError", error);
         }
 
         return Page();

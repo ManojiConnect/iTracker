@@ -56,7 +56,7 @@ public class EditModel : PageModel
         
         if (result.IsSuccess)
         {
-            return RedirectToPage("./Details", new { id = Portfolio.Id });
+            return RedirectToPage("./Index");
         }
 
         foreach (var error in result.Errors)

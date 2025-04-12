@@ -1,41 +1,31 @@
 #!/bin/bash
 
-# Azure App Service deployment script
-RESOURCE_GROUP_NAME="itracker-rg"
-APP_SERVICE_NAME="itracker-app"
-LOCATION="eastus"
+# Set variables for the existing Azure resources
+RESOURCE_GROUP="iTrackerResourceGroup"
+APP_SERVICE_PLAN="iTrackerAppPlan"
+WEBAPP_NAME="iTrackerApp"
+CONNECTION_STRING_NAME="DefaultConnection"
+CONNECTION_STRING_TYPE="SQLite"
+CONNECTION_STRING_VALUE="Data Source=App_Data/itracker.db"
 
-# Create resource group if it doesn't exist
-echo "Creating resource group '$RESOURCE_GROUP_NAME' in '$LOCATION'..."
-az group create --name $RESOURCE_GROUP_NAME --location $LOCATION
-
-# Create App Service plan
-APP_SERVICE_PLAN_NAME="$APP_SERVICE_NAME-plan"
-echo "Creating App Service plan '$APP_SERVICE_PLAN_NAME'..."
-az appservice plan create --name $APP_SERVICE_PLAN_NAME --resource-group $RESOURCE_GROUP_NAME --location $LOCATION --sku B1 --is-linux
-
-# Create Web App
-echo "Creating Web App '$APP_SERVICE_NAME'..."
-az webapp create --name $APP_SERVICE_NAME --resource-group $RESOURCE_GROUP_NAME --plan $APP_SERVICE_PLAN_NAME --runtime "DOTNETCORE:8.0"
+echo "Deploying to existing App Service '$WEBAPP_NAME' in resource group '$RESOURCE_GROUP'..."
 
 # Configure Web App
 echo "Configuring Web App..."
-az webapp config set --name $APP_SERVICE_NAME --resource-group $RESOURCE_GROUP_NAME --linux-fx-version "DOTNETCORE|8.0"
+az webapp config set --name $WEBAPP_NAME --resource-group $RESOURCE_GROUP --startup-file "dotnet WebApp.dll"
 
 # Set connection string
 echo "Setting connection string..."
-CONNECTION_STRING="Server=tcp:itrackersql.database.windows.net,1433;Initial Catalog=iTrackerSQLServer;Persist Security Info=False;User ID=iTrackerDBAdmin;Password=iTracker@2025;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
-az webapp config connection-string set --name $APP_SERVICE_NAME --resource-group $RESOURCE_GROUP_NAME --settings DefaultConnection="$CONNECTION_STRING" --connection-string-type SQLAzure
+az webapp config connection-string set --name $WEBAPP_NAME --resource-group $RESOURCE_GROUP --settings $CONNECTION_STRING_NAME="$CONNECTION_STRING_VALUE" --connection-string-type $CONNECTION_STRING_TYPE
 
 # Create deployment package
 echo "Creating deployment package..."
-cd publish
-zip -r ../publish.zip .
-cd ..
+cd "$(dirname "$0")"
+zip -r deploy.zip publish
 
-# Deploy the application
+# Deploy application
 echo "Deploying application..."
-az webapp deployment source config-zip --name $APP_SERVICE_NAME --resource-group $RESOURCE_GROUP_NAME --src ./publish.zip
+az webapp deployment source config-zip --resource-group $RESOURCE_GROUP --name $WEBAPP_NAME --src deploy.zip
 
 echo "Deployment completed successfully!"
-echo "Your application is now available at: https://$APP_SERVICE_NAME.azurewebsites.net" 
+echo "Your application is now available at: https://$WEBAPP_NAME.azurewebsites.net" 

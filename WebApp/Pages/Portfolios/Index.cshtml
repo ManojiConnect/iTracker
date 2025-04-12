@@ -59,11 +59,6 @@
                         </div>
                         <div class="col-12 col-md-6 col-lg-3">
                             <div class="d-flex align-items-center">
-                                <div class="summary-icon me-3 @(Model.Summary.ReturnPercentage >= 0 ? "bg-success-subtle" : "bg-danger-subtle")">
-                                    <i class="material-icons @(Model.Summary.ReturnPercentage >= 0 ? "text-success" : "text-danger")">
-                                        @(Model.Summary.ReturnPercentage >= 0 ? "arrow_upward" : "arrow_downward")
-                                    </i>
-                                </div>
                                 <div>
                                     <span class="text-muted small">Return</span>
                                     <h3 class="mb-0 fw-bold @(Model.Summary.ReturnPercentage >= 0 ? "text-success" : "text-danger")">
@@ -107,7 +102,6 @@
                         </div>
                         <div class="d-flex align-items-center justify-content-between">
                             <div class="d-flex align-items-center">
-                                <i class="material-icons me-1 small text-muted">account_balance</i>
                                 <span class="small text-muted">@Model.Summary.InvestmentCount Investments</span>
                             </div>
                             <span class="@(Model.Summary.ReturnPercentage >= 0 ? "text-success" : "text-danger") fw-bold">
@@ -123,8 +117,29 @@
         {
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="card h-100 portfolio-card shadow-sm hover-shadow">
-                    <a asp-page="/Investments/Index" asp-route-portfolioId="@portfolio.Id" class="stretched-link text-decoration-none text-body">
-                        <div class="card-body p-4">
+                    <div class="card-body p-4 position-relative">
+                        <!-- 3-dot menu for actions -->
+                        <div class="dropdown position-absolute top-0 end-0 mt-3 me-3 z-3">
+                            <button class="btn btn-sm btn-icon" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="material-icons">more_vert</i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                    <a class="dropdown-item d-flex align-items-center" href="/Portfolios/Edit?id=@portfolio.Id">
+                                        <i class="material-icons me-2 small">edit</i>
+                                        <span>Edit</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item d-flex align-items-center" href="/Portfolios/Delete?id=@portfolio.Id">
+                                        <i class="material-icons me-2 small text-danger">delete</i>
+                                        <span>Delete</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <a asp-page="/Investments/Index" asp-route-portfolioId="@portfolio.Id" class="stretched-link text-decoration-none text-body">
                             <div class="d-flex align-items-center mb-3">
                                 <div class="card-icon me-3 bg-primary-subtle">
                                     <i class="material-icons text-primary">account_balance_wallet</i>
@@ -147,15 +162,14 @@
                             </div>
                             <div class="d-flex align-items-center justify-content-between">
                                 <div class="d-flex align-items-center">
-                                    <i class="material-icons me-1 small text-muted">account_balance</i>
                                     <span class="small text-muted">@portfolio.InvestmentCount Investments</span>
                                 </div>
                                 <span class="@(portfolio.ReturnPercentage >= 0 ? "text-success" : "text-danger") fw-bold">
                                     @(portfolio.ReturnPercentage >= 0 ? "+" : "")@portfolio.ReturnPercentage.ToString("0.00")%
                                 </span>
                             </div>
-                        </div>
-                    </a>
+                        </a>
+                    </div>
                 </div>
             </div>
         }
@@ -197,12 +211,47 @@
         transform: translateY(-5px);
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
     }
+    
+    .btn-icon {
+        width: 36px;
+        height: 36px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        color: #6c757d;
+    }
+    
+    .btn-icon:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Fix for dropdown working with stretched-link */
+    .dropdown {
+        position: relative;
+        z-index: 5;
+    }
 </style>
 
 @section Scripts {
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Add any necessary JavaScript for the portfolio summary page
+            // Prevent menu buttons from triggering the card link
+            document.querySelectorAll('.dropdown-toggle, .dropdown-menu a').forEach(el => {
+                el.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+            });
+            
+            // Close dropdown when clicking elsewhere
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.dropdown')) {
+                    document.querySelectorAll('.dropdown-menu.show').forEach(menu => {
+                        menu.classList.remove('show');
+                    });
+                }
+            });
         });
     </script>
 } 
