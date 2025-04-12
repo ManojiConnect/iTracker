@@ -10,6 +10,15 @@
     {
         <div class="alert alert-danger">@Model.ErrorMessage</div>
     }
+    
+    @if (!string.IsNullOrEmpty(Model.StatusMessage))
+    {
+        <div class="alert alert-info d-flex align-items-center p-3 mb-4" style="border-radius: 8px;">
+            <i class="material-icons me-3 fs-4">info</i>
+            <span class="fw-medium fs-5">@Model.StatusMessage</span>
+        </div>
+    }
+    
     <form method="post" class="d-flex flex-column gap-16" style="width: 100%;">
         <div class="form-group w-100 mb-4">
             <label asp-for="Email" class="form-label fw-semibold mb-2">Email</label>

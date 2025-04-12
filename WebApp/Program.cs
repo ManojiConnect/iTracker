@@ -159,6 +159,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthentication();
+// Add our session timeout middleware after authentication but before authorization
+app.UseMiddleware<CookieAuthenticationSessionTimeoutMiddleware>();
 app.UseMiddleware(typeof(AuthorizationHandlerMiddleware));
 app.UseAuthorization();
 

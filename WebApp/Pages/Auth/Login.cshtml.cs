@@ -38,8 +38,20 @@ public class LoginModel : PageModel
 
     public string ErrorMessage { get; set; }
 
+    [TempData]
+    public string StatusMessage { get; set; }
+
     public void OnGet()
     {
+        // Check if user was redirected due to session timeout
+        if (Request.Query.ContainsKey("timeout") && Request.Query["timeout"] == "true")
+        {
+            StatusMessage = "Your session has expired. Please log in again to continue.";
+            _logger.LogInformation("User redirected to login page due to session timeout");
+        }
+        
+        // Clear any existing error message
+        ErrorMessage = string.Empty;
     }
 
     public async Task<IActionResult> OnPostAsync()
