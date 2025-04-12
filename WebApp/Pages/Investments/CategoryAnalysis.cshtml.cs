@@ -80,7 +80,9 @@ public class CategoryAnalysisModel : PageModel
         {
             // Filter out any categories with null or empty names (which might be deleted categories)
             Categories = categoryResult.Value
-                .Where(c => !string.IsNullOrWhiteSpace(c.CategoryName) && c.CategoryName != "Uncategorized")
+                .Where(c => !string.IsNullOrWhiteSpace(c.CategoryName) && 
+                           c.CategoryName != "Uncategorized" && 
+                           c.CategoryId > 0) // Added condition to filter out categories with CategoryId = 0 (deleted or null)
                 .ToList();
                 
             PrepareChartData();

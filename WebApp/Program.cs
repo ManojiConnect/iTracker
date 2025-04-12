@@ -132,6 +132,20 @@ using (var scope = app.Services.CreateScope())
     {
         // Get the DbContext
         var dbContext = services.GetRequiredService<AppDbContext>();
+        
+        // Log the database provider and connection string
+        var dbConnection = dbContext.Database.GetDbConnection();
+        logger.LogInformation("Database Provider: {provider}, Connection: {connection}",
+            dbConnection.GetType().Name,
+            dbConnection.ConnectionString.Length); // Log length for security
+            
+        // Safety check to ensure we don't use SQLite with SQL Server connection string
+        if (dbConnection.GetType().Name.Contains("SqliteConnection") && 
+            dbConnection.ConnectionString.Contains("Server="))
+        {
+            logger.LogCritical("CRITICAL ERROR: Attempting to use a SQL Server connection string with SQLite provider. Aborting migrations.");
+            throw new InvalidOperationException("Incompatible database provider and connection string");
+        }
 
         // Ensure database is created
         logger.LogInformation("Ensuring database is created...");

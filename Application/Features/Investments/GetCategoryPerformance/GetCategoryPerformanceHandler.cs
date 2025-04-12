@@ -33,7 +33,7 @@ public class GetCategoryPerformanceHandler : IRequestHandler<GetCategoryPerforma
             var query = _dbContext.Investments
                 .Include(i => i.Category)
                 .Include(i => i.Portfolio)
-                .Where(i => i.Category == null || i.Category.IsDelete == false)
+                .Where(i => i.Category == null || i.Category.IsDelete != true)
                 .AsQueryable();
 
             if (!request.IncludeAllPortfolios)
@@ -52,9 +52,12 @@ public class GetCategoryPerformanceHandler : IRequestHandler<GetCategoryPerforma
             decimal totalInvestment = investments.Sum(i => i.TotalInvestment);
             decimal totalCurrentValue = investments.Sum(i => i.CurrentValue);
 
-            // Group investments by category
+            // Group investments by category - properly handle null or deleted categories
             var categoryGroups = investments
-                .GroupBy(i => new { i.CategoryId, CategoryName = i.Category?.Name ?? "Uncategorized" })
+                .GroupBy(i => new { 
+                    CategoryId = i.Category?.Id ?? 0, 
+                    CategoryName = (i.Category != null && !i.Category.IsDelete) ? i.Category.Name : "Uncategorized" 
+                })
                 .Select(g => new
                 {
                     g.Key.CategoryId,
