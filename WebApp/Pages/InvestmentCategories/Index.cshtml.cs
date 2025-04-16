@@ -10,6 +10,9 @@ public class IndexModel : PageModel
     private readonly IMediator _mediator;
 
     public IEnumerable<CategoryDto> Categories { get; set; } = new List<CategoryDto>();
+    
+    [TempData]
+    public string? SuccessMessage { get; set; }
 
     public IndexModel(IMediator mediator)
     {

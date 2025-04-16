@@ -16,6 +16,7 @@ public class InvestmentCategoryConfiguration : IEntityTypeConfiguration<Investme
             .HasMaxLength(100);
 
         builder.Property(c => c.Description)
+            .IsRequired(false)
             .HasMaxLength(500);
 
         // Seed default categories

@@ -90,11 +90,19 @@
                                     <td class="fw-medium">@Html.Raw(Model.FormatCurrency(record.Value))</td>
                                     <td>
                                         @{
-                                            var previousIndex = Model.InvestmentHistories.IndexOf(record) + 1;
-                                            var previous = previousIndex < Model.InvestmentHistories.Count ? Model.InvestmentHistories[previousIndex] : null;
-                                            var changePercentage = previous != null && previous.Value != 0 
-                                                ? ((record.Value - previous.Value) / previous.Value) * 100 
-                                                : 0;
+                                            // Get the previous record (chronologically older) for comparison
+                                            var recordDate = record.RecordedDate;
+                                            var previous = Model.InvestmentHistories
+                                                .Where(h => h.RecordedDate < recordDate)
+                                                .OrderByDescending(h => h.RecordedDate)
+                                                .FirstOrDefault();
+                                            
+                                            decimal changePercentage = 0;
+                                            if (previous != null && previous.Value != 0)
+                                            {
+                                                // Calculate percentage change from previous to current
+                                                changePercentage = ((record.Value - previous.Value) / previous.Value) * 100;
+                                            }
                                             
                                             var changeClass = changePercentage > 0 
                                                 ? "text-success" 
@@ -108,7 +116,7 @@
                                             @if (changePercentage != 0)
                                             {
                                                 <i class="material-icons align-middle">@changeIcon</i>
-                                                <span>@(changePercentage > 0 ? "+" : "")@changePercentage.ToString("F2")%</span>
+                                                <span>@(changePercentage > 0 ? "+" : "")@Model.FormatNumber(changePercentage, 2)%</span>
                                             }
                                             else
                                             {
@@ -162,7 +170,8 @@
                     
                     <div class="mb-3">
                         <label asp-for="UpdateModel.NewValue" class="form-label">Current Value (@Html.Raw(Model.Settings.CurrencySymbol))</label>
-                        <input type="number" class="form-control" asp-for="UpdateModel.NewValue" step="0.01" required min="0" />
+                        <input type="number" class="form-control" asp-for="UpdateModel.NewValue" step="0.01" required min="0" max="999999999999" />
+                        <div class="form-text">Maximum value: 999,999,999,999</div>
                         <span asp-validation-for="UpdateModel.NewValue" class="text-danger"></span>
                     </div>
                     

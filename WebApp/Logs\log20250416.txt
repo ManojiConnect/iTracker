@@ -1,0 +1,502 @@
+[16:00:29 INF] Ensuring database is created... <s:Program>
+[16:00:29 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[16:00:29 INF] Database initialization completed. <s:Program>
+[16:00:29 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[16:00:29 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[16:00:29 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[16:00:29 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[16:00:29 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[16:00:29 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[16:00:29 INF] Application settings initialized. <s:Program>
+[16:00:29 INF] Database Provider: SqliteConnection, Connection: 18 <s:Program>
+[16:00:29 INF] Ensuring database is created... <s:Program>
+[16:00:29 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[16:00:29 INF] Database initialization completed. <s:Program>
+[16:00:30 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[16:00:30 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[16:00:30 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[16:00:30 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[16:00:30 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[16:00:33 INF] Attempting login for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
+[16:00:33 INF] Login successful for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
+[16:00:33 INF] Attempting to redirect to Portfolios/Index <s:WebApp.Pages.Auth.LoginModel>
+[16:00:33 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[16:01:49 INF] Currency formatter initialized for CategoryAnalysis page <s:WebApp.Pages.Investments.CategoryAnalysisModel>
+[16:01:49 INF] Getting category performance data for All Portfolios <s:Application.Features.Investments.GetCategoryPerformance.GetCategoryPerformanceHandler>
+[16:02:27 INF] Retrieving all users <s:WebApp.Pages.Users.IndexModel>
+[16:02:27 INF] Fetching all users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[16:02:27 INF] Found 3 identity users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[16:02:27 INF] Successfully retrieved 3 users <s:WebApp.Pages.Users.IndexModel>
+[16:02:28 INF] Settings loaded successfully: CurrencySymbol=₹ <s:WebApp.Pages.AdminToolsModel>
+[16:03:04 INF] Settings loaded successfully: CurrencySymbol=₹ <s:WebApp.Pages.AdminToolsModel>
+[16:03:07 INF] Retrieving all users <s:WebApp.Pages.Users.IndexModel>
+[16:03:07 INF] Fetching all users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[16:03:07 INF] Found 3 identity users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[16:03:07 INF] Successfully retrieved 3 users <s:WebApp.Pages.Users.IndexModel>
+[16:03:17 INF] Currency formatter initialized for CategoryAnalysis page <s:WebApp.Pages.Investments.CategoryAnalysisModel>
+[16:03:17 INF] Getting category performance data for All Portfolios <s:Application.Features.Investments.GetCategoryPerformance.GetCategoryPerformanceHandler>
+[16:41:55 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[16:42:03 INF] Ensuring database is created... <s:Program>
+[16:42:03 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[16:42:03 INF] Database initialization completed. <s:Program>
+[16:42:03 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[16:42:03 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[16:42:03 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[16:42:03 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[16:42:03 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[16:42:03 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[16:42:03 INF] Application settings initialized. <s:Program>
+[16:42:03 INF] Database Provider: SqliteConnection, Connection: 18 <s:Program>
+[16:42:03 INF] Ensuring database is created... <s:Program>
+[16:42:03 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[16:42:03 INF] Database initialization completed. <s:Program>
+[16:42:03 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[16:42:03 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[16:42:03 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[16:42:03 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[16:42:03 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[16:44:27 INF] Attempting login for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
+[16:44:27 INF] Login successful for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
+[16:44:27 INF] Attempting to redirect to Portfolios/Index <s:WebApp.Pages.Auth.LoginModel>
+[16:44:27 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[16:45:43 INF] Currency formatter initialized for CategoryAnalysis page <s:WebApp.Pages.Investments.CategoryAnalysisModel>
+[16:45:43 INF] Getting category performance data for All Portfolios <s:Application.Features.Investments.GetCategoryPerformance.GetCategoryPerformanceHandler>
+[16:47:03 INF] Retrieving all users <s:WebApp.Pages.Users.IndexModel>
+[16:47:03 INF] Fetching all users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[16:47:03 INF] Found 3 identity users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[16:47:03 INF] Successfully retrieved 3 users <s:WebApp.Pages.Users.IndexModel>
+[16:47:07 INF] Retrieving user with ID: 1 <s:WebApp.Pages.Users.EditModel>
+[16:47:07 INF] Fetching user with ID: 1 <s:Application.Features.Users.GetUserById.GetUserByIdHandler>
+[16:47:13 INF] Retrieving all users <s:WebApp.Pages.Users.IndexModel>
+[16:47:13 INF] Fetching all users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[16:47:13 INF] Found 3 identity users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[16:47:13 INF] Successfully retrieved 3 users <s:WebApp.Pages.Users.IndexModel>
+[16:47:18 INF] Settings loaded successfully: CurrencySymbol=₹ <s:WebApp.Pages.AdminToolsModel>
+[16:47:28 INF] Saving settings: CurrencySymbol=₹ <s:WebApp.Pages.AdminToolsModel>
+[16:47:28 INF] Settings cache manually invalidated <s:Infrastructure.Services.SettingsService>
+[16:47:28 INF] Settings saved to database and file: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[16:47:28 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[16:47:28 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[16:47:28 INF] Settings saved and refreshed: ₹ <s:WebApp.Pages.AdminToolsModel>
+[16:47:28 INF] Settings loaded successfully: CurrencySymbol=₹ <s:WebApp.Pages.AdminToolsModel>
+[16:47:40 INF] Retrieving all users <s:WebApp.Pages.Users.IndexModel>
+[16:47:40 INF] Fetching all users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[16:47:40 INF] Found 3 identity users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[16:47:40 INF] Successfully retrieved 3 users <s:WebApp.Pages.Users.IndexModel>
+[16:47:53 INF] Currency formatter initialized for CategoryAnalysis page <s:WebApp.Pages.Investments.CategoryAnalysisModel>
+[16:47:53 INF] Getting category performance data for All Portfolios <s:Application.Features.Investments.GetCategoryPerformance.GetCategoryPerformanceHandler>
+[16:48:00 INF] Currency formatter initialized for CategoryAnalysis page <s:WebApp.Pages.Investments.CategoryAnalysisModel>
+[16:48:00 INF] Getting category performance data for All Portfolios <s:Application.Features.Investments.GetCategoryPerformance.GetCategoryPerformanceHandler>
+[16:48:16 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[16:58:49 INF] Ensuring database is created... <s:Program>
+[16:58:50 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[16:58:50 INF] Database initialization completed. <s:Program>
+[16:58:50 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[16:58:50 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[16:58:50 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[16:58:50 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[16:58:50 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[16:58:50 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[16:58:50 INF] Application settings initialized. <s:Program>
+[16:58:50 INF] Database Provider: SqliteConnection, Connection: 18 <s:Program>
+[16:58:50 INF] Ensuring database is created... <s:Program>
+[16:58:50 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[16:58:50 INF] Database initialization completed. <s:Program>
+[16:58:50 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[16:58:50 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[16:58:50 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[16:58:50 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[16:58:50 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[16:58:54 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[16:59:15 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[17:05:13 INF] Ensuring database is created... <s:Program>
+[17:05:14 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[17:05:14 INF] Database initialization completed. <s:Program>
+[17:05:14 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[17:05:14 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[17:05:14 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[17:05:14 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[17:05:14 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[17:05:14 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[17:05:14 INF] Application settings initialized. <s:Program>
+[17:05:14 INF] Database Provider: SqliteConnection, Connection: 18 <s:Program>
+[17:05:14 INF] Ensuring database is created... <s:Program>
+[17:05:14 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[17:05:14 INF] Database initialization completed. <s:Program>
+[17:05:14 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[17:05:14 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[17:05:14 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[17:05:14 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[17:05:14 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[17:05:16 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[17:06:22 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[17:08:32 INF] Ensuring database is created... <s:Program>
+[17:08:33 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[17:08:33 INF] Database initialization completed. <s:Program>
+[17:08:33 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[17:08:33 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[17:08:33 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[17:08:33 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[17:08:33 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[17:08:33 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[17:08:33 INF] Application settings initialized. <s:Program>
+[17:08:33 INF] Database Provider: SqliteConnection, Connection: 18 <s:Program>
+[17:08:33 INF] Ensuring database is created... <s:Program>
+[17:08:33 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[17:08:33 INF] Database initialization completed. <s:Program>
+[17:08:33 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[17:08:33 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[17:08:33 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[17:08:33 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[17:08:33 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[17:08:35 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[17:08:56 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[17:12:31 INF] Ensuring database is created... <s:Program>
+[17:12:31 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[17:12:31 INF] Database initialization completed. <s:Program>
+[17:12:31 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[17:12:31 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[17:12:31 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[17:12:32 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[17:12:32 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[17:12:32 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[17:12:32 INF] Application settings initialized. <s:Program>
+[17:12:32 INF] Database Provider: SqliteConnection, Connection: 18 <s:Program>
+[17:12:32 INF] Ensuring database is created... <s:Program>
+[17:12:32 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[17:12:32 INF] Database initialization completed. <s:Program>
+[17:12:32 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[17:12:32 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[17:12:32 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[17:12:32 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[17:12:32 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[17:12:35 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[17:12:48 ERR] An exception occurred while iterating over the results of a query for context type 'Infrastructure.Context.AppDbContext'.
+System.InvalidOperationException: The data is NULL at ordinal 3. This method can't be called on NULL values. Check using IsDBNull before calling.
+   at Microsoft.Data.Sqlite.SqliteValueReader.GetString(Int32 ordinal)
+   at lambda_method448(Closure, QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync() <s:Microsoft.EntityFrameworkCore.Query>
+System.InvalidOperationException: The data is NULL at ordinal 3. This method can't be called on NULL values. Check using IsDBNull before calling.
+   at Microsoft.Data.Sqlite.SqliteValueReader.GetString(Int32 ordinal)
+   at lambda_method448(Closure, QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task, ConfigureAwaitOptions options)
+[17:12:48 ERR] Failed to create category: The data is NULL at ordinal 3. This method can't be called on NULL values. Check using IsDBNull before calling. <s:Application.Features.InvestmentCategories.CreateCategory.CreateCategoryHandler>
+System.InvalidOperationException: The data is NULL at ordinal 3. This method can't be called on NULL values. Check using IsDBNull before calling.
+   at Microsoft.Data.Sqlite.SqliteValueReader.GetString(Int32 ordinal)
+   at lambda_method448(Closure, QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Application.Features.InvestmentCategories.CreateCategory.CreateCategoryHandler.Handle(CreateCategoryRequest request, CancellationToken cancellationToken) in /Users/manojdeshmukh/Cursor/iTracker/Application/Features/InvestmentCategories/CreateCategory/CreateCategoryRequest.cs:line 45
+[17:12:49 ERR] An exception occurred while iterating over the results of a query for context type 'Infrastructure.Context.AppDbContext'.
+System.InvalidOperationException: The data is NULL at ordinal 3. This method can't be called on NULL values. Check using IsDBNull before calling.
+   at Microsoft.Data.Sqlite.SqliteValueReader.GetString(Int32 ordinal)
+   at lambda_method448(Closure, QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync() <s:Microsoft.EntityFrameworkCore.Query>
+System.InvalidOperationException: The data is NULL at ordinal 3. This method can't be called on NULL values. Check using IsDBNull before calling.
+   at Microsoft.Data.Sqlite.SqliteValueReader.GetString(Int32 ordinal)
+   at lambda_method448(Closure, QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Application.Features.InvestmentCategories.CreateCategory.CreateCategoryHandler.Handle(CreateCategoryRequest request, CancellationToken cancellationToken) in /Users/manojdeshmukh/Cursor/iTracker/Application/Features/InvestmentCategories/CreateCategory/CreateCategoryRequest.cs:line 45
+[17:12:49 ERR] Failed to create category: The data is NULL at ordinal 3. This method can't be called on NULL values. Check using IsDBNull before calling. <s:Application.Features.InvestmentCategories.CreateCategory.CreateCategoryHandler>
+System.InvalidOperationException: The data is NULL at ordinal 3. This method can't be called on NULL values. Check using IsDBNull before calling.
+   at Microsoft.Data.Sqlite.SqliteValueReader.GetString(Int32 ordinal)
+   at lambda_method448(Closure, QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Application.Features.InvestmentCategories.CreateCategory.CreateCategoryHandler.Handle(CreateCategoryRequest request, CancellationToken cancellationToken) in /Users/manojdeshmukh/Cursor/iTracker/Application/Features/InvestmentCategories/CreateCategory/CreateCategoryRequest.cs:line 45
+[17:12:49 ERR] An exception occurred while iterating over the results of a query for context type 'Infrastructure.Context.AppDbContext'.
+System.InvalidOperationException: The data is NULL at ordinal 3. This method can't be called on NULL values. Check using IsDBNull before calling.
+   at Microsoft.Data.Sqlite.SqliteValueReader.GetString(Int32 ordinal)
+   at lambda_method448(Closure, QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync() <s:Microsoft.EntityFrameworkCore.Query>
+System.InvalidOperationException: The data is NULL at ordinal 3. This method can't be called on NULL values. Check using IsDBNull before calling.
+   at Microsoft.Data.Sqlite.SqliteValueReader.GetString(Int32 ordinal)
+   at lambda_method448(Closure, QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Application.Features.InvestmentCategories.CreateCategory.CreateCategoryHandler.Handle(CreateCategoryRequest request, CancellationToken cancellationToken) in /Users/manojdeshmukh/Cursor/iTracker/Application/Features/InvestmentCategories/CreateCategory/CreateCategoryRequest.cs:line 45
+[17:12:49 ERR] Failed to create category: The data is NULL at ordinal 3. This method can't be called on NULL values. Check using IsDBNull before calling. <s:Application.Features.InvestmentCategories.CreateCategory.CreateCategoryHandler>
+System.InvalidOperationException: The data is NULL at ordinal 3. This method can't be called on NULL values. Check using IsDBNull before calling.
+   at Microsoft.Data.Sqlite.SqliteValueReader.GetString(Int32 ordinal)
+   at lambda_method448(Closure, QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Application.Features.InvestmentCategories.CreateCategory.CreateCategoryHandler.Handle(CreateCategoryRequest request, CancellationToken cancellationToken) in /Users/manojdeshmukh/Cursor/iTracker/Application/Features/InvestmentCategories/CreateCategory/CreateCategoryRequest.cs:line 45
+[17:12:50 ERR] An exception occurred while iterating over the results of a query for context type 'Infrastructure.Context.AppDbContext'.
+System.InvalidOperationException: The data is NULL at ordinal 3. This method can't be called on NULL values. Check using IsDBNull before calling.
+   at Microsoft.Data.Sqlite.SqliteValueReader.GetString(Int32 ordinal)
+   at lambda_method448(Closure, QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync() <s:Microsoft.EntityFrameworkCore.Query>
+System.InvalidOperationException: The data is NULL at ordinal 3. This method can't be called on NULL values. Check using IsDBNull before calling.
+   at Microsoft.Data.Sqlite.SqliteValueReader.GetString(Int32 ordinal)
+   at lambda_method448(Closure, QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Application.Features.InvestmentCategories.CreateCategory.CreateCategoryHandler.Handle(CreateCategoryRequest request, CancellationToken cancellationToken) in /Users/manojdeshmukh/Cursor/iTracker/Application/Features/InvestmentCategories/CreateCategory/CreateCategoryRequest.cs:line 45
+[17:12:50 ERR] Failed to create category: The data is NULL at ordinal 3. This method can't be called on NULL values. Check using IsDBNull before calling. <s:Application.Features.InvestmentCategories.CreateCategory.CreateCategoryHandler>
+System.InvalidOperationException: The data is NULL at ordinal 3. This method can't be called on NULL values. Check using IsDBNull before calling.
+   at Microsoft.Data.Sqlite.SqliteValueReader.GetString(Int32 ordinal)
+   at lambda_method448(Closure, QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Application.Features.InvestmentCategories.CreateCategory.CreateCategoryHandler.Handle(CreateCategoryRequest request, CancellationToken cancellationToken) in /Users/manojdeshmukh/Cursor/iTracker/Application/Features/InvestmentCategories/CreateCategory/CreateCategoryRequest.cs:line 45
+[20:44:21 INF] Ensuring database is created... <s:Program>
+[20:44:21 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[20:44:21 INF] Database initialization completed. <s:Program>
+[20:44:21 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[20:44:21 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[20:44:21 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[20:44:21 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[20:44:21 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[20:44:21 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[20:44:21 INF] Application settings initialized. <s:Program>
+[20:44:21 INF] Database Provider: SqliteConnection, Connection: 18 <s:Program>
+[20:44:21 INF] Ensuring database is created... <s:Program>
+[20:44:21 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[20:44:21 INF] Database initialization completed. <s:Program>
+[20:44:22 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[20:44:22 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[20:44:22 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[20:44:22 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[20:44:22 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[20:44:24 INF] Attempting login for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
+[20:44:24 INF] Login successful for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
+[20:44:24 INF] Attempting to redirect to Portfolios/Index <s:WebApp.Pages.Auth.LoginModel>
+[20:44:24 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[20:44:34 WRN] Category creation failed: Category with name 'Test' already exists <s:Application.Features.InvestmentCategories.CreateCategory.CreateCategoryHandler>
+[20:44:47 INF] Creating new category: Test2, Description length: 4 <s:Application.Features.InvestmentCategories.CreateCategory.CreateCategoryHandler>
+[20:44:47 INF] Category created successfully with ID 6 <s:Application.Features.InvestmentCategories.CreateCategory.CreateCategoryHandler>
+[20:45:38 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[20:47:03 INF] Ensuring database is created... <s:Program>
+[20:47:03 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[20:47:03 INF] Database initialization completed. <s:Program>
+[20:47:03 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[20:47:03 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[20:47:03 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[20:47:03 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[20:47:03 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[20:47:03 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[20:47:03 INF] Application settings initialized. <s:Program>
+[20:47:03 INF] Database Provider: SqliteConnection, Connection: 18 <s:Program>
+[20:47:03 INF] Ensuring database is created... <s:Program>
+[20:47:03 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[20:47:03 INF] Database initialization completed. <s:Program>
+[20:47:04 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[20:47:04 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[20:47:04 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[20:47:04 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[20:47:04 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[20:47:05 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[20:47:13 INF] Creating new category: Test, Description length: 0 <s:Application.Features.InvestmentCategories.CreateCategory.CreateCategoryHandler>
+[20:47:13 INF] Category created successfully with ID 7 <s:Application.Features.InvestmentCategories.CreateCategory.CreateCategoryHandler>
+[20:47:23 WRN] Category creation failed: Active category with name 'Test' already exists <s:Application.Features.InvestmentCategories.CreateCategory.CreateCategoryHandler>
+[20:47:41 INF] Creating new category: Test, Description length: 0 <s:Application.Features.InvestmentCategories.CreateCategory.CreateCategoryHandler>
+[20:47:41 INF] Category created successfully with ID 8 <s:Application.Features.InvestmentCategories.CreateCategory.CreateCategoryHandler>
+[20:48:09 INF] Investment creation started <s:WebApp.Pages.Investments.CreateModel>
+[20:48:09 INF] ModelState.IsValid: true <s:WebApp.Pages.Investments.CreateModel>
+[20:48:09 INF] Investment data: {"PortfolioId":12,"Name":"Test for Category","Symbol":"","CategoryId":8,"TotalInvestment":5000,"CurrentValue":5000,"PurchaseDate":"2025-04-16T00:00:00","PurchasePrice":5000,"Notes":null} <s:WebApp.Pages.Investments.CreateModel>
+[20:48:09 INF] Sending create investment request to mediator <s:WebApp.Pages.Investments.CreateModel>
+[20:48:09 INF] Starting to handle CreateInvestmentRequest for portfolio 12 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:48:09 INF] Found portfolio: 12, Portfolio 2 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:48:09 INF] Found category: 8, Test <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:48:09 INF] Created new investment object with Name: Test for Category, Symbol: Test-for-Category, TotalInvestment: 5000, CurrentValue: 5000 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:48:09 INF] Added investment to context, saving changes... <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:48:09 INF] Investment saved with ID: 73 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:48:09 INF] Updating portfolio totals... <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:48:09 INF] Updated portfolio totals: TotalValue: 70000, TotalInvestment: 63000 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:48:09 INF] Portfolio totals saved successfully <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:48:09 INF] Mediator result: true, No errors <s:WebApp.Pages.Investments.CreateModel>
+[20:48:09 INF] Investment created successfully with ID: 73 <s:WebApp.Pages.Investments.CreateModel>
+[20:49:09 INF] Starting to handle CreateInvestmentRequest for portfolio 12 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:49:09 INF] Found portfolio: 12, Portfolio 2 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:49:09 INF] Found category: 1, Stocks <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:49:09 INF] Created new investment object with Name: PMS Test, Symbol: PMS-Test, TotalInvestment: 8000, CurrentValue: 10000 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:49:09 INF] Added investment to context, saving changes... <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:49:09 INF] Investment saved with ID: 74 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:49:09 INF] Updating portfolio totals... <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:49:09 INF] Updated portfolio totals: TotalValue: 80000, TotalInvestment: 71000 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:49:09 INF] Portfolio totals saved successfully <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:49:09 INF] Starting to handle CreateInvestmentRequest for portfolio 12 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:49:09 INF] Found portfolio: 12, Portfolio 2 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:49:09 INF] Found category: 2, Bonds <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:49:09 INF] Created new investment object with Name: Gold Bond, Symbol: Gold-Bond, TotalInvestment: 20000, CurrentValue: 25000 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:49:09 INF] Added investment to context, saving changes... <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:49:09 INF] Investment saved with ID: 75 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:49:09 INF] Updating portfolio totals... <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:49:09 INF] Updated portfolio totals: TotalValue: 105000, TotalInvestment: 91000 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:49:09 INF] Portfolio totals saved successfully <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:49:09 INF] Starting to handle CreateInvestmentRequest for portfolio 12 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:49:09 INF] Found portfolio: 12, Portfolio 2 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:49:09 INF] Found category: 1, Stocks <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:49:09 INF] Created new investment object with Name: Test PMS, Symbol: Test-PMS, TotalInvestment: 20000, CurrentValue: 22000 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:49:09 INF] Added investment to context, saving changes... <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:49:09 INF] Investment saved with ID: 76 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:49:09 INF] Updating portfolio totals... <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:49:09 INF] Updated portfolio totals: TotalValue: 127000, TotalInvestment: 111000 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:49:09 INF] Portfolio totals saved successfully <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:49:09 INF] Starting to handle CreateInvestmentRequest for portfolio 12 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:49:09 INF] Found portfolio: 12, Portfolio 2 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:49:09 INF] Found category: 3, Mutual Funds <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:49:09 INF] Created new investment object with Name: Test MF, Symbol: Test-MF, TotalInvestment: 10000, CurrentValue: 8000 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:49:09 INF] Added investment to context, saving changes... <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:49:09 INF] Investment saved with ID: 77 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:49:09 INF] Updating portfolio totals... <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:49:09 INF] Updated portfolio totals: TotalValue: 135000, TotalInvestment: 121000 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:49:09 INF] Portfolio totals saved successfully <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:49:09 INF] Starting to handle CreateInvestmentRequest for portfolio 12 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:49:09 INF] Found portfolio: 12, Portfolio 2 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:49:09 INF] Found category: 8, Test <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:49:09 INF] Created new investment object with Name: Test for Category, Symbol: Test-for-Category, TotalInvestment: 5000, CurrentValue: 5000 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:49:09 INF] Added investment to context, saving changes... <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:49:09 INF] Investment saved with ID: 78 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:49:09 INF] Updating portfolio totals... <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:49:09 INF] Updated portfolio totals: TotalValue: 140000, TotalInvestment: 126000 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:49:09 INF] Portfolio totals saved successfully <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[20:50:11 ERR] An error occurred: Value was either too large or too small for a Decimal. <s:WebApplication.Common.ExceptionHandlerMiddleware>
+System.OverflowException: Value was either too large or too small for a Decimal.
+   at void Number.ThrowOverflowException(string message)
+   at void DecCalc.VarDecFromR8(double input, out DecCalc result)
+   at decimal decimal.op_Explicit(double value)
+   at async Task<Result<int>> Application.Features.Investments.RecordValueUpdate.RecordValueUpdateHandler.Handle(RecordValueUpdateRequest request, CancellationToken cancellationToken) in /Users/manojdeshmukh/Cursor/iTracker/Application/Features/Investments/RecordValueUpdate/RecordValueUpdateHandler.cs:line 80
+   at async Task<TResponse> Application.Common.Behaviors.ValidationResultPipelineBehavior<TRequest, TResponse>.Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken) in /Users/manojdeshmukh/Cursor/iTracker/Application/Common/Behaviors/ValidationResultPipelineBehavior.cs:line 42
+   at async Task<IActionResult> WebApp.Pages.Investments.HistoryModel.OnPostAsync(int? id) in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Pages/Investments/History.cshtml.cs:line 85
+   at async Task<object> Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.ExecutorFactory+GenericTaskHandlerMethod.Convert<T>(object taskAsObject)
+   at async Task<IActionResult> Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.ExecutorFactory+GenericTaskHandlerMethod.Execute(object receiver, object[] arguments)
+   at async Task Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvoker.InvokeHandlerMethodAsync()
+   at async Task Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvoker.InvokeNextPageFilterAsync()
+   at void Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvoker.Rethrow(PageHandlerExecutedContext context)
+   at Task Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvoker.Next(ref State next, ref Scope scope, ref object state, ref bool isCompleted)
+   at async Task Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvoker.InvokeInnerFilterAsync()
+   at async Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResourceFilter()+Awaited(?)
+   at void Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(ref State next, ref Scope scope, ref object state, ref bool isCompleted)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+   at async Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeAsync()+Awaited(?) x 2
+   at async Task Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at async Task WebApp.Common.AuthorizationHandlerMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Common/AuthorizationHandlerMiddleware.cs:line 37
+   at async RequestDelegate Microsoft.AspNetCore.Builder.UseMiddlewareExtensions+InterfaceMiddlewareBinder.CreateMiddleware(RequestDelegate next)+(?) => { }
+   at async Task WebApp.Configurations.CookieAuthenticationSessionTimeoutMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Configurations/AuthSetup.cs:line 160
+   at async RequestDelegate Microsoft.AspNetCore.Builder.UseMiddlewareExtensions+InterfaceMiddlewareBinder.CreateMiddleware(RequestDelegate next)+(?) => { }
+   at async Task Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at async Task WebApplication.Common.ExceptionHandlerMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Common/ExceptionHandlerMiddleware.cs:line 24
+[20:50:16 ERR] An error occurred: Value was either too large or too small for a Decimal. <s:WebApplication.Common.ExceptionHandlerMiddleware>
+System.OverflowException: Value was either too large or too small for a Decimal.
+   at void Number.ThrowOverflowException(string message)
+   at void DecCalc.VarDecFromR8(double input, out DecCalc result)
+   at decimal decimal.op_Explicit(double value)
+   at async Task<Result<int>> Application.Features.Investments.RecordValueUpdate.RecordValueUpdateHandler.Handle(RecordValueUpdateRequest request, CancellationToken cancellationToken) in /Users/manojdeshmukh/Cursor/iTracker/Application/Features/Investments/RecordValueUpdate/RecordValueUpdateHandler.cs:line 80
+   at async Task<TResponse> Application.Common.Behaviors.ValidationResultPipelineBehavior<TRequest, TResponse>.Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken) in /Users/manojdeshmukh/Cursor/iTracker/Application/Common/Behaviors/ValidationResultPipelineBehavior.cs:line 42
+   at async Task<IActionResult> WebApp.Pages.Investments.HistoryModel.OnPostAsync(int? id) in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Pages/Investments/History.cshtml.cs:line 85
+   at async Task<object> Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.ExecutorFactory+GenericTaskHandlerMethod.Convert<T>(object taskAsObject)
+   at async Task<IActionResult> Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.ExecutorFactory+GenericTaskHandlerMethod.Execute(object receiver, object[] arguments)
+   at async Task Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvoker.InvokeHandlerMethodAsync()
+   at async Task Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvoker.InvokeNextPageFilterAsync()
+   at void Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvoker.Rethrow(PageHandlerExecutedContext context)
+   at Task Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvoker.Next(ref State next, ref Scope scope, ref object state, ref bool isCompleted)
+   at async Task Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvoker.InvokeInnerFilterAsync()
+   at async Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResourceFilter()+Awaited(?)
+   at void Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(ref State next, ref Scope scope, ref object state, ref bool isCompleted)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+   at async Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeAsync()+Awaited(?) x 2
+   at async Task Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at async Task WebApp.Common.AuthorizationHandlerMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Common/AuthorizationHandlerMiddleware.cs:line 37
+   at async RequestDelegate Microsoft.AspNetCore.Builder.UseMiddlewareExtensions+InterfaceMiddlewareBinder.CreateMiddleware(RequestDelegate next)+(?) => { }
+   at async Task WebApp.Configurations.CookieAuthenticationSessionTimeoutMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Configurations/AuthSetup.cs:line 160
+   at async RequestDelegate Microsoft.AspNetCore.Builder.UseMiddlewareExtensions+InterfaceMiddlewareBinder.CreateMiddleware(RequestDelegate next)+(?) => { }
+   at async Task Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at async Task WebApplication.Common.ExceptionHandlerMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Common/ExceptionHandlerMiddleware.cs:line 24
+[20:50:51 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[20:53:30 INF] Ensuring database is created... <s:Program>
+[20:53:31 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[20:53:31 INF] Database initialization completed. <s:Program>
+[20:53:31 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[20:53:31 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[20:53:31 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[20:53:31 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[20:53:31 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[20:53:31 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[20:53:31 INF] Application settings initialized. <s:Program>
+[20:53:31 INF] Database Provider: SqliteConnection, Connection: 18 <s:Program>
+[20:53:31 INF] Ensuring database is created... <s:Program>
+[20:53:31 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[20:53:31 INF] Database initialization completed. <s:Program>
+[20:53:31 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[20:53:31 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[20:53:31 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[20:53:31 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[20:53:31 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[20:53:33 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[20:54:48 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[20:55:35 INF] Ensuring database is created... <s:Program>
+[20:55:35 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[20:55:35 INF] Database initialization completed. <s:Program>
+[20:55:35 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[20:55:35 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[20:55:35 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[20:55:35 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[20:55:35 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[20:55:35 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[20:55:35 INF] Application settings initialized. <s:Program>
+[20:55:35 INF] Database Provider: SqliteConnection, Connection: 18 <s:Program>
+[20:55:35 INF] Ensuring database is created... <s:Program>
+[20:55:35 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[20:55:35 INF] Database initialization completed. <s:Program>
+[20:55:36 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[20:55:36 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[20:55:36 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[20:55:36 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[20:55:36 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[20:55:37 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[20:58:10 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[20:58:51 INF] Ensuring database is created... <s:Program>
+[20:58:52 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[20:58:52 INF] Database initialization completed. <s:Program>
+[20:58:52 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[20:58:52 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[20:58:52 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[20:58:52 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[20:58:52 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[20:58:52 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[20:58:52 INF] Application settings initialized. <s:Program>
+[20:58:52 INF] Database Provider: SqliteConnection, Connection: 18 <s:Program>
+[20:58:52 INF] Ensuring database is created... <s:Program>
+[20:58:52 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[20:58:52 INF] Database initialization completed. <s:Program>
+[20:58:52 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[20:58:52 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[20:58:52 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[20:58:52 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[20:58:52 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[20:58:54 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[20:59:15 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[20:59:18 INF] Ensuring database is created... <s:Program>
+[20:59:19 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[20:59:19 INF] Database initialization completed. <s:Program>
+[20:59:19 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[20:59:19 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[20:59:19 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[20:59:19 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[20:59:19 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[20:59:19 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[20:59:19 INF] Application settings initialized. <s:Program>
+[20:59:19 INF] Database Provider: SqliteConnection, Connection: 18 <s:Program>
+[20:59:19 INF] Ensuring database is created... <s:Program>
+[20:59:19 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[20:59:19 INF] Database initialization completed. <s:Program>
+[20:59:19 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[20:59:19 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[20:59:19 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[20:59:19 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[20:59:19 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[20:59:21 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[21:00:07 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>

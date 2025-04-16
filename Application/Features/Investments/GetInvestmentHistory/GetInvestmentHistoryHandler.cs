@@ -36,7 +36,7 @@ public class GetInvestmentHistoryHandler : IRequestHandler<GetInvestmentHistoryR
         }
 
         var history = await query
-            .OrderBy(h => h.RecordedDate)
+            .OrderByDescending(h => h.RecordedDate)
             .Select(h => new InvestmentHistoryDto
             {
                 Id = h.Id,

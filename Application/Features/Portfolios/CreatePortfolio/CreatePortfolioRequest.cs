@@ -17,7 +17,7 @@ public record CreatePortfolioRequest : IRequest<Result<int>>
     public required string Name { get; init; }
     
     [StringLength(500)]
-    public string? Description { get; init; }
+    public string? Description { get; init; } = string.Empty;
     
     [Required]
     [Range(0, double.MaxValue, ErrorMessage = "Initial value must be greater than or equal to 0")]
@@ -89,9 +89,10 @@ public class CreatePortfolioHandler : IRequestHandler<CreatePortfolioRequest, Re
             await _context.SaveChangesAsync(cancellationToken);
             return Result.Success(portfolio.Id);
         }
-        catch (Exception)
+        catch (Exception ex)
         {
-            return Result.Error("Failed to create portfolio");
+            // Log the exception details for debugging
+            return Result.Error($"Failed to create portfolio: {ex.Message}");
         }
     }
 } 

@@ -3,7 +3,7 @@
   "DecimalSeparator": ".",
   "ThousandsSeparator": ",",
   "DecimalPlaces": 2,
-  "DateFormat": "MM/dd/yyyy",
+  "DateFormat": "dd/MM/yyyy",
   "FinancialYearStartMonth": 4,
   "PerformanceCalculationMethod": "annualized",
   "SessionTimeoutMinutes": 30,

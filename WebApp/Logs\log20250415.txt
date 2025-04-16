@@ -1,0 +1,31 @@
+[12:47:35 INF] Ensuring database is created... <s:Program>
+[12:47:35 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[12:47:35 INF] Database initialization completed. <s:Program>
+[12:47:35 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[12:47:35 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[12:47:35 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[12:47:35 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[12:47:35 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[12:47:35 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[12:47:35 INF] Application settings initialized. <s:Program>
+[12:47:35 INF] Database Provider: SqliteConnection, Connection: 18 <s:Program>
+[12:47:35 INF] Ensuring database is created... <s:Program>
+[12:47:35 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[12:47:35 INF] Database initialization completed. <s:Program>
+[12:47:35 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[12:47:35 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[12:47:35 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[12:47:35 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[12:47:35 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[12:47:59 INF] Attempting login for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
+[12:47:59 INF] Login successful for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
+[12:47:59 INF] Attempting to redirect to Portfolios/Index <s:WebApp.Pages.Auth.LoginModel>
+[12:47:59 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[12:48:02 INF] Settings loaded successfully: CurrencySymbol=₹ <s:WebApp.Pages.AdminToolsModel>
+[12:48:09 INF] Currency formatter initialized for CategoryAnalysis page <s:WebApp.Pages.Investments.CategoryAnalysisModel>
+[12:48:09 INF] Getting category performance data for All Portfolios <s:Application.Features.Investments.GetCategoryPerformance.GetCategoryPerformanceHandler>
+[12:48:16 INF] Retrieving all users <s:WebApp.Pages.Users.IndexModel>
+[12:48:16 INF] Fetching all users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[12:48:16 INF] Found 3 identity users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[12:48:16 INF] Successfully retrieved 3 users <s:WebApp.Pages.Users.IndexModel>
+[12:49:22 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>

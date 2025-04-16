@@ -8,6 +8,7 @@ using Application.Abstractions.Data;
 using Application.Features.InvestmentCategories.CreateCategory;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using Moq;
 using Xunit;
 using iTracker.Tests.Common.Extensions;
@@ -19,12 +20,14 @@ public class CreateCategoryHandlerTests
 {
     private readonly Mock<IContext> _contextMock;
     private readonly Mock<DbSet<InvestmentCategory>> _categoriesDbSetMock;
+    private readonly Mock<ILogger<CreateCategoryHandler>> _loggerMock;
     private readonly CreateCategoryHandler _handler;
     private readonly List<InvestmentCategory> _categories;
 
     public CreateCategoryHandlerTests()
     {
         _contextMock = new Mock<IContext>();
+        _loggerMock = new Mock<ILogger<CreateCategoryHandler>>();
         _categories = new List<InvestmentCategory>();
         _categoriesDbSetMock = DbSetMockHelper.CreateDbSetMock<InvestmentCategory>();
         _categoriesDbSetMock.SetupData(_categories);
@@ -38,7 +41,7 @@ public class CreateCategoryHandlerTests
             .Returns((InvestmentCategory entity) => new TestEntityEntry<InvestmentCategory>(entity));
 
         _contextMock.Setup(x => x.InvestmentCategories).Returns(_categoriesDbSetMock.Object);
-        _handler = new CreateCategoryHandler(_contextMock.Object);
+        _handler = new CreateCategoryHandler(_contextMock.Object, _loggerMock.Object);
     }
 
     [Fact]

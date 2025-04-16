@@ -8,6 +8,7 @@ using Domain.Entities;
 using Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Logging;
 using Moq;
 using Xunit;
 using iTracker.Tests.Common.Helpers;
@@ -21,6 +22,7 @@ public class SettingsServiceTests
     private readonly Mock<IContext> _contextMock;
     private Mock<DbSet<SystemSettings>> _settingsDbSetMock;
     private readonly Mock<IMemoryCache> _cacheMock;
+    private readonly Mock<ILogger<SettingsService>> _loggerMock;
     private readonly SettingsService _settingsService;
     private const string SettingsCacheKey = "SystemSettings";
 
@@ -29,6 +31,7 @@ public class SettingsServiceTests
         _contextMock = new Mock<IContext>();
         _settingsDbSetMock = DbSetMockHelper.CreateDbSetMock<SystemSettings>();
         _cacheMock = new Mock<IMemoryCache>();
+        _loggerMock = new Mock<ILogger<SettingsService>>();
         _contextMock.Setup(c => c.SystemSettings).Returns(_settingsDbSetMock.Object);
 
         // Setup cache mock
@@ -40,7 +43,7 @@ public class SettingsServiceTests
         _cacheMock.Setup(x => x.CreateEntry(It.IsAny<object>()))
             .Returns(cacheEntry.Object);
 
-        _settingsService = new SettingsService(_contextMock.Object, _cacheMock.Object);
+        _settingsService = new SettingsService(_contextMock.Object, _cacheMock.Object, _loggerMock.Object);
     }
 
     [Fact]

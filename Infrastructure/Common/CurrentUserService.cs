@@ -21,10 +21,10 @@ public class CurrentUserService : ICurrentUserService
         }
     }
 
-    public string? Id => _httpContextAccessor?.HttpContext?.User?.FindFirstValue(ClaimTypes.NameIdentifier);
-    public string? UserId { get; private set; }
-    public string? Email { get; private set; }
-    public string? Role { get; private set; }
-    public string? FirstName { get; private set; }
-    public string? LastName { get; private set; }
+    public string Id => _httpContextAccessor?.HttpContext?.User?.FindFirstValue(ClaimTypes.NameIdentifier) ?? string.Empty;
+    public string UserId { get; private set; } = string.Empty;
+    public string Email { get; private set; } = string.Empty;
+    public string Role { get; private set; } = string.Empty;
+    public string FirstName { get; private set; } = string.Empty;
+    public string LastName { get; private set; } = string.Empty;
 }
