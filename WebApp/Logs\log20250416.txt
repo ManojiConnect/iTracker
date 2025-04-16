@@ -704,3 +704,158 @@ System.NotSupportedException: SQLite does not support expressions of type 'decim
    at Application.Features.Investments.GetAllInvestments.GetAllInvestmentsHandler.Handle(GetAllInvestmentsRequest request, CancellationToken cancellationToken) in /Users/manojdeshmukh/Cursor/iTracker/Application/Features/Investments/GetAllInvestments/GetAllInvestmentsHandler.cs:line 82
 [21:16:07 ERR] Failed to fetch investments with filters <s:WebApp.Pages.Investments.IndexModel>
 [21:40:51 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[21:46:02 INF] Ensuring database is created... <s:Program>
+[21:46:03 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[21:46:03 INF] Database initialization completed. <s:Program>
+[21:46:03 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[21:46:03 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[21:46:03 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[21:46:03 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[21:46:03 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[21:46:03 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[21:46:03 INF] Application settings initialized. <s:Program>
+[21:46:03 INF] Database Provider: SqliteConnection, Connection: 18 <s:Program>
+[21:46:03 INF] Ensuring database is created... <s:Program>
+[21:46:03 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[21:46:03 INF] Database initialization completed. <s:Program>
+[21:46:03 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[21:46:03 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[21:46:03 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[21:46:03 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[21:46:03 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[21:46:05 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[21:46:19 INF] Retrieving all users <s:WebApp.Pages.Users.IndexModel>
+[21:46:19 INF] Fetching all users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[21:46:19 INF] Found 3 identity users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[21:46:19 INF] Successfully retrieved 3 users <s:WebApp.Pages.Users.IndexModel>
+[21:46:22 INF] Retrieving user with ID: 3 <s:WebApp.Pages.Users.EditModel>
+[21:46:22 INF] Fetching user with ID: 3 <s:Application.Features.Users.GetUserById.GetUserByIdHandler>
+[21:46:47 INF] Updating user: 3 <s:WebApp.Pages.Users.EditModel>
+[21:46:47 INF] User updated successfully: 3 <s:WebApp.Pages.Users.EditModel>
+[21:46:47 INF] Retrieving all users <s:WebApp.Pages.Users.IndexModel>
+[21:46:47 INF] Fetching all users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[21:46:47 INF] Found 3 identity users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[21:46:47 INF] Successfully retrieved 3 users <s:WebApp.Pages.Users.IndexModel>
+[21:46:51 INF] Retrieving user with ID: 2 <s:WebApp.Pages.Users.EditModel>
+[21:46:51 INF] Fetching user with ID: 2 <s:Application.Features.Users.GetUserById.GetUserByIdHandler>
+[21:46:55 INF] Updating user: 2 <s:WebApp.Pages.Users.EditModel>
+[21:46:55 INF] User updated successfully: 2 <s:WebApp.Pages.Users.EditModel>
+[21:46:55 INF] Retrieving all users <s:WebApp.Pages.Users.IndexModel>
+[21:46:55 INF] Fetching all users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[21:46:55 INF] Found 3 identity users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[21:46:55 INF] Successfully retrieved 3 users <s:WebApp.Pages.Users.IndexModel>
+[21:48:43 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[21:49:40 INF] Ensuring database is created... <s:Program>
+[21:49:41 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[21:49:41 INF] Database initialization completed. <s:Program>
+[21:49:41 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[21:49:41 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[21:49:41 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[21:49:41 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[21:49:41 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[21:49:41 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[21:49:41 INF] Application settings initialized. <s:Program>
+[21:49:41 INF] Database Provider: SqliteConnection, Connection: 18 <s:Program>
+[21:49:41 INF] Ensuring database is created... <s:Program>
+[21:49:41 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[21:49:41 INF] Database initialization completed. <s:Program>
+[21:49:41 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[21:49:41 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[21:49:41 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[21:49:41 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[21:49:41 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[21:49:43 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[21:50:17 INF] User changed their password successfully. <s:WebApp.Pages.Account.ChangePasswordModel>
+[21:50:55 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[21:52:03 INF] Ensuring database is created... <s:Program>
+[21:52:04 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[21:52:04 INF] Database initialization completed. <s:Program>
+[21:52:04 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[21:52:04 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[21:52:04 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[21:52:04 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[21:52:04 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[21:52:04 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[21:52:04 INF] Application settings initialized. <s:Program>
+[21:52:04 INF] Database Provider: SqliteConnection, Connection: 18 <s:Program>
+[21:52:04 INF] Ensuring database is created... <s:Program>
+[21:52:04 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[21:52:04 INF] Database initialization completed. <s:Program>
+[21:52:04 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[21:52:04 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[21:52:04 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[21:52:04 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[21:52:04 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[21:52:06 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[21:52:22 INF] User changed their password successfully. <s:WebApp.Pages.Account.ChangePasswordModel>
+[21:52:28 INF] User logged out. <s:WebApp.Pages.Account.LogoutModel>
+[21:52:28 ERR] An error occurred: No page named '/Account/Login' matches the supplied values. <s:WebApplication.Common.ExceptionHandlerMiddleware>
+System.InvalidOperationException: No page named '/Account/Login' matches the supplied values.
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.RedirectToPageResultExecutor.ExecuteAsync(ActionContext context, RedirectToPageResult result)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext<TFilter, TFilterAsync>(ref State next, ref Scope scope, ref object state, ref bool isCompleted)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResultFilterAsync<TFilter, TFilterAsync>()
+   at void Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext<TFilter, TFilterAsync>(ref State next, ref Scope scope, ref object state, ref bool isCompleted)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+   at async Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResourceFilter()+Awaited(?)
+   at void Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(ref State next, ref Scope scope, ref object state, ref bool isCompleted)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+   at async Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeAsync()+Awaited(?) x 2
+   at async Task Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at async Task WebApp.Common.AuthorizationHandlerMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Common/AuthorizationHandlerMiddleware.cs:line 37
+   at async RequestDelegate Microsoft.AspNetCore.Builder.UseMiddlewareExtensions+InterfaceMiddlewareBinder.CreateMiddleware(RequestDelegate next)+(?) => { }
+   at async Task WebApp.Configurations.CookieAuthenticationSessionTimeoutMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Configurations/AuthSetup.cs:line 160
+   at async RequestDelegate Microsoft.AspNetCore.Builder.UseMiddlewareExtensions+InterfaceMiddlewareBinder.CreateMiddleware(RequestDelegate next)+(?) => { }
+   at async Task Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at async Task WebApplication.Common.ExceptionHandlerMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Common/ExceptionHandlerMiddleware.cs:line 24
+[21:52:39 INF] User logged out. <s:WebApp.Pages.Account.LogoutModel>
+[21:52:39 ERR] An error occurred: No page named '/Account/Login' matches the supplied values. <s:WebApplication.Common.ExceptionHandlerMiddleware>
+System.InvalidOperationException: No page named '/Account/Login' matches the supplied values.
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.RedirectToPageResultExecutor.ExecuteAsync(ActionContext context, RedirectToPageResult result)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext<TFilter, TFilterAsync>(ref State next, ref Scope scope, ref object state, ref bool isCompleted)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResultFilterAsync<TFilter, TFilterAsync>()
+   at void Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext<TFilter, TFilterAsync>(ref State next, ref Scope scope, ref object state, ref bool isCompleted)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+   at async Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResourceFilter()+Awaited(?)
+   at void Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(ref State next, ref Scope scope, ref object state, ref bool isCompleted)
+   at Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+   at async Task Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeAsync()+Awaited(?) x 2
+   at async Task Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at async Task WebApp.Common.AuthorizationHandlerMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Common/AuthorizationHandlerMiddleware.cs:line 37
+   at async RequestDelegate Microsoft.AspNetCore.Builder.UseMiddlewareExtensions+InterfaceMiddlewareBinder.CreateMiddleware(RequestDelegate next)+(?) => { }
+   at async Task WebApp.Configurations.CookieAuthenticationSessionTimeoutMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Configurations/AuthSetup.cs:line 160
+   at async RequestDelegate Microsoft.AspNetCore.Builder.UseMiddlewareExtensions+InterfaceMiddlewareBinder.CreateMiddleware(RequestDelegate next)+(?) => { }
+   at async Task Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at async Task WebApplication.Common.ExceptionHandlerMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Common/ExceptionHandlerMiddleware.cs:line 24
+[21:53:11 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[21:53:50 INF] Ensuring database is created... <s:Program>
+[21:53:51 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[21:53:51 INF] Database initialization completed. <s:Program>
+[21:53:51 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[21:53:51 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[21:53:51 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[21:53:51 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[21:53:51 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[21:53:51 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[21:53:51 INF] Application settings initialized. <s:Program>
+[21:53:51 INF] Database Provider: SqliteConnection, Connection: 18 <s:Program>
+[21:53:51 INF] Ensuring database is created... <s:Program>
+[21:53:51 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[21:53:51 INF] Database initialization completed. <s:Program>
+[21:53:51 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[21:53:51 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[21:53:51 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[21:53:51 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[21:53:51 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[21:53:52 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[21:53:57 INF] Attempting login for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
+[21:53:57 INF] Login successful for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
+[21:53:57 INF] Attempting to redirect to Portfolios/Index <s:WebApp.Pages.Auth.LoginModel>
+[21:54:23 INF] User changed their password successfully. <s:WebApp.Pages.Account.ChangePasswordModel>
+[21:54:32 INF] Attempting login for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
+[21:54:32 INF] Login successful for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
+[21:54:32 INF] Attempting to redirect to Portfolios/Index <s:WebApp.Pages.Auth.LoginModel>
+[21:54:40 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>

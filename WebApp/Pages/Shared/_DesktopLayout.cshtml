@@ -457,18 +457,25 @@
                     </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                    <li class="user-info">
-                        <div class="d-flex flex-column">
-                            <span class="fw-bold">@fullName</span>
-                            <small class="text-muted">@email</small>
+                    <li>
+                        <div class="dropdown-item-text">
+                            <div class="fw-bold">@fullName</div>
+                            <div class="small text-muted">@email</div>
                         </div>
                     </li>
-                    <div class="dropdown-divider"></div>
+                    <li><hr class="dropdown-divider"></li>
                     <li>
-                        <form method="post" asp-page="/Auth/Logout" asp-route-returnUrl="@Url.Page("/Auth/Login")" id="desktopLogoutForm" class="m-0">
-                            <button type="submit" class="dropdown-item">
-                                <i class="material-icons">exit_to_app</i>
-                                <span>Logout</span>
+                        <a class="dropdown-item" asp-page="/Account/ChangePassword">
+                            <i class="material-icons align-middle me-2">lock</i>
+                            Change Password
+                        </a>
+                    </li>
+                    <li>
+                        <form class="dropdown-item" asp-page="/Auth/Logout" method="post" asp-route-returnUrl="@Url.Page("/Auth/Login")">
+                            @Html.AntiForgeryToken()
+                            <button type="submit" class="btn btn-link text-danger p-0">
+                                <i class="material-icons align-middle me-2">logout</i>
+                                Logout
                             </button>
                         </form>
                     </li>
@@ -528,7 +535,14 @@
                 </div>
                 <ul class="user-section-actions">
                     <li>
+                        <a href="/Account/ChangePassword" class="user-section-action">
+                            <i class="material-icons">lock</i>
+                            <span>Change Password</span>
+                        </a>
+                    </li>
+                    <li>
                         <form method="post" asp-page="/Auth/Logout" asp-route-returnUrl="@Url.Page("/Auth/Login")" id="mobileLogoutForm" class="m-0">
+                            @Html.AntiForgeryToken()
                             <button type="submit" class="user-section-action">
                                 <i class="material-icons">exit_to_app</i>
                                 <span>Logout</span>

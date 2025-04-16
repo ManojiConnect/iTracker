@@ -19,7 +19,6 @@ public static class ApplicationSetup
         // Register services
         services.AddScoped<Application.Abstractions.Services.ICurrentUserService, Infrastructure.Common.CurrentUserService>();
         services.AddScoped<Application.Services.ILookupService, Application.Services.LookupService>();
-        services.AddScoped<Application.Abstractions.Services.ISettingsService, Infrastructure.Services.SettingsService>();
         services.AddScoped<Application.Services.OtpService>();
         services.AddScoped<Application.Abstractions.Services.IMailService>(sp => 
             new Application.Services.SendGridService(
