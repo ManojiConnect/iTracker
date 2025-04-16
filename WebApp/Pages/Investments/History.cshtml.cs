@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Application.Features.Investments.GetInvestmentById;
 using Application.Features.Investments.GetInvestmentHistory;
 using Application.Features.Investments.RecordValueUpdate;
+using Application.Features.Investments.UpdateHistoryRecord;
+using Application.Features.Investments.DeleteHistoryRecord;
 using Application.Features.Investments.Common;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -28,6 +30,12 @@ public class HistoryModel : PageModel
 
     [BindProperty]
     public RecordValueUpdateRequest UpdateModel { get; set; } = new();
+
+    [BindProperty]
+    public UpdateHistoryRecordRequest EditModel { get; set; } = new();
+
+    [BindProperty]
+    public DeleteHistoryRecordRequest DeleteModel { get; set; } = new();
 
     public HistoryModel(IMediator mediator, IApplicationSettingsService settingsService)
     {
@@ -86,6 +94,54 @@ public class HistoryModel : PageModel
         if (!result.IsSuccess)
         {
             ModelState.AddModelError(string.Empty, "Failed to update investment value");
+            return Page();
+        }
+
+        return RedirectToPage(new { id });
+    }
+
+    public async Task<IActionResult> OnPostEditRecordAsync(int? id)
+    {
+        if (!id.HasValue)
+        {
+            return NotFound();
+        }
+
+        if (!ModelState.IsValid)
+        {
+            await LoadHistoryData(id.Value, CurrentMonth, CurrentYear);
+            return Page();
+        }
+
+        var result = await _mediator.Send(EditModel);
+        if (!result.IsSuccess)
+        {
+            ModelState.AddModelError(string.Empty, "Failed to update history record");
+            await LoadHistoryData(id.Value, CurrentMonth, CurrentYear);
+            return Page();
+        }
+
+        return RedirectToPage(new { id });
+    }
+
+    public async Task<IActionResult> OnPostDeleteRecordAsync(int? id)
+    {
+        if (!id.HasValue)
+        {
+            return NotFound();
+        }
+
+        if (!ModelState.IsValid)
+        {
+            await LoadHistoryData(id.Value, CurrentMonth, CurrentYear);
+            return Page();
+        }
+
+        var result = await _mediator.Send(DeleteModel);
+        if (!result.IsSuccess)
+        {
+            ModelState.AddModelError(string.Empty, "Failed to delete history record");
+            await LoadHistoryData(id.Value, CurrentMonth, CurrentYear);
             return Page();
         }
 
