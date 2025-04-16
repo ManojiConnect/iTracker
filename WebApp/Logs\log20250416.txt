@@ -703,3 +703,4 @@ System.NotSupportedException: SQLite does not support expressions of type 'decim
    at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
    at Application.Features.Investments.GetAllInvestments.GetAllInvestmentsHandler.Handle(GetAllInvestmentsRequest request, CancellationToken cancellationToken) in /Users/manojdeshmukh/Cursor/iTracker/Application/Features/Investments/GetAllInvestments/GetAllInvestmentsHandler.cs:line 82
 [21:16:07 ERR] Failed to fetch investments with filters <s:WebApp.Pages.Investments.IndexModel>
+[21:40:51 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
