@@ -14,10 +14,11 @@ using Xunit;
 using iTracker.Tests.Common.Helpers;
 using System.Linq.Expressions;
 using System.Threading;
+using iTracker.Tests.Common;
 
 namespace iTracker.Tests.Application.Services;
 
-public class SettingsServiceTests
+public class SettingsServiceTests : TestBase
 {
     private readonly Mock<IContext> _contextMock;
     private Mock<DbSet<SystemSettings>> _settingsDbSetMock;

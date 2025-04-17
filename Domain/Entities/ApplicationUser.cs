@@ -64,4 +64,9 @@ public class ApplicationUser : IdentityUser, IApplicationUser
     /// Gets or sets the URL to the user's profile picture.
     /// </summary>
     public string? ProfileUrl { get; set; }
+
+    /// <summary>
+    /// Gets or sets the role of the user.
+    /// </summary>
+    public string Role { get; set; } = "User";
 } 

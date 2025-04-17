@@ -3,6 +3,7 @@ using System;
 using Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace WebApp.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250417101508_AddRoleToApplicationUser")]
+    partial class AddRoleToApplicationUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.3");
@@ -129,7 +132,7 @@ namespace WebApp.Migrations
                         {
                             Id = 1,
                             CreatedBy = 1,
-                            CreatedOn = new DateTime(2025, 4, 17, 10, 29, 44, 406, DateTimeKind.Utc).AddTicks(9550),
+                            CreatedOn = new DateTime(2025, 4, 17, 10, 15, 8, 314, DateTimeKind.Utc).AddTicks(2480),
                             Description = "Equity investments in publicly traded companies",
                             IsActive = true,
                             IsDelete = false,
@@ -139,7 +142,7 @@ namespace WebApp.Migrations
                         {
                             Id = 2,
                             CreatedBy = 1,
-                            CreatedOn = new DateTime(2025, 4, 17, 10, 29, 44, 406, DateTimeKind.Utc).AddTicks(9550),
+                            CreatedOn = new DateTime(2025, 4, 17, 10, 15, 8, 314, DateTimeKind.Utc).AddTicks(2480),
                             Description = "Fixed-income securities",
                             IsActive = true,
                             IsDelete = false,
@@ -149,7 +152,7 @@ namespace WebApp.Migrations
                         {
                             Id = 3,
                             CreatedBy = 1,
-                            CreatedOn = new DateTime(2025, 4, 17, 10, 29, 44, 406, DateTimeKind.Utc).AddTicks(9550),
+                            CreatedOn = new DateTime(2025, 4, 17, 10, 15, 8, 314, DateTimeKind.Utc).AddTicks(2480),
                             Description = "Pooled investment vehicles",
                             IsActive = true,
                             IsDelete = false,
@@ -576,7 +579,7 @@ namespace WebApp.Migrations
 
                     b.Property<string>("Role")
                         .IsRequired()
-                        .HasColumnType("varchar(100)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("varchar(1000)");
@@ -604,23 +607,23 @@ namespace WebApp.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "2f68470c-b28f-499d-a51d-760b541ecc50",
+                            ConcurrencyStamp = "e78bb8ab-0563-4a6f-b5cb-efa92b4395c0",
                             CreatedBy = "System",
-                            CreatedDate = new DateTime(2025, 4, 17, 10, 29, 44, 406, DateTimeKind.Utc).AddTicks(9550),
+                            CreatedDate = new DateTime(2025, 4, 17, 10, 15, 8, 314, DateTimeKind.Utc).AddTicks(2480),
                             Email = "admin@itracker.com",
                             EmailConfirmed = true,
                             FirstName = "Admin",
                             IsActive = true,
                             Language = "en",
                             LastModifiedBy = "",
-                            LastModifiedDate = new DateTime(2025, 4, 17, 10, 29, 44, 406, DateTimeKind.Utc).AddTicks(9550),
+                            LastModifiedDate = new DateTime(2025, 4, 17, 10, 15, 8, 314, DateTimeKind.Utc).AddTicks(2480),
                             LastName = "User",
                             LockoutEnabled = true,
                             NormalizedEmail = "ADMIN@ITRACKER.COM",
                             NormalizedUserName = "ADMIN@ITRACKER.COM",
                             PhoneNumberConfirmed = false,
                             Role = "User",
-                            SecurityStamp = "77f19d9a-dfd6-43ca-8a05-4462c34790ab",
+                            SecurityStamp = "7ea232ab-fedd-45f6-96a2-ccd9f66f5837",
                             TwoFactorEnabled = false,
                             UserName = "admin@itracker.com"
                         });

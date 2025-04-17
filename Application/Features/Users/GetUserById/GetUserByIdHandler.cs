@@ -44,7 +44,7 @@ public class GetUserByIdHandler : IRequestHandler<GetUserByIdRequest, Result<Use
             _logger.LogInformation("Fetching user with ID: {Id}", request.Id);
             
             var result = await _context.Users.AsNoTracking()
-                 .Where(u => u.IsActive == true && u.IsDelete == false)
+                 .Where(u => u.IsDelete == false)
                  .FirstOrDefaultAsync(u => u.Id == request.Id, cancellationToken: cancellationToken);
 
             if (result == null)

@@ -1,136 +1,97 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Threading.Tasks;
-using Infrastructure.Identity;
+using Domain.Entities;
+using Application.Abstractions.Services;
+using Microsoft.Extensions.Logging;
 
 namespace WebApp.Controllers;
 
-[Authorize(Roles = "Admin")]
-[Route("UserManagement")]
+[Authorize(Roles = "Administrator")]
 public class UserManagementController : Controller
 {
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly RoleManager<IdentityRole> _roleManager;
+    private readonly ILogger<UserManagementController> _logger;
 
     public UserManagementController(
         UserManager<ApplicationUser> userManager,
-        RoleManager<IdentityRole> roleManager)
+        RoleManager<IdentityRole> roleManager,
+        ILogger<UserManagementController> logger)
     {
         _userManager = userManager;
         _roleManager = roleManager;
+        _logger = logger;
     }
 
-    // GET: /UserManagement
-    [HttpGet]
-    [Route("")]
-    [Route("Index")]
     public async Task<IActionResult> Index()
     {
-        try
-        {
-            var users = await _userManager.Users.ToListAsync();
-            var userViewModels = new List<UserViewModel>();
+        var users = await _userManager.Users.ToListAsync();
+        var userViewModels = new List<UserViewModel>();
 
-            foreach (var user in users)
+        foreach (var user in users)
+        {
+            var roles = await _userManager.GetRolesAsync(user);
+            userViewModels.Add(new UserViewModel
             {
-                var roles = await _userManager.GetRolesAsync(user);
-                var userViewModel = new UserViewModel
-                {
-                    Id = user.Id,
-                    Email = user.Email,
-                    FirstName = user.FirstName,
-                    LastName = user.LastName,
-                    PhoneNumber = user.PhoneNumber,
-                    IsActive = user.IsActive,
-                    CreatedDate = user.CreatedDate,
-                    Role = roles.FirstOrDefault() ?? "User" // Default to "User" if no role is assigned
-                };
-
-                userViewModels.Add(userViewModel);
-            }
-
-            return View(userViewModels);
+                Id = user.Id,
+                UserName = user.UserName,
+                Email = user.Email,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                IsActive = user.IsActive,
+                CreatedDate = user.CreatedDate
+            });
         }
-        catch (Exception ex)
-        {
-            TempData["ErrorMessage"] = $"An error occurred while retrieving users: {ex.Message}";
-            return View(new List<UserViewModel>());
-        }
+
+        return View(userViewModels);
     }
 
-    // GET: /UserManagement/Create
-    [HttpGet]
-    [Route("Create")]
     public IActionResult Create()
     {
-        return View();
+        return View(new CreateUserViewModel());
     }
 
-    // POST: /UserManagement/Create
     [HttpPost]
-    [Route("Create")]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(CreateUserViewModel model)
     {
         if (ModelState.IsValid)
         {
-            try
+            var user = new ApplicationUser
             {
-                var existingUser = await _userManager.FindByEmailAsync(model.Email);
-                if (existingUser != null)
-                {
-                    ModelState.AddModelError(string.Empty, "A user with this email already exists.");
-                    return View(model);
-                }
+                UserName = model.UserName,
+                Email = model.Email,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                CreatedDate = DateTime.UtcNow,
+                CreatedBy = User.Identity?.Name ?? "System",
+                IsActive = true,
+                Role = model.Role
+            };
 
-                var user = new ApplicationUser
-                {
-                    UserName = model.Email,
-                    Email = model.Email,
-                    FirstName = model.FirstName,
-                    LastName = model.LastName,
-                    EmailConfirmed = true,
-                    IsActive = true,
-                    CreatedDate = DateTime.UtcNow,
-                    CreatedBy = User.Identity?.Name ?? "System"
-                };
+            var result = await _userManager.CreateAsync(user, model.Password);
 
-                var result = await _userManager.CreateAsync(user, model.Password);
-
-                if (result.Succeeded)
-                {
-                    // Assign a default role if none is selected
-                    string roleToAssign = !string.IsNullOrEmpty(model.Role) 
-                        ? model.Role 
-                        : "User"; // Default role
-                    
-                    await _userManager.AddToRoleAsync(user, roleToAssign);
-
-                    TempData["SuccessMessage"] = "User created successfully!";
-                    return RedirectToAction(nameof(Index));
-                }
-
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError(string.Empty, error.Description);
-                }
+            if (result.Succeeded)
+            {
+                _logger.LogInformation("User created a new account with password.");
+                return RedirectToAction(nameof(Index));
             }
-            catch (Exception ex)
+
+            foreach (var error in result.Errors)
             {
-                ModelState.AddModelError(string.Empty, $"An error occurred: {ex.Message}");
+                ModelState.AddModelError(string.Empty, error.Description);
             }
         }
 
         return View(model);
     }
 
-    // GET: /UserManagement/Edit/5
-    [HttpGet]
-    [Route("Edit/{id}")]
     public async Task<IActionResult> Edit(string id)
     {
         if (string.IsNullOrEmpty(id))
@@ -144,25 +105,23 @@ public class UserManagementController : Controller
             return NotFound();
         }
 
-        var roles = await _userManager.GetRolesAsync(user);
-        var editUserViewModel = new EditUserViewModel
+        var model = new UserViewModel
         {
             Id = user.Id,
+            UserName = user.UserName,
             Email = user.Email,
             FirstName = user.FirstName,
             LastName = user.LastName,
             IsActive = user.IsActive,
-            Role = roles.FirstOrDefault()
+            Role = user.Role
         };
 
-        return View(editUserViewModel);
+        return View(model);
     }
 
-    // POST: /UserManagement/Edit
     [HttpPost]
-    [Route("Edit/{id}")]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(string id, EditUserViewModel model)
+    public async Task<IActionResult> Edit(string id, UserViewModel model)
     {
         if (id != model.Id)
         {
@@ -171,74 +130,35 @@ public class UserManagementController : Controller
 
         if (ModelState.IsValid)
         {
-            try
+            var user = await _userManager.FindByIdAsync(id);
+            if (user == null)
             {
-                var user = await _userManager.FindByIdAsync(id);
-                if (user == null)
-                {
-                    return NotFound();
-                }
-
-                user.Email = model.Email;
-                user.UserName = model.Email;
-                user.FirstName = model.FirstName;
-                user.LastName = model.LastName;
-                user.IsActive = model.IsActive;
-                user.LastModifiedBy = User.Identity?.Name ?? "System";
-                user.LastModifiedDate = DateTime.UtcNow;
-
-                var result = await _userManager.UpdateAsync(user);
-
-                if (result.Succeeded)
-                {
-                    // If a new password is provided, update it
-                    if (!string.IsNullOrWhiteSpace(model.NewPassword))
-                    {
-                        var token = await _userManager.GeneratePasswordResetTokenAsync(user);
-                        var passwordResult = await _userManager.ResetPasswordAsync(user, token, model.NewPassword);
-                        
-                        if (!passwordResult.Succeeded)
-                        {
-                            foreach (var error in passwordResult.Errors)
-                            {
-                                ModelState.AddModelError(string.Empty, error.Description);
-                            }
-                            return View(model);
-                        }
-                    }
-
-                    // Update roles
-                    var currentRoles = await _userManager.GetRolesAsync(user);
-                    await _userManager.RemoveFromRolesAsync(user, currentRoles);
-                    
-                    // Assign a default role if none is selected
-                    string roleToAssign = !string.IsNullOrEmpty(model.Role) 
-                        ? model.Role 
-                        : "User"; // Default role
-                    
-                    await _userManager.AddToRoleAsync(user, roleToAssign);
-
-                    TempData["SuccessMessage"] = "User updated successfully!";
-                    return RedirectToAction(nameof(Index));
-                }
-
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError(string.Empty, error.Description);
-                }
+                return NotFound();
             }
-            catch (Exception ex)
+
+            user.UserName = model.UserName;
+            user.Email = model.Email;
+            user.FirstName = model.FirstName;
+            user.LastName = model.LastName;
+            user.IsActive = model.IsActive;
+            user.Role = model.Role;
+
+            var result = await _userManager.UpdateAsync(user);
+            if (result.Succeeded)
             {
-                ModelState.AddModelError(string.Empty, $"An error occurred: {ex.Message}");
+                _logger.LogInformation("User updated successfully.");
+                return RedirectToAction(nameof(Index));
+            }
+
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError(string.Empty, error.Description);
             }
         }
 
         return View(model);
     }
 
-    // GET: /UserManagement/Delete/5
-    [HttpGet]
-    [Route("Delete/{id}")]
     public async Task<IActionResult> Delete(string id)
     {
         if (string.IsNullOrEmpty(id))
@@ -252,23 +172,20 @@ public class UserManagementController : Controller
             return NotFound();
         }
 
-        var roles = await _userManager.GetRolesAsync(user);
-        var userViewModel = new UserViewModel
+        var model = new UserViewModel
         {
             Id = user.Id,
+            UserName = user.UserName,
             Email = user.Email,
             FirstName = user.FirstName,
             LastName = user.LastName,
-            Role = roles.FirstOrDefault() ?? "No Role"
+            IsActive = user.IsActive
         };
 
-        return View(userViewModel);
+        return View(model);
     }
 
-    // POST: /UserManagement/Delete/5
-    [HttpPost]
-    [Route("Delete/{id}")]
-    [ActionName("Delete")]
+    [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(string id)
     {
@@ -278,32 +195,29 @@ public class UserManagementController : Controller
             return NotFound();
         }
 
-        // Don't allow deleting the current user
-        if (User.Identity?.Name == user.Email)
+        var result = await _userManager.DeleteAsync(user);
+        if (result.Succeeded)
         {
-            TempData["ErrorMessage"] = "You cannot delete your own account!";
+            _logger.LogInformation("User deleted successfully.");
             return RedirectToAction(nameof(Index));
         }
 
-        try
+        foreach (var error in result.Errors)
         {
-            // Alternative: instead of deleting, just deactivate
-            user.IsActive = false;
-            await _userManager.UpdateAsync(user);
+            ModelState.AddModelError(string.Empty, error.Description);
+        }
 
-            TempData["SuccessMessage"] = "User deactivated successfully!";
-            return RedirectToAction(nameof(Index));
-        }
-        catch (Exception ex)
+        return View("Delete", new UserViewModel
         {
-            TempData["ErrorMessage"] = $"An error occurred: {ex.Message}";
-            return RedirectToAction(nameof(Index));
-        }
+            Id = user.Id,
+            UserName = user.UserName,
+            Email = user.Email,
+            FirstName = user.FirstName,
+            LastName = user.LastName,
+            IsActive = user.IsActive
+        });
     }
 
-    // GET: /UserManagement/Activate/5
-    [HttpGet]
-    [Route("Activate/{id}")]
     public async Task<IActionResult> Activate(string id)
     {
         if (string.IsNullOrEmpty(id))
@@ -317,122 +231,27 @@ public class UserManagementController : Controller
             return NotFound();
         }
 
-        var roles = await _userManager.GetRolesAsync(user);
-        var userViewModel = new UserViewModel
+        user.IsActive = true;
+        var result = await _userManager.UpdateAsync(user);
+        if (result.Succeeded)
+        {
+            _logger.LogInformation("User activated successfully.");
+            return RedirectToAction(nameof(Index));
+        }
+
+        foreach (var error in result.Errors)
+        {
+            ModelState.AddModelError(string.Empty, error.Description);
+        }
+
+        return View("Edit", new UserViewModel
         {
             Id = user.Id,
+            UserName = user.UserName,
             Email = user.Email,
             FirstName = user.FirstName,
             LastName = user.LastName,
-            Role = roles.FirstOrDefault() ?? "No Role"
-        };
-
-        return View(userViewModel);
+            IsActive = user.IsActive
+        });
     }
-
-    // POST: /UserManagement/Activate/5
-    [HttpPost]
-    [Route("Activate/{id}")]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> ActivateConfirmed(string id)
-    {
-        var user = await _userManager.FindByIdAsync(id);
-        if (user == null)
-        {
-            return NotFound();
-        }
-
-        try
-        {
-            user.IsActive = true;
-            await _userManager.UpdateAsync(user);
-
-            TempData["SuccessMessage"] = "User activated successfully!";
-            return RedirectToAction(nameof(Index));
-        }
-        catch (Exception ex)
-        {
-            TempData["ErrorMessage"] = $"An error occurred: {ex.Message}";
-            return RedirectToAction(nameof(Index));
-        }
-    }
-}
-
-public class UserViewModel
-{
-    public string Id { get; set; }
-    
-    [Display(Name = "Email Address")]
-    public string Email { get; set; }
-    
-    [Display(Name = "First Name")]
-    public string FirstName { get; set; }
-    
-    [Display(Name = "Last Name")]
-    public string LastName { get; set; }
-    
-    [Display(Name = "Phone Number")]
-    public string PhoneNumber { get; set; }
-    
-    [Display(Name = "Active")]
-    public bool IsActive { get; set; }
-    
-    [Display(Name = "Created Date")]
-    public DateTime CreatedDate { get; set; }
-    
-    [Display(Name = "Role")]
-    public string Role { get; set; }
-}
-
-public class CreateUserViewModel
-{
-    [Required(ErrorMessage = "Email is required")]
-    [EmailAddress(ErrorMessage = "Invalid email address")]
-    [Display(Name = "Email Address")]
-    public string Email { get; set; }
-    
-    [Required(ErrorMessage = "First name is required")]
-    [Display(Name = "First Name")]
-    public string FirstName { get; set; }
-    
-    [Required(ErrorMessage = "Last name is required")]
-    [Display(Name = "Last Name")]
-    public string LastName { get; set; }
-    
-    [Required(ErrorMessage = "Password is required")]
-    [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
-    [DataType(DataType.Password)]
-    [Display(Name = "Password")]
-    public string Password { get; set; }
-    
-    [Display(Name = "Role")]
-    public string Role { get; set; }
-}
-
-public class EditUserViewModel
-{
-    public string Id { get; set; }
-    
-    [Display(Name = "Email Address")]
-    [EmailAddress(ErrorMessage = "Invalid email address")]
-    public string Email { get; set; }
-    
-    [Required(ErrorMessage = "First name is required")]
-    [Display(Name = "First Name")]
-    public string FirstName { get; set; }
-    
-    [Required(ErrorMessage = "Last name is required")]
-    [Display(Name = "Last Name")]
-    public string LastName { get; set; }
-    
-    [Display(Name = "Active")]
-    public bool IsActive { get; set; }
-    
-    [Display(Name = "Role")]
-    public string Role { get; set; }
-    
-    [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
-    [DataType(DataType.Password)]
-    [Display(Name = "New Password (optional)")]
-    public string NewPassword { get; set; }
 } 

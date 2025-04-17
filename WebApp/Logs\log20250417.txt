@@ -1,0 +1,503 @@
+[12:00:00 INF] Ensuring database is created... <s:Program>
+[12:00:01 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[12:00:01 INF] Database initialization completed. <s:Program>
+[12:00:01 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[12:00:01 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[12:00:01 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[12:00:01 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[12:00:01 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[12:00:01 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[12:00:01 INF] Application settings initialized. <s:Program>
+[12:00:01 INF] Database Provider: SqliteConnection, Connection: 18 <s:Program>
+[12:00:01 INF] Ensuring database is created... <s:Program>
+[12:00:01 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[12:00:01 INF] Database initialization completed. <s:Program>
+[12:00:01 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[12:00:01 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[12:00:01 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[12:00:01 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[12:00:01 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[12:00:05 INF] Attempting login for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
+[12:00:05 INF] Login successful for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
+[12:00:05 INF] Attempting to redirect to Portfolios/Index <s:WebApp.Pages.Auth.LoginModel>
+[12:00:05 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[12:00:34 INF] Investment creation started <s:WebApp.Pages.Investments.CreateModel>
+[12:00:34 INF] ModelState.IsValid: true <s:WebApp.Pages.Investments.CreateModel>
+[12:00:34 INF] Investment data: {"PortfolioId":18,"Name":"Test Investment","Symbol":"","CategoryId":2,"TotalInvestment":4000,"CurrentValue":5000,"PurchaseDate":"2025-04-17T00:00:00","PurchasePrice":4000,"Notes":null} <s:WebApp.Pages.Investments.CreateModel>
+[12:00:34 INF] Sending create investment request to mediator <s:WebApp.Pages.Investments.CreateModel>
+[12:00:34 INF] Starting to handle CreateInvestmentRequest for portfolio 18 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[12:00:34 INF] Found portfolio: 18, Test 3 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[12:00:34 INF] Found category: 2, Bonds <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[12:00:34 INF] Created new investment object with Name: Test Investment, Symbol: Test-Investment, TotalInvestment: 4000, CurrentValue: 5000 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[12:00:34 INF] Added investment to context, saving changes... <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[12:00:34 INF] Investment saved with ID: 79 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[12:00:34 INF] Updating portfolio totals... <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[12:00:34 INF] Updated portfolio totals: TotalValue: 5000, TotalInvestment: 4000 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[12:00:34 INF] Portfolio totals saved successfully <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[12:00:34 INF] Mediator result: true, No errors <s:WebApp.Pages.Investments.CreateModel>
+[12:00:34 INF] Investment created successfully with ID: 79 <s:WebApp.Pages.Investments.CreateModel>
+[12:00:52 INF] Retrieving all users <s:WebApp.Pages.Users.IndexModel>
+[12:00:52 INF] Fetching all users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[12:00:52 INF] Found 3 identity users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[12:00:52 INF] Successfully retrieved 3 users <s:WebApp.Pages.Users.IndexModel>
+[12:01:04 INF] Retrieving all users <s:WebApp.Pages.Users.IndexModel>
+[12:01:04 INF] Fetching all users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[12:01:04 INF] Found 3 identity users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[12:01:04 INF] Successfully retrieved 3 users <s:WebApp.Pages.Users.IndexModel>
+[12:01:08 INF] Retrieving user with ID: 1 <s:WebApp.Pages.Users.EditModel>
+[12:01:08 INF] Fetching user with ID: 1 <s:Application.Features.Users.GetUserById.GetUserByIdHandler>
+[12:01:22 INF] Updating user: 1 <s:WebApp.Pages.Users.EditModel>
+[12:01:22 INF] User updated successfully: 1 <s:WebApp.Pages.Users.EditModel>
+[12:01:22 INF] Retrieving all users <s:WebApp.Pages.Users.IndexModel>
+[12:01:22 INF] Fetching all users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[12:01:22 INF] Found 3 identity users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[12:01:22 INF] Successfully retrieved 3 users <s:WebApp.Pages.Users.IndexModel>
+[12:01:24 INF] Retrieving user with ID: 1 <s:WebApp.Pages.Users.EditModel>
+[12:01:24 INF] Fetching user with ID: 1 <s:Application.Features.Users.GetUserById.GetUserByIdHandler>
+[12:01:24 WRN] User with ID 1 not found <s:Application.Features.Users.GetUserById.GetUserByIdHandler>
+[12:01:24 WRN] User with ID 1 not found <s:WebApp.Pages.Users.EditModel>
+[12:01:26 INF] Retrieving user with ID: 1 <s:WebApp.Pages.Users.EditModel>
+[12:01:26 INF] Fetching user with ID: 1 <s:Application.Features.Users.GetUserById.GetUserByIdHandler>
+[12:01:26 WRN] User with ID 1 not found <s:Application.Features.Users.GetUserById.GetUserByIdHandler>
+[12:01:26 WRN] User with ID 1 not found <s:WebApp.Pages.Users.EditModel>
+[12:01:27 INF] Retrieving user with ID: 1 <s:WebApp.Pages.Users.EditModel>
+[12:01:27 INF] Fetching user with ID: 1 <s:Application.Features.Users.GetUserById.GetUserByIdHandler>
+[12:01:27 WRN] User with ID 1 not found <s:Application.Features.Users.GetUserById.GetUserByIdHandler>
+[12:01:27 WRN] User with ID 1 not found <s:WebApp.Pages.Users.EditModel>
+[12:01:29 INF] Retrieving all users <s:WebApp.Pages.Users.IndexModel>
+[12:01:29 INF] Fetching all users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[12:01:29 INF] Found 3 identity users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[12:01:29 INF] Successfully retrieved 3 users <s:WebApp.Pages.Users.IndexModel>
+[12:01:33 INF] Retrieving user with ID: 1 <s:WebApp.Pages.Users.EditModel>
+[12:01:33 INF] Fetching user with ID: 1 <s:Application.Features.Users.GetUserById.GetUserByIdHandler>
+[12:01:33 WRN] User with ID 1 not found <s:Application.Features.Users.GetUserById.GetUserByIdHandler>
+[12:01:33 WRN] User with ID 1 not found <s:WebApp.Pages.Users.EditModel>
+[12:01:34 INF] Retrieving user with ID: 1 <s:WebApp.Pages.Users.EditModel>
+[12:01:34 INF] Fetching user with ID: 1 <s:Application.Features.Users.GetUserById.GetUserByIdHandler>
+[12:01:34 WRN] User with ID 1 not found <s:Application.Features.Users.GetUserById.GetUserByIdHandler>
+[12:01:34 WRN] User with ID 1 not found <s:WebApp.Pages.Users.EditModel>
+[12:01:36 INF] Retrieving all users <s:WebApp.Pages.Users.IndexModel>
+[12:01:36 INF] Fetching all users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[12:01:36 INF] Found 3 identity users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[12:01:36 INF] Successfully retrieved 3 users <s:WebApp.Pages.Users.IndexModel>
+[12:01:37 INF] Retrieving user with ID: 2 <s:WebApp.Pages.Users.EditModel>
+[12:01:37 INF] Fetching user with ID: 2 <s:Application.Features.Users.GetUserById.GetUserByIdHandler>
+[12:01:40 INF] Retrieving all users <s:WebApp.Pages.Users.IndexModel>
+[12:01:40 INF] Fetching all users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[12:01:40 INF] Found 3 identity users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[12:01:40 INF] Successfully retrieved 3 users <s:WebApp.Pages.Users.IndexModel>
+[12:01:41 INF] Retrieving user with ID: 1 <s:WebApp.Pages.Users.EditModel>
+[12:01:41 INF] Fetching user with ID: 1 <s:Application.Features.Users.GetUserById.GetUserByIdHandler>
+[12:01:41 WRN] User with ID 1 not found <s:Application.Features.Users.GetUserById.GetUserByIdHandler>
+[12:01:41 WRN] User with ID 1 not found <s:WebApp.Pages.Users.EditModel>
+[12:02:13 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[13:42:47 INF] Ensuring database is created... <s:Program>
+[13:42:48 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[13:42:48 INF] Database initialization completed. <s:Program>
+[13:42:48 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[13:42:48 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[13:42:48 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[13:42:48 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[13:42:48 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[13:42:48 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[13:42:48 INF] Application settings initialized. <s:Program>
+[13:42:48 INF] Database Provider: SqliteConnection, Connection: 18 <s:Program>
+[13:42:48 INF] Ensuring database is created... <s:Program>
+[13:42:48 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[13:42:48 INF] Database initialization completed. <s:Program>
+[13:42:48 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[13:42:48 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[13:42:48 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[13:42:48 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[13:42:48 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[13:42:53 INF] Attempting login for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
+[13:42:53 INF] Login successful for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
+[13:42:53 INF] Attempting to redirect to Portfolios/Index <s:WebApp.Pages.Auth.LoginModel>
+[13:42:53 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[13:42:54 INF] Retrieving all users <s:WebApp.Pages.Users.IndexModel>
+[13:42:54 INF] Fetching all users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[13:42:54 INF] Found 3 identity users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[13:42:55 INF] Successfully retrieved 3 users <s:WebApp.Pages.Users.IndexModel>
+[13:42:56 INF] Retrieving user with ID: 1 <s:WebApp.Pages.Users.EditModel>
+[13:42:56 INF] Fetching user with ID: 1 <s:Application.Features.Users.GetUserById.GetUserByIdHandler>
+[13:42:56 WRN] User with ID 1 not found <s:Application.Features.Users.GetUserById.GetUserByIdHandler>
+[13:42:56 WRN] User with ID 1 not found <s:WebApp.Pages.Users.EditModel>
+[13:43:07 INF] Retrieving all users <s:WebApp.Pages.Users.IndexModel>
+[13:43:07 INF] Fetching all users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[13:43:07 INF] Found 3 identity users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[13:43:07 INF] Successfully retrieved 3 users <s:WebApp.Pages.Users.IndexModel>
+[13:43:13 INF] Retrieving user with ID: 1 for deletion <s:WebApp.Pages.Users.DeleteModel>
+[13:43:13 INF] Fetching user with ID: 1 <s:Application.Features.Users.GetUserById.GetUserByIdHandler>
+[13:43:13 WRN] User with ID 1 not found <s:Application.Features.Users.GetUserById.GetUserByIdHandler>
+[13:43:13 WRN] User with ID 1 not found <s:WebApp.Pages.Users.DeleteModel>
+[13:43:19 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[15:58:50 INF] Ensuring database is created... <s:Program>
+[15:58:51 ERR] Failed executing DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?' (Size = 21)], CommandType='"Text"', CommandTimeout='60']
+SELECT "a"."Id", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."CreatedBy", "a"."CreatedDate", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."IsActive", "a"."Language", "a"."LastModifiedBy", "a"."LastModifiedDate", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfileUrl", "a"."Role", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2 <s:Microsoft.EntityFrameworkCore.Database.Command>
+[15:58:51 ERR] An exception occurred while iterating over the results of a query for context type 'Infrastructure.Context.AppDbContext'.
+Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 1: 'no such column: a.Role'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.GetStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync() <s:Microsoft.EntityFrameworkCore.Query>
+Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 1: 'no such column: a.Role'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.GetStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Identity.UserManager`1.FindByEmailAsync(String email)
+   at WebApp.Services.DatabaseInitializer.CreateAdminUserAsync(UserManager`1 userManager) in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Services/DatabaseInitializer.cs:line 63
+   at WebApp.Services.DatabaseInitializer.InitializeAsync() in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Services/DatabaseInitializer.cs:line 34
+[15:58:51 ERR] An error occurred while initializing the database <s:WebApp.Services.DatabaseInitializer>
+Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 1: 'no such column: a.Role'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.GetStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Identity.UserManager`1.FindByEmailAsync(String email)
+   at WebApp.Services.DatabaseInitializer.CreateAdminUserAsync(UserManager`1 userManager) in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Services/DatabaseInitializer.cs:line 63
+   at WebApp.Services.DatabaseInitializer.InitializeAsync() in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Services/DatabaseInitializer.cs:line 34
+   at WebApp.Services.DatabaseInitializer.InitializeAsync() in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Services/DatabaseInitializer.cs:line 36
+   at Program.<Main>$(String[] args) in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Program.cs:line 101
+[15:58:51 ERR] An error occurred during application initialization. <s:Program>
+Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 1: 'no such column: a.Role'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.GetStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Identity.UserManager`1.FindByEmailAsync(String email)
+   at WebApp.Services.DatabaseInitializer.CreateAdminUserAsync(UserManager`1 userManager) in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Services/DatabaseInitializer.cs:line 63
+   at WebApp.Services.DatabaseInitializer.InitializeAsync() in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Services/DatabaseInitializer.cs:line 34
+   at WebApp.Services.DatabaseInitializer.InitializeAsync() in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Services/DatabaseInitializer.cs:line 36
+   at Program.<Main>$(String[] args) in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Program.cs:line 101
+[15:58:51 INF] Database Provider: SqliteConnection, Connection: 18 <s:Program>
+[15:58:51 INF] Ensuring database is created... <s:Program>
+[15:58:51 ERR] Failed executing DbCommand (0ms) [Parameters=[@__normalizedEmail_0='?' (Size = 21)], CommandType='"Text"', CommandTimeout='60']
+SELECT "a"."Id", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."CreatedBy", "a"."CreatedDate", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."IsActive", "a"."Language", "a"."LastModifiedBy", "a"."LastModifiedDate", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfileUrl", "a"."Role", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2 <s:Microsoft.EntityFrameworkCore.Database.Command>
+[15:58:51 ERR] An exception occurred while iterating over the results of a query for context type 'Infrastructure.Context.AppDbContext'.
+Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 1: 'no such column: a.Role'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.GetStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync() <s:Microsoft.EntityFrameworkCore.Query>
+Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 1: 'no such column: a.Role'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.GetStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Identity.UserManager`1.FindByEmailAsync(String email)
+   at WebApp.Services.DatabaseInitializer.CreateAdminUserAsync(UserManager`1 userManager) in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Services/DatabaseInitializer.cs:line 63
+   at WebApp.Services.DatabaseInitializer.InitializeAsync() in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Services/DatabaseInitializer.cs:line 34
+   at WebApp.Services.DatabaseInitializer.InitializeAsync() in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Services/DatabaseInitializer.cs:line 36
+   at Program.<Main>$(String[] args) in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Program.cs:line 161
+[15:58:51 ERR] An error occurred while initializing the database <s:WebApp.Services.DatabaseInitializer>
+Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 1: 'no such column: a.Role'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.GetStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Identity.UserManager`1.FindByEmailAsync(String email)
+   at WebApp.Services.DatabaseInitializer.CreateAdminUserAsync(UserManager`1 userManager) in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Services/DatabaseInitializer.cs:line 63
+   at WebApp.Services.DatabaseInitializer.InitializeAsync() in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Services/DatabaseInitializer.cs:line 34
+   at WebApp.Services.DatabaseInitializer.InitializeAsync() in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Services/DatabaseInitializer.cs:line 36
+   at Program.<Main>$(String[] args) in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Program.cs:line 161
+   at Program.<Main>(String[] args)
+[15:59:50 INF] Applying migration '20250417101508_AddRoleToApplicationUser'. <s:Microsoft.EntityFrameworkCore.Migrations>
+[15:59:50 INF] Applying migration '20250417102944_AddRoleColumnToApplicationUser'. <s:Microsoft.EntityFrameworkCore.Migrations>
+[15:59:50 WRN] An operation of type 'UpdateDataOperation' will be attempted while a rebuild of table 'AspNetUsers' is pending. The database may not be in an expected state. Review the SQL generated by this migration to help diagnose any failures. Consider moving these operations to a subsequent migration. <s:Microsoft.EntityFrameworkCore.Migrations>
+[16:00:32 INF] Ensuring database is created... <s:Program>
+[16:00:33 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[16:00:33 INF] Database initialization completed. <s:Program>
+[16:00:33 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[16:00:33 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[16:00:33 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[16:00:33 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[16:00:33 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[16:00:33 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[16:00:33 INF] Application settings initialized. <s:Program>
+[16:00:33 INF] Database Provider: SqliteConnection, Connection: 18 <s:Program>
+[16:00:33 INF] Ensuring database is created... <s:Program>
+[16:00:33 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[16:00:33 INF] Database initialization completed. <s:Program>
+[16:00:33 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[16:00:33 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[16:00:33 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[16:00:33 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[16:00:33 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[16:00:40 INF] Attempting login for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
+[16:00:40 INF] Login successful for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
+[16:00:40 INF] Attempting to redirect to Portfolios/Index <s:WebApp.Pages.Auth.LoginModel>
+[16:00:40 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[16:00:42 INF] Retrieving all users <s:WebApp.Pages.Users.IndexModel>
+[16:00:42 INF] Fetching all users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[16:00:42 INF] Found 3 identity users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[16:00:42 INF] Successfully retrieved 3 users <s:WebApp.Pages.Users.IndexModel>
+[16:00:43 INF] Retrieving user with ID: 1 <s:WebApp.Pages.Users.EditModel>
+[16:00:43 INF] Fetching user with ID: 1 <s:Application.Features.Users.GetUserById.GetUserByIdHandler>
+[16:00:43 WRN] User with ID 1 not found <s:Application.Features.Users.GetUserById.GetUserByIdHandler>
+[16:00:43 WRN] User with ID 1 not found <s:WebApp.Pages.Users.EditModel>
+[16:00:45 INF] Retrieving all users <s:WebApp.Pages.Users.IndexModel>
+[16:00:45 INF] Fetching all users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[16:00:45 INF] Found 3 identity users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[16:00:45 INF] Successfully retrieved 3 users <s:WebApp.Pages.Users.IndexModel>
+[16:00:49 INF] Retrieving user with ID: 2 <s:WebApp.Pages.Users.EditModel>
+[16:00:49 INF] Fetching user with ID: 2 <s:Application.Features.Users.GetUserById.GetUserByIdHandler>
+[16:01:12 INF] Retrieving all users <s:WebApp.Pages.Users.IndexModel>
+[16:01:12 INF] Fetching all users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[16:01:12 INF] Found 3 identity users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[16:01:12 INF] Successfully retrieved 3 users <s:WebApp.Pages.Users.IndexModel>
+[16:01:45 INF] Creating new user: TestDelete@itrackerApp.com <s:WebApp.Pages.Users.CreateModel>
+[16:01:45 INF] Creating user with email: TestDelete@itrackerApp.com <s:Application.Features.Users.CreateUser.CreateUserHandler>
+[16:01:45 INF] User not found, proceeding with creation <s:Application.Features.Users.CreateUser.CreateUserHandler>
+[16:01:45 INF] Calling CreateAsync for user TestDelete@itrackerApp.com <s:Application.Features.Users.CreateUser.CreateUserHandler>
+[16:01:45 INF] CreateAsync result: Succeeded <s:Application.Features.Users.CreateUser.CreateUserHandler>
+[16:01:45 INF] User created successfully <s:Application.Features.Users.CreateUser.CreateUserHandler>
+[16:01:45 INF] Role User assigned to user TestDelete@itrackerApp.com <s:Application.Features.Users.CreateUser.CreateUserHandler>
+[16:01:45 INF] User created successfully: TestDelete@itrackerApp.com <s:WebApp.Pages.Users.CreateModel>
+[16:01:45 INF] Retrieving all users <s:WebApp.Pages.Users.IndexModel>
+[16:01:45 INF] Fetching all users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[16:01:45 INF] Found 4 identity users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[16:01:45 INF] Creating new User record for identity user TestDelete@itrackerApp.com <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[16:01:45 INF] Adding 1 new user records to Users table <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[16:01:45 INF] Successfully retrieved 4 users <s:WebApp.Pages.Users.IndexModel>
+[16:01:52 INF] Retrieving user with ID: 3 <s:WebApp.Pages.Users.EditModel>
+[16:01:52 INF] Fetching user with ID: 3 <s:Application.Features.Users.GetUserById.GetUserByIdHandler>
+[16:01:58 INF] Updating user: 3 <s:WebApp.Pages.Users.EditModel>
+[16:01:58 INF] User updated successfully: 3 <s:WebApp.Pages.Users.EditModel>
+[16:01:58 INF] Retrieving all users <s:WebApp.Pages.Users.IndexModel>
+[16:01:58 INF] Fetching all users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[16:01:58 INF] Found 4 identity users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[16:01:58 INF] Successfully retrieved 4 users <s:WebApp.Pages.Users.IndexModel>
+[16:02:03 INF] Retrieving user with ID: 4 <s:WebApp.Pages.Users.EditModel>
+[16:02:03 INF] Fetching user with ID: 4 <s:Application.Features.Users.GetUserById.GetUserByIdHandler>
+[16:02:09 INF] Retrieving all users <s:WebApp.Pages.Users.IndexModel>
+[16:02:09 INF] Fetching all users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[16:02:09 INF] Found 4 identity users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[16:02:09 INF] Successfully retrieved 4 users <s:WebApp.Pages.Users.IndexModel>
+[16:02:14 INF] Retrieving user with ID: 4 <s:WebApp.Pages.Users.EditModel>
+[16:02:14 INF] Fetching user with ID: 4 <s:Application.Features.Users.GetUserById.GetUserByIdHandler>
+[16:02:16 INF] Retrieving all users <s:WebApp.Pages.Users.IndexModel>
+[16:02:16 INF] Fetching all users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[16:02:16 INF] Found 4 identity users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[16:02:16 INF] Successfully retrieved 4 users <s:WebApp.Pages.Users.IndexModel>
+[16:02:17 INF] Retrieving user with ID: 3 <s:WebApp.Pages.Users.EditModel>
+[16:02:17 INF] Fetching user with ID: 3 <s:Application.Features.Users.GetUserById.GetUserByIdHandler>
+[16:02:21 INF] Updating user: 3 <s:WebApp.Pages.Users.EditModel>
+[16:02:21 INF] User updated successfully: 3 <s:WebApp.Pages.Users.EditModel>
+[16:02:21 INF] Retrieving all users <s:WebApp.Pages.Users.IndexModel>
+[16:02:21 INF] Fetching all users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[16:02:21 INF] Found 4 identity users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[16:02:21 INF] Successfully retrieved 4 users <s:WebApp.Pages.Users.IndexModel>
+[16:02:26 INF] Retrieving user with ID: 4 for deletion <s:WebApp.Pages.Users.DeleteModel>
+[16:02:26 INF] Fetching user with ID: 4 <s:Application.Features.Users.GetUserById.GetUserByIdHandler>
+[16:02:30 INF] Deleting user with ID: 4 <s:WebApp.Pages.Users.DeleteModel>
+[16:02:30 INF] User with ID 4 deleted successfully <s:WebApp.Pages.Users.DeleteModel>
+[16:02:30 INF] Retrieving all users <s:WebApp.Pages.Users.IndexModel>
+[16:02:30 INF] Fetching all users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[16:02:30 INF] Found 3 identity users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[16:02:30 INF] Successfully retrieved 3 users <s:WebApp.Pages.Users.IndexModel>
+[16:02:51 INF] Retrieving user with ID: 2 <s:WebApp.Pages.Users.EditModel>
+[16:02:51 INF] Fetching user with ID: 2 <s:Application.Features.Users.GetUserById.GetUserByIdHandler>
+[16:02:53 INF] Retrieving all users <s:WebApp.Pages.Users.IndexModel>
+[16:02:53 INF] Fetching all users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[16:02:53 INF] Found 3 identity users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[16:02:53 INF] Successfully retrieved 3 users <s:WebApp.Pages.Users.IndexModel>
+[16:02:55 INF] Retrieving user with ID: 3 <s:WebApp.Pages.Users.EditModel>
+[16:02:55 INF] Fetching user with ID: 3 <s:Application.Features.Users.GetUserById.GetUserByIdHandler>
+[16:02:58 INF] Updating user: 3 <s:WebApp.Pages.Users.EditModel>
+[16:02:58 INF] User updated successfully: 3 <s:WebApp.Pages.Users.EditModel>
+[16:02:58 INF] Retrieving all users <s:WebApp.Pages.Users.IndexModel>
+[16:02:58 INF] Fetching all users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[16:02:58 INF] Found 3 identity users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[16:02:58 INF] Successfully retrieved 3 users <s:WebApp.Pages.Users.IndexModel>
+[16:03:02 INF] Retrieving user with ID: 3 <s:WebApp.Pages.Users.EditModel>
+[16:03:02 INF] Fetching user with ID: 3 <s:Application.Features.Users.GetUserById.GetUserByIdHandler>
+[16:03:02 WRN] User with ID 3 not found <s:Application.Features.Users.GetUserById.GetUserByIdHandler>
+[16:03:02 WRN] User with ID 3 not found <s:WebApp.Pages.Users.EditModel>
+[16:03:50 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[16:04:13 INF] Ensuring database is created... <s:Program>
+[16:04:14 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[16:04:14 INF] Database initialization completed. <s:Program>
+[16:04:14 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[16:04:14 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[16:04:14 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[16:04:14 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[16:04:14 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[16:04:14 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[16:04:14 INF] Application settings initialized. <s:Program>
+[16:04:14 INF] Database Provider: SqliteConnection, Connection: 18 <s:Program>
+[16:04:14 INF] Ensuring database is created... <s:Program>
+[16:04:14 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[16:04:14 INF] Database initialization completed. <s:Program>
+[16:04:14 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[16:04:14 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[16:04:14 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[16:04:14 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[16:04:14 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[16:04:16 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[16:04:18 INF] Retrieving all users <s:WebApp.Pages.Users.IndexModel>
+[16:04:18 INF] Fetching all users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[16:04:18 INF] Found 3 identity users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[16:04:19 INF] Successfully retrieved 3 users <s:WebApp.Pages.Users.IndexModel>
+[16:04:22 INF] Retrieving user with ID: 3 <s:WebApp.Pages.Users.EditModel>
+[16:04:22 INF] Fetching user with ID: 3 <s:Application.Features.Users.GetUserById.GetUserByIdHandler>
+[16:04:27 INF] Updating user: 3 <s:WebApp.Pages.Users.EditModel>
+[16:04:27 INF] User updated successfully: 3 <s:WebApp.Pages.Users.EditModel>
+[16:04:27 INF] Retrieving all users <s:WebApp.Pages.Users.IndexModel>
+[16:04:27 INF] Fetching all users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[16:04:27 INF] Found 3 identity users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[16:04:27 INF] Successfully retrieved 3 users <s:WebApp.Pages.Users.IndexModel>
+[16:04:30 INF] Retrieving user with ID: 1 <s:WebApp.Pages.Users.EditModel>
+[16:04:30 INF] Fetching user with ID: 1 <s:Application.Features.Users.GetUserById.GetUserByIdHandler>
+[16:04:37 INF] Updating user: 1 <s:WebApp.Pages.Users.EditModel>
+[16:04:37 INF] User updated successfully: 1 <s:WebApp.Pages.Users.EditModel>
+[16:04:37 INF] Retrieving all users <s:WebApp.Pages.Users.IndexModel>
+[16:04:37 INF] Fetching all users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[16:04:37 INF] Found 3 identity users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[16:04:37 INF] Successfully retrieved 3 users <s:WebApp.Pages.Users.IndexModel>
+[16:04:42 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[16:05:45 INF] Ensuring database is created... <s:Program>
+[16:05:45 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[16:05:45 INF] Database initialization completed. <s:Program>
+[16:05:45 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[16:05:45 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[16:05:45 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[16:05:45 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[16:05:45 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[16:05:45 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[16:05:45 INF] Application settings initialized. <s:Program>
+[16:05:45 INF] Database Provider: SqliteConnection, Connection: 18 <s:Program>
+[16:05:45 INF] Ensuring database is created... <s:Program>
+[16:05:45 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[16:05:45 INF] Database initialization completed. <s:Program>
+[16:05:46 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[16:05:46 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[16:05:46 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[16:05:46 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[16:05:46 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[16:05:48 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[16:05:50 INF] Retrieving all users <s:WebApp.Pages.Users.IndexModel>
+[16:05:50 INF] Fetching all users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[16:05:50 INF] Found 3 identity users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[16:05:50 INF] Successfully retrieved 3 users <s:WebApp.Pages.Users.IndexModel>
+[16:05:53 INF] Retrieving user with ID: 3 <s:WebApp.Pages.Users.EditModel>
+[16:05:53 INF] Fetching user with ID: 3 <s:Application.Features.Users.GetUserById.GetUserByIdHandler>
+[16:05:56 INF] Updating user: 3 <s:WebApp.Pages.Users.EditModel>
+[16:05:56 INF] User updated successfully: 3 <s:WebApp.Pages.Users.EditModel>
+[16:05:56 INF] Retrieving all users <s:WebApp.Pages.Users.IndexModel>
+[16:05:56 INF] Fetching all users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[16:05:56 INF] Found 3 identity users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[16:05:56 INF] Successfully retrieved 3 users <s:WebApp.Pages.Users.IndexModel>
+[16:06:00 INF] Retrieving user with ID: 3 <s:WebApp.Pages.Users.EditModel>
+[16:06:00 INF] Fetching user with ID: 3 <s:Application.Features.Users.GetUserById.GetUserByIdHandler>
+[16:06:02 INF] Retrieving all users <s:WebApp.Pages.Users.IndexModel>
+[16:06:02 INF] Fetching all users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[16:06:02 INF] Found 3 identity users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[16:06:02 INF] Successfully retrieved 3 users <s:WebApp.Pages.Users.IndexModel>
+[16:06:26 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[16:06:43 INF] Ensuring database is created... <s:Program>
+[16:06:44 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[16:06:44 INF] Database initialization completed. <s:Program>
+[16:06:44 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[16:06:44 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[16:06:44 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[16:06:44 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[16:06:44 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[16:06:44 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[16:06:44 INF] Application settings initialized. <s:Program>
+[16:06:44 INF] Database Provider: SqliteConnection, Connection: 18 <s:Program>
+[16:06:44 INF] Ensuring database is created... <s:Program>
+[16:06:44 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[16:06:44 INF] Database initialization completed. <s:Program>
+[16:06:44 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[16:06:44 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[16:06:44 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[16:06:44 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[16:06:44 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[16:06:46 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[16:06:48 INF] Retrieving all users <s:WebApp.Pages.Users.IndexModel>
+[16:06:48 INF] Fetching all users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[16:06:48 INF] Found 3 identity users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[16:06:48 INF] Successfully retrieved 3 users <s:WebApp.Pages.Users.IndexModel>
+[16:06:50 INF] Retrieving user with ID: 3 <s:WebApp.Pages.Users.EditModel>
+[16:06:50 INF] Fetching user with ID: 3 <s:Application.Features.Users.GetUserById.GetUserByIdHandler>
+[16:06:52 INF] Updating user: 3 <s:WebApp.Pages.Users.EditModel>
+[16:06:52 INF] User updated successfully: 3 <s:WebApp.Pages.Users.EditModel>
+[16:06:52 INF] Retrieving all users <s:WebApp.Pages.Users.IndexModel>
+[16:06:52 INF] Fetching all users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[16:06:52 INF] Found 3 identity users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[16:06:52 INF] Successfully retrieved 3 users <s:WebApp.Pages.Users.IndexModel>
+[16:06:54 INF] Retrieving user with ID: 3 <s:WebApp.Pages.Users.EditModel>
+[16:06:54 INF] Fetching user with ID: 3 <s:Application.Features.Users.GetUserById.GetUserByIdHandler>
+[16:06:57 INF] Updating user: 3 <s:WebApp.Pages.Users.EditModel>
+[16:06:57 INF] User updated successfully: 3 <s:WebApp.Pages.Users.EditModel>
+[16:06:57 INF] Retrieving all users <s:WebApp.Pages.Users.IndexModel>
+[16:06:57 INF] Fetching all users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[16:06:57 INF] Found 3 identity users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[16:06:57 INF] Successfully retrieved 3 users <s:WebApp.Pages.Users.IndexModel>
+[16:07:06 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>

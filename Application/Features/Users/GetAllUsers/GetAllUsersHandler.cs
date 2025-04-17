@@ -89,7 +89,7 @@ public class GetAllUsersHandler : IRequestHandler<GetAllUsersRequest, Result<Pag
                             PhoneNumber = identityUser.PhoneNumber,
                             Language = identityUser.Language,
                             ProfileUrl = identityUser.ProfileUrl,
-                            IsActive = true,
+                            IsActive = identityUser.IsActive,
                             IsDelete = false,
                             CreatedBy = 1,
                             CreatedOn = DateTime.UtcNow
@@ -107,7 +107,7 @@ public class GetAllUsersHandler : IRequestHandler<GetAllUsersRequest, Result<Pag
                         PhoneNumber = identityUser.PhoneNumber,
                         Language = identityUser.Language,
                         ProfileUrl = identityUser.ProfileUrl,
-                        IsActive = identityUser.IsActive,
+                        IsActive = existingUser ? userRecord.IsActive : identityUser.IsActive,
                         Role = roles.FirstOrDefault() ?? "No Role",
                         TransactionId = existingUser ? userRecord.Id : 0,
                         IdentityId = identityUser.Id

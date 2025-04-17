@@ -8,6 +8,7 @@ using WebApp.Configurations;
 using Infrastructure.Context;
 using Xunit;
 using System.Net.Http;
+using iTracker.Tests;
 
 namespace iTracker.Tests.Common;
 
@@ -15,12 +16,19 @@ public class TestBase : IDisposable
 {
     protected readonly IServiceProvider ServiceProvider;
     protected readonly IServiceScope Scope;
-    protected readonly WebApplicationFactory<Program> Factory;
+    protected readonly WebApplicationFactory<TestProgram> Factory;
     protected readonly HttpClient Client;
 
     protected TestBase()
     {
-        Factory = new WebApplicationFactory<Program>();
+        Factory = new WebApplicationFactory<TestProgram>()
+            .WithWebHostBuilder(builder =>
+            {
+                builder.ConfigureServices(services =>
+                {
+                    // Add any test-specific service configurations here
+                });
+            });
         Client = Factory.CreateClient();
         ServiceProvider = Factory.Services;
         Scope = ServiceProvider.CreateScope();

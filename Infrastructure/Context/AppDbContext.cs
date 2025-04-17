@@ -137,6 +137,7 @@ public class AppDbContext : IdentityDbContext<ApplicationUser>, IContext
             entity.Property(e => e.PhoneNumber).HasColumnType("varchar(20)");
             entity.Property(e => e.CreatedDate).HasColumnType("datetime2");
             entity.Property(e => e.LastModifiedDate).HasColumnType("datetime2");
+            entity.Property(e => e.Role).HasColumnType("varchar(100)");
         });
 
         builder.Entity<IdentityRole>(entity =>

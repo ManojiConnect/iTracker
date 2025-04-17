@@ -73,7 +73,8 @@ public class DatabaseInitializer
                 EmailConfirmed = true,
                 IsActive = true,
                 CreatedDate = DateTime.UtcNow,
-                CreatedBy = "System"
+                CreatedBy = "System",
+                Role = "Admin"
             };
 
             var result = await userManager.CreateAsync(adminUser, "Test@123");
