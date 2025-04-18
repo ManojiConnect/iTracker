@@ -534,3 +534,37 @@
 [14:10:22 INF] Found duplicate with existing investment: Example Investment <s:WebApp.Pages.Investments.ImportInvestmentsModel>
 [14:10:22 INF] Found 1 duplicate records out of 1 total records in portfolio 20 <s:WebApp.Pages.Investments.ImportInvestmentsModel>
 [14:10:22 INF] Duplicate record at index 0: Portfolio 20, Example Investment, 1000.00 <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+[14:11:15 INF] Currency formatter initialized for CategoryAnalysis page <s:WebApp.Pages.Investments.CategoryAnalysisModel>
+[14:11:15 INF] Getting category performance data for 20 <s:Application.Features.Investments.GetCategoryPerformance.GetCategoryPerformanceHandler>
+[14:11:20 INF] Fetching investment details for deletion, ID: 97 <s:WebApp.Pages.Investments.DeleteModel>
+[14:11:21 INF] Deleting investment with ID: 97 <s:WebApp.Pages.Investments.DeleteModel>
+[14:11:22 INF] Successfully deleted investment with ID: 97 <s:WebApp.Pages.Investments.DeleteModel>
+[14:11:29 INF] Fetching investment details for deletion, ID: 98 <s:WebApp.Pages.Investments.DeleteModel>
+[14:11:31 INF] Deleting investment with ID: 98 <s:WebApp.Pages.Investments.DeleteModel>
+[14:11:31 INF] Successfully deleted investment with ID: 98 <s:WebApp.Pages.Investments.DeleteModel>
+[14:12:07 INF] Currency formatter initialized for CategoryAnalysis page <s:WebApp.Pages.Investments.CategoryAnalysisModel>
+[14:12:07 INF] Getting category performance data for 20 <s:Application.Features.Investments.GetCategoryPerformance.GetCategoryPerformanceHandler>
+[14:12:14 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[14:13:03 INF] Ensuring database is created... <s:Program>
+[14:13:04 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[14:13:04 INF] Database initialization completed. <s:Program>
+[14:13:04 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[14:13:04 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[14:13:04 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[14:13:04 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[14:13:04 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[14:13:04 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[14:13:04 INF] Application settings initialized. <s:Program>
+[14:13:04 INF] Database Provider: SqliteConnection, Connection: 18 <s:Program>
+[14:13:04 INF] Ensuring database is created... <s:Program>
+[14:13:04 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[14:13:04 INF] Database initialization completed. <s:Program>
+[14:13:04 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[14:13:04 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[14:13:04 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[14:13:04 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[14:13:04 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[14:13:06 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[14:13:09 INF] Currency formatter initialized for CategoryAnalysis page <s:WebApp.Pages.Investments.CategoryAnalysisModel>
+[14:13:09 INF] Getting category performance data for 20 <s:Application.Features.Investments.GetCategoryPerformance.GetCategoryPerformanceHandler>
+[14:13:14 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
