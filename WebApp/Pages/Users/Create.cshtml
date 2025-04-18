@@ -73,8 +73,7 @@
                                     <select asp-for="UserForm.Role" class="form-select" required>
                                         <option value="">Select Role</option>
                                         <option value="Admin">Administrator</option>
-                                        <option value="Manager">Manager</option>
-                                        <option value="User">Regular User</option>
+                                        <option value="User">User</option>
                                     </select>
                                     <label asp-for="UserForm.Role">Role</label>
                                     <div class="invalid-feedback">
@@ -150,7 +149,6 @@
                     <p>Users created here will be able to access the system based on their assigned role:</p>
                     <ul>
                         <li><strong>Administrator:</strong> Full access to all system features including user management</li>
-                        <li><strong>Manager:</strong> Access to main features but cannot manage users</li>
                         <li><strong>Regular User:</strong> Standard access to basic features</li>
                     </ul>
                     <hr class="my-3">
