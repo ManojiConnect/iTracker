@@ -501,3 +501,493 @@ Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 1: 'no such col
 [16:06:57 INF] Found 3 identity users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
 [16:06:57 INF] Successfully retrieved 3 users <s:WebApp.Pages.Users.IndexModel>
 [16:07:06 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[16:21:50 INF] Ensuring database is created... <s:Program>
+[16:21:51 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[16:21:51 INF] Database initialization completed. <s:Program>
+[16:21:51 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[16:21:51 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[16:21:51 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[16:21:51 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[16:21:51 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[16:21:51 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[16:21:51 INF] Application settings initialized. <s:Program>
+[16:21:51 INF] Database Provider: SqliteConnection, Connection: 18 <s:Program>
+[16:21:51 INF] Ensuring database is created... <s:Program>
+[16:21:51 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[16:21:51 INF] Database initialization completed. <s:Program>
+[16:21:51 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[16:21:51 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[16:21:51 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[16:21:51 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[16:21:51 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[16:21:55 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[16:23:58 INF] Updated history record 8 for investment 54 <s:Application.Features.Investments.UpdateHistoryRecord.UpdateHistoryRecordHandler>
+[16:24:19 INF] Updated history record 8 for investment 54 <s:Application.Features.Investments.UpdateHistoryRecord.UpdateHistoryRecordHandler>
+[16:42:37 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[16:42:45 INF] Attempting login for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
+[16:42:45 INF] Login successful for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
+[16:42:45 INF] Attempting to redirect to Portfolios/Index <s:WebApp.Pages.Auth.LoginModel>
+[16:43:22 INF] Starting to handle CreateInvestmentRequest for portfolio 19 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[16:43:22 INF] Found portfolio: 19, Portfolio 2 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[16:43:22 INF] Found category: 1, Stocks <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[16:43:22 INF] Created new investment object with Name: PMS Test, Symbol: PMS-Test, TotalInvestment: 8000, CurrentValue: 10000 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[16:43:22 INF] Added investment to context, saving changes... <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[16:43:22 INF] Investment saved with ID: 80 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[16:43:22 INF] Updating portfolio totals... <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[16:43:22 INF] Updated portfolio totals: TotalValue: 10000, TotalInvestment: 8000 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[16:43:22 INF] Portfolio totals saved successfully <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[16:43:22 INF] Starting to handle CreateInvestmentRequest for portfolio 19 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[16:43:22 INF] Found portfolio: 19, Portfolio 2 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[16:43:22 INF] Found category: 2, Bonds <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[16:43:22 INF] Created new investment object with Name: Gold Bond, Symbol: Gold-Bond, TotalInvestment: 20000, CurrentValue: 25000 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[16:43:22 INF] Added investment to context, saving changes... <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[16:43:22 INF] Investment saved with ID: 81 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[16:43:22 INF] Updating portfolio totals... <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[16:43:22 INF] Updated portfolio totals: TotalValue: 35000, TotalInvestment: 28000 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[16:43:22 INF] Portfolio totals saved successfully <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[16:43:22 INF] Starting to handle CreateInvestmentRequest for portfolio 19 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[16:43:22 INF] Found portfolio: 19, Portfolio 2 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[16:43:22 INF] Found category: 1, Stocks <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[16:43:22 INF] Created new investment object with Name: Test PMS, Symbol: Test-PMS, TotalInvestment: 20000, CurrentValue: 22000 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[16:43:22 INF] Added investment to context, saving changes... <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[16:43:22 INF] Investment saved with ID: 82 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[16:43:22 INF] Updating portfolio totals... <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[16:43:22 INF] Updated portfolio totals: TotalValue: 57000, TotalInvestment: 48000 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[16:43:22 INF] Portfolio totals saved successfully <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[16:43:22 INF] Starting to handle CreateInvestmentRequest for portfolio 19 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[16:43:22 INF] Found portfolio: 19, Portfolio 2 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[16:43:22 INF] Found category: 3, Mutual Funds <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[16:43:22 INF] Created new investment object with Name: Test MF, Symbol: Test-MF, TotalInvestment: 10000, CurrentValue: 8000 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[16:43:22 INF] Added investment to context, saving changes... <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[16:43:22 INF] Investment saved with ID: 83 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[16:43:22 INF] Updating portfolio totals... <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[16:43:22 INF] Updated portfolio totals: TotalValue: 65000, TotalInvestment: 58000 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[16:43:22 INF] Portfolio totals saved successfully <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[16:43:22 INF] Starting to handle CreateInvestmentRequest for portfolio 19 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[16:43:22 INF] Found portfolio: 19, Portfolio 2 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[16:43:22 INF] Found category: 8, Test <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[16:43:22 INF] Created new investment object with Name: Test for Category, Symbol: Test-for-Category, TotalInvestment: 5000, CurrentValue: 5000 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[16:43:22 INF] Added investment to context, saving changes... <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[16:43:22 INF] Investment saved with ID: 84 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[16:43:22 INF] Updating portfolio totals... <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[16:43:22 INF] Updated portfolio totals: TotalValue: 70000, TotalInvestment: 63000 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[16:43:22 INF] Portfolio totals saved successfully <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[16:43:45 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[16:53:30 INF] Ensuring database is created... <s:Program>
+[16:53:31 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[16:53:31 INF] Database initialization completed. <s:Program>
+[16:53:31 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[16:53:31 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[16:53:31 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[16:53:31 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[16:53:31 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[16:53:31 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[16:53:31 INF] Application settings initialized. <s:Program>
+[16:53:31 INF] Database Provider: SqliteConnection, Connection: 18 <s:Program>
+[16:53:31 INF] Ensuring database is created... <s:Program>
+[16:53:31 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[16:53:31 INF] Database initialization completed. <s:Program>
+[16:53:31 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[16:53:31 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[16:53:31 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[16:53:31 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[16:53:31 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[16:53:35 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[16:53:54 ERR] Failed executing DbCommand (2ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (DbType = DateTime), @p3='?' (DbType = Decimal), @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = Int32), @p7='?' (DbType = DateTime), @p8='?' (Size = 8), @p9='?', @p10='?' (DbType = Int32), @p11='?' (DbType = DateTime), @p12='?' (DbType = Decimal), @p13='?' (DbType = Decimal), @p14='?', @p15='?' (DbType = Decimal), @p16='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='60']
+INSERT INTO "Investments" ("CategoryId", "CreatedBy", "CreatedOn", "CurrentValue", "IsActive", "IsDelete", "ModifiedBy", "ModifiedOn", "Name", "Notes", "PortfolioId", "PurchaseDate", "PurchasePrice", "ReturnPercentage", "Symbol", "TotalInvestment", "UnrealizedGainLoss")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16)
+RETURNING "Id"; <s:Microsoft.EntityFrameworkCore.Database.Command>
+[16:53:54 ERR] An exception occurred in the database while saving changes for context type 'Infrastructure.Context.AppDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 19: 'FOREIGN KEY constraint failed'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken) <s:Microsoft.EntityFrameworkCore.Update>
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 19: 'FOREIGN KEY constraint failed'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Infrastructure.Context.AppDbContext.SaveChangesAsync(CancellationToken cancellationToken) in /Users/manojdeshmukh/Cursor/iTracker/Infrastructure/Context/AppDbContext.cs:line 36
+   at Application.Features.Investments.Commands.ImportInvestments.ImportInvestmentsCommandHandler.Handle(ImportInvestmentsCommand request, CancellationToken cancellationToken) in /Users/manojdeshmukh/Cursor/iTracker/Application/Features/Investments/Commands/ImportInvestments/ImportInvestmentsCommandHandler.cs:line 106
+[16:53:54 ERR] Error processing CSV import <s:Application.Features.Investments.Commands.ImportInvestments.ImportInvestmentsCommandHandler>
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 19: 'FOREIGN KEY constraint failed'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Infrastructure.Context.AppDbContext.SaveChangesAsync(CancellationToken cancellationToken) in /Users/manojdeshmukh/Cursor/iTracker/Infrastructure/Context/AppDbContext.cs:line 36
+   at Application.Features.Investments.Commands.ImportInvestments.ImportInvestmentsCommandHandler.Handle(ImportInvestmentsCommand request, CancellationToken cancellationToken) in /Users/manojdeshmukh/Cursor/iTracker/Application/Features/Investments/Commands/ImportInvestments/ImportInvestmentsCommandHandler.cs:line 106
+[16:54:05 ERR] Failed executing DbCommand (1ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (DbType = DateTime), @p3='?' (DbType = Decimal), @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = Int32), @p7='?' (DbType = DateTime), @p8='?' (Size = 8), @p9='?', @p10='?' (DbType = Int32), @p11='?' (DbType = DateTime), @p12='?' (DbType = Decimal), @p13='?' (DbType = Decimal), @p14='?', @p15='?' (DbType = Decimal), @p16='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='60']
+INSERT INTO "Investments" ("CategoryId", "CreatedBy", "CreatedOn", "CurrentValue", "IsActive", "IsDelete", "ModifiedBy", "ModifiedOn", "Name", "Notes", "PortfolioId", "PurchaseDate", "PurchasePrice", "ReturnPercentage", "Symbol", "TotalInvestment", "UnrealizedGainLoss")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16)
+RETURNING "Id"; <s:Microsoft.EntityFrameworkCore.Database.Command>
+[16:54:05 ERR] An exception occurred in the database while saving changes for context type 'Infrastructure.Context.AppDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 19: 'FOREIGN KEY constraint failed'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken) <s:Microsoft.EntityFrameworkCore.Update>
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 19: 'FOREIGN KEY constraint failed'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Infrastructure.Context.AppDbContext.SaveChangesAsync(CancellationToken cancellationToken) in /Users/manojdeshmukh/Cursor/iTracker/Infrastructure/Context/AppDbContext.cs:line 36
+   at Application.Features.Investments.Commands.ImportInvestments.ImportInvestmentsCommandHandler.Handle(ImportInvestmentsCommand request, CancellationToken cancellationToken) in /Users/manojdeshmukh/Cursor/iTracker/Application/Features/Investments/Commands/ImportInvestments/ImportInvestmentsCommandHandler.cs:line 106
+[16:54:06 ERR] Error processing CSV import <s:Application.Features.Investments.Commands.ImportInvestments.ImportInvestmentsCommandHandler>
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 19: 'FOREIGN KEY constraint failed'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Infrastructure.Context.AppDbContext.SaveChangesAsync(CancellationToken cancellationToken) in /Users/manojdeshmukh/Cursor/iTracker/Infrastructure/Context/AppDbContext.cs:line 36
+   at Application.Features.Investments.Commands.ImportInvestments.ImportInvestmentsCommandHandler.Handle(ImportInvestmentsCommand request, CancellationToken cancellationToken) in /Users/manojdeshmukh/Cursor/iTracker/Application/Features/Investments/Commands/ImportInvestments/ImportInvestmentsCommandHandler.cs:line 106
+[16:54:14 ERR] Failed executing DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (DbType = DateTime), @p3='?' (DbType = Decimal), @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = Int32), @p7='?' (DbType = DateTime), @p8='?' (Size = 8), @p9='?', @p10='?' (DbType = Int32), @p11='?' (DbType = DateTime), @p12='?' (DbType = Decimal), @p13='?' (DbType = Decimal), @p14='?', @p15='?' (DbType = Decimal), @p16='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='60']
+INSERT INTO "Investments" ("CategoryId", "CreatedBy", "CreatedOn", "CurrentValue", "IsActive", "IsDelete", "ModifiedBy", "ModifiedOn", "Name", "Notes", "PortfolioId", "PurchaseDate", "PurchasePrice", "ReturnPercentage", "Symbol", "TotalInvestment", "UnrealizedGainLoss")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16)
+RETURNING "Id"; <s:Microsoft.EntityFrameworkCore.Database.Command>
+[16:54:14 ERR] An exception occurred in the database while saving changes for context type 'Infrastructure.Context.AppDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 19: 'FOREIGN KEY constraint failed'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken) <s:Microsoft.EntityFrameworkCore.Update>
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 19: 'FOREIGN KEY constraint failed'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Infrastructure.Context.AppDbContext.SaveChangesAsync(CancellationToken cancellationToken) in /Users/manojdeshmukh/Cursor/iTracker/Infrastructure/Context/AppDbContext.cs:line 36
+   at Application.Features.Investments.Commands.ImportInvestments.ImportInvestmentsCommandHandler.Handle(ImportInvestmentsCommand request, CancellationToken cancellationToken) in /Users/manojdeshmukh/Cursor/iTracker/Application/Features/Investments/Commands/ImportInvestments/ImportInvestmentsCommandHandler.cs:line 106
+[16:54:14 ERR] Error processing CSV import <s:Application.Features.Investments.Commands.ImportInvestments.ImportInvestmentsCommandHandler>
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 19: 'FOREIGN KEY constraint failed'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Infrastructure.Context.AppDbContext.SaveChangesAsync(CancellationToken cancellationToken) in /Users/manojdeshmukh/Cursor/iTracker/Infrastructure/Context/AppDbContext.cs:line 36
+   at Application.Features.Investments.Commands.ImportInvestments.ImportInvestmentsCommandHandler.Handle(ImportInvestmentsCommand request, CancellationToken cancellationToken) in /Users/manojdeshmukh/Cursor/iTracker/Application/Features/Investments/Commands/ImportInvestments/ImportInvestmentsCommandHandler.cs:line 106
+[16:57:36 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[16:58:19 INF] Ensuring database is created... <s:Program>
+[16:58:20 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[16:58:20 INF] Database initialization completed. <s:Program>
+[16:58:20 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[16:58:20 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[16:58:20 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[16:58:20 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[16:58:20 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[16:58:20 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[16:58:20 INF] Application settings initialized. <s:Program>
+[16:58:20 INF] Database Provider: SqliteConnection, Connection: 18 <s:Program>
+[16:58:20 INF] Ensuring database is created... <s:Program>
+[16:58:20 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[16:58:20 INF] Database initialization completed. <s:Program>
+[16:58:20 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[16:58:20 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[16:58:20 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[16:58:20 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[16:58:20 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[16:58:22 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[16:58:30 INF] Currency formatter initialized for CategoryAnalysis page <s:WebApp.Pages.Investments.CategoryAnalysisModel>
+[16:58:30 INF] Getting category performance data for 19 <s:Application.Features.Investments.GetCategoryPerformance.GetCategoryPerformanceHandler>
+[16:59:15 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[17:01:45 INF] Ensuring database is created... <s:Program>
+[17:01:46 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[17:01:46 INF] Database initialization completed. <s:Program>
+[17:01:46 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[17:01:46 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[17:01:46 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[17:01:46 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[17:01:46 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[17:01:46 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[17:01:46 INF] Application settings initialized. <s:Program>
+[17:01:46 INF] Database Provider: SqliteConnection, Connection: 18 <s:Program>
+[17:01:46 INF] Ensuring database is created... <s:Program>
+[17:01:46 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[17:01:46 INF] Database initialization completed. <s:Program>
+[17:01:46 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[17:01:46 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[17:01:46 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[17:01:46 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[17:01:46 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[17:01:48 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[17:02:12 ERR] Error parsing row 2 <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+CsvHelper.ReaderException: The header has not been read. You must call ReadHeader() before any fields can be retrieved by name.
+IReader state:
+   ColumnCount: 5
+   CurrentIndex: -1
+   HeaderRecord:
+
+IParser state:
+   ByteCount: 0
+   CharCount: 57
+   Row: 1
+   RawRow: 1
+   Count: 5
+   RawRecord:
+Name,Category,TotalInvestment,CurrentValue,PurchaseDate
+
+
+   at CsvHelper.CsvReader.GetFieldIndex(IEnumerable`1 names, Int32 index, Boolean isTryGet, Boolean isOptional)
+   at CsvHelper.CsvReader.GetFieldIndex(String name, Int32 index, Boolean isTryGet)
+   at CsvHelper.CsvReader.GetField(String name)
+   at WebApp.Pages.Investments.ImportInvestmentsModel.LoadPreviewRecords() in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Pages/Investments/ImportInvestments.cshtml.cs:line 160
+[17:02:12 ERR] Error parsing row 3 <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+CsvHelper.ReaderException: The header has not been read. You must call ReadHeader() before any fields can be retrieved by name.
+IReader state:
+   ColumnCount: 5
+   CurrentIndex: -1
+   HeaderRecord:
+
+IParser state:
+   ByteCount: 0
+   CharCount: 96
+   Row: 2
+   RawRow: 2
+   Count: 5
+   RawRecord:
+PMS Test,Stocks,8000,10000,31/03/2024
+
+
+   at CsvHelper.CsvReader.GetFieldIndex(IEnumerable`1 names, Int32 index, Boolean isTryGet, Boolean isOptional)
+   at CsvHelper.CsvReader.GetFieldIndex(String name, Int32 index, Boolean isTryGet)
+   at CsvHelper.CsvReader.GetField(String name)
+   at WebApp.Pages.Investments.ImportInvestmentsModel.LoadPreviewRecords() in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Pages/Investments/ImportInvestments.cshtml.cs:line 160
+[17:02:12 ERR] Error parsing row 4 <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+CsvHelper.ReaderException: The header has not been read. You must call ReadHeader() before any fields can be retrieved by name.
+IReader state:
+   ColumnCount: 5
+   CurrentIndex: -1
+   HeaderRecord:
+
+IParser state:
+   ByteCount: 0
+   CharCount: 136
+   Row: 3
+   RawRow: 3
+   Count: 5
+   RawRecord:
+Gold Bond,Bonds,20000,25000,01/04/2024
+
+
+   at CsvHelper.CsvReader.GetFieldIndex(IEnumerable`1 names, Int32 index, Boolean isTryGet, Boolean isOptional)
+   at CsvHelper.CsvReader.GetFieldIndex(String name, Int32 index, Boolean isTryGet)
+   at CsvHelper.CsvReader.GetField(String name)
+   at WebApp.Pages.Investments.ImportInvestmentsModel.LoadPreviewRecords() in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Pages/Investments/ImportInvestments.cshtml.cs:line 160
+[17:02:12 ERR] Error parsing row 5 <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+CsvHelper.ReaderException: The header has not been read. You must call ReadHeader() before any fields can be retrieved by name.
+IReader state:
+   ColumnCount: 5
+   CurrentIndex: -1
+   HeaderRecord:
+
+IParser state:
+   ByteCount: 0
+   CharCount: 176
+   Row: 4
+   RawRow: 4
+   Count: 5
+   RawRecord:
+Test PMS,Stocks,20000,22000,02/04/2024
+
+
+   at CsvHelper.CsvReader.GetFieldIndex(IEnumerable`1 names, Int32 index, Boolean isTryGet, Boolean isOptional)
+   at CsvHelper.CsvReader.GetFieldIndex(String name, Int32 index, Boolean isTryGet)
+   at CsvHelper.CsvReader.GetField(String name)
+   at WebApp.Pages.Investments.ImportInvestmentsModel.LoadPreviewRecords() in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Pages/Investments/ImportInvestments.cshtml.cs:line 160
+[17:02:12 ERR] Error parsing row 6 <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+CsvHelper.ReaderException: The header has not been read. You must call ReadHeader() before any fields can be retrieved by name.
+IReader state:
+   ColumnCount: 5
+   CurrentIndex: -1
+   HeaderRecord:
+
+IParser state:
+   ByteCount: 0
+   CharCount: 220
+   Row: 5
+   RawRow: 5
+   Count: 5
+   RawRecord:
+Test MF,Mutual Funds,10000,8000,03/04/2024
+
+
+   at CsvHelper.CsvReader.GetFieldIndex(IEnumerable`1 names, Int32 index, Boolean isTryGet, Boolean isOptional)
+   at CsvHelper.CsvReader.GetFieldIndex(String name, Int32 index, Boolean isTryGet)
+   at CsvHelper.CsvReader.GetField(String name)
+   at WebApp.Pages.Investments.ImportInvestmentsModel.LoadPreviewRecords() in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Pages/Investments/ImportInvestments.cshtml.cs:line 160
+[17:02:12 ERR] Error parsing row 7 <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+CsvHelper.ReaderException: The header has not been read. You must call ReadHeader() before any fields can be retrieved by name.
+IReader state:
+   ColumnCount: 5
+   CurrentIndex: -1
+   HeaderRecord:
+
+IParser state:
+   ByteCount: 0
+   CharCount: 265
+   Row: 6
+   RawRow: 6
+   Count: 5
+   RawRecord:
+Test for Category,Test,5000,5000,16/04/2025
+
+
+   at CsvHelper.CsvReader.GetFieldIndex(IEnumerable`1 names, Int32 index, Boolean isTryGet, Boolean isOptional)
+   at CsvHelper.CsvReader.GetFieldIndex(String name, Int32 index, Boolean isTryGet)
+   at CsvHelper.CsvReader.GetField(String name)
+   at WebApp.Pages.Investments.ImportInvestmentsModel.LoadPreviewRecords() in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Pages/Investments/ImportInvestments.cshtml.cs:line 160
+[17:02:33 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[17:03:38 INF] Ensuring database is created... <s:Program>
+[17:03:39 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[17:03:39 INF] Database initialization completed. <s:Program>
+[17:03:39 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[17:03:39 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[17:03:39 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[17:03:39 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[17:03:39 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[17:03:39 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[17:03:39 INF] Application settings initialized. <s:Program>
+[17:03:39 INF] Database Provider: SqliteConnection, Connection: 18 <s:Program>
+[17:03:39 INF] Ensuring database is created... <s:Program>
+[17:03:39 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[17:03:39 INF] Database initialization completed. <s:Program>
+[17:03:39 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[17:03:39 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[17:03:39 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[17:03:39 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[17:03:39 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[17:03:41 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[17:03:53 ERR] Error parsing row 2 <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+System.FormatException: String '31/03/2024' was not recognized as a valid DateTime.
+   at System.DateTime.Parse(String s, IFormatProvider provider)
+   at WebApp.Pages.Investments.ImportInvestmentsModel.LoadPreviewRecords() in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Pages/Investments/ImportInvestments.cshtml.cs:line 168
+[17:03:53 ERR] Error parsing row 6 <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+System.FormatException: String '16/04/2025' was not recognized as a valid DateTime.
+   at System.DateTime.Parse(String s, IFormatProvider provider)
+   at WebApp.Pages.Investments.ImportInvestmentsModel.LoadPreviewRecords() in /Users/manojdeshmukh/Cursor/iTracker/WebApp/Pages/Investments/ImportInvestments.cshtml.cs:line 168
+[17:04:58 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>

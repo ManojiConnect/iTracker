@@ -1,0 +1,536 @@
+[09:22:12 INF] Ensuring database is created... <s:Program>
+[09:22:13 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[09:22:13 INF] Database initialization completed. <s:Program>
+[09:22:13 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[09:22:13 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[09:22:13 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[09:22:13 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[09:22:13 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[09:22:13 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[09:22:13 INF] Application settings initialized. <s:Program>
+[09:22:13 INF] Database Provider: SqliteConnection, Connection: 18 <s:Program>
+[09:22:13 INF] Ensuring database is created... <s:Program>
+[09:22:13 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[09:22:13 INF] Database initialization completed. <s:Program>
+[09:22:13 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[09:22:13 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[09:22:13 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[09:22:13 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[09:22:13 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[09:22:17 INF] Attempting login for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
+[09:22:17 INF] Login successful for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
+[09:22:17 INF] Attempting to redirect to Portfolios/Index <s:WebApp.Pages.Auth.LoginModel>
+[09:22:17 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[09:22:34 INF] Fetching investment details for deletion, ID: 81 <s:WebApp.Pages.Investments.DeleteModel>
+[09:22:36 INF] Deleting investment with ID: 81 <s:WebApp.Pages.Investments.DeleteModel>
+[09:22:36 INF] Successfully deleted investment with ID: 81 <s:WebApp.Pages.Investments.DeleteModel>
+[09:22:47 INF] Fetching investment details for deletion, ID: 80 <s:WebApp.Pages.Investments.DeleteModel>
+[09:22:49 INF] Deleting investment with ID: 80 <s:WebApp.Pages.Investments.DeleteModel>
+[09:22:49 INF] Successfully deleted investment with ID: 80 <s:WebApp.Pages.Investments.DeleteModel>
+[09:22:55 INF] Fetching investment details for deletion, ID: 83 <s:WebApp.Pages.Investments.DeleteModel>
+[09:22:57 INF] Deleting investment with ID: 83 <s:WebApp.Pages.Investments.DeleteModel>
+[09:22:57 INF] Successfully deleted investment with ID: 83 <s:WebApp.Pages.Investments.DeleteModel>
+[09:23:02 INF] Fetching investment details for deletion, ID: 82 <s:WebApp.Pages.Investments.DeleteModel>
+[09:23:04 INF] Deleting investment with ID: 82 <s:WebApp.Pages.Investments.DeleteModel>
+[09:23:04 INF] Successfully deleted investment with ID: 82 <s:WebApp.Pages.Investments.DeleteModel>
+[09:23:13 INF] Fetching investment details for deletion, ID: 84 <s:WebApp.Pages.Investments.DeleteModel>
+[09:23:14 INF] Deleting investment with ID: 84 <s:WebApp.Pages.Investments.DeleteModel>
+[09:23:14 INF] Successfully deleted investment with ID: 84 <s:WebApp.Pages.Investments.DeleteModel>
+[09:23:49 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[09:26:59 INF] Ensuring database is created... <s:Program>
+[09:26:59 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[09:26:59 INF] Database initialization completed. <s:Program>
+[09:26:59 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[09:26:59 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[09:26:59 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[09:26:59 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[09:26:59 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[09:26:59 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[09:26:59 INF] Application settings initialized. <s:Program>
+[09:26:59 INF] Database Provider: SqliteConnection, Connection: 18 <s:Program>
+[09:26:59 INF] Ensuring database is created... <s:Program>
+[09:26:59 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[09:26:59 INF] Database initialization completed. <s:Program>
+[09:27:00 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[09:27:00 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[09:27:00 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[09:27:00 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[09:27:00 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[09:27:01 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[09:27:07 INF] Currency formatter initialized for CategoryAnalysis page <s:WebApp.Pages.Investments.CategoryAnalysisModel>
+[09:27:07 INF] Getting category performance data for 19 <s:Application.Features.Investments.GetCategoryPerformance.GetCategoryPerformanceHandler>
+[09:27:20 INF] Currency formatter initialized for CategoryAnalysis page <s:WebApp.Pages.Investments.CategoryAnalysisModel>
+[09:27:20 INF] Getting category performance data for 19 <s:Application.Features.Investments.GetCategoryPerformance.GetCategoryPerformanceHandler>
+[09:29:37 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[09:30:46 INF] Ensuring database is created... <s:Program>
+[09:30:47 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[09:30:47 INF] Database initialization completed. <s:Program>
+[09:30:47 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[09:30:47 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[09:30:47 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[09:30:47 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[09:30:47 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[09:30:47 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[09:30:47 INF] Application settings initialized. <s:Program>
+[09:30:47 INF] Database Provider: SqliteConnection, Connection: 18 <s:Program>
+[09:30:47 INF] Ensuring database is created... <s:Program>
+[09:30:47 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[09:30:47 INF] Database initialization completed. <s:Program>
+[09:30:47 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[09:30:47 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[09:30:47 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[09:30:47 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[09:30:47 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[09:30:49 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[09:31:31 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[10:20:47 INF] Ensuring database is created... <s:Program>
+[10:20:48 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[10:20:48 INF] Database initialization completed. <s:Program>
+[10:20:48 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[10:20:48 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[10:20:48 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[10:20:48 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[10:20:48 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:20:48 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[10:20:48 INF] Application settings initialized. <s:Program>
+[10:20:48 INF] Database Provider: SqliteConnection, Connection: 18 <s:Program>
+[10:20:48 INF] Ensuring database is created... <s:Program>
+[10:20:48 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[10:20:48 INF] Database initialization completed. <s:Program>
+[10:20:48 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[10:20:48 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[10:20:48 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[10:20:48 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[10:20:48 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[10:20:51 INF] Attempting login for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
+[10:20:51 INF] Login successful for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
+[10:20:51 INF] Attempting to redirect to Portfolios/Index <s:WebApp.Pages.Auth.LoginModel>
+[10:20:51 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:22:21 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[10:22:52 INF] Ensuring database is created... <s:Program>
+[10:22:53 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[10:22:53 INF] Database initialization completed. <s:Program>
+[10:22:53 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[10:22:53 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[10:22:53 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[10:22:53 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[10:22:53 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:22:53 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[10:22:53 INF] Application settings initialized. <s:Program>
+[10:22:53 INF] Database Provider: SqliteConnection, Connection: 18 <s:Program>
+[10:22:53 INF] Ensuring database is created... <s:Program>
+[10:22:53 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[10:22:53 INF] Database initialization completed. <s:Program>
+[10:22:53 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[10:22:53 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[10:22:53 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[10:22:53 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[10:22:53 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[10:22:55 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:24:00 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[10:25:29 INF] Ensuring database is created... <s:Program>
+[10:25:30 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[10:25:30 INF] Database initialization completed. <s:Program>
+[10:25:30 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[10:25:30 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[10:25:30 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[10:25:30 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[10:25:30 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:25:30 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[10:25:30 INF] Application settings initialized. <s:Program>
+[10:25:30 INF] Database Provider: SqliteConnection, Connection: 18 <s:Program>
+[10:25:30 INF] Ensuring database is created... <s:Program>
+[10:25:30 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[10:25:30 INF] Database initialization completed. <s:Program>
+[10:25:30 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[10:25:30 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[10:25:30 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[10:25:30 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[10:25:30 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[10:25:31 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:25:46 INF] Found 0 duplicate records out of 1 total records <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+[10:27:23 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[10:27:27 INF] Ensuring database is created... <s:Program>
+[10:27:28 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[10:27:28 INF] Database initialization completed. <s:Program>
+[10:27:28 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[10:27:28 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[10:27:28 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[10:27:28 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[10:27:28 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:27:28 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[10:27:28 INF] Application settings initialized. <s:Program>
+[10:27:28 INF] Database Provider: SqliteConnection, Connection: 18 <s:Program>
+[10:27:28 INF] Ensuring database is created... <s:Program>
+[10:27:28 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[10:27:28 INF] Database initialization completed. <s:Program>
+[10:27:28 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[10:27:28 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[10:27:28 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[10:27:28 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[10:27:28 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[10:27:31 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:27:48 INF] Starting duplicate detection for 1 records <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+[10:27:48 INF] Checking record 0: Example Investment, Stocks, 1000.00 <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+[10:27:48 INF] Found 0 duplicate records out of 1 total records <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+[10:28:02 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[10:30:05 INF] Ensuring database is created... <s:Program>
+[10:30:06 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[10:30:06 INF] Database initialization completed. <s:Program>
+[10:30:06 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[10:30:06 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[10:30:06 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[10:30:06 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[10:30:06 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:30:06 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[10:30:06 INF] Application settings initialized. <s:Program>
+[10:30:06 INF] Database Provider: SqliteConnection, Connection: 18 <s:Program>
+[10:30:06 INF] Ensuring database is created... <s:Program>
+[10:30:06 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[10:30:06 INF] Database initialization completed. <s:Program>
+[10:30:06 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[10:30:06 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[10:30:06 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[10:30:06 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[10:30:06 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[10:30:07 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:30:20 INF] Starting duplicate detection for 1 records <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+[10:30:20 INF] Checking record 0: Example Investment, Stocks, 1000.00 <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+[10:30:20 INF] Found 0 duplicate records out of 1 total records <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+[10:31:52 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[10:31:59 INF] Ensuring database is created... <s:Program>
+[10:32:00 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[10:32:00 INF] Database initialization completed. <s:Program>
+[10:32:00 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[10:32:00 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[10:32:00 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[10:32:00 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[10:32:00 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:32:00 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[10:32:00 INF] Application settings initialized. <s:Program>
+[10:32:00 INF] Database Provider: SqliteConnection, Connection: 18 <s:Program>
+[10:32:00 INF] Ensuring database is created... <s:Program>
+[10:32:00 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[10:32:00 INF] Database initialization completed. <s:Program>
+[10:32:00 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[10:32:00 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[10:32:00 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[10:32:00 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[10:32:00 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[10:32:01 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:32:12 INF] Starting duplicate detection for 1 records <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+[10:32:12 INF] Checking record 0: Example Investment, Stocks, 1000.00 <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+[10:32:12 INF] Generated key: example investment|stocks|1000.00 <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+[10:32:12 INF] Found 0 duplicate records out of 1 total records <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+[10:32:55 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[10:33:29 INF] Ensuring database is created... <s:Program>
+[10:33:30 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[10:33:30 INF] Database initialization completed. <s:Program>
+[10:33:30 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[10:33:30 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[10:33:30 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[10:33:30 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[10:33:30 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:33:30 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[10:33:30 INF] Application settings initialized. <s:Program>
+[10:33:30 INF] Database Provider: SqliteConnection, Connection: 18 <s:Program>
+[10:33:30 INF] Ensuring database is created... <s:Program>
+[10:33:30 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[10:33:30 INF] Database initialization completed. <s:Program>
+[10:33:30 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[10:33:30 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[10:33:30 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[10:33:30 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[10:33:30 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[10:33:32 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:33:44 INF] Starting duplicate detection for 1 records in portfolio 19 <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+[10:33:44 INF] Checking record 0: Portfolio 19, Example Investment, Stocks, 1000.00 <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+[10:33:44 INF] Generated key: 19|example investment|stocks|1000.00 <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+[10:33:44 INF] Found 0 duplicate records out of 1 total records in portfolio 19 <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+[10:34:24 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[10:38:00 INF] Ensuring database is created... <s:Program>
+[10:38:01 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[10:38:01 INF] Database initialization completed. <s:Program>
+[10:38:01 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[10:38:01 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[10:38:01 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[10:38:01 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[10:38:01 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:38:01 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[10:38:01 INF] Application settings initialized. <s:Program>
+[10:38:01 INF] Database Provider: SqliteConnection, Connection: 18 <s:Program>
+[10:38:01 INF] Ensuring database is created... <s:Program>
+[10:38:01 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[10:38:01 INF] Database initialization completed. <s:Program>
+[10:38:01 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[10:38:01 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[10:38:01 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[10:38:01 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[10:38:01 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[10:38:03 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:38:15 INF] Starting duplicate detection for 1 records in portfolio 19 <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+[10:38:15 INF] Checking record 0: Portfolio 19, Example Investment, Stocks, 1000.00 <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+[10:38:15 INF] Generated key: 19|example investment|stocks|1000.00 <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+[10:38:15 INF] Found 0 duplicate records out of 1 total records in portfolio 19 <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+[10:44:32 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[10:45:02 INF] Ensuring database is created... <s:Program>
+[10:45:03 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[10:45:03 INF] Database initialization completed. <s:Program>
+[10:45:03 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[10:45:03 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[10:45:03 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[10:45:03 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[10:45:03 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:45:03 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[10:45:03 INF] Application settings initialized. <s:Program>
+[10:45:03 INF] Database Provider: SqliteConnection, Connection: 18 <s:Program>
+[10:45:03 INF] Ensuring database is created... <s:Program>
+[10:45:03 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[10:45:03 INF] Database initialization completed. <s:Program>
+[10:45:03 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[10:45:03 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[10:45:03 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[10:45:03 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[10:45:03 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[10:45:10 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:46:32 INF] Starting duplicate detection for 1 records in portfolio 19 <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+[10:46:32 INF] Checking record 0: Portfolio 19, Example Investment, Stocks, 1000.00 <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+[10:46:32 INF] Generated key: 19|example investment|1000.00 <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+[10:46:32 INF] Found 0 duplicate records out of 1 total records in portfolio 19 <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+[10:49:17 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[10:49:22 INF] Ensuring database is created... <s:Program>
+[10:49:23 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[10:49:23 INF] Database initialization completed. <s:Program>
+[10:49:23 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[10:49:23 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[10:49:23 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[10:49:23 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[10:49:23 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:49:23 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[10:49:23 INF] Application settings initialized. <s:Program>
+[10:49:23 INF] Database Provider: SqliteConnection, Connection: 18 <s:Program>
+[10:49:23 INF] Ensuring database is created... <s:Program>
+[10:49:23 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[10:49:23 INF] Database initialization completed. <s:Program>
+[10:49:23 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[10:49:23 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[10:49:23 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[10:49:23 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[10:49:23 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[10:49:56 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[10:50:15 INF] Ensuring database is created... <s:Program>
+[10:50:16 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[10:50:16 INF] Database initialization completed. <s:Program>
+[10:50:16 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[10:50:16 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[10:50:16 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[10:50:16 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[10:50:16 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:50:16 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[10:50:16 INF] Application settings initialized. <s:Program>
+[10:50:16 INF] Database Provider: SqliteConnection, Connection: 18 <s:Program>
+[10:50:16 INF] Ensuring database is created... <s:Program>
+[10:50:16 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[10:50:16 INF] Database initialization completed. <s:Program>
+[10:50:16 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[10:50:16 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[10:50:16 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[10:50:16 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[10:50:16 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[10:50:18 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:50:31 INF] Starting duplicate detection for 1 records in portfolio 19 <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+[10:50:31 INF] Checking record 0: Portfolio 19, Example Investment, 1000.00 <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+[10:50:31 INF] Generated key: 19|example investment|1000.00 <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+[10:50:31 INF] Found 0 duplicate records out of 1 total records in portfolio 19 <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+[10:51:22 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[10:51:53 INF] Ensuring database is created... <s:Program>
+[10:51:53 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[10:51:53 INF] Database initialization completed. <s:Program>
+[10:51:53 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[10:51:53 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[10:51:53 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[10:51:53 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[10:51:53 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:51:53 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[10:51:53 INF] Application settings initialized. <s:Program>
+[10:51:53 INF] Database Provider: SqliteConnection, Connection: 18 <s:Program>
+[10:51:53 INF] Ensuring database is created... <s:Program>
+[10:51:53 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[10:51:53 INF] Database initialization completed. <s:Program>
+[10:51:54 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[10:51:54 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[10:51:54 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[10:51:54 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[10:51:54 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[10:51:55 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:52:18 INF] Starting duplicate detection for 1 records in portfolio 19 <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+[10:52:18 INF] Checking record 0: Portfolio 19, Example Investment, 1000.00 <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+[10:52:18 INF] Generated key: 19|example investment|1000.00 <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+[10:52:18 INF] Found 0 duplicate records out of 1 total records in portfolio 19 <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+[10:53:38 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[10:54:18 INF] Ensuring database is created... <s:Program>
+[10:54:18 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[10:54:18 INF] Database initialization completed. <s:Program>
+[10:54:18 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[10:54:18 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[10:54:18 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[10:54:18 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[10:54:18 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:54:18 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[10:54:18 INF] Application settings initialized. <s:Program>
+[10:54:18 INF] Database Provider: SqliteConnection, Connection: 18 <s:Program>
+[10:54:18 INF] Ensuring database is created... <s:Program>
+[10:54:18 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[10:54:18 INF] Database initialization completed. <s:Program>
+[10:54:19 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[10:54:19 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[10:54:19 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[10:54:19 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[10:54:19 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[10:54:46 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:55:00 INF] Starting duplicate detection for 1 records in portfolio 19 <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+[10:55:00 INF] Record 0: Portfolio 19, Example Investment, 1000.00 <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+[10:55:00 INF] Generated key: 19|example investment|1000.00 <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+[10:55:00 INF] Found 0 duplicate records out of 1 total records in portfolio 19 <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+[10:55:48 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[10:55:54 INF] Ensuring database is created... <s:Program>
+[10:55:55 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[10:55:55 INF] Database initialization completed. <s:Program>
+[10:55:55 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[10:55:55 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[10:55:55 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[10:55:55 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[10:55:55 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:55:55 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[10:55:55 INF] Application settings initialized. <s:Program>
+[10:55:55 INF] Database Provider: SqliteConnection, Connection: 18 <s:Program>
+[10:55:55 INF] Ensuring database is created... <s:Program>
+[10:55:55 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[10:55:55 INF] Database initialization completed. <s:Program>
+[10:55:55 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[10:55:55 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[10:55:55 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[10:55:55 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[10:55:55 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[10:55:57 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[10:56:28 INF] Starting duplicate detection for 1 records in portfolio 19 <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+[10:56:28 INF] Record 0: Portfolio 19, Example Investment, 1000.00 <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+[10:56:28 INF] Generated key: 19|example investment|1000.00 <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+[10:56:28 INF] Found 0 duplicate records out of 1 total records in portfolio 19 <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+[11:44:23 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[13:20:05 INF] Ensuring database is created... <s:Program>
+[13:20:06 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[13:20:06 INF] Database initialization completed. <s:Program>
+[13:20:06 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[13:20:06 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[13:20:06 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[13:20:06 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[13:20:06 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[13:20:06 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[13:20:06 INF] Application settings initialized. <s:Program>
+[13:20:06 INF] Database Provider: SqliteConnection, Connection: 18 <s:Program>
+[13:20:06 INF] Ensuring database is created... <s:Program>
+[13:20:06 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[13:20:06 INF] Database initialization completed. <s:Program>
+[13:20:06 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[13:20:06 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[13:20:06 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[13:20:06 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[13:20:06 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[13:21:05 INF] Attempting login for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
+[13:21:05 INF] Login successful for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
+[13:21:05 INF] Attempting to redirect to Portfolios/Index <s:WebApp.Pages.Auth.LoginModel>
+[13:21:05 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[13:21:58 INF] Application is shutting down... <s:Microsoft.Hosting.Lifetime>
+[13:22:03 INF] Ensuring database is created... <s:Program>
+[13:22:04 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[13:22:04 INF] Database initialization completed. <s:Program>
+[13:22:04 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[13:22:04 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[13:22:04 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[13:22:04 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[13:22:04 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[13:22:04 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[13:22:04 INF] Application settings initialized. <s:Program>
+[13:22:04 INF] Database Provider: SqliteConnection, Connection: 18 <s:Program>
+[13:22:04 INF] Ensuring database is created... <s:Program>
+[13:22:04 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[13:22:04 INF] Database initialization completed. <s:Program>
+[13:22:04 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[13:22:04 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[13:22:04 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[13:22:04 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[13:22:04 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[13:22:18 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[13:22:47 INF] Attempting login for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
+[13:22:47 INF] Login successful for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
+[13:22:47 INF] Attempting to redirect to Portfolios/Index <s:WebApp.Pages.Auth.LoginModel>
+[13:24:40 INF] Investment creation started <s:WebApp.Pages.Investments.CreateModel>
+[13:24:40 INF] ModelState.IsValid: true <s:WebApp.Pages.Investments.CreateModel>
+[13:24:40 INF] Investment data: {"PortfolioId":20,"Name":"PMS Kotak","Symbol":"","CategoryId":1,"TotalInvestment":500000,"CurrentValue":550000,"PurchaseDate":"2025-04-18T00:00:00","PurchasePrice":500000,"Notes":null} <s:WebApp.Pages.Investments.CreateModel>
+[13:24:40 INF] Sending create investment request to mediator <s:WebApp.Pages.Investments.CreateModel>
+[13:24:40 INF] Starting to handle CreateInvestmentRequest for portfolio 20 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[13:24:40 INF] Found portfolio: 20, Pradny'a Portfolio <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[13:24:40 INF] Found category: 1, Stocks <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[13:24:40 INF] Created new investment object with Name: PMS Kotak, Symbol: PMS-Kotak, TotalInvestment: 500000, CurrentValue: 550000 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[13:24:40 INF] Added investment to context, saving changes... <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[13:24:40 INF] Investment saved with ID: 97 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[13:24:40 INF] Updating portfolio totals... <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[13:24:40 INF] Updated portfolio totals: TotalValue: 550000, TotalInvestment: 500000 <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[13:24:40 INF] Portfolio totals saved successfully <s:Application.Features.Investments.CreateInvestment.CreateInvestmentHandler>
+[13:24:40 INF] Mediator result: true, No errors <s:WebApp.Pages.Investments.CreateModel>
+[13:24:40 INF] Investment created successfully with ID: 97 <s:WebApp.Pages.Investments.CreateModel>
+[13:26:06 INF] Currency formatter initialized for CategoryAnalysis page <s:WebApp.Pages.Investments.CategoryAnalysisModel>
+[13:26:06 INF] Getting category performance data for All Portfolios <s:Application.Features.Investments.GetCategoryPerformance.GetCategoryPerformanceHandler>
+[13:26:18 INF] Currency formatter initialized for CategoryAnalysis page <s:WebApp.Pages.Investments.CategoryAnalysisModel>
+[13:26:18 INF] Getting category performance data for All Portfolios <s:Application.Features.Investments.GetCategoryPerformance.GetCategoryPerformanceHandler>
+[13:26:37 INF] Found 1 existing investments for portfolio 20 <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+[13:26:37 INF] Starting duplicate detection for 1 records in portfolio 20 <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+[13:26:37 INF] Record 0: Portfolio 20, Example Investment, 1000.00 <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+[13:26:37 INF] Generated key: 20|example investment|1000.00 <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+[13:26:37 INF] Found 0 duplicate records out of 1 total records in portfolio 20 <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+[13:26:59 INF] Creating new category: Cash, Description length: 12 <s:Application.Features.InvestmentCategories.CreateCategory.CreateCategoryHandler>
+[13:26:59 INF] Category created successfully with ID 9 <s:Application.Features.InvestmentCategories.CreateCategory.CreateCategoryHandler>
+[13:27:02 INF] Retrieving all users <s:WebApp.Pages.Users.IndexModel>
+[13:27:02 INF] Fetching all users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[13:27:02 INF] Found 3 identity users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[13:27:02 INF] Successfully retrieved 3 users <s:WebApp.Pages.Users.IndexModel>
+[13:27:08 INF] Retrieving all users <s:WebApp.Pages.Users.IndexModel>
+[13:27:08 INF] Fetching all users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[13:27:08 INF] Found 3 identity users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[13:27:08 INF] Successfully retrieved 3 users <s:WebApp.Pages.Users.IndexModel>
+[13:27:22 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[13:27:22 INF] Retrieving all users <s:WebApp.Pages.Users.IndexModel>
+[13:27:22 INF] Fetching all users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[13:27:22 INF] Found 3 identity users <s:Application.Features.Users.GetAllUsers.GetAllUsersHandler>
+[13:27:22 INF] Successfully retrieved 3 users <s:WebApp.Pages.Users.IndexModel>
+[14:10:00 INF] Ensuring database is created... <s:Program>
+[14:10:00 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[14:10:00 INF] Database initialization completed. <s:Program>
+[14:10:00 INF] Initializing application settings <s:WebApp.Services.ApplicationSettingsService>
+[14:10:00 INF] Creating default application settings with ₹ symbol <s:WebApp.Services.ApplicationSettingsService>
+[14:10:00 WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results. <s:Microsoft.EntityFrameworkCore.Query>
+[14:10:00 INF] Retrieved settings with currency symbol: ₹ <s:Infrastructure.Services.SettingsService>
+[14:10:00 INF] Database settings loaded with CurrencySymbol: ₹ <s:WebApp.Services.ApplicationSettingsService>
+[14:10:00 INF] Using existing database settings (CurrencySymbol=₹) <s:WebApp.Services.ApplicationSettingsService>
+[14:10:00 INF] Application settings initialized. <s:Program>
+[14:10:00 INF] Database Provider: SqliteConnection, Connection: 18 <s:Program>
+[14:10:00 INF] Ensuring database is created... <s:Program>
+[14:10:00 INF] Database initialization completed successfully <s:WebApp.Services.DatabaseInitializer>
+[14:10:00 INF] Database initialization completed. <s:Program>
+[14:10:00 INF] Now listening on: https://localhost:7256 <s:Microsoft.Hosting.Lifetime>
+[14:10:00 INF] Now listening on: http://localhost:5084 <s:Microsoft.Hosting.Lifetime>
+[14:10:00 INF] Application started. Press Ctrl+C to shut down. <s:Microsoft.Hosting.Lifetime>
+[14:10:00 INF] Hosting environment: Development <s:Microsoft.Hosting.Lifetime>
+[14:10:00 INF] Content root path: /Users/manojdeshmukh/Cursor/iTracker/WebApp <s:Microsoft.Hosting.Lifetime>
+[14:10:03 INF] Attempting login for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
+[14:10:04 INF] Login successful for user: Admin@itrackerApp.com <s:WebApp.Pages.Auth.LoginModel>
+[14:10:04 INF] Attempting to redirect to Portfolios/Index <s:WebApp.Pages.Auth.LoginModel>
+[14:10:04 INF] Settings loaded from database: CurrencySymbol=₹ <s:WebApp.Services.ApplicationSettingsService>
+[14:10:22 INF] Found 2 existing investments for portfolio 20 <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+[14:10:22 INF] Starting duplicate detection for 1 records in portfolio 20 <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+[14:10:22 INF] Record 0: Portfolio 20, Example Investment, 1000.00 <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+[14:10:22 INF] Generated key: 20|example investment|1000.00 <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+[14:10:22 INF] Found duplicate with existing investment: Example Investment <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+[14:10:22 INF] Found 1 duplicate records out of 1 total records in portfolio 20 <s:WebApp.Pages.Investments.ImportInvestmentsModel>
+[14:10:22 INF] Duplicate record at index 0: Portfolio 20, Example Investment, 1000.00 <s:WebApp.Pages.Investments.ImportInvestmentsModel>

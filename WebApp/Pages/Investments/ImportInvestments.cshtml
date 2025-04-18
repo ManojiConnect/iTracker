@@ -15,10 +15,10 @@
     </div>
 
     <div class="row">
-        <div class="col-12 col-lg-8">
-            <div class="card shadow-sm mb-4">
-                <div class="card-header bg-light">
-                    <h5 class="mb-0">Upload CSV File</h5>
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Import Investments</h3>
                 </div>
                 <div class="card-body">
                     @if (!ModelState.IsValid)
@@ -27,61 +27,14 @@
                             <div asp-validation-summary="All" class="text-danger"></div>
                         </div>
                     }
-                    <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
-                        <div class="mb-3">
-                            <label for="portfolioId" class="form-label">Select Portfolio</label>
-                            <select id="portfolioId" name="PortfolioId" class="form-select" required>
-                                <option value="">-- Select Portfolio --</option>
-                                @foreach (var portfolio in Model.Portfolios)
-                                {
-                                    <option value="@portfolio.Id">@portfolio.Name</option>
-                                }
-                            </select>
-                            <div class="invalid-feedback">Please select a portfolio.</div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="file" class="form-label">CSV File</label>
-                            <input type="file" class="form-control" id="file" name="File" accept=".csv" required>
-                            <div class="invalid-feedback">Please select a CSV file.</div>
-                        </div>
-                        <div class="mb-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="hasHeader" name="HasHeader" checked>
-                                <label class="form-check-label" for="hasHeader">
-                                    First row contains headers
-                                </label>
-                            </div>
-                        </div>
-                        <div class="d-flex gap-2">
-                            <button type="submit" class="btn btn-primary">
-                                <i class="material-icons me-1">upload_file</i>
-                                Import Investments
-                            </button>
-                            <a href="/downloads/investment-import-template.csv" class="btn btn-outline-primary" download>
-                                <i class="material-icons me-1">download</i>
-                                Download Template
-                            </a>
-                            <a asp-page="./Index" class="btn btn-outline-secondary d-inline-flex align-items-center">
-                                <i class="material-icons me-1">arrow_back</i>
-                                Back to List
-                            </a>
-                        </div>
-                    </form>
-                </div>
-            </div>
 
-            @if (Model.ImportResults != null && Model.ImportResults.Any())
-            {
-                <div class="card shadow-sm">
-                    <div class="card-header bg-light">
-                        <h5 class="mb-0">Import Results</h5>
-                    </div>
-                    <div class="card-body p-0">
+                    @if (Model.ImportResults.Any())
+                    {
                         <div class="table-responsive">
-                            <table class="table table-hover align-middle mb-0">
-                                <thead class="table-light">
+                            <table class="table table-bordered">
+                                <thead>
                                     <tr>
-                                        <th class="ps-3">Row</th>
+                                        <th>Row</th>
                                         <th>Name</th>
                                         <th>Status</th>
                                         <th>Message</th>
@@ -90,47 +43,138 @@
                                 <tbody>
                                     @foreach (var result in Model.ImportResults)
                                     {
-                                        <tr>
-                                            <td class="ps-3">@result.RowNumber</td>
+                                        <tr class="@(result.Success ? "table-success" : "table-danger")">
+                                            <td>@result.RowNumber</td>
                                             <td>@result.Name</td>
-                                            <td>
-                                                @if (result.Success)
-                                                {
-                                                    <span class="badge bg-success">Success</span>
-                                                }
-                                                else
-                                                {
-                                                    <span class="badge bg-danger">Error</span>
-                                                }
-                                            </td>
+                                            <td>@(result.Success ? "Success" : "Failed")</td>
                                             <td>@result.Message</td>
                                         </tr>
                                     }
                                 </tbody>
                             </table>
                         </div>
-                    </div>
-                </div>
-            }
-        </div>
-        <div class="col-12 col-lg-4">
-            <div class="card shadow-sm">
-                <div class="card-header bg-light">
-                    <h5 class="mb-0">CSV Format</h5>
-                </div>
-                <div class="card-body">
-                    <p>The CSV file should contain the following columns:</p>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><strong>Name</strong> - Investment name (required)</li>
-                        <li class="mb-2"><strong>Category</strong> - Category name (required)</li>
-                        <li class="mb-2"><strong>TotalInvestment</strong> - Total amount invested (required)</li>
-                        <li class="mb-2"><strong>CurrentValue</strong> - Current market value (required)</li>
-                        <li class="mb-2"><strong>PurchaseDate</strong> - Date of purchase (required, format: dd/MM/yyyy)</li>
-                    </ul>
-                    <div class="alert alert-info">
-                        <i class="material-icons fs-5 me-2">info</i>
-                        <span>Download the template file for the correct format.</span>
-                    </div>
+                    }
+
+                    @if (Model.PreviewRecords.Any())
+                    {
+                        <form method="post" class="mb-4">
+                            <input type="hidden" asp-for="PortfolioId" />
+                            <input type="hidden" asp-for="File" />
+                            <input type="hidden" asp-for="HasHeaders" />
+                            <input type="hidden" asp-for="IsPreview" value="false" />
+                            <input type="hidden" asp-for="CsvContent" />
+
+                            @if (Model.DuplicateRecords.Any())
+                            {
+                                <div class="alert alert-warning">
+                                    <h5>Duplicate Records Detected</h5>
+                                    <p>Found @Model.DuplicateRecords.Count duplicate records. These are highlighted in yellow below.</p>
+                                </div>
+                            }
+
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 40px;">
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="selectAll">
+                                                    <label class="custom-control-label" for="selectAll"></label>
+                                                </div>
+                                            </th>
+                                            <th>Name</th>
+                                            <th>Category</th>
+                                            <th>Total Investment</th>
+                                            <th>Current Value</th>
+                                            <th>Purchase Date</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @for (var i = 0; i < Model.PreviewRecords.Count; i++)
+                                        {
+                                            var record = Model.PreviewRecords[i];
+                                            var isDuplicate = Model.DuplicateRecords.Contains(i);
+                                            <tr class="@(isDuplicate ? "table-warning" : "")">
+                                                <td>
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" 
+                                                               name="SelectedRecords" value="@i" checked>
+                                                        <label class="custom-control-label"></label>
+                                                    </div>
+                                                </td>
+                                                <td>@record.Name</td>
+                                                <td>@record.Category</td>
+                                                <td>@record.TotalInvestment.ToString("C")</td>
+                                                <td>@record.CurrentValue.ToString("C")</td>
+                                                <td>@record.PurchaseDate.ToString("dd/MM/yyyy")</td>
+                                                <td>
+                                                    @if (isDuplicate)
+                                                    {
+                                                        <span class="badge bg-warning text-dark">Duplicate</span>
+                                                        <small class="d-block text-muted">
+                                                            Same name, category, and amount as another record
+                                                        </small>
+                                                    }
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="form-group mt-3">
+                                <button type="submit" class="btn btn-primary">Import Selected Records</button>
+                                <a asp-page="./Index" class="btn btn-secondary">Cancel</a>
+                            </div>
+                        </form>
+                    }
+                    else
+                    {
+                        <form method="post" enctype="multipart/form-data">
+                            <div class="form-group mb-3">
+                                <a asp-page-handler="DownloadTemplate" class="btn btn-outline-primary">
+                                    <i class="material-icons me-1">download</i>
+                                    Download Template
+                                </a>
+                                <small class="form-text text-muted d-block mt-1">
+                                    Download the template file to see the required format. Dates should be in dd/MM/yyyy format.
+                                </small>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label asp-for="PortfolioId">Portfolio</label>
+                                <select asp-for="PortfolioId" class="form-control" required>
+                                    <option value="">Select a portfolio...</option>
+                                    @foreach (var portfolio in Model.Portfolios)
+                                    {
+                                        <option value="@portfolio.Id">@portfolio.Name</option>
+                                    }
+                                </select>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label asp-for="File">CSV File</label>
+                                <input type="file" asp-for="File" class="form-control-file" accept=".csv" required />
+                                <small class="form-text text-muted">
+                                    Upload a CSV file with the following columns: Name, Category, TotalInvestment, CurrentValue, PurchaseDate
+                                </small>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" asp-for="HasHeaders" class="custom-control-input">
+                                    <label asp-for="HasHeaders" class="custom-control-label">File has headers</label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="hidden" asp-for="IsPreview" value="true" />
+                                <button type="submit" class="btn btn-primary">Preview Import</button>
+                                <a asp-page="./Index" class="btn btn-secondary">Cancel</a>
+                            </div>
+                        </form>
+                    }
                 </div>
             </div>
         </div>
@@ -153,5 +197,18 @@
                 }, false)
             })
         })()
+
+        // Select all checkboxes
+        document.addEventListener('DOMContentLoaded', function() {
+            var selectAllCheckbox = document.getElementById('selectAll');
+            if (selectAllCheckbox) {
+                selectAllCheckbox.addEventListener('change', function() {
+                    var checkboxes = document.querySelectorAll('input[name="SelectedRecords"]');
+                    checkboxes.forEach(function(checkbox) {
+                        checkbox.checked = selectAllCheckbox.checked;
+                    });
+                });
+            }
+        });
     </script>
 } 

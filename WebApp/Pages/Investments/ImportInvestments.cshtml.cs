@@ -16,6 +16,14 @@ using Application.Features.Investments.CreateInvestment;
 using Application.Features.Portfolios.GetAllPortfolios;
 using Application.Features.InvestmentCategories.GetAllCategories;
 using Ardalis.Result;
+using Application.Features.Investments.Commands.ImportInvestments;
+using WebApp.Models;
+using System.Globalization;
+using Application.Common.Models;
+using Application.Features.Portfolios.GetPortfolioById;
+using Application.Features.Portfolios.GetPortfolioInvestments;
+using Application.Common.Interfaces;
+using System.Text;
 
 namespace WebApp.Pages.Investments;
 
@@ -33,154 +41,293 @@ public class ImportInvestmentsModel : PageModel
     }
 
     [BindProperty]
-    public int? PortfolioId { get; set; }
+    public int PortfolioId { get; set; }
 
     [BindProperty]
-    public new IFormFile File { get; set; }
+    public IFormFile? File { get; set; }
 
     [BindProperty]
     public bool HasHeaders { get; set; } = true;
 
-    public List<Application.Features.Portfolios.GetAllPortfolios.PortfolioDto> Portfolios { get; set; } = new();
+    [BindProperty]
+    public bool IsPreview { get; set; }
 
+    [BindProperty]
+    public List<int> SelectedRecords { get; set; } = new();
+
+    [BindProperty(SupportsGet = true)]
+    public string? CsvContent { get; set; }
+
+    public List<Application.Features.Portfolios.GetAllPortfolios.PortfolioDto> Portfolios { get; set; } = new();
+    public List<ImportInvestmentDto> PreviewRecords { get; set; } = new();
     public List<ImportResult> ImportResults { get; set; } = new();
+    public List<int> DuplicateRecords { get; set; } = new();
 
     public async Task<IActionResult> OnGetAsync()
     {
-        try
+        var result = await _mediator.Send(new GetAllPortfoliosRequest());
+        if (result.IsSuccess)
         {
-            var portfoliosQuery = new GetAllPortfoliosRequest();
-            var result = await _mediator.Send(portfoliosQuery);
-            
-            if (result.IsSuccess)
+            Portfolios = result.Value?.ToList() ?? new List<Application.Features.Portfolios.GetAllPortfolios.PortfolioDto>();
+        }
+        return Page();
+    }
+
+    public IActionResult OnGetDownloadTemplate()
+    {
+        var template = new List<ImportInvestmentDto>
+        {
+            new ImportInvestmentDto
             {
-                Portfolios = result.Value.ToList();
+                Name = "Example Investment",
+                Category = "Stocks",
+                TotalInvestment = 1000.00m,
+                CurrentValue = 1100.00m,
+                PurchaseDate = DateTime.Now
             }
-            
-            return Page();
-        }
-        catch (Exception ex)
+        };
+
+        using var memoryStream = new MemoryStream();
+        using var writer = new StreamWriter(memoryStream);
+        using var csv = new CsvWriter(writer, new CsvConfiguration(CultureInfo.InvariantCulture)
         {
-            _logger.LogError(ex, "Error loading portfolios for import");
-            TempData["ErrorMessage"] = "An error occurred while loading portfolios.";
-            return RedirectToPage("./Index");
-        }
+            HasHeaderRecord = true
+        });
+
+        csv.Context.RegisterClassMap<ImportInvestmentDtoMap>();
+        csv.WriteRecords(template);
+
+        writer.Flush();
+        memoryStream.Position = 0;
+
+        return File(memoryStream.ToArray(), "text/csv", "investment_import_template.csv");
     }
 
     public async Task<IActionResult> OnPostAsync()
     {
-        try
+        if (IsPreview)
         {
-            if (!PortfolioId.HasValue)
+            if (File == null)
             {
-                ModelState.AddModelError("PortfolioId", "Please select a portfolio to import into.");
-                return await OnGetAsync();
-            }
-
-            if (File == null || File.Length == 0)
-            {
-                ModelState.AddModelError("File", "Please select a file to import.");
+                ModelState.AddModelError(string.Empty, "Please select a file to import.");
                 return await OnGetAsync();
             }
 
             if (!File.FileName.EndsWith(".csv", StringComparison.OrdinalIgnoreCase))
             {
-                ModelState.AddModelError("File", "Please upload a CSV file.");
+                ModelState.AddModelError(string.Empty, "Please select a CSV file.");
                 return await OnGetAsync();
             }
 
-            // Load all categories for lookup
-            var categoriesResult = await _mediator.Send(new GetAllCategoriesRequest());
-            if (!categoriesResult.IsSuccess)
+            // Load preview records
+            await LoadPreviewRecords();
+            return Page();
+        }
+        else
+        {
+            // Import selected records
+            if (SelectedRecords == null || !SelectedRecords.Any())
             {
-                ModelState.AddModelError(string.Empty, "Failed to load categories.");
+                ModelState.AddModelError(string.Empty, "Please select at least one record to import.");
                 return await OnGetAsync();
             }
 
-            var categories = categoriesResult.Value.ToList();
-            var categoryNameToId = categories.ToDictionary(c => c.Name, c => c.Id, StringComparer.OrdinalIgnoreCase);
+            // Get the CSV content from the hidden field or form data
+            var csvContent = CsvContent;
+            if (string.IsNullOrEmpty(csvContent))
+            {
+                csvContent = Request.Form["CsvContent"].ToString();
+            }
+            
+            if (string.IsNullOrEmpty(csvContent))
+            {
+                ModelState.AddModelError(string.Empty, "CSV content is missing. Please try again.");
+                return await OnGetAsync();
+            }
 
-            using var reader = new StreamReader(File.OpenReadStream());
-            using var csv = new CsvReader(reader, new CsvConfiguration(System.Globalization.CultureInfo.InvariantCulture)
+            var command = new ImportInvestmentsCommand 
+            { 
+                CsvContent = csvContent,
+                PortfolioId = PortfolioId,
+                SelectedRows = SelectedRecords
+            };
+            var result = await _mediator.Send(command);
+
+            if (result.IsSuccess)
+            {
+                ImportResults = result.Value?.Select((message, index) => 
+                    new ImportResult 
+                    { 
+                        RowNumber = index + 1,
+                        Name = ExtractNameFromMessage(message),
+                        Success = message.StartsWith("Successfully"),
+                        Message = message
+                    }).ToList() ?? new List<ImportResult>();
+                
+                // Clear the preview records after successful import
+                PreviewRecords.Clear();
+                return Page();
+            }
+
+            ModelState.AddModelError(string.Empty, "Failed to import investments. Please check the file format.");
+            return await OnGetAsync();
+        }
+    }
+
+    private async Task LoadPreviewRecords()
+    {
+        if (File == null || File.Length == 0)
+        {
+            ModelState.AddModelError(string.Empty, "Please select a file to import.");
+            return;
+        }
+
+        if (PortfolioId <= 0)
+        {
+            ModelState.AddModelError(string.Empty, "Please select a portfolio.");
+            return;
+        }
+
+        // Get existing investments for the portfolio
+        var existingInvestmentsRequest = new GetPortfolioInvestmentsRequest { PortfolioId = PortfolioId };
+        var existingInvestmentsResult = await _mediator.Send(existingInvestmentsRequest);
+        if (existingInvestmentsResult.IsSuccess)
+        {
+            var existingInvestments = existingInvestmentsResult.Value?.ToList() ?? new List<InvestmentDto>();
+            _logger.LogInformation("Found {Count} existing investments for portfolio {PortfolioId}", 
+                existingInvestments.Count, PortfolioId);
+
+            // Store the CSV content for later use
+            using var stream = File.OpenReadStream();
+            using var reader = new StreamReader(stream);
+            CsvContent = await reader.ReadToEndAsync();
+
+            using var csvReader = new StringReader(CsvContent);
+            using var csv = new CsvReader(csvReader, new CsvConfiguration(CultureInfo.InvariantCulture)
             {
                 HasHeaderRecord = HasHeaders,
-                TrimOptions = TrimOptions.Trim,
-                IgnoreBlankLines = true,
-                BadDataFound = null,
-                MissingFieldFound = null
+                MissingFieldFound = null,
+                HeaderValidated = null
             });
 
-            // Configure date format for UK/India (dd/MM/yyyy)
             csv.Context.RegisterClassMap<ImportInvestmentDtoMap>();
-
             var records = new List<ImportInvestmentDto>();
-            await foreach (var record in csv.GetRecordsAsync<ImportInvestmentDto>())
+            var rowNumber = HasHeaders ? 1 : 0;
+
+            try
             {
-                if (string.IsNullOrWhiteSpace(record.Name))
+                // Read the header if the file has headers
+                if (HasHeaders)
                 {
-                    continue;
+                    await csv.ReadAsync();
+                    csv.ReadHeader();
                 }
 
-                records.Add(record);
-            }
-
-            if (!records.Any())
-            {
-                ModelState.AddModelError("File", "No valid records found in the file.");
-                return await OnGetAsync();
-            }
-
-            // Create investments one by one
-            var rowNumber = 1;
-            foreach (var record in records)
-            {
-                // Look up category ID by name
-                if (!categoryNameToId.TryGetValue(record.Category, out int categoryId))
+                // Read the data rows
+                while (await csv.ReadAsync())
                 {
-                    ImportResults.Add(new ImportResult
+                    rowNumber++;
+                    try
                     {
-                        RowNumber = rowNumber++,
-                        Name = record.Name,
-                        Success = false,
-                        Message = $"Category '{record.Category}' not found. Please create this category first."
-                    });
-                    continue;
+                        var record = new ImportInvestmentDto
+                        {
+                            Name = csv.GetField("Name"),
+                            Category = csv.GetField("Category"),
+                            TotalInvestment = decimal.Parse(csv.GetField("TotalInvestment"), CultureInfo.InvariantCulture),
+                            CurrentValue = decimal.Parse(csv.GetField("CurrentValue"), CultureInfo.InvariantCulture),
+                            PurchaseDate = DateTime.Parse(csv.GetField("PurchaseDate"), CultureInfo.InvariantCulture),
+                            PortfolioId = PortfolioId
+                        };
+
+                        records.Add(record);
+                    }
+                    catch (Exception ex)
+                    {
+                        _logger.LogError(ex, "Error parsing row {RowNumber}", rowNumber);
+                        ModelState.AddModelError(string.Empty, $"Error parsing row {rowNumber}: {ex.Message}");
+                    }
                 }
 
-                var request = new CreateInvestmentRequest
+                // Check for duplicates
+                DuplicateRecords = new List<int>();
+                var seenInvestments = new Dictionary<string, int>();
+                
+                _logger.LogInformation($"Starting duplicate detection for {records.Count} records in portfolio {PortfolioId}");
+                
+                // First check against existing investments in the database
+                for (var i = 0; i < records.Count; i++)
                 {
-                    PortfolioId = PortfolioId.Value,
-                    Name = record.Name,
-                    CategoryId = categoryId,
-                    TotalInvestment = record.TotalInvestment,
-                    CurrentValue = record.CurrentValue,
-                    PurchaseDate = record.PurchaseDate
-                };
+                    var record = records[i];
+                    var key = record.GetDuplicateKey();
+                    
+                    _logger.LogInformation($"Record {i}: Portfolio {record.PortfolioId}, {record.Name}, {record.TotalInvestment}");
+                    _logger.LogInformation($"Generated key: {key}");
+                    
+                    // Check against existing investments
+                    var existingDuplicate = existingInvestments.FirstOrDefault(e => 
+                        e.Name.Equals(record.Name, StringComparison.OrdinalIgnoreCase) && 
+                        e.TotalInvestment == record.TotalInvestment);
+                        
+                    if (existingDuplicate != null)
+                    {
+                        _logger.LogInformation($"Found duplicate with existing investment: {existingDuplicate.Name}");
+                        DuplicateRecords.Add(i);
+                        continue;
+                    }
+                    
+                    // Then check against other records in the import
+                    if (seenInvestments.ContainsKey(key))
+                    {
+                        _logger.LogInformation($"Found duplicate at index {i} matching index {seenInvestments[key]}");
+                        // Add both the current record and the previously seen record as duplicates
+                        if (!DuplicateRecords.Contains(i))
+                        {
+                            DuplicateRecords.Add(i);
+                        }
+                        if (!DuplicateRecords.Contains(seenInvestments[key]))
+                        {
+                            DuplicateRecords.Add(seenInvestments[key]);
+                        }
+                    }
+                    else
+                    {
+                        seenInvestments[key] = i;
+                    }
+                }
 
-                var result = await _mediator.Send(request);
-                ImportResults.Add(new ImportResult
+                // Log duplicate detection results for debugging
+                _logger.LogInformation($"Found {DuplicateRecords.Count} duplicate records out of {records.Count} total records in portfolio {PortfolioId}");
+                foreach (var index in DuplicateRecords)
                 {
-                    RowNumber = rowNumber++,
-                    Name = record.Name,
-                    Success = result.IsSuccess,
-                    Message = result.IsSuccess ? "Successfully imported" : result.Errors.FirstOrDefault() ?? "Unknown error"
-                });
+                    var record = records[index];
+                    _logger.LogInformation($"Duplicate record at index {index}: Portfolio {record.PortfolioId}, {record.Name}, {record.TotalInvestment}");
+                }
+
+                PreviewRecords = records;
             }
-
-            if (ImportResults.Any(r => r.Success))
+            catch (Exception ex)
             {
-                TempData["SuccessMessage"] = $"Successfully imported {ImportResults.Count(r => r.Success)} investments.";
-                return RedirectToPage("./Index");
+                _logger.LogError(ex, "Error loading preview records");
+                ModelState.AddModelError(string.Empty, $"Error loading preview records: {ex.Message}");
             }
+        }
+    }
 
-            return await OnGetAsync();
-        }
-        catch (Exception ex)
+    private string ExtractNameFromMessage(string message)
+    {
+        if (message.StartsWith("Successfully imported investment:"))
         {
-            _logger.LogError(ex, "Error importing investments");
-            ModelState.AddModelError(string.Empty, "An error occurred while importing investments.");
-            return await OnGetAsync();
+            return message.Replace("Successfully imported investment:", "").Trim();
         }
+        else if (message.Contains("Failed to import investment"))
+        {
+            var parts = message.Split(':');
+            if (parts.Length >= 2)
+            {
+                return parts[1].Trim();
+            }
+        }
+        return "Unknown";
     }
 }
 
@@ -191,14 +338,17 @@ public class ImportInvestmentDto
     public decimal TotalInvestment { get; set; }
     public decimal CurrentValue { get; set; }
     public DateTime PurchaseDate { get; set; }
-}
+    public int PortfolioId { get; set; }
 
-public class ImportResult
-{
-    public int RowNumber { get; set; }
-    public string Name { get; set; } = string.Empty;
-    public bool Success { get; set; }
-    public string Message { get; set; } = string.Empty;
+    public string GetDuplicateKey()
+    {
+        // Normalize the values to ensure consistent comparison
+        // Use Name instead of Category for duplicate detection
+        var normalizedName = Name.Trim().ToLowerInvariant();
+        var normalizedAmount = TotalInvestment.ToString("F2", CultureInfo.InvariantCulture);
+        
+        return $"{PortfolioId}|{normalizedName}|{normalizedAmount}";
+    }
 }
 
 public class ImportInvestmentDtoMap : ClassMap<ImportInvestmentDto>
@@ -234,20 +384,27 @@ public class FlexibleDateConverter : CsvHelper.TypeConversion.DateTimeConverter
 
         foreach (var format in formats)
         {
-            if (DateTime.TryParseExact(text, format, System.Globalization.CultureInfo.InvariantCulture, 
-                System.Globalization.DateTimeStyles.None, out DateTime result))
+            if (DateTime.TryParseExact(text, format, CultureInfo.InvariantCulture, 
+                DateTimeStyles.None, out DateTime result))
             {
                 return result;
             }
         }
 
-        // If all formats fail, try parsing with the default DateTime parser
-        if (DateTime.TryParse(text, System.Globalization.CultureInfo.InvariantCulture, 
-            System.Globalization.DateTimeStyles.None, out DateTime defaultResult))
+        if (DateTime.TryParse(text, CultureInfo.InvariantCulture, 
+            DateTimeStyles.None, out DateTime defaultResult))
         {
             return defaultResult;
         }
 
-        throw new FormatException($"Could not convert '{text}' to DateTime. Expected format: dd/MM/yyyy or dd/MM/yy");
+        throw new FormatException($"Unable to parse date: {text}. Expected format: dd/MM/yyyy");
     }
+}
+
+public class ImportResult
+{
+    public int RowNumber { get; set; }
+    public string Name { get; set; } = string.Empty;
+    public bool Success { get; set; }
+    public string Message { get; set; } = string.Empty;
 } 
